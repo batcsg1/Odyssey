@@ -45,7 +45,8 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
-app.use("/api/v1/institutions", institutionRoutes);
+//app.use("/api/v1/institutions", institutionRoutes);
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Start the server on port 3000
