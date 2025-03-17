@@ -8,6 +8,9 @@
  *         id:
  *           type: integer
  *           example: 1
+ *         name:
+ *           type: string
+ *           example: Orion
  *         right_ascension:
  *           type: number
  *           format: float
