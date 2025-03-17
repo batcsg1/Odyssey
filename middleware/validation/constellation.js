@@ -6,6 +6,13 @@ const constellationSchema = Joi.object({
     "number.base": "id should be a number",
     "any.required": "id is required"
   }),
+  name: Joi.string().min(3).max(100).required().messages({
+    "string.base": "name should be a string",
+    "string.empty": "name cannot be empty",
+    "string.min": "name should have a minimum length of {#limit}",
+    "string.max": "name should have a maximum length of {#limit}",
+    "any.required": "name is required"
+  }),
   right_ascension: Joi.number().required().messages({
     "number.base": "right_ascension should be a number",
     "any.required": "right_ascension is required"
