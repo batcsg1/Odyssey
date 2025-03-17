@@ -65,6 +65,7 @@
     "is-extglob": "^2.1.1",
     "is-glob": "^4.0.3",
     "is-number": "^7.0.0",
+    "joi": "^17.13.3",
     "js-yaml": "^4.1.0",
     "lodash.get": "^4.4.2",
     "lodash.isequal": "^4.5.0",
