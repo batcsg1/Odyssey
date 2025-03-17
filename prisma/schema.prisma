@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Constellation {
-  id               String   @id @default(cuid())  // Use cuid() if you want string IDs, or change to autoincrement() for integers
+  id               String   @id @default(uuid())
   name             String
   right_ascension  Float
   declination      Float
