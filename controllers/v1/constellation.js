@@ -3,7 +3,7 @@
  * @author Samuel Batchelor
  */
 
-import Repository from "../../repositories/general.js";
+import Repository from "../../repositories/generic.js";
 
 const constellationRepository = new Repository("Constellation");
 
