@@ -12,3 +12,20 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Constellation {
+  constellation_id   Int     @id @default(autoincrement())
+  constellation_name String
+  right_ascension    Float
+  declination        Float
+  constellation_shape String
+  constellation_area Float
+}
