@@ -22,10 +22,12 @@ datasource db {
 }
 
 model Constellation {
-  constellation_id   Int     @id @default(autoincrement())
-  constellation_name String
-  right_ascension    Float
-  declination        Float
-  constellation_shape String
-  constellation_area Float
+  id               String     @id @default(autoincrement())
+  name             String
+  right_ascension  Float
+  declination      Float
+  shape            String
+  area             Float
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
 }
