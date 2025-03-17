@@ -8,6 +8,7 @@ import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 
 //Importing routes
+import constellationRoutes from "./routes/v1/constellation.js";
 
 import { isContentTypeApplicationJSON } from "./middleware/utils.js";
 
@@ -45,7 +46,7 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
-//app.use("/api/v1/institutions", institutionRoutes);
+app.use("/api/v1/constellations", constellationRoutes);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
