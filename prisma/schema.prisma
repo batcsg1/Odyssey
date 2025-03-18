@@ -14,34 +14,34 @@ datasource db {
 }
 
 model Constellation {
-  id              String         @id @default(uuid())
-  name            String
-  right_ascension Float
-  declination     Float
-  shape           String
-  area            Float
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-  stars           Star[]
-  meteorShowers   MeteorShower[]
+  id               String   @id @default(uuid())
+  name             String
+  right_ascension  Float?
+  declination      Float?
+  shape            String?
+  area             Float?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  stars            Star[]
+  meteorShowers    MeteorShower[]
 }
 
 model Star {
-  id              String         @id @default(uuid())
-  name            String
-  age             Float
-  mass            Float
-  diameter        Float
-  type            String
-  distance        Float
-  temperature     Float
-  luminosity      Float
-  noOfPlanets     Int
-  brightness      Float
-  rightAscension  Float
-  declination     Float
-  constellationId String?
-  constellation   Constellation? @relation(fields: [constellationId], references: [id])
+  id               String   @id @default(uuid())
+  name             String
+  age              Float
+  mass             Float
+  diameter         Float
+  type             String
+  distance         Float
+  temperature      Float
+  luminosity       Float
+  hasPlanets       Boolean  @default(false)
+  brightness       Float
+  rightAscension   Float?
+  declination      Float?
+  constellationId  String?
+  constellation    Constellation? @relation(fields: [constellationId], references: [id])
   planets         Planet[]
   dwarfPlanets    DwarfPlanet[]
   asteroids       Asteroid[]
@@ -49,144 +49,145 @@ model Star {
 }
 
 model Planet {
-  id         String      @id @default(uuid())
-  name       String
-  age        Float
-  mass       Float
-  diameter   Float
-  density    Float
-  type       String
-  atmosphere String
-  year       Float
-  perigee    Float
-  apogee     Float
-  tilt       Float
-  moons      Int
-  minTemp    Float
-  maxTemp    Float
-  gravity    Float
-  day        Float
-  location   String
-  habitable  Boolean?    @default(false)
-  starId     String
-  star       Star        @relation(fields: [starId], references: [id])
-  satellites Satellite[]
-  meteorites Meteorite[]
+  id               String   @id @default(uuid())
+  name             String
+  age              Float
+  mass             Float
+  diameter         Float
+  density          Float
+  type             String
+  atmosphere       String
+  year             Float
+  perigee          Float
+  apogee           Float
+  tilt             Float?
+  hasSatellites    Boolean  @default(false)
+  minTemp          Float
+  maxTemp          Float
+  gravity          Float
+  day              Float
+  location         String
+  habitable        Boolean? @default(false)
+  starId           String
+  star             Star @relation(fields: [starId], references: [id])
+  satellites       Satellite[]
+  meteorites       Meteorite[]
 }
 
 model DwarfPlanet {
-  id         String      @id @default(uuid())
-  name       String
-  age        Float
-  mass       Float
-  diameter   Float
-  density    Float
-  type       String
-  atmosphere String
-  year       Float
-  perigee    Float
-  apogee     Float
-  axialTilt  Float
-  moons      Int
-  minTemp    Float
-  maxTemp    Float
-  gravity    Float
-  day        Float
-  location   String
-  habitable  Boolean     @default(false)
-  starId     String
-  star       Star        @relation(fields: [starId], references: [id])
-  satellites Satellite[]
+  id               String   @id @default(uuid())
+  name             String
+  age              Float
+  mass             Float
+  diameter         Float
+  density          Float
+  type             String
+  atmosphere       String
+  year             Float
+  perigee          Float
+  apogee           Float
+  tilt             Float?
+  hasSatellites    Boolean @default(false)
+  minTemp          Float?
+  maxTemp          Float?
+  gravity          Float?
+  day              Float
+  location         String
+  habitable        Boolean @default(false)
+  starId           String
+  star             Star @relation(fields: [starId], references: [id])
+  satellites       Satellite[]
 }
 
 model Satellite {
-  id            String       @id @default(uuid())
-  name          String
-  age           Float
-  mass          Float
-  diameter      Float
-  density       Float
-  type          String
-  atmosphere    String
-  year          Float
-  perigee       Float
-  apogee        Float
-  axialTilt     Float
-  minTemp       Float
-  maxTemp       Float
-  gravity       Float
-  day           Float
-  location      String
-  habitable     Boolean      @default(false)
-  planetId      String?
-  planet        Planet?      @relation(fields: [planetId], references: [id])
-  dwarfPlanetId String?
-  dwarfPlanet   DwarfPlanet? @relation(fields: [dwarfPlanetId], references: [id])
+  id               String   @id @default(uuid())
+  name             String
+  age              Float
+  mass             Float
+  diameter         Float
+  density          Float
+  type             String
+  atmosphere       String
+  year             Float
+  perigee          Float
+  apogee           Float
+  tilt             Float?
+  minTemp          Float?
+  maxTemp          Float?
+  gravity          Float
+  day              Float
+  location         String
+  habitable        Boolean @default(false)
+  planetId         String
+  planet           Planet? @relation(fields: [planetId], references: [id])
+  dwarfPlanetId    String
+  dwarfPlanet      DwarfPlanet? @relation(fields: [dwarfPlanetId], references: [id])
 }
 
 model Asteroid {
-  id            String         @id @default(uuid())
-  name          String
-  age           Float
-  mass          Float
-  diameter      Float
-  density       Float
-  type          String
-  year          Float
-  perigee       Float
-  apogee        Float
-  location      String
-  starId        String
-  star          Star           @relation(fields: [starId], references: [id])
-  meteorShowers MeteorShower[]
+  id               String   @id @default(uuid())
+  name             String
+  age              Float
+  mass             Float
+  diameter         Float
+  density          Float
+  type             String
+  year             Float
+  perigee          Float
+  apogee           Float
+  location         String
+  starId           String
+  star             Star @relation(fields: [starId], references: [id])
+  meteorShowers    MeteorShower[]
 }
 
 model Meteorite {
-  id        String @id @default(uuid())
-  name      String
-  age       Float
-  foundYear Int
-  mass      Float
-  diameter  Float
-  location  String
-  latitude  Float
-  longitude Float
-  planetId  String
-  planet    Planet @relation(fields: [planetId], references: [id])
+  id               String   @id @default(uuid())
+  name             String
+  age              Float
+  foundYear        Int
+  mass             Float
+  diameter         Float
+  location         String
+  latitude         Float?
+  longitude        Float?
+  planetId         String
+  planet           Planet @relation(fields: [planetId], references: [id])
 }
 
 model Comet {
-  id            String         @id @default(uuid())
-  name          String
-  mass          Float
-  diameter      Float
-  density       Float
-  type          String
-  year          Float
-  perigee       Float
-  apogee        Float
-  location      String
-  starId        String
-  star          Star           @relation(fields: [starId], references: [id])
-  meteorShowers MeteorShower[]
+  id               String   @id @default(uuid())
+  name             String
+  mass             Float
+  diameter         Float
+  density          Float
+  type             String
+  year             Float
+  perigee          Float
+  apogee           Float
+  location         String
+  starId           String
+  star             Star @relation(fields: [starId], references: [id])
+  meteorShowers    MeteorShower[]
 }
 
 model MeteorShower {
-  id              String         @id @default(uuid())
-  name            String
-  previousYear    Int
-  nextYear        Int
-  initialDate     DateTime
-  finalDate       DateTime
-  frequency       Int
-  duration        Int
-  meteorVelocity  Float
-  meteorsPerHour  Int
-  peakDate        DateTime
-  cometId         String?
-  comet           Comet?         @relation(fields: [cometId], references: [id])
-  asteroidId      String?
-  asteroid        Asteroid?      @relation(fields: [asteroidId], references: [id])
-  constellationId String?
+  id               String   @id @default(uuid())
+  name             String
+  previousYear     Int
+  nextYear         Int
+  initialDate      DateTime
+  finalDate        DateTime
+  frequency        Int
+  duration         Int
+  meteorVelocity   Float?
+  meteorsPerHour   Int?
+  peakDate         DateTime?
+  cometId          String?
+  comet            Comet? @relation(fields: [cometId], references: [id])
+  asteroidId       String?
+  asteroid         Asteroid? @relation(fields: [asteroidId], references: [id])
+  constellationId  String?
   constellation   Constellation? @relation(fields: [constellationId], references: [id])
 }
+
