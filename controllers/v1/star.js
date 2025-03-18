@@ -21,6 +21,7 @@ const selectObject = {
   brightness: true,
   rightAscension: true,
   declination: true,
+  constellationId: true
 };
 
 const createStar = async (req, res) => {
