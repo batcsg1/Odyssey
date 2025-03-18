@@ -62,6 +62,10 @@ const starSchema = Joi.object({
   declination: Joi.number().optional().messages({
     "number.base": "declination should be a number"
   }),
+  constellationId: Joi.string().uuid().optional().messages({
+    "string.base": "constellationId should be a string",
+    "string.guid": "constellationId should be a valid UUID",
+  }),
 });
 
 const validateSchema = (schema, isRequired = false) => {
