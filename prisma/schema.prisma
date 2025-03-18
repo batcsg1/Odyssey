@@ -67,7 +67,7 @@ model Planet {
   gravity       Float
   day           Float
   location      String
-  habitable     Boolean?    @default(false)
+  habitable     Boolean     @default(false)
   starId        String
   star          Star        @relation(fields: [starId], references: [id])
   satellites    Satellite[]
