@@ -10,6 +10,8 @@ import swaggerUi from "swagger-ui-express";
 //Importing routes
 import constellationRoutes from "./routes/v1/constellation.js";
 
+import starRoutes from "./routes/v1/star.js";
+
 import { isContentTypeApplicationJSON } from "./middleware/utils.js";
 
 // Create an Express application
@@ -46,8 +48,12 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
+//Use routes
 app.use("/api/v1/constellations", constellationRoutes);
 
+app.use("/api/v1/stars", starRoutes);
+
+//Swagger route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Start the server on port 3000
@@ -56,6 +62,5 @@ app.listen(PORT, () => {
     `Server is listening on port ${PORT}. Visit http://localhost:${PORT}`,
   );
 });
-
 
 export default app;
