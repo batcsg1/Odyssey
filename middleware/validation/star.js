@@ -18,7 +18,7 @@ const starSchema = Joi.object({
     "number.min": "age should be greater than or equal to {#limit}",
     "any.required": "age is required"
   }),
-  mass: Joi.number().min(0).required().messages({
+  mass: Joi.number().min(0).unsafe().required().messages({
     "number.base": "mass should be a number",
     "number.min": "mass should be greater than or equal to {#limit}",
     "any.required": "mass is required"
