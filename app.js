@@ -12,6 +12,8 @@ import constellationRoutes from "./routes/v1/constellation.js";
 
 import starRoutes from "./routes/v1/star.js";
 
+import planetRoutes from "./routes/v1/planet.js";
+
 import { isContentTypeApplicationJSON } from "./middleware/utils.js";
 
 // Create an Express application
@@ -52,6 +54,8 @@ const swaggerDocs = swaggerJSDoc(swaggerOptions);
 app.use("/api/v1/constellations", constellationRoutes);
 
 app.use("/api/v1/stars", starRoutes);
+
+app.use("/api/v1/planets", planetRoutes);
 
 //Swagger route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
