@@ -63,15 +63,15 @@ const planetSchema = Joi.object({
     "boolean.base": "hasSatellites should be a boolean",
     "any.required": "hasSatellites is required"
   }),
-  minTemp: Joi.number().required().messages({
+  minTemp: Joi.number().optional().messages({
     "number.base": "minTemp should be a number",
     "any.required": "minTemp is required"
   }),
-  maxTemp: Joi.number().required().messages({
+  maxTemp: Joi.number().optional().messages({
     "number.base": "maxTemp should be a number",
     "any.required": "maxTemp is required"
   }),
-  gravity: Joi.number().required().messages({
+  gravity: Joi.number().optional().messages({
     "number.base": "gravity should be a number",
     "any.required": "gravity is required"
   }),
