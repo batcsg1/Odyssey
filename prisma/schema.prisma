@@ -62,9 +62,9 @@ model Planet {
   apogee        Float
   tilt          Float?
   hasSatellites Boolean     @default(false)
-  minTemp       Float
-  maxTemp       Float
-  gravity       Float
+  minTemp       Float?
+  maxTemp       Float?
+  gravity       Float?
   day           Float
   location      String
   habitable     Boolean     @default(false)
@@ -114,7 +114,7 @@ model Satellite {
   tilt          Float?
   minTemp       Float?
   maxTemp       Float?
-  gravity       Float
+  gravity       Float?
   day           Float
   location      String
   habitable     Boolean      @default(false)
