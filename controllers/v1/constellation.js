@@ -9,6 +9,7 @@ const constellationRepository = new Repository("Constellation");
 
 const selectObject = {
   id: true,
+  name: true,
   right_ascension: true,
   declination: true,
   shape: true,
