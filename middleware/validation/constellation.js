@@ -1,6 +1,11 @@
 import Joi from "joi";
 
 const constellationSchema = Joi.object({
+  id: Joi.alternatives().try(Joi.string(), Joi.number()).required().messages({
+    "string.base": "id should be a string",
+    "number.base": "id should be a number",
+    "any.required": "id is required"
+  }),
   name: Joi.string().min(3).max(100).required().messages({
     "string.base": "name should be a string",
     "string.empty": "name cannot be empty",
