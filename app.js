@@ -8,6 +8,8 @@ import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 
 //Importing routes
+import indexRoutes from "./routes/v1/index.js";
+
 import constellationRoutes from "./routes/v1/constellation.js";
 
 import starRoutes from "./routes/v1/star.js";
@@ -53,6 +55,8 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
 //Use routes
+app.use("/api/v1", indexRoutes);
+
 app.use("/api/v1/constellations", constellationRoutes);
 
 app.use("/api/v1/stars", starRoutes);
