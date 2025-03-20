@@ -3,18 +3,32 @@
  * @author Samuel Batchelor
  */
 
-import createRouter from "./base.js";
+// Import the Express module
+import express from "express";
 
-import {
-  getIndex
-} from "../../controllers/v1/index.js";
+// Import the index controllers module
+import { getIndex } from "../../controllers/v1/index.js";
 
-const indexController = {
-  get: getIndex,
-};
+// Create an Express router
+const router = express.Router();
 
-const indexRouter = createRouter(
-  indexController
-);
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     summary: Retrieve test data
+ *     tags:
+ *       - Main
+ *     description: Returns test data from the index route.
+ *     responses:
+ *       200:
+ *         description: A JSON object containing the test data.
+ *       500:
+ *         description: Internal server error if the request fails.
+ */
 
-export default indexRouter;
+// Create a GET route
+router.get("/", getIndex);
+
+// Export the router
+export default router;
