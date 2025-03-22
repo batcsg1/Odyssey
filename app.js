@@ -71,7 +71,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 // Start the server on port 3000
 app.listen(PORT, () => {
   console.log(
-    `Server is listening on port ${PORT}. Visit http://localhost:${PORT}`,
+    `Server is listening on port ${PORT}. Visit http://localhost:${PORT}/api/v1`,
   );
 });
 
