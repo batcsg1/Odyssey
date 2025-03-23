@@ -13,20 +13,21 @@ const planetSchema = Joi.object({
     "number.min": "age should be greater than or equal to {#limit}",
     "any.required": "age is required"
   }),
-  mass: Joi.number().min(0).unsafe().required().messages({
+  mass: Joi.number().min(87400000000000000000).unsafe().required().messages({
     "number.base": "mass should be a number",
     "number.min": "diameter should be greater than or equal to {#limit}",
     "any.required": "mass is required"
   }),
-  diameter: Joi.number().min(0).max(280000).required().messages({
+  diameter: Joi.number().min(400).max(280000).required().messages({
     "number.base": "diameter should be a number",
     "number.min": "diameter should be greater than or equal to {#limit}",
     "number.max": "diameter should be lesser than or equal to {#limit}",
     "any.required": "diameter is required"
   }),
-  density: Joi.number().min(0).required().messages({
+  density: Joi.number().min(2).max(15).required().messages({
     "number.base": "density should be a number",
     "number.min": "density should be greater than or equal to {#limit}",
+    "number.max": "density should be lesser than or equal to {#limit}",
     "any.required": "density is required"
   }),
   type: Joi.string().min(3).max(100).required().messages({
