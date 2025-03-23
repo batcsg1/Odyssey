@@ -43,7 +43,6 @@ model Star {
   constellationId String?
   constellation   Constellation? @relation(fields: [constellationId], references: [id])
   planets         Planet[]
-  dwarfPlanets    DwarfPlanet[]
   asteroids       Asteroid[]
   comets          Comet[]
 }
@@ -74,31 +73,6 @@ model Planet {
   meteorites    Meteorite[]
 }
 
-model DwarfPlanet {
-  id            String      @id @default(uuid())
-  name          String
-  age           Float
-  mass          Float
-  diameter      Float
-  density       Float
-  type          String
-  atmosphere    String
-  year          Float
-  perigee       Float
-  apogee        Float
-  tilt          Float?
-  hasSatellites Boolean     @default(false)
-  minTemp       Float?
-  maxTemp       Float?
-  gravity       Float?
-  day           Float
-  location      String
-  habitable     Boolean     @default(false)
-  starId        String
-  star          Star        @relation(fields: [starId], references: [id])
-  satellites    Satellite[]
-}
-
 model Satellite {
   id            String       @id @default(uuid())
   name          String
@@ -120,8 +94,6 @@ model Satellite {
   habitable     Boolean      @default(false)
   planetId      String
   planet        Planet?      @relation(fields: [planetId], references: [id])
-  dwarfPlanetId String
-  dwarfPlanet   DwarfPlanet? @relation(fields: [dwarfPlanetId], references: [id])
 }
 
 model Asteroid {
