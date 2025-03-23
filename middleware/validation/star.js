@@ -11,6 +11,7 @@ const starSchema = Joi.object({
   age: Joi.number().min(0).max(16000000000).required().messages({
     "number.base": "age should be a number",
     "number.min": "age should be greater than or equal to {#limit}",
+    "number.max": "age should be lesser than or equal to {#limit}",
     "any.required": "age is required"
   }),
   mass: Joi.number().min(0).unsafe().required().messages({
@@ -20,6 +21,7 @@ const starSchema = Joi.object({
   diameter: Joi.number().min(0).max(1300000000).required().messages({
     "number.base": "diameter should be a number",
     "number.min": "diameter should be greater than or equal to {#limit}",
+    "number.max": "diameter should be lesser than or equal to {#limit}",
     "any.required": "diameter is required"
   }),
   type: Joi.string().min(3).max(50).required().messages({
