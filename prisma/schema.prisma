@@ -103,7 +103,7 @@ model Asteroid {
   mass          Float
   diameter      Float
   density       Float
-  type          String
+  type          String?
   year          Float
   perigee       Float
   apogee        Float
