@@ -19,7 +19,7 @@ const asteroidSchema = Joi.object({
     "number.max": "mass should be lesser than or equal to {#limit}",
     "any.required": "mass is required"
   }),
-  diameter: Joi.number().min(0.0001).max(5500).required().messages({
+  diameter: Joi.number().min(0.0001).max(1000).required().messages({
     "number.base": "diameter should be a number",
     "number.min": "diameter should be greater than or equal to {#limit}",
     "number.max": "diameter should be lesser than or equal to {#limit}",
