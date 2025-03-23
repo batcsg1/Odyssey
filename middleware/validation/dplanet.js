@@ -8,7 +8,7 @@ const dwarfPlanetSchema = Joi.object({
     "string.max": "name should have a maximum length of {#limit}",
     "any.required": "name is required"
   }),
-  age: Joi.number().min(0).required().messages({
+  age: Joi.number().min(0).max(16000000000).required().messages({
     "number.base": "age should be a number",
     "number.min": "age should be greater than or equal to {#limit}",
     "any.required": "age is required"
