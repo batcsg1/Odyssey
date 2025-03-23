@@ -74,26 +74,26 @@ model Planet {
 }
 
 model Satellite {
-  id            String       @id @default(uuid())
-  name          String
-  age           Float
-  mass          Float
-  diameter      Float
-  density       Float
-  type          String
-  atmosphere    String
-  year          Float
-  perigee       Float
-  apogee        Float
-  tilt          Float?
-  minTemp       Float?
-  maxTemp       Float?
-  gravity       Float?
-  day           Float
-  location      String
-  habitable     Boolean      @default(false)
-  planetId      String
-  planet        Planet?      @relation(fields: [planetId], references: [id])
+  id         String  @id @default(uuid())
+  name       String
+  age        Float
+  mass       Float
+  diameter   Float
+  density    Float
+  type       String
+  atmosphere String
+  year       Float
+  perigee    Float
+  apogee     Float
+  tilt       Float?
+  minTemp    Float?
+  maxTemp    Float?
+  gravity    Float?
+  day        Float
+  location   String
+  habitable  Boolean @default(false)
+  planetId   String
+  planet     Planet  @relation(fields: [planetId], references: [id])
 }
 
 model Asteroid {
