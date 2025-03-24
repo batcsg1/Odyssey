@@ -24,6 +24,8 @@ import meteoriteRoutes from "./routes/v1/meteorite.js";
 
 import cometRoutes from "./routes/v1/comet.js";
 
+import meteorShowerRoutes from "./routes/v1/meteor_shower.js";
+
 import { isContentTypeApplicationJSON } from "./middleware/utils.js";
 
 // Create an Express application
@@ -76,6 +78,8 @@ app.use("/api/v1/asteroids", asteroidRoutes);
 app.use("/api/v1/meteorites", meteoriteRoutes);
 
 app.use("/api/v1/comets", cometRoutes);
+
+app.use("/api/v1/meteor_showers", meteorShowerRoutes);
 
 //Swagger route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
