@@ -31,7 +31,7 @@ const asteroidSchema = Joi.object({
     "number.max": "density should be lesser than or equal to {#limit}",
     "any.required": "density is required"
   }),
-  type: Joi.string().min(3).max(100).optional().messages({
+  type: Joi.string().min(3).max(100).required().messages({
     "string.base": "type should be a string",
     "string.empty": "type cannot be empty",
     "string.min": "type should have a minimum length of {#limit}",
