@@ -37,7 +37,7 @@ const createAsteroid = async (req, res) => {
 const getAsteroids = async (req, res) => {
   try {
     const asteroids = await asteroidRepository.findAll(selectObject);
-    if (!asteroids.length) {
+    if (!asteroids || asteroids.length === 0) {
       return res.status(404).json({ message: "No asteroids found" });
     }
     return res.status(200).json({ data: asteroids });
