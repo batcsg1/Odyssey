@@ -2,7 +2,7 @@
  * @swagger
  * components:
  *   schemas:
- *     MeteorShower:
+ *     Meteor Shower:
  *       type: object
  *       properties:
  *         id:
@@ -63,13 +63,13 @@
  *   post:
  *     summary: Create a new meteor shower
  *     tags:
- *       - MeteorShower
+ *       - Meteor Shower
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/MeteorShower'
+ *             $ref: '#/components/schemas/Meteor Shower'
  *     responses:
  *       '201':
  *         description: Meteor shower successfully created
@@ -85,7 +85,7 @@
  *   get:
  *     summary: Get all meteor showers
  *     tags:
- *       - MeteorShower
+ *       - Meteor Shower
  *     responses:
  *       '200':
  *         description: Success
@@ -101,7 +101,7 @@
  *   get:
  *     summary: Get a meteor shower by id
  *     tags:
- *       - MeteorShower
+ *       - Meteor Shower
  *     parameters:
  *       - in: path
  *         name: id
@@ -124,7 +124,7 @@
  *   put:
  *     summary: Update a meteor shower by id
  *     tags:
- *       - MeteorShower
+ *       - Meteor Shower
  *     parameters:
  *       - in: path
  *         name: id
@@ -137,7 +137,7 @@
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/MeteorShower'
+ *             $ref: '#/components/schemas/Meteor Shower'
  *     responses:
  *       '200':
  *         description: Meteor shower successfully updated
@@ -153,7 +153,7 @@
  *   delete:
  *     summary: Delete a meteor shower by id
  *     tags:
- *       - MeteorShower
+ *       - Meteor Shower
  *     parameters:
  *       - in: path
  *         name: id
