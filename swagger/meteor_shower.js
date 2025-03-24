@@ -59,7 +59,7 @@
 
 /**
  * @swagger
- * /api/v1/meteor-showers:
+ * /api/v1/meteor_showers:
  *   post:
  *     summary: Create a new meteor shower
  *     tags:
@@ -81,7 +81,7 @@
 
 /**
  * @swagger
- * /api/v1/meteor-showers:
+ * /api/v1/meteor_showers:
  *   get:
  *     summary: Get all meteor showers
  *     tags:
@@ -97,7 +97,7 @@
 
 /**
  * @swagger
- * /api/v1/meteor-showers/{id}:
+ * /api/v1/meteor_showers/{id}:
  *   get:
  *     summary: Get a meteor shower by id
  *     tags:
@@ -120,7 +120,7 @@
 
 /**
  * @swagger
- * /api/v1/meteor-showers/{id}:
+ * /api/v1/meteor_showers/{id}:
  *   put:
  *     summary: Update a meteor shower by id
  *     tags:
@@ -149,7 +149,7 @@
 
 /**
  * @swagger
- * /api/v1/meteor-showers/{id}:
+ * /api/v1/meteor_showers/{id}:
  *   delete:
  *     summary: Delete a meteor shower by id
  *     tags:
