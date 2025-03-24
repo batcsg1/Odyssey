@@ -46,30 +46,10 @@
  *           type: string
  *           format: uuid
  *           example: "abcde12345-xyz6789"
- *     CometResponse:
- *       type: object
- *       properties:
- *         message:
- *           type: string
- *         data:
- *           type: array
- *           items:
- *             $ref: '#/components/schemas/Comet'
- *       required:
- *         - message
- *         - data
- *     ErrorResponse:
- *       type: object
- *       properties:
- *         message:
- *           type: string
- *         error:
- *           type: string
- *         details:
- *           type: array
- *           items:
- *             type: string
- * 
+ */
+
+/**
+ * @swagger
  * /api/v1/comets:
  *   post:
  *     summary: Create a new comet
@@ -84,15 +64,15 @@
  *     responses:
  *       '201':
  *         description: Comet successfully created
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/CometResponse'
  *       '400':
  *         description: Comet with the same name already exists
  *       '500':
  *         description: Internal server error
- * 
+ */
+
+/**
+ * @swagger
+ * /api/v1/comets:
  *   get:
  *     summary: Get all comets
  *     tags:
@@ -100,15 +80,14 @@
  *     responses:
  *       '200':
  *         description: Success
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/CometResponse'
  *       '404':
  *         description: No comets found
  *       '500':
  *         description: Internal server error
- * 
+ */
+
+/**
+ * @swagger
  * /api/v1/comets/{id}:
  *   get:
  *     summary: Get a comet by id
@@ -124,15 +103,15 @@
  *     responses:
  *       '200':
  *         description: Success
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/CometResponse'
  *       '404':
  *         description: No comet found with the provided id
  *       '500':
  *         description: Internal server error
- * 
+ */
+
+/**
+ * @swagger
+ * /api/v1/comets/{id}:
  *   put:
  *     summary: Update a comet by id
  *     tags:
@@ -153,15 +132,15 @@
  *     responses:
  *       '200':
  *         description: Comet successfully updated
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/CometResponse'
  *       '404':
  *         description: No comet found with the provided id
  *       '500':
  *         description: Internal server error
- * 
+ */
+
+/**
+ * @swagger
+ * /api/v1/comets/{id}:
  *   delete:
  *     summary: Delete a comet by id
  *     tags:
@@ -176,10 +155,6 @@
  *     responses:
  *       '200':
  *         description: Comet successfully deleted
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/CometResponse'
  *       '404':
  *         description: No comet found with the provided id
  *       '500':
