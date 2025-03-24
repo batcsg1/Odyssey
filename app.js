@@ -20,6 +20,8 @@ import satelliteRoutes from "./routes/v1/satellite.js";
 
 import asteroidRoutes from "./routes/v1/asteroid.js";
 
+import meteoriteRoutes from "./routes/v1/meteorite.js";
+
 import { isContentTypeApplicationJSON } from "./middleware/utils.js";
 
 // Create an Express application
@@ -68,6 +70,8 @@ app.use("/api/v1/planets", planetRoutes);
 app.use("/api/v1/satellites", satelliteRoutes);
 
 app.use("/api/v1/asteroids", asteroidRoutes);
+
+app.use("/api/v1/meteorites", meteoriteRoutes);
 
 //Swagger route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
