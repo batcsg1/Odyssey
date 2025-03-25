@@ -328,10 +328,7 @@ model Constellation {
 </details>
 
 ---
-
-**Example prompts for creating controllers, validation and routes files for models:**
-
-Stars Model controller created from Constellations model: 
+**Stars Model controller created from Constellations model:**
 
 <details>
 <summary>Click to expand</summary>
@@ -454,7 +451,7 @@ export {
 
 ---
 
-Created Stars validation schema from Constellation validation schema:
+**Created Stars validation schema from Constellation validation schema:**
 
 <details>
 <summary>Click to expand</summary>
@@ -522,7 +519,7 @@ export { validatePostConstellation, validatePutConstellation };  validation for 
 
 ---
 
-Created Stars route file based on Constellation route file:
+**Created Stars route file based on Constellation route file:**
 
 <details>
 <summary>Click to expand</summary>
@@ -568,7 +565,7 @@ export default constellationRouter; do this for stars too
 
 ---
 
-Creating Swagger documentation for Stars based off documentation for Constellations:
+**Creating Swagger documentation for Stars based off documentation for Constellations:**
 
 <details>
 <summary>Click to expand</summary>
