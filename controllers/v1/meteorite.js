@@ -17,7 +17,9 @@ const selectObject = {
   location: true,
   latitude: true,
   longitude: true,
-  planetId: true
+  planetId: true,
+  createdAt: true,
+  updatedAt: true
 };
 
 const createMeteorite = async (req, res) => {

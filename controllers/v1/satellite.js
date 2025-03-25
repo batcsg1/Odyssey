@@ -27,6 +27,8 @@ const selectObject = {
   location: true,
   habitable: true,
   planetId: true,
+  createdAt: true,
+  updatedAt: true
 };
 
 const createSatellite = async (req, res) => {

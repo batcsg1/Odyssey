@@ -28,6 +28,8 @@ const selectObject = {
   location: true,
   habitable: true,
   starId: true,
+  createdAt: true,
+  updatedAt: true
 };
 
 const createPlanet = async (req, res) => {

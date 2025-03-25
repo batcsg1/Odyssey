@@ -13,7 +13,9 @@ const selectObject = {
   right_ascension: true,
   declination: true,
   shape: true,
-  area: true
+  area: true,
+  createdAt: true,
+  updatedAt: true
 };
 
 const createConstellation = async (req, res) => {

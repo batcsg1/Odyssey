@@ -20,6 +20,8 @@ const selectObject = {
   apogee: true,
   location: true,
   starId: true,
+  createdAt: true,
+  updatedAt: true
 };
 
 const createAsteroid = async (req, res) => {

@@ -22,6 +22,8 @@ const selectObject = {
   cometId: true,
   asteroidId: true,
   constellationId: true,
+  createdAt: true,
+  updatedAt: true
 };
 
 const createMeteorShower = async (req, res) => {
