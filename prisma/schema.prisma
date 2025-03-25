@@ -73,12 +73,12 @@ model Planet {
   star          Star        @relation(fields: [starId], references: [id])
   satellites    Satellite[]
   meteorites    Meteorite[]
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 }
 
 model Satellite {
-  id         String  @id @default(uuid())
+  id         String   @id @default(uuid())
   name       String
   age        Float
   mass       Float
@@ -95,11 +95,11 @@ model Satellite {
   gravity    Float?
   day        Float
   location   String
-  habitable  Boolean @default(false)
+  habitable  Boolean  @default(false)
   planetId   String
-  planet     Planet  @relation(fields: [planetId], references: [id])
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
+  planet     Planet   @relation(fields: [planetId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 model Asteroid {
@@ -117,12 +117,12 @@ model Asteroid {
   starId        String
   star          Star           @relation(fields: [starId], references: [id])
   meteorShowers MeteorShower[]
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 }
 
 model Meteorite {
-  id        String @id @default(uuid())
+  id        String   @id @default(uuid())
   name      String
   age       Float
   foundYear Int
@@ -132,9 +132,9 @@ model Meteorite {
   latitude  Float?
   longitude Float?
   planetId  String
-  planet    Planet @relation(fields: [planetId], references: [id])
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
+  planet    Planet   @relation(fields: [planetId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Comet {
@@ -151,8 +151,8 @@ model Comet {
   starId        String
   star          Star           @relation(fields: [starId], references: [id])
   meteorShowers MeteorShower[]
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 }
 
 model MeteorShower {
