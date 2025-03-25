@@ -1,4 +1,7 @@
-# <ins>Samuel Batchelor - Project</ins>
+# <ins>CelestiDB</ins>
+
+### Author: Samuel Batchelor
+### Project for Introductory Application Development paper of the Otago Polytechnic's Bachelor of Information Technology
 
 ## Link to REST API on Render:
 
