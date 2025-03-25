@@ -14,7 +14,7 @@ describe("Constellations", () => {
     const res = await chai
       .request(app)
       .post("/api/v1/constellations")
-      .send({ name: 123, right_ascension: 5.585, declination: -5.909 });
+      .send({ name: 123, right_ascension: 5.585, declination: -5.909, shape: "rectangle", area: 100.5 });
 
     chai.expect(res.body.message).to.be.equal("name should be a string");
   });
@@ -24,6 +24,8 @@ describe("Constellations", () => {
       name: "Orion",
       right_ascension: 5.585,
       declination: -5.909,
+      shape: "rectangle",
+      area: 594.1,
     });
 
     chai
@@ -37,6 +39,8 @@ describe("Constellations", () => {
       name: "Ursa Major",
       right_ascension: 11.062,
       declination: 55.324,
+      shape: "irregular",
+      area: 1279.66,
     });
 
     chai
@@ -71,17 +75,19 @@ describe("Constellations", () => {
     chai.expect(res.body.data[0].name).to.be.equal("Orion");
   });
 
-  it("should reject non-numeric right ascension during update", async () => {
+  it("should reject non-numeric area during update", async () => {
     const res = await chai
       .request(app)
       .put(`/api/v1/constellations/${constellationId}`)
       .send({
         name: "Orion",
-        right_ascension: "invalid",
+        right_ascension: 5.585,
         declination: -5.909,
+        shape: "rectangle",
+        area: "invalid",
       });
 
-    chai.expect(res.body.message).to.be.equal("right_ascension should be a number");
+    chai.expect(res.body.message).to.be.equal("area should be a number");
   });
 
   it("should update a valid constellation", async () => {
@@ -92,6 +98,8 @@ describe("Constellations", () => {
         name: "Updated Orion",
         right_ascension: 6.000,
         declination: -5.900,
+        shape: "polygon",
+        area: 600.0,
       });
 
     chai
