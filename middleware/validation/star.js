@@ -8,10 +8,10 @@ const starSchema = Joi.object({
     "string.max": "name should have a maximum length of {#limit}",
     "any.required": "name is required"
   }),
-  age: Joi.number().min(0).max(16000000000).required().messages({
+  age: Joi.number().min(0).max(1.6e10).required().messages({
     "number.base": "age should be a number",
-    "number.min": "age should be greater than or equal to {#limit}",
-    "number.max": "age should be lesser than or equal to {#limit}",
+    "number.min": "age should be greater than or equal to {#limit} years",
+    "number.max": "age should be lesser than or equal to {#limit} years",
     "any.required": "age is required"
   }),
   mass: Joi.number().min(0).unsafe().required().messages({
