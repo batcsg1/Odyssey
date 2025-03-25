@@ -1,6 +1,8 @@
-import prisma from "../client.js";
+import fetch from "node-fetch";
 
-import { validatePostConstellation } from "../../middleware/validation/constellation.js";
+import prisma from "../../client.js";
+
+import { validatePostConstellation } from "../../../middleware/validation/constellation.js";
 
 // Simulate an Express-like request and response for validation
 const validateConstellation = (constellation) => {
@@ -17,27 +19,11 @@ const validateConstellation = (constellation) => {
   validatePostConstellation(req, res, () => {}); // Pass an empty function since we're not using next()
 };
 
-const seedConstellations = async () => {
+const seedConstellationsFromGitHub = async () => {
   try {
-    // Delete all existing constellations
-    await prisma.constellation.deleteMany();
-
-    const constellationData = [
-      {
-        name: "Orion",
-        right_ascension: 5.585,
-        declination: -5.909,
-        shape: "Hunter",
-        area: 594.0,
-      },
-      {
-        name: "Ursa Major",
-        right_ascension: 11.062,
-        declination: 55.324,
-        shape: "Bear",
-        area: 1280.0,
-      },
-    ];
+    const gistUrl = "https://gist.githubusercontent.com/batcsg1/87bfa3747ec34860db6b36b8c2b3a3f1/raw/1c838ade266264a8aac484da19be715ef8ebc7b5/seed-constellations.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
+    const response = await fetch(gistUrl);
+    const constellationData = await response.json();
 
     const data = await Promise.all(
       constellationData.map(async (constellation) => {
@@ -51,10 +37,10 @@ const seedConstellations = async () => {
       skipDuplicates: true,
     });
 
-    console.log("Constellations successfully seeded");
+    console.log("Constellations successfully seeded from GitHub Gist");
   } catch (err) {
     console.log("Seeding failed:", err.message);
   }
 };
 
-export default seedConstellations;
+export default seedConstellationsFromGitHub;
