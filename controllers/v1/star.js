@@ -28,6 +28,15 @@ const selectObject = {
 
 const createStar = async (req, res) => {
   try {
+    // Check if constellationId is provided
+    const constellationId = req.body.constellationId;
+
+    // Check if institution exists
+    const constellation = await new Repository("Constellation").findById(constellationId);
+    if (!constellation) {
+      return res.status(404).json({ message: `The constellation with id ${constellationId} was not found` });
+    }
+
     await starRepository.create(req.body);
     const newStars = await starRepository.findAll(selectObject);
     return res.status(201).json({
