@@ -63,7 +63,7 @@ const planetSchema = Joi.object({
   tilt: Joi.number().min(0).max(360).optional().messages({
     "number.base": "tilt should be a number",
     "number.min": "tilt should be greater than or equal to {#limit}",
-    "number.max": "year should be lesser than or equal to {#limit}"
+    "number.max": "tilt should be lesser than or equal to {#limit}"
   }),
   hasSatellites: Joi.boolean().required().messages({
     "boolean.base": "hasSatellites should be a boolean",
