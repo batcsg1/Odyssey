@@ -62,6 +62,7 @@ const starSchema = Joi.object({
   constellationId: Joi.string().uuid().optional().messages({
     "string.base": "constellationId should be a string",
     "string.guid": "constellationId should be a valid UUID",
+    "string.empty": "constellationId cannot be empty"
   }),
 });
 
