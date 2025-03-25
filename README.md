@@ -118,7 +118,17 @@ Constellations
 ---
 
 ## How to run Prisma Studio
-TBD
+To run **Prisma Studio**, run the following command in a terminal: `npm run prisma:studio`
+
+You should see the following output in your terminal:
+```
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Prisma Studio is up on http://localhost:5555
+```
+
+---
+
 ## ERD of the CelestialDB REST API
 TBD
 ## Link to video demonstrating functionality of REST API and tests
