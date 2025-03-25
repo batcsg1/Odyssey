@@ -45,6 +45,8 @@ model Star {
   planets         Planet[]
   asteroids       Asteroid[]
   comets          Comet[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 }
 
 model Planet {
@@ -71,6 +73,8 @@ model Planet {
   star          Star        @relation(fields: [starId], references: [id])
   satellites    Satellite[]
   meteorites    Meteorite[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 }
 
 model Satellite {
@@ -94,6 +98,8 @@ model Satellite {
   habitable  Boolean @default(false)
   planetId   String
   planet     Planet  @relation(fields: [planetId], references: [id])
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 }
 
 model Asteroid {
@@ -111,6 +117,8 @@ model Asteroid {
   starId        String
   star          Star           @relation(fields: [starId], references: [id])
   meteorShowers MeteorShower[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 }
 
 model Meteorite {
@@ -125,6 +133,8 @@ model Meteorite {
   longitude Float?
   planetId  String
   planet    Planet @relation(fields: [planetId], references: [id])
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 }
 
 model Comet {
@@ -141,6 +151,8 @@ model Comet {
   starId        String
   star          Star           @relation(fields: [starId], references: [id])
   meteorShowers MeteorShower[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 }
 
 model MeteorShower {
@@ -161,4 +173,6 @@ model MeteorShower {
   asteroid        Asteroid?      @relation(fields: [asteroidId], references: [id])
   constellationId String?
   constellation   Constellation? @relation(fields: [constellationId], references: [id])
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 }
