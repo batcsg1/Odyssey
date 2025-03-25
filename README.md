@@ -1,6 +1,6 @@
 # CelestiDB 🪐
 
-### Author: Samuel Batchelor
+### Author: <a href="https://github.com/batcsg1" alt="My GitHub account">Samuel Batchelor</a>
 REST API Project for the Introductory Application Development paper of the Otago Polytechnic's Bachelor of Information Technology
 
 ## Link to REST API on Render:
