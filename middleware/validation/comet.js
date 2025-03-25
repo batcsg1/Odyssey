@@ -72,7 +72,7 @@ const validateSchema = (schema, isRequired = false) => {
 
     if (error) {
       return res.status(400).json({
-        msg: error.details[0].message,
+        message: error.details[0].message,
       });
     }
 
