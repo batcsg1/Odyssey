@@ -1,7 +1,7 @@
-# <ins>CelestiDB</ins>
+# CelestiDB 🪐
 
 ### Author: Samuel Batchelor
-Project for the Introductory Application Development paper of the Otago Polytechnic's Bachelor of Information Technology
+REST API Project for the Introductory Application Development paper of the Otago Polytechnic's Bachelor of Information Technology
 
 ## Link to REST API on Render:
 
