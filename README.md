@@ -137,8 +137,13 @@ TBD
 ## Link to video demonstrating functionality of REST API and tests
 TBD
 ## AI Documentation
-### Chat GPT:
-### Prompt for converting Studio 1 Database Schema into Prisma Schema:
+### ChatGPT:
+
+**Prompt for converting Studio 1 Database Schema into Prisma Schema:**
+
+<details>
+<summary>Click to expand</summary>
+
 ```
 CREATE TABLE Stars( 
 star_id INTEGER PRIMARY KEY,
@@ -320,9 +325,17 @@ model Constellation {
   updatedAt        DateTime @updatedAt
 }
 ```
-### Example prompts for creating controllers, validation and routes files for models:
+</details>
+
+---
+
+**Example prompts for creating controllers, validation and routes files for models:**
 
 Stars Model controller created from Constellations model: 
+
+<details>
+<summary>Click to expand</summary>
+
 ```
 /**
  * @file Manages business logic for constellations
@@ -437,7 +450,14 @@ export {
   deleteConstellation,
 }; Do all this for stars
 ```
+</details>
+
+---
+
 Created Stars validation schema from Constellation validation schema:
+
+<details>
+<summary>Click to expand</summary>
 
 ```
 import Joi from "joi";
@@ -498,7 +518,14 @@ const validatePutConstellation = validateSchema(constellationSchema);
 
 export { validatePostConstellation, validatePutConstellation };  validation for stars
 ```
+</details>
+
+---
+
 Created Stars route file based on Constellation route file:
+
+<details>
+<summary>Click to expand</summary>
 
 ```
 /**
@@ -537,7 +564,14 @@ const constellationRouter = createRouter(
 
 export default constellationRouter; do this for stars too
 ```
+</details>
+
+---
+
 Creating Swagger documentation for Stars based off documentation for Constellations:
+
+<details>
+<summary>Click to expand</summary>
 
 ```
 /**
@@ -681,3 +715,7 @@ Creating Swagger documentation for Stars based off documentation for Constellati
  *         description: Internal server error
  */  update swagger for stars
 ```
+
+</details>
+
+---
