@@ -75,7 +75,7 @@ model Planet {
   diameter      Float
   density       Float
   type          String
-  atmosphere    String
+  atmosphere    Boolean     @default(false)
   year          Float
   perigee       Float
   apogee        Float
@@ -110,7 +110,7 @@ model Satellite {
   diameter   Float
   density    Float
   type       String
-  atmosphere String
+  atmosphere Boolean  @default(false)
   year       Float
   perigee    Float
   apogee     Float
