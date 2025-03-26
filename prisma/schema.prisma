@@ -13,6 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Location {
+  INNER_SOLAR_SYSTEM
+  ASTEROID_BELT
+  OUTER_SOLAR_SYSTEM
+  KUIPER_BELT
+  OUTSIDE_SOLAR_SYSTEM
+}
+
 model Constellation {
   id              String         @id @default(uuid())
   name            String
@@ -49,6 +57,16 @@ model Star {
   updatedAt       DateTime       @updatedAt
 }
 
+enum StarType {
+  WHITE_DWARF
+  YELLOW_DWARF
+  RED_DWARF
+  BLUE_GIANT
+  RED_GIANT
+  RED_SUPERGIANT
+  NEUTRON_STAR
+}
+
 model Planet {
   id            String      @id @default(uuid())
   name          String
@@ -77,6 +95,13 @@ model Planet {
   updatedAt     DateTime    @updatedAt
 }
 
+enum PlanetType {
+  GAS_PLANET
+  ROCKY_PLANET
+  DWARF_PLANET
+  EXO_PLANET
+}
+
 model Satellite {
   id         String   @id @default(uuid())
   name       String
@@ -102,6 +127,11 @@ model Satellite {
   updatedAt  DateTime @updatedAt
 }
 
+enum SatelliteType {
+  MOON
+  SATELLITE
+}
+
 model Asteroid {
   id            String         @id @default(uuid())
   name          String
@@ -119,6 +149,12 @@ model Asteroid {
   meteorShowers MeteorShower[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
+}
+
+enum AsteroidType {
+  CHONDRITE
+  STONY
+  METALLIC
 }
 
 model Meteorite {
@@ -153,6 +189,11 @@ model Comet {
   meteorShowers MeteorShower[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
+}
+
+enum CometType {
+  SHORT_PERIOD
+  LONG_PERIOD
 }
 
 model MeteorShower {
