@@ -32,8 +32,8 @@
  *           type: string
  *           example: "Terrestrial"
  *         atmosphere:
- *           type: string
- *           example: "Nitrogen, Oxygen"
+ *           type: boolean
+ *           example: true
  *         year:
  *           type: number
  *           format: float

@@ -32,8 +32,8 @@
  *           type: string
  *           example: "Natural"
  *         atmosphere:
- *           type: string
- *           example: "None"
+ *           type: boolean
+ *           example: true
  *         year:
  *           type: number
  *           format: float
