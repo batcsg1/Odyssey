@@ -38,12 +38,9 @@ const planetSchema = Joi.object({
     "string.max": "type should have a maximum length of {#limit}",
     "any.required": "type is required"
   }),
-  atmosphere: Joi.string().min(3).max(255).required().messages({
-    "string.base": "atmosphere should be a string",
-    "string.empty": "atmosphere cannot be empty",
-    "string.min": "atmosphere should have a minimum length of {#limit}",
-    "string.max": "atmosphere should have a maximum length of {#limit}",
-    "any.required": "atmosphere is required"
+  atmosphere: Joi.boolean().required().messages({
+    "boolean.base": "atmosphere should be a boolean",
+    "any.required": "An atmosphere is required"
   }),
   year: Joi.number().min(0).max(1500000).required().messages({
     "number.base": "year should be a number",
