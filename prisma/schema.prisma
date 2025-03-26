@@ -96,8 +96,8 @@ model Planet {
 }
 
 enum PlanetType {
-  GAS_PLANET
-  ROCKY_PLANET
+  GAS_GIANT
+  TERRESTIAL
   DWARF_PLANET
   EXO_PLANET
 }
