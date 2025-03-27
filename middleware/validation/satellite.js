@@ -64,11 +64,15 @@ const satelliteSchema = Joi.object({
     "number.min": "tilt should be greater than or equal to {#limit}",
     "number.max": "tilt should be lesser than or equal to {#limit}",
   }),
-  minTemp: Joi.number().unsafe().optional().messages({
+  minTemp: Joi.number().unsafe().max(4.4e23).optional().messages({
     "number.base": "minTemp should be a number",
+    "number.max": "temperature should be lesser than or equal to {#limit} °C",
+    "any.required": "minTemp is required",
   }),
-  maxTemp: Joi.number().unsafe().optional().messages({
+  maxTemp: Joi.number().unsafe().max(4.4e23).optional().messages({
     "number.base": "maxTemp should be a number",
+    "number.max": "temperature should be lesser than or equal to {#limit} °C",
+    "any.required": "maxTemp is required",
   }),
   gravity: Joi.number().min(0).max(530).optional().messages({
     "number.base": "gravity should be a number",
