@@ -13,7 +13,7 @@ const satelliteSchema = Joi.object({
     "number.min": "age should be greater than or equal to {#limit}",
     "any.required": "age is required",
   }),
-  mass: Joi.number().unsafe().min(450000).max(1.35e23).required().messages({
+  mass: Joi.number().unsafe().min(1.26).max(1.35e23).required().messages({
     "number.base": "mass should be a number",
     "number.min": "mass should be greater than or equal to {#limit}",
     "number.max": "mass should be lesser than or equal to {#limit}",
