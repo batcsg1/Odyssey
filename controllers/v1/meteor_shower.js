@@ -28,6 +28,22 @@ const selectObject = {
 
 const createMeteorShower = async (req, res) => {
   try {
+    const cometId = req.body.cometId;
+
+    // Check if comet exists
+    const comet = await new Repository("Comet").findById(cometId);
+    if (!comet) {
+      return res.status(404).json({ message: `Comet with id ${cometId} not found` });
+    }
+
+    const asteroidId = req.body.asteroidId;
+
+    // Check if asteroid exists
+    const asteroid = await new Repository("Asteroid").findById(asteroidId);
+    if (!asteroid) {
+      return res.status(404).json({ message: `Asteroid with id ${asteroidId} not found` });
+    }
+
     const newMeteorShower = await meteorShowerRepository.create(req.body);
     return res.status(201).json({
       message: "Meteor shower successfully created",
