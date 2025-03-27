@@ -10,25 +10,26 @@ const satelliteSchema = Joi.object({
   }),
   age: Joi.number().min(0).max(1.6e10).required().messages({
     "number.base": "age should be a number",
-    "number.min": "age should be greater than or equal to {#limit}",
+    "number.min": "age should be greater than or equal to {#limit} years",
+    "number.max": "age should be lesser than or equal to {#limit} years",
     "any.required": "age is required",
   }),
   mass: Joi.number().unsafe().min(1.26).max(1.35e23).required().messages({
     "number.base": "mass should be a number",
-    "number.min": "mass should be greater than or equal to {#limit}",
-    "number.max": "mass should be lesser than or equal to {#limit}",
+    "number.min": "mass should be greater than or equal to {#limit} kgs",
+    "number.max": "mass should be lesser than or equal to {#limit} kgs",
     "any.required": "mass is required",
   }),
   diameter: Joi.number().min(0.0001).max(5500).required().messages({
     "number.base": "diameter should be a number",
-    "number.min": "diameter should be greater than or equal to {#limit}",
-    "number.max": "diameter should be lesser than or equal to {#limit}",
+    "number.min": "diameter should be greater than or equal to {#limit} metres",
+    "number.max": "diameter should be lesser than or equal to {#limit} metres",
     "any.required": "diameter is required",
   }),
   density: Joi.number().min(2).max(15).required().messages({
     "number.base": "density should be a number",
-    "number.min": "density should be greater than or equal to {#limit}",
-    "number.max": "density should be lesser than or equal to {#limit}",
+    "number.min": "density should be greater than or equal to {#limit} kg/m3",
+    "number.max": "density should be lesser than or equal to {#limit} kg/m3",
     "any.required": "density is required",
   }),
   type: Joi.string().min(3).max(100).required().messages({
@@ -47,7 +48,7 @@ const satelliteSchema = Joi.object({
     "number.min": "year should be greater than or equal to {#limit}",
     "any.required": "year is required",
   }),
-  perigee: Joi.number().min(350).max(2e6).unsafe().required().messages({
+  perigee: Joi.number().min(350).max(2e6).required().messages({
     "number.base": "perigee should be a number",
     "number.min": "perigee should be greater than or equal to {#limit}",
     "number.max": "perigee should be lesser than or equal to {#limit}",
