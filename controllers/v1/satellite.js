@@ -33,6 +33,15 @@ const selectObject = {
 
 const createSatellite = async (req, res) => {
   try {
+    // Check if constellationId is provided
+    const planetId = req.body.planetId;
+
+    // Check if institution exists
+    const planet = await new Repository("Planet").findById(planetId);
+    if (!planet) {
+      return res.status(404).json({ message: `The planet with id ${constellationId} was not found` });
+    }
+
     await satelliteRepository.create(req.body);
     const newSatellites = await satelliteRepository.findAll(selectObject);
     return res.status(201).json({
