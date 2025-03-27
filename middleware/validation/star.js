@@ -2,78 +2,78 @@ import Joi from "joi";
 
 const starSchema = Joi.object({
   name: Joi.string().min(3).max(100).required().messages({
-    "string.base": "name should be a string",
-    "string.empty": "name cannot be empty",
-    "string.min": "name should have a minimum length of {#limit}",
-    "string.max": "name should have a maximum length of {#limit}",
-    "any.required": "name is required"
+    "string.base": "Name should be a string",
+    "string.empty": "Name cannot be empty",
+    "string.min": "Name should have a minimum length of {#limit}",
+    "string.max": "Name should have a maximum length of {#limit}",
+    "any.required": "Name is required"
   }),
   age: Joi.number().min(0).max(1.6e10).required().messages({
-    "number.base": "age should be a number",
-    "number.min": "age should be greater than or equal to {#limit} years",
-    "number.max": "age should be lesser than or equal to {#limit} years",
-    "any.required": "age is required"
+    "number.base": "Age should be a number",
+    "number.min": "Age should be greater than or equal to {#limit} years",
+    "number.max": "Age should be lesser than or equal to {#limit} years",
+    "any.required": "Age is required"
   }),
   mass: Joi.number().unsafe().min(0).max(4.6e32).required().messages({
-    "number.base": "mass should be a number",
-    "number.min": "mass should be greater than or equal to {#limit} kgs",
-    "number.max": "mass should be greater than or equal to {#limit} kgs",
-    "any.required": "mass is required"
+    "number.base": "Mass should be a number",
+    "number.min": "Mass should be greater than or equal to {#limit} kgs",
+    "number.max": "Mass should be lesser than or equal to {#limit} kgs",
+    "any.required": "Mass is required"
   }),
   diameter: Joi.number().min(0).max(1.3e9).required().messages({
-    "number.base": "diameter should be a number",
-    "number.min": "diameter should be greater than or equal to {#limit}",
-    "number.max": "diameter should be lesser than or equal to {#limit}",
-    "any.required": "diameter is required"
+    "number.base": "Diameter should be a number",
+    "number.min": "Diameter should be greater than or equal to {#limit} kms",
+    "number.max": "Diameter should be lesser than or equal to {#limit} kms",
+    "any.required": "Diameter is required"
   }),
   type: Joi.string().min(3).max(50).required().messages({
-    "string.base": "type should be a string",
-    "string.empty": "type cannot be empty",
-    "string.min": "type should have a minimum length of {#limit}",
-    "string.max": "type should have a maximum length of {#limit}",
-    "any.required": "type is required"
+    "string.base": "Type should be a string",
+    "string.empty": "Type cannot be empty",
+    "string.min": "Type should have a minimum length of {#limit}",
+    "string.max": "Type should have a maximum length of {#limit}",
+    "any.required": "Type is required"
   }),
   distance: Joi.number().unsafe().min(0).max(4.4e23).required().messages({
-    "number.base": "distance should be a number",
-    "number.min": "distance should be greater than or equal to {#limit} kms",
-    "number.max": "distance should be lesser than or equal to {#limit} kms",
-    "any.required": "distance is required"
+    "number.base": "Distance should be a number",
+    "number.min": "Distance should be greater than or equal to {#limit} kms",
+    "number.max": "Distance should be lesser than or equal to {#limit} kms",
+    "any.required": "Distance is required"
   }),
   temperature: Joi.number().unsafe().max(4.4e23).required().messages({
-    "number.base": "temperature should be a number",
-    "number.max": "temperature should be lesser than or equal to {#limit} °C",
-    "any.required": "temperature is required"
+    "number.base": "Temperature should be a number",
+    "number.max": "Temperature should be lesser than or equal to {#limit} °C",
+    "any.required": "Temperature is required"
   }),
   luminosity: Joi.number().unsafe().min(3.83e25).max(5.4e32).required().messages({
-    "number.base": "luminosity should be a number",
-    "number.min": "luminosity should be greater than or equal to {#limit} watts",
-    "number.max": "luminosity should be lesser than or equal to {#limit} watts",
-    "any.required": "luminosity is required"
+    "number.base": "Luminosity should be a number",
+    "number.min": "Luminosity should be greater than or equal to {#limit} watts",
+    "number.max": "Luminosity should be lesser than or equal to {#limit} watts",
+    "any.required": "Luminosity is required"
   }),
   hasPlanets: Joi.boolean().required().messages({
-    "boolean.base": "hasPlanets should be a boolean",
-    "any.required": "hasPlanets is required"
+    "boolean.base": "the 'hasPlanet' field should be a boolean",
+    "any.required": "the 'hasPlanet' field is required"
   }),
   brightness: Joi.number().min(-32).max(32).required().messages({
-    "number.base": "brightness should be a number",
-    "number.min": "brightness should be greater than or equal to {#limit}",
-    "number.max": "brightness should be lesser than or equal to +{#limit}",
-    "any.required": "brightness is required"
+    "number.base": "Brightness should be a number",
+    "number.min": "Brightness should be greater than or equal to {#limit}",
+    "number.max": "Brightness should be lesser than or equal to +{#limit}",
+    "any.required": "Brightness is required"
   }),
   rightAscension: Joi.number().min(0).max(24).optional().messages({
-    "number.base": "right ascension should be a number",
-    "number.min": "right ascension should be greater than or equal to {#limit} hours",
-    "number.max": "right ascension should be lesser than or equal to {#limit} hours"
+    "number.base": "Right ascension should be a number",
+    "number.min": "Right ascension should be greater than or equal to {#limit} hours",
+    "number.max": "Right ascension should be lesser than or equal to {#limit} hours"
   }),
   declination: Joi.number().min(-90).max(90).optional().messages({
-    "number.base": "declination should be a number",
-    "number.min": "declination should be greater than or equal to {#limit} degrees",
-    "number.max": "declination should be lesser than or equal to {#limit} degrees"
+    "number.base": "Declination should be a number",
+    "number.min": "Declination should be greater than or equal to {#limit}°",
+    "number.max": "Declination should be lesser than or equal to {#limit}°"
   }),
   constellationId: Joi.string().uuid().optional().messages({
-    "string.base": "constellationId should be a string",
-    "string.guid": "constellationId should be a valid UUID",
-    "string.empty": "constellationId cannot be empty"
+    "string.base": "Constellation ID should be a string",
+    "string.guid": "Constellation ID should be a valid UUID",
+    "string.empty": "Constellation ID cannot be empty"
   }),
 });
 

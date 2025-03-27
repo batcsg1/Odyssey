@@ -2,104 +2,103 @@ import Joi from "joi";
 
 const satelliteSchema = Joi.object({
   name: Joi.string().min(3).max(100).required().messages({
-    "string.base": "name should be a string",
-    "string.empty": "name cannot be empty",
-    "string.min": "name should have a minimum length of {#limit}",
-    "string.max": "name should have a maximum length of {#limit}",
-    "any.required": "name is required",
+    "string.base": "Name should be a string",
+    "string.empty": "Name cannot be empty",
+    "string.min": "Name should have a minimum length of {#limit}",
+    "string.max": "Name should have a maximum length of {#limit}",
+    "any.required": "Name is required"
   }),
   age: Joi.number().min(0).max(1.6e10).required().messages({
-    "number.base": "age should be a number",
-    "number.min": "age should be greater than or equal to {#limit} years",
-    "number.max": "age should be lesser than or equal to {#limit} years",
-    "any.required": "age is required",
+    "number.base": "Age should be a number",
+    "number.min": "Age should be greater than or equal to {#limit} years",
+    "number.max": "Age should be lesser than or equal to {#limit} years",
+    "any.required": "Age is required"
   }),
   mass: Joi.number().unsafe().min(1.26).max(1.35e23).required().messages({
-    "number.base": "mass should be a number",
-    "number.min": "mass should be greater than or equal to {#limit} kgs",
-    "number.max": "mass should be lesser than or equal to {#limit} kgs",
-    "any.required": "mass is required",
+    "number.base": "Mass should be a number",
+    "number.min": "Mass should be greater than or equal to {#limit} kgs",
+    "number.max": "Mass should be lesser than or equal to {#limit} kgs",
+    "any.required": "Mass is required"
   }),
   diameter: Joi.number().min(0.0001).max(5500).required().messages({
-    "number.base": "diameter should be a number",
-    "number.min": "diameter should be greater than or equal to {#limit} metres",
-    "number.max": "diameter should be lesser than or equal to {#limit} metres",
-    "any.required": "diameter is required",
+    "number.base": "Diameter should be a number",
+    "number.min": "Diameter should be greater than or equal to {#limit} kms",
+    "number.max": "Diameter should be lesser than or equal to {#limit} kms",
+    "any.required": "Diameter is required"
   }),
   density: Joi.number().min(2).max(15).required().messages({
-    "number.base": "density should be a number",
-    "number.min": "density should be greater than or equal to {#limit} kg/m3",
-    "number.max": "density should be lesser than or equal to {#limit} kg/m3",
-    "any.required": "density is required",
+    "number.base": "Density should be a number",
+    "number.min": "Density should be greater than or equal to {#limit} kg/m3",
+    "number.max": "Density should be lesser than or equal to {#limit} kg/m3",
+    "any.required": "Density is required"
   }),
   type: Joi.string().min(3).max(100).required().messages({
-    "string.base": "type should be a string",
-    "string.empty": "type cannot be empty",
-    "string.min": "type should have a minimum length of {#limit}",
-    "string.max": "type should have a maximum length of {#limit}",
-    "any.required": "type is required",
+    "string.base": "Type should be a string",
+    "string.empty": "Type cannot be empty",
+    "string.min": "Type should have a minimum length of {#limit}",
+    "string.max": "Type should have a maximum length of {#limit}",
+    "any.required": "Type is required"
   }),
   atmosphere: Joi.boolean().required().messages({
-    "boolean.base": "atmosphere should be a boolean",
-    "any.required": "An atmosphere is required",
+    "boolean.base": "Atmosphere should be a boolean",
+    "any.required": "An atmosphere is required"
   }),
   year: Joi.number().min(0).max(1.5e6).required().messages({
-    "number.base": "year should be a number",
-    "number.min": "year should be greater than or equal to {#limit}",
-    "any.required": "year is required",
+    "number.base": "Year should be a number",
+    "number.min": "Year should be greater than or equal to {#limit} years",
+    "number.max": "Year should be lesser than or equal to {#limit} Years",
+    "any.required": "Year is required"
   }),
-  perigee: Joi.number().min(350).max(2e6).required().messages({
-    "number.base": "perigee should be a number",
-    "number.min": "perigee should be greater than or equal to {#limit}",
-    "number.max": "perigee should be lesser than or equal to {#limit}",
-    "any.required": "perigee is required",
+  perigee: Joi.number().unsafe().min(3.5e6).required().messages({
+    "number.base": "Perigee should be a number",
+    "number.min": "Perigee should be greater than or equal to {#limit} kms",
+    "any.required": "Perigee is required"
   }),
-  apogee: Joi.number().min(350).max(2e6).required().messages({
-    "number.base": "apogee should be a number",
-    "number.min": "apogee should be greater than or equal to {#limit}",
-    "number.max": "apogee should be greater than or equal to {#limit}",
-    "any.required": "apogee is required",
+  apogee: Joi.number().unsafe().min(3.5e6).required().messages({
+    "number.base": "Apogee should be a number",
+    "number.min": "Apogee should be greater than or equal to {#limit} kms",
+    "any.required": "Apogee is required"
   }),
   tilt: Joi.number().min(0).max(360).optional().messages({
-    "number.base": "tilt should be a number",
-    "number.min": "tilt should be greater than or equal to {#limit}",
-    "number.max": "tilt should be lesser than or equal to {#limit}",
+    "number.base": "Tilt should be a number",
+    "number.min": "Tilt should be greater than or equal to {#limit}°",
+    "number.max": "Tilt should be lesser than or equal to {#limit}°"
   }),
   minTemp: Joi.number().unsafe().max(4.4e23).optional().messages({
-    "number.base": "minTemp should be a number",
-    "number.max": "temperature should be lesser than or equal to {#limit} °C",
-    "any.required": "minTemp is required",
+    "number.base": "Minimum temperature should be a number",
+    "number.max": "Minimum temperature should be lesser than or equal to {#limit}°C",
+    "any.required": "Minimum temperature is required"
   }),
   maxTemp: Joi.number().unsafe().max(4.4e23).optional().messages({
-    "number.base": "maxTemp should be a number",
-    "number.max": "temperature should be lesser than or equal to {#limit} °C",
-    "any.required": "maxTemp is required",
+    "number.base": "Maximum temperature should be a number",
+    "number.max": "Maximum temperature should be lesser than or equal to {#limit}°C",
+    "any.required": "Maximum temperature is required"
   }),
   gravity: Joi.number().min(0).max(530).optional().messages({
-    "number.base": "gravity should be a number",
-    "number.min": "gravity should be greater than or equal to {#limit}",
-    "number.max": "gravity should be lesser than or equal to {#limit}",
+    "number.base": "Gravity should be a number",
+    "number.min": "Gravity should be greater than or equal to {#limit} m/s",
+    "number.max": "Gravity should be lesser than or equal to {#limit} m/s"
   }),
   day: Joi.number().min(0).unsafe().required().messages({
-    "number.base": "day should be a number",
-    "number.min": "day should be greater than or equal to {#limit}",
-    "any.required": "day is required",
+    "number.base": "Day should be a number",
+    "number.min": "Day should be greater than or equal to {#limit} days",
+    "any.required": "Day is required"
   }),
   location: Joi.string().min(3).max(255).required().messages({
-    "string.base": "location should be a string",
-    "string.empty": "location cannot be empty",
-    "string.min": "location should have a minimum length of {#limit}",
-    "string.max": "location should have a maximum length of {#limit}",
-    "any.required": "location is required",
+    "string.base": "Location should be a string",
+    "string.empty": "Location cannot be empty",
+    "string.min": "Location should have a minimum length of {#limit}",
+    "string.max": "Location should have a maximum length of {#limit}",
+    "any.required": "Location is required"
   }),
   habitable: Joi.boolean().required().messages({
-    "boolean.base": "habitable should be a boolean",
-    "any.required": "habitable is required",
+    "boolean.base": "The habitable field should be a boolean",
+    "any.required": "The habitable field is required"
   }),
   planetId: Joi.string().uuid().required().messages({
-    "string.base": "planetId should be a string",
-    "string.guid": "planetId should be a valid UUID",
-    "any.required": "planetId is required",
+    "string.base": "Star ID should be a string",
+    "string.guid": "Star ID should be a valid UUID",
+    "any.required": "Star ID is required"
   }),
 });
 

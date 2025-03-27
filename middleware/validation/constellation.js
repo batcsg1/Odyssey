@@ -2,11 +2,11 @@ import Joi from "joi";
 
 const constellationSchema = Joi.object({
   name: Joi.string().min(3).max(100).required().messages({
-    "string.base": "name should be a string",
-    "string.empty": "name cannot be empty",
-    "string.min": "name should have a minimum length of {#limit}",
-    "string.max": "name should have a maximum length of {#limit}",
-    "any.required": "name is required"
+    "string.base": "Name should be a string",
+    "string.empty": "Name cannot be empty",
+    "string.min": "Name should have a minimum length of {#limit}",
+    "string.max": "Name should have a maximum length of {#limit}",
+    "any.required": "Name is required"
   }),
   right_ascension: Joi.number().required().messages({
     "number.base": "right_ascension should be a number",

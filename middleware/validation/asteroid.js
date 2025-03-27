@@ -2,66 +2,69 @@ import Joi from "joi";
 
 const asteroidSchema = Joi.object({
   name: Joi.string().min(3).max(100).required().messages({
-    "string.base": "name should be a string",
-    "string.empty": "name cannot be empty",
-    "string.min": "name should have a minimum length of {#limit}",
-    "string.max": "name should have a maximum length of {#limit}",
-    "any.required": "name is required"
+    "string.base": "Name should be a string",
+    "string.empty": "Name cannot be empty",
+    "string.min": "Name should have a minimum length of {#limit}",
+    "string.max": "Name should have a maximum length of {#limit}",
+    "any.required": "Name is required"
   }),
   age: Joi.number().min(0).max(1.6e10).required().messages({
-    "number.base": "age should be a number",
-    "number.min": "age should be greater than or equal to {#limit}",
-    "any.required": "age is required"
+    "number.base": "Age should be a number",
+    "number.min": "Age should be greater than or equal to {#limit} years",
+    "number.max": "Age should be lesser than or equal to {#limit} years",
+    "any.required": "Age is required"
   }),
   mass: Joi.number().min(1.6e12).max(1.2e20).required().messages({
-    "number.base": "mass should be a number",
-    "number.min": "mass should be greater than or equal to {#limit}",
-    "number.max": "mass should be lesser than or equal to {#limit}",
-    "any.required": "mass is required"
+    "number.base": "Mass should be a number",
+    "number.min": "Mass should be greater than or equal to {#limit} kgs",
+    "number.max": "Mass should be lesser than or equal to {#limit} kgs",
+    "any.required": "Mass is required"
   }),
   diameter: Joi.number().min(0.0001).max(1000).required().messages({
-    "number.base": "diameter should be a number",
-    "number.min": "diameter should be greater than or equal to {#limit}",
-    "number.max": "diameter should be lesser than or equal to {#limit}",
-    "any.required": "diameter is required"
+    "number.base": "Diameter should be a number",
+    "number.min": "Diameter should be greater than or equal to {#limit} kms",
+    "number.max": "Diameter should be lesser than or equal to {#limit} kms",
+    "any.required": "Diameter is required"
   }),
   density: Joi.number().min(0.1).max(4).unsafe().required().messages({
-    "number.base": "density should be a number",
-    "number.min": "density should be greater than or equal to {#limit}",
-    "number.max": "density should be lesser than or equal to {#limit}",
-    "any.required": "density is required"
+    "number.base": "Density should be a number",
+    "number.min": "Density should be greater than or equal to {#limit} kg/m3",
+    "number.max": "Density should be lesser than or equal to {#limit} kg/m3",
+    "any.required": "Density is required"
   }),
   type: Joi.string().min(3).max(100).required().messages({
-    "string.base": "type should be a string",
-    "string.empty": "type cannot be empty",
-    "string.min": "type should have a minimum length of {#limit}",
-    "string.max": "type should have a maximum length of {#limit}"
+    "string.base": "Type should be a string",
+    "string.empty": "Type cannot be empty",
+    "string.min": "Type should have a minimum length of {#limit}",
+    "string.max": "Type should have a maximum length of {#limit}",
+    "any.required": "Type is required"
   }),
   year: Joi.number().min(0).max(1.5e6).optional().messages({
-    "number.base": "year should be a number",
-    "number.min": "year should be greater than or equal to {#limit}",
+    "number.base": "Year should be a number",
+    "number.min": "Year should be greater than or equal to {#limit} years",
+    "number.max": "Year should be lesser than or equal to {#limit} Years"
   }),
   perigee: Joi.number().min(350).max(2e6).unsafe().optional().messages({
-    "number.base": "perigee should be a number",
-    "number.min": "perigee should be greater than or equal to {#limit}",
-    "number.max": "perigee should be lesser than or equal to {#limit}",
+    "number.base": "Perigee should be a number",
+    "number.min": "Perigee should be greater than or equal to {#limit} kms",
+    "number.max": "Perigee should be lesser than or equal to {#limit} kms",
   }),
   apogee: Joi.number().min(350).max(2e6).optional().messages({
-    "number.base": "apogee should be a number",
-    "number.min": "apogee should be greater than or equal to {#limit}",
-    "number.max": "apogee should be lesser than or equal to {#limit}",
+    "number.base": "Apogee should be a number",
+    "number.min": "Apogee should be greater than or equal to {#limit} kms",
+    "number.max": "Apogee should be lesser than or equal to {#limit} kms",
   }),
   location: Joi.string().min(3).max(255).required().messages({
-    "string.base": "location should be a string",
-    "string.empty": "location cannot be empty",
-    "string.min": "location should have a minimum length of {#limit}",
-    "string.max": "location should have a maximum length of {#limit}",
-    "any.required": "location is required"
+    "string.base": "Location should be a string",
+    "string.empty": "Location cannot be empty",
+    "string.min": "Location should have a minimum length of {#limit}",
+    "string.max": "Location should have a maximum length of {#limit}",
+    "any.required": "Location is required"
   }),
   starId: Joi.string().uuid().required().messages({
-    "string.base": "starId should be a string",
-    "string.guid": "starId should be a valid UUID",
-    "any.required": "starId is required"
+    "string.base": "Star ID should be a string",
+    "string.guid": "Star ID should be a valid UUID",
+    "any.required": "Star ID is required"
   })
 });
 

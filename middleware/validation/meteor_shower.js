@@ -2,72 +2,72 @@ import Joi from "joi";
 
 const meteorShowerSchema = Joi.object({
   name: Joi.string().min(3).max(100).required().messages({
-    "string.base": "name should be a string",
-    "string.empty": "name cannot be empty",
-    "string.min": "name should have a minimum length of {#limit}",
-    "string.max": "name should have a maximum length of {#limit}",
-    "any.required": "name is required"
+    "string.base": "Name should be a string",
+    "string.empty": "Name cannot be empty",
+    "string.min": "Name should have a minimum length of {#limit}",
+    "string.max": "Name should have a maximum length of {#limit}",
+    "any.required": "Name is required"
   }),
   previousYear: Joi.number().integer().min(1000).max(9999).required().messages({
-    "number.base": "previousYear should be a number",
-    "number.integer": "previousYear should be an integer",
-    "number.min": "previousYear should be greater than or equal to {#limit}",
-    "number.max": "previousYear should be less than or equal to {#limit}",
-    "any.required": "previousYear is required"
+    "number.base": "The previous year should be a number",
+    "number.integer": "The previous year should be an integer",
+    "number.min": "The previous year should be greater than or equal to {#limit}",
+    "number.max": "The previous year should be less than or equal to {#limit}",
+    "any.required": "The previous year is required"
   }),
   nextYear: Joi.number().integer().min(1000).max(9999).required().messages({
-    "number.base": "nextYear should be a number",
-    "number.integer": "nextYear should be an integer",
-    "number.min": "nextYear should be greater than or equal to {#limit}",
-    "number.max": "nextYear should be less than or equal to {#limit}",
-    "any.required": "nextYear is required"
+    "number.base": "The next year should be a number",
+    "number.integer": "The next year should be an integer",
+    "number.min": "The next year should be greater than or equal to {#limit}",
+    "number.max": "The next year should be less than or equal to {#limit}",
+    "any.required": "The next year is required"
   }),
   initialDate: Joi.date().required().messages({
-    "date.base": "initialDate should be a valid date",
-    "any.required": "initialDate is required"
+    "date.base": "Initial date should be a valid date",
+    "any.required": "Initial date is required"
   }),
   finalDate: Joi.date().required().messages({
-    "date.base": "finalDate should be a valid date",
-    "any.required": "finalDate is required"
+    "date.base": "Final date should be a valid date",
+    "any.required": "Final date is required"
   }),
-  frequency: Joi.number().integer().min(1).max(365).required().messages({
-    "number.base": "frequency should be a number",
-    "number.integer": "frequency should be an integer",
-    "number.min": "frequency should be greater than or equal to {#limit}",
-    "number.max": "frequency should be less than or equal to {#limit}",
-    "any.required": "frequency is required"
+  frequency: Joi.number().min(1).max(365).required().messages({
+    "number.base": "Frequency should be a number",
+    "number.integer": "Frequency should be an integer",
+    "number.min": "Frequency should be greater than or equal to {#limit}",
+    "number.max": "Frequency should be less than or equal to {#limit}",
+    "any.required": "Frequency is required"
   }),
-  duration: Joi.number().integer().min(1).max(24).required().messages({
-    "number.base": "duration should be a number",
-    "number.integer": "duration should be an integer",
-    "number.min": "duration should be greater than or equal to {#limit}",
-    "number.max": "duration should be less than or equal to {#limit}",
-    "any.required": "duration is required"
+  duration: Joi.number().min(1).max(24).required().messages({
+    "number.base": "Duration should be a number",
+    "number.integer": "Duration should be an integer",
+    "number.min": "Duration should be greater than or equal to {#limit}",
+    "number.max": "Duration should be less than or equal to {#limit}",
+    "any.required": "Duration is required"
   }),
   meteorVelocity: Joi.number().min(0).max(100).optional().messages({
-    "number.base": "meteorVelocity should be a number",
-    "number.min": "meteorVelocity should be greater than or equal to {#limit}",
-    "number.max": "meteorVelocity should be less than or equal to {#limit}"
+    "number.base": "Meteor velocity should be a number",
+    "number.min": "Meteor velocity should be greater than or equal to {#limit} km/s",
+    "number.max": "Meteor velocity should be less than or equal to {#limit} km/s"
   }),
-  meteorsPerHour: Joi.number().integer().min(1).optional().messages({
-    "number.base": "meteorsPerHour should be a number",
-    "number.integer": "meteorsPerHour should be an integer",
-    "number.min": "meteorsPerHour should be greater than or equal to {#limit}"
+  meteorsPerHour: Joi.number().min(1).optional().messages({
+    "number.base": "Meteors per hour should be a number",
+    "number.integer": "Meteors per hour should be an integer",
+    "number.min": "Meteors per hour should be greater than or equal to {#limit}"
   }),
   peakDate: Joi.date().optional().messages({
-    "date.base": "peakDate should be a valid date"
+    "date.base": "The peak date should be a valid date"
   }),
   cometId: Joi.string().uuid().optional().messages({
-    "string.base": "cometId should be a string",
-    "string.guid": "cometId should be a valid UUID"
+    "string.base": "Comet ID should be a string",
+    "string.guid": "Comet ID should be a valid UUID"
   }),
   asteroidId: Joi.string().uuid().optional().messages({
-    "string.base": "asteroidId should be a string",
-    "string.guid": "asteroidId should be a valid UUID"
+    "string.base": "Asteroid ID should be a string",
+    "string.guid": "Asteroid ID should be a valid UUID"
   }),
   constellationId: Joi.string().uuid().optional().messages({
-    "string.base": "constellationId should be a string",
-    "string.guid": "constellationId should be a valid UUID"
+    "string.base": "Constellation ID should be a string",
+    "string.guid": "Constellation ID should be a valid UUID"
   }),
 });
 
