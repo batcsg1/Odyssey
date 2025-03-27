@@ -8,12 +8,12 @@ const asteroidSchema = Joi.object({
     "string.max": "name should have a maximum length of {#limit}",
     "any.required": "name is required"
   }),
-  age: Joi.number().min(0).max(16000000000).required().messages({
+  age: Joi.number().min(0).max(1.6e10).required().messages({
     "number.base": "age should be a number",
     "number.min": "age should be greater than or equal to {#limit}",
     "any.required": "age is required"
   }),
-  mass: Joi.number().min(1600000000000).max(120000000000000000000).required().messages({
+  mass: Joi.number().min(1.6e12).max(1.2e20).required().messages({
     "number.base": "mass should be a number",
     "number.min": "mass should be greater than or equal to {#limit}",
     "number.max": "mass should be lesser than or equal to {#limit}",
@@ -37,16 +37,16 @@ const asteroidSchema = Joi.object({
     "string.min": "type should have a minimum length of {#limit}",
     "string.max": "type should have a maximum length of {#limit}"
   }),
-  year: Joi.number().min(0).max(1500000).optional().messages({
+  year: Joi.number().min(0).max(1.5e6).optional().messages({
     "number.base": "year should be a number",
     "number.min": "year should be greater than or equal to {#limit}",
   }),
-  perigee: Joi.number().min(350).max(2000000).unsafe().optional().messages({
+  perigee: Joi.number().min(350).max(2e6).unsafe().optional().messages({
     "number.base": "perigee should be a number",
     "number.min": "perigee should be greater than or equal to {#limit}",
     "number.max": "perigee should be lesser than or equal to {#limit}",
   }),
-  apogee: Joi.number().min(350).max(2000000).optional().messages({
+  apogee: Joi.number().min(350).max(2e6).optional().messages({
     "number.base": "apogee should be a number",
     "number.min": "apogee should be greater than or equal to {#limit}",
     "number.max": "apogee should be lesser than or equal to {#limit}",

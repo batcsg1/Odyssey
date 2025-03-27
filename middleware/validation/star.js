@@ -19,7 +19,7 @@ const starSchema = Joi.object({
     "number.min": "mass should be greater than or equal to {#limit}",
     "any.required": "mass is required"
   }),
-  diameter: Joi.number().min(0).max(1300000000).required().messages({
+  diameter: Joi.number().min(0).max(1.3e9).required().messages({
     "number.base": "diameter should be a number",
     "number.min": "diameter should be greater than or equal to {#limit}",
     "number.max": "diameter should be lesser than or equal to {#limit}",

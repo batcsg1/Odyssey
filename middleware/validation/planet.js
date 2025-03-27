@@ -8,12 +8,12 @@ const planetSchema = Joi.object({
     "string.max": "name should have a maximum length of {#limit}",
     "any.required": "name is required"
   }),
-  age: Joi.number().min(0).max(16000000000).required().messages({
+  age: Joi.number().min(0).max(1.6e10).required().messages({
     "number.base": "age should be a number",
     "number.min": "age should be greater than or equal to {#limit}",
     "any.required": "age is required"
   }),
-  mass: Joi.number().min(939000000000000000000).max(18980000000000000000000000000).required().messages({
+  mass: Joi.number().min(9.35e20).max(1.89e28).required().messages({
     "number.base": "mass should be a number",
     "number.min": "diameter should be greater than or equal to {#limit}",
     "number.max": "mass should be lesser than or equal to {#limit}",
@@ -42,7 +42,7 @@ const planetSchema = Joi.object({
     "boolean.base": "atmosphere should be a boolean",
     "any.required": "An atmosphere is required"
   }),
-  year: Joi.number().min(0).max(1500000).required().messages({
+  year: Joi.number().min(0).max(1.5e6).required().messages({
     "number.base": "year should be a number",
     "number.min": "year should be greater than or equal to {#limit}",
     "any.required": "year is required"
