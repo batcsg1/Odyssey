@@ -34,10 +34,9 @@ const selectObject = {
 
 const createPlanet = async (req, res) => {
   try {
-    // Check if institutionId is provided
     const starId = req.body.starId;
 
-    // Check if institution exists
+    // Check if star exists
     const star = await new Repository("Star").findById(starId);
     if (!star) {
       return res.status(404).json({ message: `Star with id ${starId} not found` });
