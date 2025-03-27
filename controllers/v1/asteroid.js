@@ -26,6 +26,14 @@ const selectObject = {
 
 const createAsteroid = async (req, res) => {
   try {
+    const starId = req.body.starId;
+
+    // Check if star exists
+    const star = await new Repository("Star").findById(starId);
+    if (!star) {
+      return res.status(404).json({ message: `Star with id ${starId} not found` });
+    }
+    
     const newAsteroid = await asteroidRepository.create(req.body);
     return res.status(201).json({
       message: "Asteroid successfully created",
