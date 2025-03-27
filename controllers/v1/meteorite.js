@@ -30,7 +30,7 @@ const createMeteorite = async (req, res) => {
     // Check if institution exists
     const planet = await new Repository("Planet").findById(planetId);
     if (!planet) {
-      return res.status(404).json({ message: `The planet with id ${constellationId} was not found` });
+      return res.status(404).json({ message: `The planet with id ${planetId} was not found` });
     }
 
     await meteoriteRepository.create(req.body);
