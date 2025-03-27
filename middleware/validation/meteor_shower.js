@@ -26,9 +26,8 @@ const meteorShowerSchema = Joi.object({
     "date.base": "initialDate should be a valid date",
     "any.required": "initialDate is required"
   }),
-  finalDate: Joi.date().greater(Joi.ref('initialDate')).required().messages({
+  finalDate: Joi.date().required().messages({
     "date.base": "finalDate should be a valid date",
-    "date.greater": "finalDate should be later than initialDate",
     "any.required": "finalDate is required"
   }),
   frequency: Joi.number().integer().min(1).max(365).required().messages({
