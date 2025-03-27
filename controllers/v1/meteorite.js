@@ -24,20 +24,20 @@ const selectObject = {
 
 const createMeteorite = async (req, res) => {
   try {
-    const meteoriteData = req.body;
+    // Check if constellationId is provided
+    const planetId = req.body.planetId;
 
-    // Ensure planetId is provided and exists
-    if (!meteoriteData.planetId) {
-      return res.status(400).json({
-        message: "PlanetId is required to associate the meteorite",
-      });
+    // Check if institution exists
+    const planet = await new Repository("Planet").findById(planetId);
+    if (!planet) {
+      return res.status(404).json({ message: `The planet with id ${constellationId} was not found` });
     }
 
-    await meteoriteRepository.create(meteoriteData);
-    const newMeteorites = await meteoriteRepository.findAll(selectObject);
+    await meteoriteRepository.create(req.body);
+    const newMeteorite = await meteoriteRepository.findAll(selectObject);
     return res.status(201).json({
       message: "Meteorite successfully created",
-      data: newMeteorites,
+      data: newMeteorite,
     });
   } catch (err) {
     return res.status(500).json({
