@@ -62,24 +62,27 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
+//Base URL variable
+const baseURL = "/api/v1";
+
 //Use routes
-app.use("/api/v1", indexRoutes);
+app.use(baseURL, indexRoutes);
 
-app.use("/api/v1/constellations", constellationRoutes);
+app.use(`${baseURL}/constellations`, constellationRoutes);
 
-app.use("/api/v1/stars", starRoutes);
+app.use(`${baseURL}/stars`, starRoutes);
 
-app.use("/api/v1/planets", planetRoutes);
+app.use(`${baseURL}/planets`, planetRoutes);
 
-app.use("/api/v1/satellites", satelliteRoutes);
+app.use(`${baseURL}/satellites`, satelliteRoutes);
 
-app.use("/api/v1/asteroids", asteroidRoutes);
+app.use(`${baseURL}/asteroids`, asteroidRoutes);
 
-app.use("/api/v1/meteorites", meteoriteRoutes);
+app.use(`${baseURL}/meteorites`, meteoriteRoutes);
 
-app.use("/api/v1/comets", cometRoutes);
+app.use(`${baseURL}/comets`, cometRoutes);
 
-app.use("/api/v1/meteor_showers", meteorShowerRoutes);
+app.use(`${baseURL}/meteor_showers`, meteorShowerRoutes);
 
 //Swagger route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
@@ -87,7 +90,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 // Start the server on port 3000
 app.listen(PORT, () => {
   console.log(
-    `Server is listening on port ${PORT}. Visit http://localhost:${PORT}/api/v1`,
+    `Server is listening on port ${PORT}. Visit http://localhost:${PORT}${baseURL}`,
   );
 });
 
