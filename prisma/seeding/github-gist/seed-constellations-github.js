@@ -43,4 +43,4 @@ const seedConstellationsFromGitHub = async () => {
   }
 };
 
-export default seedConstellationsFromGitHub;
+seedConstellationsFromGitHub();

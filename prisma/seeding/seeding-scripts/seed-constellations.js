@@ -57,4 +57,4 @@ const seedConstellations = async () => {
   }
 };
 
-export default seedConstellations;
+seedConstellations();
