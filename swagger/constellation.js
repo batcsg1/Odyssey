@@ -27,6 +27,13 @@
  *           type: number
  *           format: float
  *           example: 594.0
+ * securitySchemes:
+ *     BearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
+ *   security:
+ *     - BearerAuth: []
  */
 
 /**
