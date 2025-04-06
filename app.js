@@ -26,6 +26,8 @@ import cometRoutes from "./routes/v1/comet.js";
 
 import meteorShowerRoutes from "./routes/v1/meteor_shower.js";
 
+import logger from "./middleware/logger.js";
+
 import { isContentTypeApplicationJSON } from "./middleware/utils.js";
 
 // Create an Express application
@@ -65,6 +67,11 @@ const swaggerDocs = swaggerJSDoc(swaggerOptions);
 //Base URL variable
 const baseURL = "/api/v1";
 
+app.use((req, res, next) => {
+  logger.info(`${req.method} ${req.originalUrl}`);
+  next();
+});
+
 //Use routes
 app.use(baseURL, indexRoutes);
 
@@ -93,6 +100,7 @@ app.listen(PORT, () => {
     `Server is listening on port ${PORT}. Visit http://localhost:${PORT}${baseURL}`,
   );
 });
+
 
 app.use((req, res) => {
   res.status(404).send(`
