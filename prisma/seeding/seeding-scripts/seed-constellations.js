@@ -28,14 +28,14 @@ const seedConstellations = async () => {
         right_ascension: 5.585,
         declination: -5.909,
         shape: "Hunter",
-        area: 594.0,
+        area: 594.0
       },
       {
         name: "Ursa Major",
         right_ascension: 11.062,
         declination: 55.324,
         shape: "Bear",
-        area: 1280.0,
+        area: 1280.0
       },
     ];
 
