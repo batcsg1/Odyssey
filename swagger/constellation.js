@@ -36,6 +36,8 @@
  *     summary: Create a new constellation
  *     tags:
  *       - Constellation
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
