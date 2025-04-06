@@ -21,7 +21,7 @@ const validateConstellation = (constellation) => {
 
 const seedConstellationsFromGitHub = async () => {
   try {
-    const gistUrl = "https://gist.githubusercontent.com/batcsg1/87bfa3747ec34860db6b36b8c2b3a3f1/raw/1c838ade266264a8aac484da19be715ef8ebc7b5/seed-constellations.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
+    const gistUrl = "https://gist.githubusercontent.com/batcsg1/87bfa3747ec34860db6b36b8c2b3a3f1/raw/67cbb86a838c9512c3241f695669c8fa558b3c3a/seed-constellations.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
     const response = await fetch(gistUrl);
     const constellationData = await response.json();
 
