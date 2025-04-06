@@ -27,7 +27,7 @@
  *           type: number
  *           format: float
  *           example: 594.0
- * securitySchemes:
+ *   securitySchemes:
  *     BearerAuth:
  *       type: http
  *       scheme: bearer
