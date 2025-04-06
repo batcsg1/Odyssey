@@ -79,6 +79,8 @@ app.use((req, res, next) => {
 //Use routes
 app.use(baseURL, indexRoutes);
 
+app.use(`${baseURL}/auth`, authRoutes);
+
 app.use(`${baseURL}/constellations`, constellationRoutes);
 
 app.use(`${baseURL}/stars`, starRoutes);
