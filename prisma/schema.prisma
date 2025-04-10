@@ -41,7 +41,7 @@ model Star {
   age             Float
   mass            Float
   diameter        Float
-  type            String
+  type            StarType       @default(YELLOW_DWARF)
   distance        Float
   temperature     Float
   luminosity      Float
@@ -75,7 +75,7 @@ model Planet {
   mass          Float
   diameter      Float
   density       Float
-  type          String
+  type          PlanetType  @default(TERRESTIAL)
   atmosphere    Boolean     @default(false)
   year          Float
   perigee       Float
@@ -86,7 +86,7 @@ model Planet {
   maxTemp       Float?
   gravity       Float?
   day           Float
-  location      String
+  location      Location    @default(INNER_SOLAR_SYSTEM)
   habitable     Boolean     @default(false)
   starId        String
   star          Star        @relation(fields: [starId], references: [id])
@@ -104,14 +104,14 @@ enum PlanetType {
 }
 
 model Satellite {
-  id         String   @id @default(uuid())
+  id         String        @id @default(uuid())
   name       String
   age        Float
   mass       Float
   diameter   Float
   density    Float
-  type       String
-  atmosphere Boolean  @default(false)
+  type       SatelliteType @default(MOON)
+  atmosphere Boolean       @default(false)
   year       Float
   perigee    Float
   apogee     Float
@@ -120,12 +120,12 @@ model Satellite {
   maxTemp    Float?
   gravity    Float?
   day        Float
-  location   String
-  habitable  Boolean  @default(false)
+  location   Location      @default(INNER_SOLAR_SYSTEM)
+  habitable  Boolean       @default(false)
   planetId   String
-  planet     Planet   @relation(fields: [planetId], references: [id])
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  planet     Planet        @relation(fields: [planetId], references: [id])
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
 }
 
 enum SatelliteType {
@@ -140,11 +140,11 @@ model Asteroid {
   mass          Float
   diameter      Float
   density       Float
-  type          String
+  type          AsteroidType   @default(METALLIC)
   year          Float
   perigee       Float
   apogee        Float
-  location      String
+  location      Location       @default(INNER_SOLAR_SYSTEM)
   starId        String
   star          Star           @relation(fields: [starId], references: [id])
   meteorShowers MeteorShower[]
@@ -180,11 +180,11 @@ model Comet {
   mass          Float
   diameter      Float
   density       Float
-  type          String
+  type          CometType      @default(SHORT_PERIOD)
   year          Float
   perigee       Float
   apogee        Float
-  location      String
+  location      Location       @default(INNER_SOLAR_SYSTEM)
   starId        String
   star          Star           @relation(fields: [starId], references: [id])
   meteorShowers MeteorShower[]
@@ -234,7 +234,7 @@ model User {
 model Galaxy {
   id              String         @id @default(uuid())
   name            String
-  type            String // Type of galaxy (e.g., "Spiral", "Elliptical", "Irregular")
+  type            GalaxyType     @default(ELLIPTICAL)
   distance        Float
   size            Float
   starCount       Int
