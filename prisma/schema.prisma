@@ -32,6 +32,7 @@ model Constellation {
   updatedAt       DateTime       @updatedAt
   stars           Star[]
   meteorShowers   MeteorShower[]
+  Galaxy          Galaxy[]
 }
 
 model Star {
@@ -219,13 +220,33 @@ model MeteorShower {
 }
 
 model User {
-  id               String        @id @default(uuid())
+  id               String    @id @default(uuid())
   firstName        String
   lastName         String
-  emailAddress     String        @unique
+  emailAddress     String    @unique
   password         String
-  loginAttempts    Int           @default(0)
+  loginAttempts    Int       @default(0)
   lastLoginAttempt DateTime?
-  createdAt        DateTime      @default(now())
-  updatedAt        DateTime      @default(now())
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @default(now())
+}
+
+model Galaxy {
+  id              String         @id @default(uuid())
+  name            String
+  type            String // Type of galaxy (e.g., "Spiral", "Elliptical", "Irregular")
+  distance        Float
+  size            Float
+  starCount       Int
+  location        String
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  constellationId String?
+  constellation   Constellation? @relation(fields: [constellationId], references: [id])
+}
+
+enum GalaxyType {
+  SPRIAL
+  ELLIPTICAL
+  IRREGULAR
 }
