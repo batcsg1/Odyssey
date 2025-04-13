@@ -41,4 +41,4 @@ const validateSchema = (schema, isRequired = false) => {
 const validatePostGalaxy = validateSchema(galaxySchema, true);
 const validatePutGalaxy = validateSchema(galaxySchema);
 
-export { validatePostGalaxy, validatePutConstellation };
+export { validatePostGalaxy, validatePutGalaxy };
