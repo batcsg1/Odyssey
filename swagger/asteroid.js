@@ -46,6 +46,10 @@
  *         location:
  *           type: string
  *           example: "Asteroid Belt"
+ *         brightness:
+ *           type: number
+ *           format: float
+ *           example: -26.74
  *         starId:
  *           type: string
  *           format: uuid
