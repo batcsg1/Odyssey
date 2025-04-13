@@ -26,14 +26,19 @@ import cometRoutes from "./routes/v1/comet.js";
 
 import meteorShowerRoutes from "./routes/v1/meteor_shower.js";
 
+import galaxyRoutes from "./routes/v1/galaxy.js";
+
+//Authentication routes
+
 import auth from "./middleware/auth.js";
 
 import authRoutes from "./routes/v1/auth.js";
 
 import logger from "./middleware/logger.js";
 
+//JSON validation
+
 import { isContentTypeApplicationJSON } from "./middleware/utils.js";
-import path_is_absolute from "path-is-absolute";
 
 // Create an Express application
 const app = express();
@@ -41,9 +46,11 @@ const app = express();
 // Use the PORT environment variable or 3000
 const PORT = process.env.PORT || 3000;
 
+// Use JSON validation
 app.use(isContentTypeApplicationJSON);
 
 app.use(express.urlencoded({ extended: false })); 
+
 app.use(express.json()); 
 
 // This should be declared under - const swaggerOptions = { ... };
@@ -83,6 +90,8 @@ app.use(baseURL, indexRoutes);
 app.use(`${baseURL}/auth`, authRoutes);
 
 app.use(`${baseURL}/constellations`, auth, constellationRoutes);
+
+app.use(`${baseURL}/galaxies`, galaxyRoutes);
 
 app.use(`${baseURL}/stars`, starRoutes);
 
