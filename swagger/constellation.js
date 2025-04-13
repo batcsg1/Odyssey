@@ -12,14 +12,6 @@
  *         name:
  *           type: string
  *           example: Orion
- *         right_ascension:
- *           type: number
- *           format: float
- *           example: 5.5
- *         declination:
- *           type: number
- *           format: float
- *           example: -5.0
  *         shape:
  *           type: string
  *           example: "Hunter"
@@ -27,6 +19,9 @@
  *           type: number
  *           format: float
  *           example: 594.0
+ *         abbreviation:
+ *           type: string
+ *           example: Ori
  *   securitySchemes:
  *     BearerAuth:
  *       type: http
