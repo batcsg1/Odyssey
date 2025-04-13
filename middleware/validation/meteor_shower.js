@@ -44,12 +44,12 @@ const meteorShowerSchema = Joi.object({
     "number.max": "Duration should be less than or equal to {#limit}",
     "any.required": "Duration is required"
   }),
-  meteorVelocity: Joi.number().min(0).max(100).optional().messages({
+  velocity: Joi.number().min(0).max(100).optional().messages({
     "number.base": "Meteor velocity should be a number",
     "number.min": "Meteor velocity should be greater than or equal to {#limit} km/s",
     "number.max": "Meteor velocity should be less than or equal to {#limit} km/s"
   }),
-  meteorsPerHour: Joi.number().min(1).optional().messages({
+  perHour: Joi.number().min(1).optional().messages({
     "number.base": "Meteors per hour should be a number",
     "number.integer": "Meteors per hour should be an integer",
     "number.min": "Meteors per hour should be greater than or equal to {#limit}"
