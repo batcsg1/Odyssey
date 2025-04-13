@@ -224,8 +224,8 @@ model MeteorShower {
   finalDate       DateTime
   frequency       Int
   duration        Int
-  meteorVelocity  Float?
-  meteorsPerHour  Int?
+  velocity        Float?
+  perHour         Int?
   peakDate        DateTime?
   cometId         String?
   comet           Comet?         @relation(fields: [cometId], references: [id])
