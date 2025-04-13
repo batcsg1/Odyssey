@@ -34,6 +34,25 @@ model Constellation {
   Galaxy          Galaxy[]
 }
 
+model Galaxy {
+  id              String         @id @default(uuid())
+  name            String
+  type            GalaxyType     @default(ELLIPTICAL)
+  distance        Float
+  size            Float
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  constellationId String?
+  constellation   Constellation? @relation(fields: [constellationId], references: [id])
+}
+
+enum GalaxyType {
+  SPRIAL
+  ELLIPTICAL
+  IRREGULAR
+  BARRED_SPIRAL
+}
+
 model Star {
   id              String         @id @default(uuid())
   name            String
@@ -230,21 +249,4 @@ model User {
   updatedAt        DateTime  @default(now())
 }
 
-model Galaxy {
-  id              String         @id @default(uuid())
-  name            String
-  type            GalaxyType     @default(ELLIPTICAL)
-  distance        Float
-  size            Float
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-  constellationId String?
-  constellation   Constellation? @relation(fields: [constellationId], references: [id])
-}
 
-enum GalaxyType {
-  SPRIAL
-  ELLIPTICAL
-  IRREGULAR
-  BARRED_SPIRAL
-}
