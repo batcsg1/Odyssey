@@ -46,14 +46,6 @@
  *           type: number
  *           format: float
  *           example: -26.74
- *         rightAscension:
- *           type: number
- *           format: float
- *           example: 286.13
- *         declination:
- *           type: number
- *           format: float
- *           example: 63.87
  *         constellationId:
  *           type: string
  *           format: uuid
