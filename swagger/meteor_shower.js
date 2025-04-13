@@ -32,11 +32,11 @@
  *         duration:
  *           type: integer
  *           example: 1
- *         meteorVelocity:
+ *         velocity:
  *           type: number
  *           format: float
  *           example: 59.8
- *         meteorsPerHour:
+ *         perHour:
  *           type: integer
  *           example: 100
  *         peakDate:
