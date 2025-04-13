@@ -8,25 +8,22 @@ const constellationSchema = Joi.object({
     "string.max": "Name should have a maximum length of {#limit}",
     "any.required": "Name is required"
   }),
-  right_ascension: Joi.number().required().messages({
-    "number.base": "right_ascension should be a number",
-    "any.required": "right_ascension is required"
-  }),
-  declination: Joi.number().required().messages({
-    "number.base": "declination should be a number",
-    "any.required": "declination is required"
-  }),
-  shape: Joi.string().min(3).max(100).required().messages({
+  shape: Joi.string().min(3).max(100).optional().messages({
     "string.base": "shape should be a string",
     "string.empty": "shape cannot be empty",
     "string.min": "shape should have a minimum length of {#limit}",
-    "string.max": "shape should have a maximum length of {#limit}",
-    "any.required": "shape is required"
+    "string.max": "shape should have a maximum length of {#limit}"
   }),
-  area: Joi.number().min(0).required().messages({
+  area: Joi.number().min(0).optional().messages({
     "number.base": "area should be a number",
-    "number.min": "area should be greater than or equal to {#limit}",
-    "any.required": "area is required"
+    "number.min": "area should be greater than or equal to {#limit}"
+  }),
+  abbreviation: Joi.string().min(3).max(3).required().messages({
+    "string.base": "Abbreviation should be a string",
+    "string.empty": "Abbreviation cannot be empty",
+    "string.min": "Abbreviation should have a minimum length of {#limit}",
+    "string.max": "Abbreviation should have a maximum length of {#limit}",
+    "any.required": "Abbreviation is required"
   }),
 });
 
