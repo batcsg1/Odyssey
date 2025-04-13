@@ -15,8 +15,6 @@ const selectObject = {
   mass: true,
   diameter: true,
   location: true,
-  latitude: true,
-  longitude: true,
   planetId: true,
   createdAt: true,
   updatedAt: true
