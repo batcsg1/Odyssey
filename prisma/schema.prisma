@@ -22,16 +22,16 @@ enum Location {
 }
 
 model Constellation {
-  id              String         @id @default(uuid())
-  name            String
-  shape           String?
-  area            Float?
-  abbreviation    String
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-  stars           Star[]
-  meteorShowers   MeteorShower[]
-  Galaxy          Galaxy[]
+  id            String         @id @default(uuid())
+  name          String
+  shape         String?
+  area          Float?
+  abbreviation  String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  stars         Star[]
+  meteorShowers MeteorShower[]
+  Galaxy        Galaxy[]
 }
 
 model Galaxy {
@@ -247,5 +247,3 @@ model User {
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @default(now())
 }
-
-
