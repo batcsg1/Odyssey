@@ -66,6 +66,10 @@
  *           type: number
  *           format: float
  *           example: 655.72
+ *         brightness:
+ *           type: number
+ *           format: float
+ *           example: -26.74
  *         location:
  *           type: string
  *           example: "Earth Orbit"
