@@ -24,6 +24,7 @@ const selectObject = {
   maxTemp: true,
   gravity: true,
   day: true,
+  brightness: true,
   location: true,
   habitable: true,
   planetId: true,
