@@ -19,6 +19,7 @@ const selectObject = {
   perigee: true,
   apogee: true,
   location: true,
+  brightness: true,
   starId: true,
   createdAt: true,
   updatedAt: true
