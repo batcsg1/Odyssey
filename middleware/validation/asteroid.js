@@ -61,6 +61,12 @@ const asteroidSchema = Joi.object({
     "string.max": "Location should have a maximum length of {#limit}",
     "any.required": "Location is required"
   }),
+  brightness: Joi.number().min(-32).max(32).required().messages({
+    "number.base": "Brightness should be a number",
+    "number.min": "Brightness should be greater than or equal to {#limit}",
+    "number.max": "Brightness should be lesser than or equal to +{#limit}",
+    "any.required": "Brightness is required"
+  }),
   starId: Joi.string().uuid().required().messages({
     "string.base": "Star ID should be a string",
     "string.guid": "Star ID should be a valid UUID",
