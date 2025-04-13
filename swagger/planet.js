@@ -69,6 +69,10 @@
  *           type: number
  *           format: float
  *           example: 24.0
+ *         brightness:
+ *           type: number
+ *           format: float
+ *           example: -26.74
  *         location:
  *           type: string
  *           example: "Solar System"
