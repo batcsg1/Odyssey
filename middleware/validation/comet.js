@@ -52,6 +52,12 @@ const cometSchema = Joi.object({
     "number.max": "Apogee should be lesser than or equal to {#limit} kms",
     "any.required": "Apogee is required"
   }),
+  brightness: Joi.number().min(-32).max(32).required().messages({
+    "number.base": "Brightness should be a number",
+    "number.min": "Brightness should be greater than or equal to {#limit}",
+    "number.max": "Brightness should be lesser than or equal to +{#limit}",
+    "any.required": "Brightness is required"
+  }),
   location: Joi.string().min(3).max(255).required().messages({
     "string.base": "Location should be a string",
     "string.empty": "Location cannot be empty",
