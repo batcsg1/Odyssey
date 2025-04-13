@@ -24,8 +24,6 @@ enum Location {
 model Constellation {
   id              String         @id @default(uuid())
   name            String
-  right_ascension Float?
-  declination     Float?
   shape           String?
   area            Float?
   createdAt       DateTime       @default(now())
@@ -47,8 +45,6 @@ model Star {
   luminosity      Float
   hasPlanets      Boolean        @default(false)
   brightness      Float
-  rightAscension  Float?
-  declination     Float?
   constellationId String?
   constellation   Constellation? @relation(fields: [constellationId], references: [id])
   planets         Planet[]
@@ -166,8 +162,6 @@ model Meteorite {
   mass      Float
   diameter  Float
   location  String
-  latitude  Float?
-  longitude Float?
   planetId  String
   planet    Planet   @relation(fields: [planetId], references: [id])
   createdAt DateTime @default(now())
@@ -237,7 +231,6 @@ model Galaxy {
   type            GalaxyType     @default(ELLIPTICAL)
   distance        Float
   size            Float
-  starCount       Int
   location        String
   createdAt       DateTime       @default(now())
   updatedAt       DateTime       @updatedAt
