@@ -83,6 +83,7 @@ model Planet {
   maxTemp       Float?
   gravity       Float?
   day           Float
+  brightness    Float
   location      Location    @default(INNER_SOLAR_SYSTEM)
   habitable     Boolean     @default(false)
   starId        String
@@ -117,6 +118,7 @@ model Satellite {
   maxTemp    Float?
   gravity    Float?
   day        Float
+  brightness Float
   location   Location      @default(INNER_SOLAR_SYSTEM)
   habitable  Boolean       @default(false)
   planetId   String
@@ -142,6 +144,7 @@ model Asteroid {
   perigee       Float
   apogee        Float
   location      Location       @default(INNER_SOLAR_SYSTEM)
+  brightness    Float
   starId        String
   star          Star           @relation(fields: [starId], references: [id])
   meteorShowers MeteorShower[]
@@ -179,6 +182,7 @@ model Comet {
   year          Float
   perigee       Float
   apogee        Float
+  brightness    Float
   location      Location       @default(INNER_SOLAR_SYSTEM)
   starId        String
   star          Star           @relation(fields: [starId], references: [id])
@@ -232,7 +236,6 @@ model Galaxy {
   type            GalaxyType     @default(ELLIPTICAL)
   distance        Float
   size            Float
-  location        String
   createdAt       DateTime       @default(now())
   updatedAt       DateTime       @updatedAt
   constellationId String?
@@ -243,4 +246,5 @@ enum GalaxyType {
   SPRIAL
   ELLIPTICAL
   IRREGULAR
+  BARRED_SPIRAL
 }
