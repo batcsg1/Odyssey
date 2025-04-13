@@ -19,8 +19,6 @@ const selectObject = {
   luminosity: true,
   hasPlanets: true,
   brightness: true,
-  rightAscension: true,
-  declination: true,
   constellationId: true,
   createdAt: true,
   updatedAt: true
