@@ -60,16 +60,6 @@ const starSchema = Joi.object({
     "number.max": "Brightness should be lesser than or equal to +{#limit}",
     "any.required": "Brightness is required"
   }),
-  rightAscension: Joi.number().min(0).max(24).optional().messages({
-    "number.base": "Right ascension should be a number",
-    "number.min": "Right ascension should be greater than or equal to {#limit} hours",
-    "number.max": "Right ascension should be lesser than or equal to {#limit} hours"
-  }),
-  declination: Joi.number().min(-90).max(90).optional().messages({
-    "number.base": "Declination should be a number",
-    "number.min": "Declination should be greater than or equal to {#limit}°",
-    "number.max": "Declination should be lesser than or equal to {#limit}°"
-  }),
   constellationId: Joi.string().uuid().optional().messages({
     "string.base": "Constellation ID should be a string",
     "string.guid": "Constellation ID should be a valid UUID",
