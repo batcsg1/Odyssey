@@ -44,7 +44,7 @@ const starSchema = Joi.object({
     "number.max": "Temperature should be lesser than or equal to {#limit} °C",
     "any.required": "Temperature is required"
   }),
-  luminosity: Joi.number().unsafe().min(3.5e6).max(5.4e32).required().messages({
+  luminosity: Joi.number().min(0).max(5e6).required().messages({
     "number.base": "Luminosity should be a number",
     "number.min": "Luminosity should be greater than or equal to {#limit} L☉",
     "number.max": "Luminosity should be lesser than or equal to {#limit} L☉",
