@@ -250,7 +250,7 @@ model User {
   updatedAt        DateTime  @default(now())
 }
 
-enum Role{
+enum Role {
   SUPER_ADMIN
   ADMIN
   NORMAL
