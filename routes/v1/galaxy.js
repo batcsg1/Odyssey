@@ -19,7 +19,7 @@ import {
 } from "../../middleware/validation/galaxy.js";
 
 const galaxyController = {
-  get: getGalaxy,
+  get: getGalaxies,
   getById: getGalaxy,
   create: createGalaxy,
   update: updateGalaxy,
