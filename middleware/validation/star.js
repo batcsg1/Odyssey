@@ -14,10 +14,10 @@ const starSchema = Joi.object({
     "number.max": "Age should be lesser than or equal to {#limit} years",
     "any.required": "Age is required"
   }),
-  mass: Joi.number().unsafe().min(0).max(4.6e32).required().messages({
+  mass: Joi.number().min(0).max(230).required().messages({
     "number.base": "Mass should be a number",
-    "number.min": "Mass should be greater than or equal to {#limit} kgs",
-    "number.max": "Mass should be lesser than or equal to {#limit} kgs",
+    "number.min": "Mass should be greater than or equal to {#limit} M☉",
+    "number.max": "Mass should be lesser than or equal to {#limit} M☉",
     "any.required": "Mass is required"
   }),
   diameter: Joi.number().min(0).max(1.3e9).required().messages({
