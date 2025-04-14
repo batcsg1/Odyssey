@@ -20,6 +20,7 @@ const selectObject = {
   hasPlanets: true,
   brightness: true,
   constellationId: true,
+  galaxyId: true,
   createdAt: true,
   updatedAt: true
 };
