@@ -19,6 +19,12 @@ const galaxySchema = Joi.object({
         "number.min": "Size should be greater than or equal to {#limit} light years",
         "number.max": "Size should be lesser than or equal to {#limit} light years",
         "any.required": "Size is required"
+    }),
+    brightness: Joi.number().min(-32).max(32).required().messages({
+        "number.base": "Brightness should be a number",
+        "number.min": "Brightness should be greater than or equal to {#limit}",
+        "number.max": "Brightness should be lesser than or equal to +{#limit}",
+        "any.required": "Brightness is required"
     })
 });
 
