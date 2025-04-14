@@ -33,10 +33,10 @@ const starSchema = Joi.object({
     "string.max": "Type should have a maximum length of {#limit}",
     "any.required": "Type is required"
   }),
-  distance: Joi.number().unsafe().min(0).max(4.4e23).required().messages({
+  distance: Joi.number().min(0).max(4.7e10).required().messages({
     "number.base": "Distance should be a number",
-    "number.min": "Distance should be greater than or equal to {#limit} kms",
-    "number.max": "Distance should be lesser than or equal to {#limit} kms",
+    "number.min": "Distance should be greater than or equal to {#limit} light years",
+    "number.max": "Distance should be lesser than or equal to {#limit} light years",
     "any.required": "Distance is required"
   }),
   temperature: Joi.number().unsafe().max(4.4e23).required().messages({
