@@ -1,3 +1,4 @@
+import { GalaxyType } from "@prisma/client";
 import Joi from "joi";
 
 const galaxySchema = Joi.object({
@@ -7,6 +8,12 @@ const galaxySchema = Joi.object({
         "string.min": "Name should have a minimum length of {#limit}",
         "string.max": "Name should have a maximum length of {#limit}",
         "any.required": "Name is required"
+    }),
+    type: Joi.string().valid(GalaxyType).required().messages({
+        "string.base": "Type should be a string",
+        "string.empty": "Type cannot be empty",
+        "any.only": `Type must be one of the following: ${Object.values(GalaxyType)}`,
+        "any.required": "Type is required"
     }),
     distance: Joi.number().unsafe().min(0).max(4.7e10).required().messages({
         "number.base": "Distance should be a number",
