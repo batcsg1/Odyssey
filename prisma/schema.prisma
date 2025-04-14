@@ -245,6 +245,13 @@ model User {
   password         String
   loginAttempts    Int       @default(0)
   lastLoginAttempt DateTime?
+  role             Role      @default(NORMAL)
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @default(now())
+}
+
+enum Role{
+  SUPER_ADMIN
+  ADMIN
+  NORMAL
 }
