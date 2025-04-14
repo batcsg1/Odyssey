@@ -45,6 +45,7 @@ model Galaxy {
   updatedAt       DateTime       @updatedAt
   constellationId String?
   constellation   Constellation? @relation(fields: [constellationId], references: [id])
+  stars           Star[]
 }
 
 enum GalaxyType {
@@ -68,6 +69,8 @@ model Star {
   brightness      Float
   constellationId String?
   constellation   Constellation? @relation(fields: [constellationId], references: [id])
+  galaxyId        String
+  galaxy          Galaxy         @relation(fields: [galaxyId], references: [id])
   planets         Planet[]
   asteroids       Asteroid[]
   comets          Comet[]
