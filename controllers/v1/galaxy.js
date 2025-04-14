@@ -15,7 +15,8 @@ const selectObject = {
   size: true,
   brightness: true,
   createdAt: true,
-  updatedAt: true
+  updatedAt: true,
+  constellationId: true
 };
 
 const createGalaxy = async (req, res) => {
