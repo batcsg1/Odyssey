@@ -15,7 +15,7 @@ const galaxySchema = Joi.object({
         "any.only": `Type must be one of the following: ${Object.values(GalaxyType)}`,
         "any.required": "Type is required"
     }),
-    distance: Joi.number().unsafe().min(0).max(4.7e10).required().messages({
+    distance: Joi.number().min(0).max(4.7e10).required().messages({
         "number.base": "Distance should be a number",
         "number.min": "Distance should be greater than or equal to {#limit} light years",
         "number.max": "Distance should be lesser than or equal to {#limit} light years",
