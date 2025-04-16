@@ -1,3 +1,4 @@
+import { StarType } from "@prisma/client";
 import Joi from "joi";
 
 const starSchema = Joi.object({
@@ -26,11 +27,10 @@ const starSchema = Joi.object({
     "number.max": "Diameter should be lesser than or equal to {#limit} kms",
     "any.required": "Diameter is required"
   }),
-  type: Joi.string().min(3).max(50).required().messages({
+  type: Joi.string().valid(...Object.values(StarType)).required().messages({
     "string.base": "Type should be a string",
     "string.empty": "Type cannot be empty",
-    "string.min": "Type should have a minimum length of {#limit}",
-    "string.max": "Type should have a maximum length of {#limit}",
+    "any.only": `Type must be one of the following: ${Object.values(StarType)}`,
     "any.required": "Type is required"
   }),
   distance: Joi.number().min(0).max(4.7e10).required().messages({
