@@ -133,8 +133,10 @@ Prisma Studio is up on http://localhost:5555
 
 ---
 
-## ERD of the CelestialDB REST API
-TBD
+## Entity Relationship Diagram
+
+![image](./prisma/ERD.svg)
+
 ## Link to video demonstrating functionality of REST API and tests
 TBD
 ## AI Documentation
