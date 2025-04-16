@@ -28,12 +28,13 @@ const selectObject = {
 
 const createMeteorShower = async (req, res) => {
   try {
-    const cometId = req.body.cometId;
+    // Check if constellationID is provided
+    const constellationId = req.body.constellationId;
 
-    // Check if comet exists
-    const comet = await new Repository("Comet").findById(cometId);
-    if (!comet) {
-      return res.status(404).json({ message: `Comet with id ${cometId} not found` });
+    // Check if constellation exists
+    const constellation = await new Repository("Constellation").findById(constellationId);
+    if (!constellation) {
+      return res.status(404).json({ message: `The constellation with id ${constellationId} was not found` });
     }
 
     const asteroidId = req.body.asteroidId;
