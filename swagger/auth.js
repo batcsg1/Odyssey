@@ -22,6 +22,10 @@
  *         password:
  *           type: string
  *           example: "password123"
+ *         homePlanet:
+ *           type: string
+ *           format: uuid
+ *           example: "123e4567-e89b-12d3-a456-426614174000"
  *         loginAttempts:
  *           type: integer
  *           example: 3

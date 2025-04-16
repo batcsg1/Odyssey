@@ -25,13 +25,14 @@ const register = async (req, res) => {
     const hashedPassword = await bcryptjs.hash(password, salt);
 
     user = await prisma.user.create({
-      data: { firstName, lastName, emailAddress, password: hashedPassword },
+      data: { firstName, lastName, emailAddress, password: hashedPassword, homePlanet },
       select: {
         // Select only the fields you want to return
         id: true,
         firstName: true,
         lastName: true,
         emailAddress: true,
+        homePlanet: true,
         createdAt: true,
         updatedAt: true,
       },
