@@ -9,7 +9,7 @@ const galaxySchema = Joi.object({
         "string.max": "Name should have a maximum length of {#limit}",
         "any.required": "Name is required"
     }),
-    type: Joi.string().valid(GalaxyType).required().messages({
+    type: Joi.string().valid(...Object.values(GalaxyType)).required().messages({
         "string.base": "Type should be a string",
         "string.empty": "Type cannot be empty",
         "any.only": `Type must be one of the following: ${Object.values(GalaxyType)}`,
