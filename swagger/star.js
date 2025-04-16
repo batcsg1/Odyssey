@@ -15,22 +15,22 @@
  *         age:
  *           type: number
  *           format: float
- *           example: 4.6
+ *           example: 4.6e9
  *         mass:
  *           type: number
  *           format: float
- *           example: 1.989e30
+ *           example: 1
  *         diameter:
  *           type: number
  *           format: float
- *           example: 1.3927e6
+ *           example: 1
  *         type:
  *           type: string
  *           example: "MAIN_SEQUENCE"
  *         distance:
  *           type: number
  *           format: float
- *           example: 0.0
+ *           example: 1.3e10
  *         temperature:
  *           type: number
  *           format: float

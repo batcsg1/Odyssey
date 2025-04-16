@@ -21,7 +21,7 @@ const starSchema = Joi.object({
     "number.max": "Mass should be lesser than or equal to {#limit} M☉",
     "any.required": "Mass is required"
   }),
-  diameter: Joi.number().min(0).max(1.3e9).required().messages({
+  diameter: Joi.number().min(0).max(910).required().messages({
     "number.base": "Diameter should be a number",
     "number.min": "Diameter should be greater than or equal to {#limit} kms",
     "number.max": "Diameter should be lesser than or equal to {#limit} kms",
@@ -39,12 +39,13 @@ const starSchema = Joi.object({
     "number.max": "Distance should be lesser than or equal to {#limit} light years",
     "any.required": "Distance is required"
   }),
-  temperature: Joi.number().unsafe().max(4.4e23).required().messages({
+  temperature: Joi.number().min(0).max(200000).required().messages({
     "number.base": "Temperature should be a number",
-    "number.max": "Temperature should be lesser than or equal to {#limit} °C",
+    "number.min": "Temperature should be greater than or equal to {#limit} °K",
+    "number.max": "Temperature should be lesser than or equal to {#limit} °K",
     "any.required": "Temperature is required"
   }),
-  luminosity: Joi.number().min(0).max(5e6).required().messages({
+  luminosity: Joi.number().min(0).max(1.5e6).required().messages({
     "number.base": "Luminosity should be a number",
     "number.min": "Luminosity should be greater than or equal to {#limit} L☉",
     "number.max": "Luminosity should be lesser than or equal to {#limit} L☉",
