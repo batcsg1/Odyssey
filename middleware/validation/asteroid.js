@@ -1,3 +1,4 @@
+import { AsteroidType } from "@prisma/client";
 import Joi from "joi";
 
 const asteroidSchema = Joi.object({
@@ -32,11 +33,10 @@ const asteroidSchema = Joi.object({
     "number.max": "Density should be lesser than or equal to {#limit} kg/m3",
     "any.required": "Density is required"
   }),
-  type: Joi.string().min(3).max(100).required().messages({
+  type: Joi.string().valid(...Object.values(AsteroidType)).required().messages({
     "string.base": "Type should be a string",
     "string.empty": "Type cannot be empty",
-    "string.min": "Type should have a minimum length of {#limit}",
-    "string.max": "Type should have a maximum length of {#limit}",
+    "any.only": `Type must be one of the following: ${Object.values(AsteroidType)}`,
     "any.required": "Type is required"
   }),
   year: Joi.number().min(0).max(1.5e6).optional().messages({
