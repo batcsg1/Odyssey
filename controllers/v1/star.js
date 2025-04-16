@@ -33,7 +33,7 @@ const createStar = async (req, res) => {
     // Check if galaxy exists
     const galaxy = await new Repository("Galaxy").findById(galaxyId);
     if (!galaxy) {
-      return res.status(404).json({ message: `The galaxy with id ${galaxy} was not found` });
+      return res.status(404).json({ message: `The galaxy with id ${galaxyId} was not found` });
     }
 
     await starRepository.create(req.body);
