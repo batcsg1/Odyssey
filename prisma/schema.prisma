@@ -116,6 +116,7 @@ model Planet {
   star          Star        @relation(fields: [starId], references: [id])
   satellites    Satellite[]
   meteorites    Meteorite[]
+  users         User[]
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
 }
@@ -253,6 +254,8 @@ model User {
   loginAttempts    Int       @default(0)
   lastLoginAttempt DateTime?
   role             Role      @default(NORMAL)
+  homePlanet       String    
+  planet           Planet    @relation(fields: [homePlanet], references: [id])
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @default(now())
 }
