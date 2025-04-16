@@ -1,3 +1,4 @@
+import { CometType } from "@prisma/client";
 import Joi from "joi";
 
 // Define the comet schema
@@ -27,11 +28,10 @@ const cometSchema = Joi.object({
     "number.max": "Density should be lesser than or equal to {#limit} kg/m3",
     "any.required": "Density is required"
   }),
-  type: Joi.string().min(3).max(50).required().messages({
+  type: Joi.string().valid(...Object.values(CometType)).required().messages({
     "string.base": "Type should be a string",
     "string.empty": "Type cannot be empty",
-    "string.min": "Type should have a minimum length of {#limit}",
-    "string.max": "Type should have a maximum length of {#limit}",
+    "any.only": `Type must be one of the following: ${Object.values(CometType)}`,
     "any.required": "Type is required"
   }),
   year: Joi.number().min(0).max(10000).required().messages({
