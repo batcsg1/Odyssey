@@ -14,7 +14,7 @@
  *           example: "Milky Way"
  *         type:
  *           type: string
- *           example: SPIRAL
+ *           example: "ELLIPTICAL"
  *         distance:
  *           type: number
  *           format: float

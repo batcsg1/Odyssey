@@ -30,7 +30,7 @@
  *           example: 5.51
  *         type:
  *           type: string
- *           example: "Terrestrial"
+ *           example: "TERRESTIAL"
  *         atmosphere:
  *           type: boolean
  *           example: true

@@ -26,7 +26,7 @@
  *           example: 1.3927e6
  *         type:
  *           type: string
- *           example: "G-type main-sequence star"
+ *           example: "MAIN_SEQUENCE"
  *         distance:
  *           type: number
  *           format: float
