@@ -14,18 +14,22 @@ describe("Constellations", () => {
     const res = await chai
       .request(app)
       .post("/api/v1/constellations")
-      .send({ name: 123, right_ascension: 5.585, declination: -5.909, shape: "rectangle", area: 100.5 });
+      .send({
+        name: 250,
+        shape: "Astronaut",
+        area: 800,
+        abbreviation: "Agi"
+      });
 
     chai.expect(res.body.message).to.be.equal("name should be a string");
   });
 
   it("should create a valid constellation", async () => {
     const res = await chai.request(app).post("/api/v1/constellations").send({
-      name: "Orion",
-      right_ascension: 5.585,
-      declination: -5.909,
-      shape: "rectangle",
-      area: 594.1,
+      name: "Canis Majora",
+      shape: "Bull",
+      area: 237.4,
+      abbreviation: "CMa"
     });
 
     chai
@@ -36,11 +40,10 @@ describe("Constellations", () => {
 
   it("should create another valid constellation", async () => {
     const res = await chai.request(app).post("/api/v1/constellations").send({
-      name: "Ursa Major",
-      right_ascension: 11.062,
-      declination: 55.324,
-      shape: "irregular",
-      area: 1279.66,
+      name: "Prismaris",
+      shape: "Triangle",
+      area: 180,
+      abbreviation: "Pma"
     });
 
     chai
@@ -80,11 +83,10 @@ describe("Constellations", () => {
       .request(app)
       .put(`/api/v1/constellations/${constellationId}`)
       .send({
-        name: "Orion",
-        right_ascension: 5.585,
-        declination: -5.909,
-        shape: "rectangle",
-        area: "invalid",
+        name: "Mustafara",
+        shape: "Circle",
+        area: "999",
+        abbreviation: "Mus"
       });
 
     chai.expect(res.body.message).to.be.equal("area should be a number");
@@ -95,11 +97,10 @@ describe("Constellations", () => {
       .request(app)
       .put(`/api/v1/constellations/${constellationId}`)
       .send({
-        name: "Updated Orion",
-        right_ascension: 6.000,
-        declination: -5.900,
-        shape: "polygon",
-        area: 600.0,
+        name: "Updated Canis Majora",
+        shape: "Cow",
+        area: 237.4,
+        abbreviation: "CMa"
       });
 
     chai
