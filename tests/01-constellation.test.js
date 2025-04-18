@@ -21,7 +21,7 @@ describe("Constellations", () => {
         abbreviation: "Agi"
       });
 
-    chai.expect(res.body.message).to.be.equal("name should be a string");
+    chai.expect(res.body.message).to.be.equal("Name should be a string");
   });
 
   it("should create a valid constellation", async () => {
@@ -63,19 +63,19 @@ describe("Constellations", () => {
       .request(app)
       .get(`/api/v1/constellations/${constellationId}`);
 
-    chai.expect(res.body.data.name).to.be.equal("Orion");
+    chai.expect(res.body.data.name).to.be.equal("Canis Majora");
   });
 
   it("should filter constellations by name", async () => {
-    const res = await chai.request(app).get("/api/v1/constellations?name=Orion");
+    const res = await chai.request(app).get("/api/v1/constellations?name=Canis Majora");
 
-    chai.expect(res.body.data[0].name).to.be.equal("Orion");
+    chai.expect(res.body.data[0].name).to.be.equal("Canis Majora");
   });
 
   it("should sort constellations by name", async () => {
     const res = await chai.request(app).get("/api/v1/constellations?sortBy=name");
 
-    chai.expect(res.body.data[0].name).to.be.equal("Orion");
+    chai.expect(res.body.data[0].name).to.be.equal("Canis Majora");
   });
 
   it("should reject non-numeric area during update", async () => {
@@ -83,10 +83,10 @@ describe("Constellations", () => {
       .request(app)
       .put(`/api/v1/constellations/${constellationId}`)
       .send({
-        name: "Mustafara",
-        shape: "Circle",
+        name: "Prismaris",
+        shape: "Triangle",
         area: "999",
-        abbreviation: "Mus"
+        abbreviation: "Pma"
       });
 
     chai.expect(res.body.message).to.be.equal("area should be a number");
