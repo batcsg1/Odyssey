@@ -142,6 +142,11 @@ TBD
 ## AI Documentation
 ### ChatGPT:
 
+**Explanation for why non-numerical field rejection tests failed:**
+
+[Issue #68](https://github.com/otago-polytechnic-bit-courses/id607001-s1-25-batcsg1/issues/68)
+
+
 **Prompt for converting Studio 1 Database Schema into Prisma Schema:**
 
 <details>
