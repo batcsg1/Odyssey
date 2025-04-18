@@ -95,11 +95,9 @@ This will tell the `docker-compose.yml` file to create the **development** and *
 
 > **Note:** Depending on what container your using, update the envrionment variables within the `.env` accordingly. _(As specified above.)_
 
-
-
+> **Important:** If you have any **online** or **offline** Docker containers in your Docker setup using the same port(s) as your development and testing containers, you may have to configure your other containers with different ports. By having the development and testing containers mapped with ports `5445` and `5446`, it ensures they are out of the so called `PostgreSQL` port scope of `5432` or close.
 
 ---
-
 
 ## How to seed the PostgreSQL
 
