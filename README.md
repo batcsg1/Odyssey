@@ -12,7 +12,7 @@ REST API Project for the Introductory Application Development paper of the Otago
 
 Create a new PostgreSQL database container on Docker (if you haven't already) by running the command below in a terminal:
 ```
-docker run --name celestial-db-postgres -e POSTGRES_PASSWORD=P@ssw0rd -p 5432:5432 -d postgres
+docker run --name celestial-db-postgres -e POSTGRES_PASSWORD=P@ssw0rd -p 5445:5432 -d postgres
 ```
 ---
 
@@ -21,7 +21,7 @@ In your `.env` file add these lines:
 
 ```
 APP_ENV=development
-DATABASE_URL="postgresql://postgres:P@ssw0rd@localhost:5432/postgres"
+DATABASE_URL="postgresql://postgres:P@ssw0rd@localhost:5445/postgres"
 JWT_SECRET=HelloWorld123
 JWT_LIFETIME=1hr
 ```
@@ -62,9 +62,9 @@ Server is listening on port 3000. Visit http://localhost:3000/api/v1
 
 Create a new PostgreSQL database container on Docker (if you haven't already) by running the command below in a terminal:
 ```
-docker run --name celestial-db-postgres-test -e POSTGRES_PASSWORD=P@ssw0rd -p 5433:5432 -d postgres
+docker run --name celestial-db-postgres-test -e POSTGRES_PASSWORD=P@ssw0rd -p 5445:5432 -d postgres
 ```
-> Note: Change the local port **5432**:5432 to **5433** to distinguish the testing container from the development container.
+> Note: Change the local port **5445**:5432 to **5446** to distinguish the testing container from the development container.
 ---
 
 ### 2. .env File
@@ -72,7 +72,7 @@ In your `.env` file add these lines:
 
 ```
 APP_ENV=testing
-DATABASE_URL="postgresql://postgres:P@ssw0rd@localhost:5433/postgres"
+DATABASE_URL="postgresql://postgres:P@ssw0rd@localhost:5446/postgres"
 JWT_SECRET=HelloWorld123
 JWT_LIFETIME=1hr
 ```
@@ -87,15 +87,11 @@ Run `npm run prisma:migrate` to **migrate** the **schema** located in the `./pri
 
 ### Optional. Use Docker Compose to create development and testing environments
 
-Once you have cloned the repo to your local machine, change to the `docker` directory from the root directory by running the following command in your terminal:
-```bash
-cd docker
-```
-From within that directory run the following command:
+Once you have cloned the repo to your local machine run the following command on the root directory:
 ```bash
 docker compose up -d
 ```
-This will tell the `docker-compose.yml` file within the `docker` directory to create the **development** and **testing** docker containers simultaneously.
+This will tell the `docker-compose.yml` file to create the **development** and **testing** docker containers simultaneously.
 
 > **Note:** Depending on what container your using, update the envrionment variables within the `.env` accordingly. _(As specified above.)_
 
