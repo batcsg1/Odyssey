@@ -2,10 +2,10 @@ services:
   celestial-db-development:
     image: postgres:latest
     env_file:
-      - ../.env
+      - .env
     container_name: celestial-db-postgres-dev
     ports:
-      - "5432:5432"
+      - "5445:5432"
     environment:
       POSTGRES_PASSWORD: P@ssw0rd
       APP_ENV: ${APP_ENV}
@@ -15,10 +15,10 @@ services:
   celestial-db-test:
     image: postgres:latest
     env_file:
-      - ../.env
+      - .env
     container_name: celestial-db-postgres-test
     ports:
-      - "5433:5432"
+      - "5446:5432"
     environment:
       POSTGRES_PASSWORD: P@ssw0rd
       APP_ENV: ${APP_ENV}
