@@ -14,9 +14,10 @@ const constellationSchema = Joi.object({
     "string.min": "shape should have a minimum length of {#limit}",
     "string.max": "shape should have a maximum length of {#limit}"
   }),
-  area: Joi.number().min(0).optional().messages({
+  area: Joi.number().min(0).max(41253.0).optional().messages({
     "number.base": "area should be a number",
-    "number.min": "area should be greater than or equal to {#limit}"
+    "number.min": "area should be greater than or equal to {#limit}",
+    "number.max": "area should be lesser than or equal to {#limit}"
   }),
   abbreviation: Joi.string().min(3).max(3).required().messages({
     "string.base": "Abbreviation should be a string",
