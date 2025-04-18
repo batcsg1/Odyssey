@@ -24,18 +24,16 @@ const seedConstellations = async () => {
 
     const constellationData = [
       {
-        name: "Orion",
-        right_ascension: 5.585,
-        declination: -5.909,
+        name: "Leo",
         shape: "Hunter",
-        area: 594.0
+        area: 947.0,
+        abbreviation: "Leo"
       },
       {
-        name: "Ursa Major",
-        right_ascension: 11.062,
-        declination: 55.324,
-        shape: "Bear",
-        area: 1280.0
+        name: "Sagittarius",
+        shape: "Archer",
+        area: 867.0,
+        abbreviation: "Sgr"
       },
     ];
 
