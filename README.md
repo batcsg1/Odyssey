@@ -22,6 +22,8 @@ In your `.env` file add these lines:
 ```
 APP_ENV=development
 DATABASE_URL="postgresql://postgres:P@ssw0rd@localhost:5432/postgres"
+JWT_SECRET=HelloWorld123
+JWT_LIFETIME=1hr
 ```
 > Note: If you don't have a `.env` file, create it on the root directory of the repository.
 
@@ -71,6 +73,8 @@ In your `.env` file add these lines:
 ```
 APP_ENV=testing
 DATABASE_URL="postgresql://postgres:P@ssw0rd@localhost:5433/postgres"
+JWT_SECRET=HelloWorld123
+JWT_LIFETIME=1hr
 ```
 > Note: Once again change the port in the `DATABASE_URL` variable to **5433**
 
@@ -81,7 +85,25 @@ Run `npm run prisma:migrate` to **migrate** the **schema** located in the `./pri
 
 > Note: this will ensure your **schema** is in sync with your **database**
 
+### Optional. Use Docker Compose to create development and testing environments
+
+Once you have cloned the repo to your local machine, change to the `docker` directory from the root directory by running the following command in your terminal:
+```bash
+cd docker
+```
+From within that directory run the following command:
+```bash
+docker compose up -d
+```
+This will tell the `docker-compose.yml` file within the `docker` directory to create the **development** and **testing** docker containers simultaneously.
+
+> **Note:** Depending on what container your using, update the envrionment variables within the `.env` accordingly. _(As specified above.)_
+
+
+
+
 ---
+
 
 ## How to seed the PostgreSQL
 
