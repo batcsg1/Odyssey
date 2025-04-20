@@ -41,8 +41,7 @@ const seedGalaxiesFromGitHub = async () => {
         galaxyData[3].constellationId = await getConstellationIdByName("Ursa Major");
         galaxyData[5].constellationId = await getConstellationIdByName("Orion");
 
-
-        console.log(galaxyData);
+        //console.log(galaxyData);
 
         const data = await Promise.all(
             galaxyData.map(async (galaxy) => {
