@@ -32,7 +32,12 @@ const galaxySchema = Joi.object({
         "number.min": "Brightness should be greater than or equal to {#limit}",
         "number.max": "Brightness should be lesser than or equal to +{#limit}",
         "any.required": "Brightness is required"
-    })
+    }),
+    constellationId: Joi.string().uuid().optional().messages({
+        "string.base": "Constellation ID should be a string",
+        "string.guid": "Constellation ID should be a valid UUID",
+        "any.required": "Constellation ID is required"
+    }),
 });
 
 const validateSchema = (schema, isRequired = false) => {
