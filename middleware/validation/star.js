@@ -61,6 +61,11 @@ const starSchema = Joi.object({
     "number.max": "Brightness should be lesser than or equal to +{#limit}",
     "any.required": "Brightness is required"
   }),
+  constellationId: Joi.string().uuid().optional().messages({
+    "string.base": "Constellation ID should be a string",
+    "string.empty": "Constellation ID cannot be empty",
+    "string.guid": "Constellation ID should be a valid UUID"
+  }),
   galaxyId: Joi.string().uuid().required().messages({
     "string.base": "Galaxy ID should be a string",
     "string.guid": "Galaxy ID should be a valid UUID",
