@@ -157,6 +157,8 @@ Prisma Studio is up on http://localhost:5555
 TBD
 ## AI Documentation
 ### ChatGPT:
+**Solution to add foreign key IDs to model seeding files**
+[Issue #70](https://github.com/otago-polytechnic-bit-courses/id607001-s1-25-batcsg1/issues/70)
 
 **Explanation for why non-numerical field rejection tests failed:**
 
