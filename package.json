@@ -137,7 +137,8 @@
     "prisma:reset": "npx prisma migrate reset --force",
     "prisma:format": "npx prisma format",
     "prisma:studio": "npx prisma studio",
-    "prisma:seed-constellations": "node ./prisma/seeding/seeding-scripts/seed-constellations.js && node ./prisma/seeding/github-gist/seed-constellations-github.js"
+    "prisma:seed-constellations": "node ./prisma/seeding/seeding-scripts/seed-constellations.js && node ./prisma/seeding/github-gist/seed-constellations-github.js",
+    "prisma:seed-galaxies": "node ./prisma/seeding/github-gist/seed-galaxies-github.js"
   },
   "type": "module",
   "keywords": [],
