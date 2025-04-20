@@ -35,6 +35,7 @@ const galaxySchema = Joi.object({
     }),
     constellationId: Joi.string().uuid().optional().messages({
         "string.base": "Constellation ID should be a string",
+        "string.empty": "Constellation ID cannot be empty",
         "string.guid": "Constellation ID should be a valid UUID"
     }),
 });

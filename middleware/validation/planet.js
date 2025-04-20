@@ -108,6 +108,7 @@ const planetSchema = Joi.object({
   starId: Joi.string().uuid().required().messages({
     "string.base": "Star ID should be a string",
     "string.guid": "Star ID should be a valid UUID",
+    "string.empty": "Star ID cannot be empty",
     "any.required": "Star ID is required"
   }),
 });

@@ -59,15 +59,18 @@ const meteorShowerSchema = Joi.object({
   }),
   cometId: Joi.string().uuid().optional().messages({
     "string.base": "Comet ID should be a string",
-    "string.guid": "Comet ID should be a valid UUID"
+    "string.guid": "Comet ID should be a valid UUID",
+    "string.empty": "Comet ID cannot be empty"
   }),
   asteroidId: Joi.string().uuid().optional().messages({
     "string.base": "Asteroid ID should be a string",
-    "string.guid": "Asteroid ID should be a valid UUID"
+    "string.guid": "Asteroid ID should be a valid UUID",
+    "string.empty": "Asteroid ID cannot be empty"
   }),
   constellationId: Joi.string().uuid().required().messages({
     "string.base": "Constellation ID should be a string",
     "string.guid": "Constellation ID should be a valid UUID",
+    "string.empty": "Constellation ID cannot be empty",
     "any.required": "Constellation ID is required"
   }),
 });

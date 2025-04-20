@@ -102,9 +102,10 @@ const satelliteSchema = Joi.object({
     "any.required": "The habitable field is required"
   }),
   planetId: Joi.string().uuid().required().messages({
-    "string.base": "Star ID should be a string",
-    "string.guid": "Star ID should be a valid UUID",
-    "any.required": "Star ID is required"
+    "string.base": "Planet ID should be a string",
+    "string.guid": "Planet ID should be a valid UUID",
+    "string.empty": "Planet ID cannot be empty",
+    "any.required": "Planet ID is required"
   }),
 });
 

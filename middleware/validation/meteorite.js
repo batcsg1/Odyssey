@@ -46,6 +46,7 @@ const meteoriteSchema = Joi.object({
   planetId: Joi.string().uuid().required().messages({
     "string.base": "Planet ID should be a string",
     "string.guid": "Planet ID should be a valid UUID",
+    "string.empty": "Planet ID cannot be empty",
     "any.required": "Planet ID is required"
   })
 });
