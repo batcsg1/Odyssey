@@ -21,7 +21,7 @@ const validateAsteroid = (asteroid) => {
 
 const seedAsteroidsFromGitHub = async () => {
     try {
-        const gistUrl = "https://gist.githubusercontent.com/batcsg1/7baba6ac9c1b9ddf0e62f7d8a80ff358/raw/506914bae3bb1ca28794617b498c5e4beee71b78/seed-asteroids.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
+        const gistUrl = "https://gist.githubusercontent.com/batcsg1/7baba6ac9c1b9ddf0e62f7d8a80ff358/raw/467187f19ed903622de0e2c389d960fce2e26991/seed-asteroids.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
         const response = await fetch(gistUrl);
         const asteroidData = await response.json();
 

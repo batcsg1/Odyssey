@@ -21,7 +21,7 @@ const validateComet = (comet) => {
 
 const seedCometsFromGitHub = async () => {
     try {
-        const gistUrl = "https://gist.githubusercontent.com/batcsg1/f75c3d434252b3d222c73bea8c6d06fc/raw/7ed998966cd5b625fa6a3c255a4d5af779e93154/seed-comets.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
+        const gistUrl = "https://gist.githubusercontent.com/batcsg1/f75c3d434252b3d222c73bea8c6d06fc/raw/0ab11954ea2b3b8176c246c5b09125c9b6b98710/seed-comets.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
         const response = await fetch(gistUrl);
         const cometData = await response.json();
 
