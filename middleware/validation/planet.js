@@ -27,7 +27,7 @@ const planetSchema = Joi.object({
     "number.max": "Diameter should be lesser than or equal to {#limit} kms",
     "any.required": "Diameter is required"
   }),
-  density: Joi.number().min(1).max(15).required().messages({
+  density: Joi.number().min(0.5).max(15).required().messages({
     "number.base": "Density should be a number",
     "number.min": "Density should be greater than or equal to {#limit} kg/m3",
     "number.max": "Density should be lesser than or equal to {#limit} kg/m3",
