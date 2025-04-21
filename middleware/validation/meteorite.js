@@ -20,7 +20,7 @@ const meteoriteSchema = Joi.object({
     "number.max": "Year of discovery should be lesser than or equal to {#limit} years",
     "any.required": "Year of discovery is required"
   }),
-  mass: Joi.number().min(0).max(54000).required().messages({
+  mass: Joi.number().min(0).max(70000).required().messages({
     "number.base": "Mass should be a number",
     "number.min": "Mass should be greater than or equal to {#limit} kgs",
     "number.max": "Mass should be lesser than or equal to {#limit} kgs",
