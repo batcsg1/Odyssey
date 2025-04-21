@@ -23,6 +23,7 @@ enum Location {
   OUTER_SOLAR_SYSTEM
   KUIPER_BELT
   OUTSIDE_SOLAR_SYSTEM
+  OORT_CLOUD
 }
 
 model Constellation {
