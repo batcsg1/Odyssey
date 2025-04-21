@@ -39,20 +39,23 @@ const asteroidSchema = Joi.object({
     "any.only": `Type must be one of the following: ${Object.values(AsteroidType)}`,
     "any.required": "Type is required"
   }),
-  year: Joi.number().min(0).max(1.5e6).optional().messages({
+  year: Joi.number().min(0).max(1000).required().messages({
     "number.base": "Year should be a number",
     "number.min": "Year should be greater than or equal to {#limit} years",
-    "number.max": "Year should be lesser than or equal to {#limit} Years"
+    "number.max": "Year should be lesser than or equal to {#limit} Years",
+    "any.required": "Year is required"
   }),
-  perigee: Joi.number().min(350).max(2e6).unsafe().optional().messages({
+  perigee: Joi.number().min(0.1).max(100000).required().messages({
     "number.base": "Perigee should be a number",
-    "number.min": "Perigee should be greater than or equal to {#limit} kms",
-    "number.max": "Perigee should be lesser than or equal to {#limit} kms",
+    "number.min": "Perigee should be greater than or equal to {#limit} AU",
+    "number.max": "Perigee should be lesser than or equal to {#limit} AU",
+    "any.required": "Perigee is required"
   }),
-  apogee: Joi.number().min(350).max(2e6).optional().messages({
+  apogee: Joi.number().min(0.34).max(100000).required().messages({
     "number.base": "Apogee should be a number",
-    "number.min": "Apogee should be greater than or equal to {#limit} kms",
-    "number.max": "Apogee should be lesser than or equal to {#limit} kms",
+    "number.min": "Apogee should be greater than or equal to {#limit} AU",
+    "number.max": "Perigee should be lesser than or equal to {#limit} AU",
+    "any.required": "Apogee is required"
   }),
   location: Joi.string().min(3).max(255).required().messages({
     "string.base": "Location should be a string",
