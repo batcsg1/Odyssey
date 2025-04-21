@@ -40,7 +40,7 @@ const cometSchema = Joi.object({
     "number.max": "Year should be lesser than or equal to {#limit} Years",
     "any.required": "Year is required"
   }),
-  perigee: Joi.number().min(0.34).max(100).required().messages({
+  perigee: Joi.number().min(0.1).max(100).required().messages({
     "number.base": "Perigee should be a number",
     "number.min": "Perigee should be greater than or equal to {#limit} AU",
     "number.max": "Perigee should be lesser than or equal to {#limit} AU",
