@@ -139,7 +139,8 @@
     "prisma:studio": "npx prisma studio",
     "prisma:seed-constellations": "node ./prisma/seeding/seeding-scripts/seed-constellations.js && node ./prisma/seeding/github-gist/seed-constellations-github.js",
     "prisma:seed-galaxies": "node ./prisma/seeding/github-gist/seed-galaxies-github.js",
-    "prisma:seed-stars": "node ./prisma/seeding/github-gist/seed-stars-github.js"
+    "prisma:seed-stars": "node ./prisma/seeding/github-gist/seed-stars-github.js",
+    "prisma:seed-planets": "node ./prisma/seeding/github-gist/seed-planets-github.js"
   },
   "type": "module",
   "keywords": [],
