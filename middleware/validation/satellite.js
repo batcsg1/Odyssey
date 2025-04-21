@@ -27,7 +27,7 @@ const satelliteSchema = Joi.object({
     "number.max": "Diameter should be lesser than or equal to {#limit} kms",
     "any.required": "Diameter is required"
   }),
-  density: Joi.number().min(2).max(15).required().messages({
+  density: Joi.number().min(0.2).max(15).required().messages({
     "number.base": "Density should be a number",
     "number.min": "Density should be greater than or equal to {#limit} kg/m3",
     "number.max": "Density should be lesser than or equal to {#limit} kg/m3",
@@ -64,14 +64,14 @@ const satelliteSchema = Joi.object({
     "number.min": "Tilt should be greater than or equal to {#limit}°",
     "number.max": "Tilt should be lesser than or equal to {#limit}°"
   }),
-  minTemp: Joi.number().unsafe().max(4.4e23).optional().messages({
+  minTemp: Joi.number().max(800).optional().messages({
     "number.base": "Minimum temperature should be a number",
-    "number.max": "Minimum temperature should be lesser than or equal to {#limit}°C",
+    "number.max": "Minimum temperature should be lesser than or equal to {#limit}°K",
     "any.required": "Minimum temperature is required"
   }),
-  maxTemp: Joi.number().unsafe().max(4.4e23).optional().messages({
+  maxTemp: Joi.number().max(800).optional().messages({
     "number.base": "Maximum temperature should be a number",
-    "number.max": "Maximum temperature should be lesser than or equal to {#limit}°C",
+    "number.max": "Maximum temperature should be lesser than or equal to {#limit}°K",
     "any.required": "Maximum temperature is required"
   }),
   gravity: Joi.number().min(0).max(530).optional().messages({
