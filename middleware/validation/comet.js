@@ -1,4 +1,4 @@
-import { CometType } from "@prisma/client";
+import { CometType, Location } from "@prisma/client";
 import Joi from "joi";
 
 // Define the comet schema
@@ -58,11 +58,10 @@ const cometSchema = Joi.object({
     "number.max": "Brightness should be lesser than or equal to +{#limit}",
     "any.required": "Brightness is required"
   }),
-  location: Joi.string().min(3).max(255).required().messages({
+  location: Joi.string().valid(...Object.values(Location)).required().messages({
     "string.base": "Location should be a string",
     "string.empty": "Location cannot be empty",
-    "string.min": "Location should have a minimum length of {#limit}",
-    "string.max": "Location should have a maximum length of {#limit}",
+    "any.only": `Location must be one of the following: ${Object.values(Location)}`,
     "any.required": "Location is required"
   }),
   starId: Joi.string().uuid().required().messages({

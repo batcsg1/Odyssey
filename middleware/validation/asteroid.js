@@ -1,4 +1,4 @@
-import { AsteroidType } from "@prisma/client";
+import { AsteroidType, Location } from "@prisma/client";
 import Joi from "joi";
 
 const asteroidSchema = Joi.object({
@@ -57,11 +57,10 @@ const asteroidSchema = Joi.object({
     "number.max": "Perigee should be lesser than or equal to {#limit} AU",
     "any.required": "Apogee is required"
   }),
-  location: Joi.string().min(3).max(255).required().messages({
+  location: Joi.string().valid(...Object.values(Location)).required().messages({
     "string.base": "Location should be a string",
     "string.empty": "Location cannot be empty",
-    "string.min": "Location should have a minimum length of {#limit}",
-    "string.max": "Location should have a maximum length of {#limit}",
+    "any.only": `Location must be one of the following: ${Object.values(Location)}`,
     "any.required": "Location is required"
   }),
   brightness: Joi.number().min(-32).max(32).required().messages({
