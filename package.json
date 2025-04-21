@@ -141,7 +141,8 @@
     "prisma:seed-galaxies": "node ./prisma/seeding/github-gist/seed-galaxies-github.js",
     "prisma:seed-stars": "node ./prisma/seeding/github-gist/seed-stars-github.js",
     "prisma:seed-planets": "node ./prisma/seeding/github-gist/seed-planets-github.js",
-    "prisma:seed-satellites": "node ./prisma/seeding/github-gist/seed-satellites-github.js"
+    "prisma:seed-satellites": "node ./prisma/seeding/github-gist/seed-satellites-github.js",
+    "prisma:seed-comets": "node ./prisma/seeding/github-gist/seed-comets-github.js"
   },
   "type": "module",
   "keywords": [],
