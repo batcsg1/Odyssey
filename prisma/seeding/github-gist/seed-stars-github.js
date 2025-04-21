@@ -21,7 +21,7 @@ const validateStar = (star) => {
 
 const seedStarsFromGitHub = async () => {
     try {
-        const gistUrl = "https://gist.githubusercontent.com/batcsg1/b78d016d242abc39dd39f96375929576/raw/82dc93df349ffed359d2a2da7b019df4a3770145/seed-stars.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
+        const gistUrl = "https://gist.githubusercontent.com/batcsg1/b78d016d242abc39dd39f96375929576/raw/0a0b29a7d5343713c82d5930137b1c3cf9066ad0/seed-stars.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
         const response = await fetch(gistUrl);
         const starData = await response.json();
 
