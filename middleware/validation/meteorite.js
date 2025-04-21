@@ -39,16 +39,6 @@ const meteoriteSchema = Joi.object({
     "string.max": "Location should have a maximum length of {#limit}",
     "any.required": "Location is required"
   }),
-  latitude: Joi.number().min(-90).max(90).optional().messages({
-    "number.base": "Latitude should be a number",
-    "number.min": "Latitude should be greater than or equal to {#limit}°",
-    "number.max": "Latitude should be lesser than or equal to{#limit}°",
-  }),
-  longitude: Joi.number().min(-180).max(180).optional().messages({
-    "number.base": "Longitude should be a number",
-    "number.min": "Longitude should be greater than or equal to {#limit}°",
-    "number.max": "Longitude should be lesser than or equal to{#limit}°",
-  }),
   planetId: Joi.string().uuid().required().messages({
     "string.base": "Planet ID should be a string",
     "string.guid": "Planet ID should be a valid UUID",
