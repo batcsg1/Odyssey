@@ -21,7 +21,7 @@ const validateMeteorShower = (shower) => {
 
 const seedMeteorShowersFromGitHub = async () => {
     try {
-        const gistUrl = "https://gist.githubusercontent.com/batcsg1/5471b9eaef8fffff796346f7e29bb7dc/raw/fefe8b00cca602b4ec2eac4b6db7a2d6c1d99a63/seed-meteor-showers.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
+        const gistUrl = "https://gist.githubusercontent.com/batcsg1/5471b9eaef8fffff796346f7e29bb7dc/raw/1825725fa74c6b4157195bae94fdc6fa2ed0ae83/seed-meteor-showers.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
         const response = await fetch(gistUrl);
         const showerData = await response.json();
 
