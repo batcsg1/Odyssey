@@ -2,7 +2,7 @@ import { SatelliteType } from "@prisma/client";
 import Joi from "joi";
 
 const satelliteSchema = Joi.object({
-  name: Joi.string().min(3).max(100).required().messages({
+  name: Joi.string().min(2).max(100).required().messages({
     "string.base": "Name should be a string",
     "string.empty": "Name cannot be empty",
     "string.min": "Name should have a minimum length of {#limit}",
@@ -15,7 +15,7 @@ const satelliteSchema = Joi.object({
     "number.max": "Age should be lesser than or equal to {#limit} years",
     "any.required": "Age is required"
   }),
-  mass: Joi.number().unsafe().min(1.26).max(1.35e23).required().messages({
+  mass: Joi.number().min(1.26).max(1.5e23).required().messages({
     "number.base": "Mass should be a number",
     "number.min": "Mass should be greater than or equal to {#limit} kgs",
     "number.max": "Mass should be lesser than or equal to {#limit} kgs",
