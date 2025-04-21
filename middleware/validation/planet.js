@@ -49,14 +49,16 @@ const planetSchema = Joi.object({
     "number.max": "Year should be lesser than or equal to {#limit} Years",
     "any.required": "Year is required"
   }),
-  perigee: Joi.number().unsafe().min(1.9e10).required().messages({
+  perigee: Joi.number().min(0.1).max(140).required().messages({
     "number.base": "Perigee should be a number",
-    "number.min": "Perigee should be greater than or equal to {#limit} kms",
+    "number.min": "Perigee should be greater than or equal to {#limit} AU",
+    "number.max": "Perigee should be lesser than or equal to {#limit} AU",
     "any.required": "Perigee is required"
   }),
-  apogee: Joi.number().unsafe().min(1.9e10).required().messages({
+  apogee: Joi.number().min(0.1).max(140).required().messages({
     "number.base": "Apogee should be a number",
-    "number.min": "Apogee should be greater than or equal to {#limit} kms",
+    "number.min": "Apogee should be greater than or equal to {#limit} AU",
+    "number.max": "Perigee should be lesser than or equal to {#limit} AU",
     "any.required": "Apogee is required"
   }),
   tilt: Joi.number().min(0).max(360).optional().messages({
