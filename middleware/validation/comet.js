@@ -22,7 +22,7 @@ const cometSchema = Joi.object({
     "number.max": "Diameter should be lesser than or equal to {#limit} kms",
     "any.required": "Diameter is required"
   }),
-  density: Joi.number().min(0.1).max(0.5).required().messages({
+  density: Joi.number().min(0.1).max(0.8).required().messages({
     "number.base": "Density should be a number",
     "number.min": "Density should be greater than or equal to {#limit} kg/m3",
     "number.max": "Density should be lesser than or equal to {#limit} kg/m3",
