@@ -34,7 +34,7 @@ const cometSchema = Joi.object({
     "any.only": `Type must be one of the following: ${Object.values(CometType)}`,
     "any.required": "Type is required"
   }),
-  year: Joi.number().min(0).max(10000).required().messages({
+  year: Joi.number().min(0).max(20000).required().messages({
     "number.base": "Year should be a number",
     "number.min": "Year should be greater than or equal to {#limit} years",
     "number.max": "Year should be lesser than or equal to {#limit} Years",
