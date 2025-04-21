@@ -83,9 +83,10 @@ const planetSchema = Joi.object({
     "number.min": "Gravity should be greater than or equal to {#limit} m/s",
     "number.max": "Gravity should be lesser than or equal to {#limit} m/s"
   }),
-  day: Joi.number().min(0).unsafe().required().messages({
+  day: Joi.number().min(0).max(250).required().messages({
     "number.base": "Day should be a number",
     "number.min": "Day should be greater than or equal to {#limit} days",
+    "number.max": "Day should be lesser than or equal to {#limit} days",
     "any.required": "Day is required"
   }),
   brightness: Joi.number().min(-32).max(32).required().messages({
