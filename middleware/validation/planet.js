@@ -49,12 +49,12 @@ const planetSchema = Joi.object({
     "number.max": "Year should be lesser than or equal to {#limit} Years",
     "any.required": "Year is required"
   }),
-  perigee: Joi.number().unsafe().min(3.5e6).required().messages({
+  perigee: Joi.number().unsafe().min(1.9e10).required().messages({
     "number.base": "Perigee should be a number",
     "number.min": "Perigee should be greater than or equal to {#limit} kms",
     "any.required": "Perigee is required"
   }),
-  apogee: Joi.number().unsafe().min(3.5e6).required().messages({
+  apogee: Joi.number().unsafe().min(1.9e10).required().messages({
     "number.base": "Apogee should be a number",
     "number.min": "Apogee should be greater than or equal to {#limit} kms",
     "any.required": "Apogee is required"
@@ -68,14 +68,14 @@ const planetSchema = Joi.object({
     "boolean.base": "The 'hasSatellites' field should be a boolean",
     "any.required": "The 'hasSatellites' field is required"
   }),
-  minTemp: Joi.number().unsafe().max(4.4e23).optional().messages({
+  minTemp: Joi.number().max(800).optional().messages({
     "number.base": "Minimum temperature should be a number",
-    "number.max": "Minimum temperature should be lesser than or equal to {#limit}°C",
+    "number.max": "Minimum temperature should be lesser than or equal to {#limit}°K",
     "any.required": "Minimum temperature is required"
   }),
-  maxTemp: Joi.number().unsafe().max(4.4e23).optional().messages({
+  maxTemp: Joi.number().max(800).optional().messages({
     "number.base": "Maximum temperature should be a number",
-    "number.max": "Maximum temperature should be lesser than or equal to {#limit}°C",
+    "number.max": "Maximum temperature should be lesser than or equal to {#limit}°K",
     "any.required": "Maximum temperature is required"
   }),
   gravity: Joi.number().min(0).max(530).optional().messages({
