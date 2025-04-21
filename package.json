@@ -144,7 +144,8 @@
     "prisma:seed-satellites": "node ./prisma/seeding/github-gist/seed-satellites-github.js",
     "prisma:seed-comets": "node ./prisma/seeding/github-gist/seed-comets-github.js",
     "prisma:seed-asteroids": "node ./prisma/seeding/github-gist/seed-asteroids-github.js",
-    "prisma:seed-meteorites": "node ./prisma/seeding/github-gist/seed-meteorites-github.js"
+    "prisma:seed-meteorites": "node ./prisma/seeding/github-gist/seed-meteorites-github.js",
+    "prisma:seed-showers": "node ./prisma/seeding/github-gist/seed-meteor-showers-github.js"
   },
   "type": "module",
   "keywords": [],
