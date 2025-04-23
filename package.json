@@ -26,6 +26,7 @@
     "content-type": "^1.0.5",
     "cookie": "^0.7.1",
     "cookie-signature": "^1.0.6",
+    "csv-to-js-parser": "^2.3.7",
     "debug": "^2.6.9",
     "depd": "^2.0.0",
     "destroy": "^1.2.0",
