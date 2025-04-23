@@ -26,8 +26,6 @@
     "content-type": "^1.0.5",
     "cookie": "^0.7.1",
     "cookie-signature": "^1.0.6",
-    "csv-file-to-json": "^4.0.5",
-    "csvtojson": "^2.0.10",
     "debug": "^2.6.9",
     "depd": "^2.0.0",
     "destroy": "^1.2.0",
