@@ -1,15 +1,16 @@
-const csvFilePath = '<path to csv file>'
-import csv from 'csvtojson';
+import fs from 'node:fs';
+import { csvToObj } from 'csv-to-js-parser'
 
-try {
-    csv()
-        .fromFile(csvFilePath)
-        .then((jsonObj) => {
-            console.log(jsonObj);
-        })
-    // Async / await usage
-    const jsonArray = await csv().fromFile(csvFilePath);
-    
-} catch (error) {
+const file = fs.readFileSync('prisma/seeding/seeding-files/normal.csv', 'utf8');
+console.log(file)
 
-}
+let obj = JSON.stringify(csvToObj(file, ';'), null, 2);
+console.log(obj)
+
+
+
+
+
+
+
+
