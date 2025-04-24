@@ -21,11 +21,7 @@
  *           example: "john.doe@example.com"
  *         password:
  *           type: string
- *           example: "password123"
- *         homePlanet:
- *           type: string
- *           format: uuid
- *           example: "123e4567-e89b-12d3-a456-426614174000"
+ *           example: "password123"        
  *         loginAttempts:
  *           type: integer
  *           example: 3
@@ -33,6 +29,13 @@
  *           type: string
  *           format: date-time
  *           example: "2024-07-14T12:34:56Z"
+ *         role:
+ *           type: string
+ *           example: "NORMAL"
+ *         homePlanet:
+ *           type: string
+ *           format: uuid
+ *           example: "123e4567-e89b-12d3-a456-426614174000"
  *         createdAt:
  *           type: string
  *           format: date-time
