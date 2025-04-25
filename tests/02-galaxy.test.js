@@ -8,13 +8,23 @@ const chai = chaiModule.use(chaiHttp);
 
 import { GalaxyType } from "@prisma/client";
 
-import { anotherConstellationId } from "./01-constellation.test.js";
+let constellationId;
 
 let galaxyId;
 export let anotherGalaxyId; // Exported for use in other test files
 
-console.log(anotherConstellationId)
 describe("Galaxies", () => {
+  before(async () => {
+    const res = await chai.request(app).post("/api/v1/constellations").send({
+      name: "Canis Majora",
+      shape: "Bull",
+      area: 237.4,
+      abbreviation: "CMa"
+    });
+
+    constellationId = res.body.data[0].id;
+  });
+
   it("should reject non-string name", async () => {
     const res = await chai
       .request(app)
@@ -25,7 +35,7 @@ describe("Galaxies", () => {
         distance: 800,
         size: 450,
         brightness: 20,
-        constellationId: anotherConstellationId
+        constellationId
       });
 
     chai.expect(res.body.message).to.be.equal("Name should be a string");
@@ -38,7 +48,7 @@ describe("Galaxies", () => {
         distance: 800,
         size: 450,
         brightness: 20,
-        constellationId: anotherConstellationId
+        constellationId
     });
 
     chai
@@ -54,7 +64,7 @@ describe("Galaxies", () => {
         distance: 1e8,
         size: 20000,
         brightness: 5,
-        constellationId: anotherConstellationId
+        constellationId
     });
 
     chai
@@ -99,7 +109,7 @@ describe("Galaxies", () => {
         distance: "Distance",
         size: 450,
         brightness: 20,
-        constellationId: anotherConstellationId
+        constellationId
       });
 
     chai.expect(res.body.message).to.be.equal("Distance should be a number");
@@ -115,7 +125,7 @@ describe("Galaxies", () => {
         distance: 800,
         size: 450,
         brightness: 20,
-        constellationId: anotherConstellationId
+        constellationId
       });
 
     chai.expect(res.body.message).to.be.equal(`Type must be one of the following: ${Object.values(GalaxyType)}`);
@@ -131,7 +141,7 @@ describe("Galaxies", () => {
         distance: 800,
         size: 450,
         brightness: 20,
-        constellationId: anotherConstellationId
+        constellationId
       });
 
     chai
