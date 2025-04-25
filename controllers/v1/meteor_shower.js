@@ -19,8 +19,6 @@ const selectObject = {
   velocity: true,
   perHour: true,
   peakDate: true,
-  cometId: true,
-  asteroidId: true,
   constellationId: true,
   createdAt: true,
   updatedAt: true
