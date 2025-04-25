@@ -175,7 +175,7 @@ model Asteroid {
   brightness    Float
   starId        String
   star          Star           @relation(fields: [starId], references: [id])
-  meteorShowers MeteorShower[]
+  meteorShowers MeteorShower[] 
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
 }
@@ -225,7 +225,7 @@ enum CometType {
 }
 
 model MeteorShower {
-  id              String         @id @default(uuid())
+  id              String        @id @default(uuid())
   name            String
   previousYear    Int
   nextYear        Int
@@ -236,14 +236,12 @@ model MeteorShower {
   velocity        Float?
   perHour         Int?
   peakDate        DateTime?
-  cometId         String?
-  comet           Comet?         @relation(fields: [cometId], references: [id])
-  asteroidId      String?
-  asteroid        Asteroid?      @relation(fields: [asteroidId], references: [id])
   constellationId String
   constellation   Constellation @relation(fields: [constellationId], references: [id])
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
+  comets          Comet[]     
+  asteroids       Asteroid[]    
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
 }
 
 model User {
@@ -255,7 +253,7 @@ model User {
   loginAttempts    Int       @default(0)
   lastLoginAttempt DateTime?
   role             Role      @default(NORMAL)
-  homePlanet       String    
+  homePlanet       String
   planet           Planet    @relation(fields: [homePlanet], references: [id])
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @default(now())
