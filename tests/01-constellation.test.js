@@ -7,7 +7,7 @@ import app from "../app.js";
 const chai = chaiModule.use(chaiHttp);
 
 let constellationId;
-export let anotherConstellationId; // Exported for use in other test files
+let anotherConstellationId; // Exported for use in other test files
 
 describe("Constellations", () => {
   it("should reject non-string name", async () => {
@@ -49,7 +49,7 @@ describe("Constellations", () => {
     chai
       .expect(res.body.message)
       .to.be.equal("Constellation successfully created");
-    anotherConstellationId = res.body.data[0].id;
+      anotherConstellationId = res.body.data[0].id;
   });
 
   it("should retrieve all constellations", async () => {

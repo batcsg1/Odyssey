@@ -11,7 +11,7 @@ import { GalaxyType } from "@prisma/client";
 let constellationId;
 
 let galaxyId;
-export let anotherGalaxyId; // Exported for use in other test files
+let anotherGalaxyId; // Exported for use in other test files
 
 describe("Galaxies", () => {
   before(async () => {
@@ -70,7 +70,7 @@ describe("Galaxies", () => {
     chai
       .expect(res.body.message)
       .to.be.equal("Galaxy successfully created");
-    anotherGalaxyId = res.body.data[0].id;
+      anotherGalaxyId = res.body.data[0].id;
   });
 
   it("should retrieve all galaxies", async () => {
