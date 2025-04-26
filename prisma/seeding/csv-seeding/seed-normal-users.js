@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { csvToObj } from 'csv-to-js-parser'
 
-import fetch from "node-fetch";
+import bcryptjs from "bcryptjs";
 
 import prisma from "../../client.js";
 
@@ -10,25 +10,17 @@ const file = fs.readFileSync('prisma/seeding/seeding-files/normal.csv', 'utf8');
 const seedNormalUsers = async () => {
     try {
         const userData = csvToObj(file, ';'); // Convert the array of objects into JSON format
-        
-        //Find a star by name
-        const getPlanetIdByName = async (name) => {
-            const result = await prisma.planet.findFirst({
-                where: { name },
-                select: { id: true }
-            });
-            return result?.id || null;
-        };
-        
-        const earthId = await getPlanetIdByName("Earth");
-
+    
         const data = await Promise.all(
             userData.map(async (user) => {
+                const salt = await bcryptjs.genSalt();
+                const hashedPassword = await bcryptjs.hash(user.password, salt);
+        
                 return { 
                     ...user,
-                    homePlanet: earthId,
-                    loginAttempts: parseInt(user.loginAttempts), // Ensure this is a number
-                 };
+                    password: hashedPassword,  // <-- replace plain password with hashed
+                    loginAttempts: parseInt(user.loginAttempts), 
+                };
             })
         );
 
