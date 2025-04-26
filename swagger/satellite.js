@@ -30,7 +30,7 @@
  *           example: 3.34
  *         type:
  *           type: string
- *           example: "Natural"
+ *           example: "MOON"
  *         atmosphere:
  *           type: boolean
  *           example: true
@@ -72,7 +72,7 @@
  *           example: -26.74
  *         location:
  *           type: string
- *           example: "Earth Orbit"
+ *           example: "OUTER_SOLAR_SYSTEM"
  *         habitable:
  *           type: boolean
  *           example: false
