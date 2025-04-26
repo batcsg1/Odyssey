@@ -113,6 +113,14 @@ const planetSchema = Joi.object({
     "string.empty": "Star ID cannot be empty",
     "any.required": "Star ID is required"
   }),
+  users: Joi.array().items(
+    Joi.string().uuid().messages({
+      "string.base": "Each User ID should be a string",
+      "string.guid": "Each User ID should be a valid UUID",
+    })
+  ).optional().messages({
+    "array.base": "Users should be an array of valid UUIDs",
+  }),
 });
 
 const validateSchema = (schema, isRequired = false) => {
