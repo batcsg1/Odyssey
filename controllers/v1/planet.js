@@ -29,7 +29,14 @@ const selectObject = {
   location: true,
   habitable: true,
   starId: true,
-  users: true,
+  users: {
+    select: {
+      id: true,
+      firstName: true,
+      lastName: true,
+      emailAddress: true,
+    }
+  },
   createdAt: true,
   updatedAt: true
 };
