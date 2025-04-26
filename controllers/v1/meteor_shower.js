@@ -19,6 +19,7 @@ const selectObject = {
   velocity: true,
   perHour: true,
   peakDate: true,
+  comets: true,
   constellationId: true,
   createdAt: true,
   updatedAt: true
@@ -26,8 +27,11 @@ const selectObject = {
 
 const createMeteorShower = async (req, res) => {
   try {
-    // Check if constellationID is provided
-    const constellationId = req.body.constellationId;
+    const {
+      constellationId,
+      comets = [],  // Using comets from the request body
+      asteroids = [],  // Using asteroids from the request body
+    } = req.body;
 
     // Check if constellation exists
     const constellation = await new Repository("Constellation").findById(constellationId);
@@ -35,15 +39,32 @@ const createMeteorShower = async (req, res) => {
       return res.status(404).json({ message: `The constellation with id ${constellationId} was not found` });
     }
 
-    const asteroidId = req.body.asteroidId;
-
-    // Check if asteroid exists
-    const asteroid = await new Repository("Asteroid").findById(asteroidId);
-    if (!asteroid) {
-      return res.status(404).json({ message: `Asteroid with id ${asteroidId} not found` });
+    // Validate each cometId (if comets are provided)
+    if (comets.length > 0) {
+      for (const id of comets) {
+        const comet = await new Repository("Comet").findById(id);
+        if (!comet) {
+          return res.status(404).json({ message: `Comet with id ${id} was not found` });
+        }
+      }
     }
 
-    const newMeteorShower = await meteorShowerRepository.create(req.body);
+    // Validate each asteroidId (if asteroids are provided)
+    if (asteroids.length > 0) {
+      for (const id of asteroids) {
+        const asteroid = await new Repository("Asteroid").findById(id);
+        if (!asteroid) {
+          return res.status(404).json({ message: `Asteroid with id ${id} was not found` });
+        }
+      }
+    }
+
+    const newMeteorShower = await meteorShowerRepository.create({
+      ...req.body,
+      comets: comets.length > 0 ? { connect: comets.map(id => ({ id })) } : undefined,
+      asteroids: asteroids.length > 0 ? { connect: asteroids.map(id => ({ id })) } : undefined,
+    });
+    
     return res.status(201).json({
       message: "Meteor shower successfully created",
       data: newMeteorShower,
