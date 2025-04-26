@@ -11,7 +11,7 @@
  *           example: "123e4567-e89b-12d3-a456-426614174000"
  *         name:
  *           type: string
- *           example: "SHORT_PERIOD"
+ *           example: "Halley's Comet"
  *         mass:
  *           type: number
  *           format: float
@@ -26,10 +26,9 @@
  *           example: 0.6
  *         type:
  *           type: string
- *           example: "Periodic"
+ *           example: "SHORT_PERIOD"
  *         year:
  *           type: number
- *           format: float
  *           example: 1986
  *         perigee:
  *           type: number
@@ -45,7 +44,7 @@
  *           example: -26.74
  *         location:
  *           type: string
- *           example: "Solar System"
+ *           example: "OORT_CLOUD"
  *         starId:
  *           type: string
  *           format: uuid
