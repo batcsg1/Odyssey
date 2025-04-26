@@ -25,7 +25,7 @@ const seedMeteorShowersFromGitHub = async () => {
         const response = await fetch(gistUrl);
         const showerData = await response.json();
 
-        //Find a comet by name
+        // Find a comet by name
         const getCometIdByName = async (name) => {
             const result = await prisma.comet.findFirst({
                 where: { name },
@@ -33,7 +33,8 @@ const seedMeteorShowersFromGitHub = async () => {
             });
             return result?.id || null;
         };
-        //Find a constellation by name
+
+        // Find a constellation by name
         const getConstellationIdByName = async (name) => {
             const result = await prisma.constellation.findFirst({
                 where: { name },
@@ -42,35 +43,66 @@ const seedMeteorShowersFromGitHub = async () => {
             return result?.id || null;
         };
 
-        // Example patch logic
-        // Patch logic
-        showerData[0].cometId = await getCometIdByName("Halley's Comet");
+        showerData[0].comets = [];
+        showerData[0].comets.push("Halley's Comet");
         showerData[0].constellationId = await getConstellationIdByName("Orion");
 
+        //showerData[1].comets = []; // Add if needed
         showerData[1].constellationId = await getConstellationIdByName("Leo");
 
+        //showerData[2].comets = []; // Add if needed
         showerData[2].constellationId = await getConstellationIdByName("Draco");
 
-        showerData[3].cometId = await getCometIdByName("Encke's Comet");
+        showerData[3].comets = [];
+        showerData[3].comets.push("Encke's Comet");
         showerData[3].constellationId = await getConstellationIdByName("Taurus");
 
-        showerData[4].cometId = await getCometIdByName("Halley's Comet");
+        showerData[4].comets = [];
+        showerData[4].comets.push("Halley's Comet");
         showerData[4].constellationId = await getConstellationIdByName("Aquarius");
 
 
-   
-
         const data = await Promise.all(
             showerData.map(async (shower) => {
-                validateMeteorShower(shower);
-                return { ...shower };
+                // Ensure comet names are provided
+                const cometNames = shower.comets || [];
+
+                // Resolve names to comet UUIDs
+                const cometIds = await Promise.all(
+                    cometNames.map(async (cometName) => {
+                        const cometId = await getCometIdByName(cometName);
+                        return cometId; // Return just the UUID (string), for validation
+                    })
+                );
+
+                // Add UUIDs directly to shower for validation
+                const showerForValidation = {
+                    ...shower,
+                    comets: cometIds,
+                };
+
+                // Validate with UUIDs
+                validateMeteorShower(showerForValidation);
+
+                // Prepare for Prisma
+                const meteorShowerData = {
+                    ...shower,
+                    comets: cometIds.length > 0
+                        ? { connect: cometIds.map(id => ({ id })) }
+                        : undefined,
+                };
+
+                return meteorShowerData;
             })
         );
 
-        await prisma.meteorShower.createMany({
-            data: data,
-            skipDuplicates: true,
-        });
+        console.log(data)
+
+        for (const shower of data) {
+            await prisma.meteorShower.create({
+                data: shower
+            });
+        }
 
         console.log("Meteor showers successfully seeded from GitHub Gist");
     } catch (err) {
