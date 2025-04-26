@@ -27,12 +27,6 @@
  *         location:
  *           type: string
  *           example: "Namibia"
- *         latitude:
- *           type: number
- *           example: -22.5856
- *         longitude:
- *           type: number
- *           example: 17.0817
  *         planetId:
  *           type: string
  *           format: uuid
