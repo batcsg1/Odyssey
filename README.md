@@ -4,13 +4,13 @@
 ### Author: <a href="https://github.com/batcsg1" alt="My GitHub account">Samuel Batchelor</a>
 REST API Project for the Introductory Application Development paper of the Otago Polytechnic's Bachelor of Information Technology
 
-## Production REST API on Render
+## Production REST API on Render 🌐
 
 https://celestidb-api.onrender.com
 
-## How to setup Development environment
+## How to setup Development environment </>
 
-### 1. Setup - Docker
+### 1. Setup - Docker 🐳
 
 Create a new PostgreSQL database container on Docker (if you haven't already) by running the command below in a terminal:
 ```
@@ -18,7 +18,7 @@ docker run --name celestial-db-postgres -e POSTGRES_PASSWORD=P@ssw0rd -p 5445:54
 ```
 ---
 
-### 2. .env File
+### 2. .env File 🌱
 In your `.env` file add these lines:
 
 ```
@@ -31,14 +31,14 @@ JWT_LIFETIME=1hr
 
 ---
 
-### 3. Migrate Schema to Database
+### 3. Migrate Schema to Database 🛢️
 Run `npm run prisma:migrate` to **migrate** the **schema** located in the `./prisma/schema.prisma` file to your **PostgreSQL** database.
 
 > Note: this will ensure your **schema** is in sync with your **database**
 
 ---
 
-### 4. Run Development Mode
+### 4. Run Development Mode </>
 
 Run `npm run dev` to start the server in development mode.
 
@@ -58,9 +58,9 @@ Server is listening on port 3000. Visit http://localhost:3000/api/v1
 
 ---
 
-## How to setup Testing environment
+## How to setup Testing environment 🧪
 
-### 1. Setup - Docker
+### 1. Setup - Docker 🐳
 
 Create a new PostgreSQL database container on Docker (if you haven't already) by running the command below in a terminal:
 ```
@@ -69,7 +69,7 @@ docker run --name celestial-db-postgres-test -e POSTGRES_PASSWORD=P@ssw0rd -p 54
 > Note: Change the local port **5445**:5432 to **5446** to distinguish the testing container from the development container.
 ---
 
-### 2. .env File
+### 2. .env File 🌱
 In your `.env` file add these lines:
 
 ```
@@ -82,12 +82,12 @@ JWT_LIFETIME=1hr
 
 ---
 
-### 3. Migrate Schema to Database
+### 3. Migrate Schema to Database 🛢️
 Run `npm run prisma:migrate` to **migrate** the **schema** located in the `./prisma/schema.prisma` file to your **PostgreSQL** database.
 
 > Note: this will ensure your **schema** is in sync with your **database**
 
-### Optional. Use Docker Compose to create development and testing environments
+### Optional. Use Docker Compose to create development and testing environments 🐳
 
 Once you have cloned the repo to your local machine run the following command on the root directory:
 ```bash
@@ -101,7 +101,7 @@ This will tell the `docker-compose.yml` file to create the **development** and *
 
 ---
 
-## How to seed the PostgreSQL
+## How to seed the PostgreSQL 🫘
 
 Seeding the database will populate it with data. The data will come from seeding scripts located in the `./prisma/seeding` directory of the repository.
 
@@ -112,7 +112,7 @@ There will be seeding files for each database model. Methods for seeding a datab
 
 To seed the database with a data for a particular model run e.g: `npm run prisma:seed-constellations`
 
-## How to run API tests?
+## How to run API tests? 🧪
 Run `npm run test` to run tests as specified in the testing files within the `tests` directory
 
 The script will reset the database and allow a testing framework called Mocha to run the tests.
@@ -139,7 +139,7 @@ Constellations
 
 ---
 
-## How to run Prisma Studio
+## How to run Prisma Studio 💻
 To run **Prisma Studio**, run the following command in a terminal: `npm run prisma:studio`
 
 You should see the following output in your terminal:
@@ -151,13 +151,14 @@ Prisma Studio is up on http://localhost:5555
 
 ---
 
-## Entity Relationship Diagram
+## Entity Relationship Diagram 🛢️
 
 ![image](./prisma/ERD.svg)
 
-## Video demonstrating functionality of REST API and tests
+## Video demonstrating functionality of REST API and tests 📹
 TBD
-## AI Documentation
+
+## AI Documentation 🤖
 ### ChatGPT:
 
 **Implementing many-to-many relationship for Comets, Asteroids and Meteor Shower models:**
