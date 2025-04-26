@@ -11,7 +11,7 @@
  *           example: "123e4567-e89b-12d3-a456-426614174000"
  *         name:
  *           type: string
- *           example: Orion
+ *           example: "Orion"
  *         shape:
  *           type: string
  *           example: "Hunter"
@@ -21,7 +21,7 @@
  *           example: 594.0
  *         abbreviation:
  *           type: string
- *           example: Ori
+ *           example: "Ori"
  *   securitySchemes:
  *     BearerAuth:
  *       type: http
