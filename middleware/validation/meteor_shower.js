@@ -57,13 +57,21 @@ const meteorShowerSchema = Joi.object({
   peakDate: Joi.date().optional().messages({
     "date.base": "The peak date should be a valid date"
   }),
-  comets: Joi.array().items(Joi.string().uuid()).optional().messages({
-    "array.base": "Comet IDs should be an array of valid UUIDs",
-    "string.guid": "Each Comet ID should be a valid UUID"
+  comets: Joi.array().items(
+    Joi.string().uuid().messages({
+      "string.base": "Each Comet ID should be a string",
+      "string.guid": "Each Comet ID should be a valid UUID",
+    })
+  ).optional().messages({
+    "array.base": "Comets should be an array of valid UUIDs",
   }),
-  asteroids: Joi.array().items(Joi.string().uuid()).optional().messages({
-    "array.base": "Asteroid IDs should be an array of valid UUIDs",
-    "string.guid": "Each Asteroid ID should be a valid UUID"
+  asteroids: Joi.array().items(
+    Joi.string().uuid().messages({
+      "string.base": "Each Asteroid ID should be a string",
+      "string.guid": "Each Asteroid ID should be a valid UUID",
+    })
+  ).optional().messages({
+    "array.base": "Asteroids should be an array of valid UUIDs",
   }),
   constellationId: Joi.string().uuid().required().messages({
     "string.base": "Constellation ID should be a string",
