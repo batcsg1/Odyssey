@@ -158,10 +158,10 @@ TBD
 ## AI Documentation
 ### ChatGPT:
 
-**Implementing many-to-many relationship for Comets, Asteroids and Meteor Shower models**
+**Implementing many-to-many relationship for Comets, Asteroids and Meteor Shower models:**
 [Issue #7](https://github.com/otago-polytechnic-bit-courses/id607001-s1-25-batcsg1/issues/7)
 
-**Solution to add foreign key IDs to model seeding files**
+**Solution to add foreign key IDs to model seeding files:**
 [Issue #70](https://github.com/otago-polytechnic-bit-courses/id607001-s1-25-batcsg1/issues/70)
 
 **Explanation for why non-numerical field rejection tests failed:**
