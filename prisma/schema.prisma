@@ -253,8 +253,8 @@ model User {
   loginAttempts    Int       @default(0)
   lastLoginAttempt DateTime?
   role             Role      @default(NORMAL)
-  homePlanet       String
-  planet           Planet    @relation(fields: [homePlanet], references: [id])
+  homePlanet       String?
+  planet           Planet?   @relation(fields: [homePlanet], references: [id])
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @default(now())
 }
