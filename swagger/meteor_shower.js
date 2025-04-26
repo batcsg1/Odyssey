@@ -43,14 +43,14 @@
  *           type: string
  *           format: date
  *           example: "2025-08-13"
- *         cometId:
+ *         comets:
  *           type: string
- *           format: uuid
- *           example: "123e4567-e89b-12d3-a456-426614174001"
- *         asteroidId:
+ *           format: array
+ *           example [ "123e4567-e89b-12d3-a456-426614174003" ]
+ *         asteroids:
  *           type: string
- *           format: uuid
- *           example: "123e4567-e89b-12d3-a456-426614174002"
+ *           format: array
+ *           example [ "123e8011-e89b-12d3-a981-426614174003" ]
  *         constellationId:
  *           type: string
  *           format: uuid
