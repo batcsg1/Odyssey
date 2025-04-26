@@ -41,11 +41,11 @@
  *         perigee:
  *           type: number
  *           format: float
- *           example: 147.1e6
+ *           example: 3
  *         apogee:
  *           type: number
  *           format: float
- *           example: 152.1e6
+ *           example: 6
  *         tilt:
  *           type: number
  *           format: float
@@ -75,7 +75,7 @@
  *           example: -26.74
  *         location:
  *           type: string
- *           example: "Solar System"
+ *           example: "INNER_SOLAR_SYSTEM"
  *         habitable:
  *           type: boolean
  *           example: true
@@ -83,6 +83,10 @@
  *           type: string
  *           format: uuid
  *           example: "123e4567-e89b-12d3-a456-426614174000"
+ *         users:
+ *           type: string
+ *           format: array
+ *           example: ["123e4567-e89b-12d3-a456-426614174000"]
  */
 
 /**
