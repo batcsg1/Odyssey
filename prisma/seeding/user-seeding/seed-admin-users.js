@@ -29,7 +29,7 @@ const seedAdminUsers = async () => {
             skipDuplicates: true,
         });
 
-        console.log("Admin Users successfully seeded from CSV file");
+        console.log("Admin Users successfully seeded from JSON file");
     } catch (err) {
         console.log("Seeding failed:", err.message);
     }
