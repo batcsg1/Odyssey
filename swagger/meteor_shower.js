@@ -46,11 +46,11 @@
  *         comets:
  *           type: string
  *           format: array
- *           example [ "123e4567-e89b-12d3-a456-426614174003" ]
+ *           example: [ "123e4567-e89b-12d3-a456-426614174003" ]
  *         asteroids:
  *           type: string
  *           format: array
- *           example [ "123e8011-e89b-12d3-a981-426614174003" ]
+ *           example: [ "123e8011-e89b-12d3-a981-426614174003" ]
  *         constellationId:
  *           type: string
  *           format: uuid
