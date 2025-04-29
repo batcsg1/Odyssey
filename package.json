@@ -149,7 +149,8 @@
     "prisma:seed-asteroids": "node ./prisma/seeding/github-gist/seed-asteroids-github.js",
     "prisma:seed-meteorites": "node ./prisma/seeding/github-gist/seed-meteorites-github.js",
     "prisma:seed-showers": "node ./prisma/seeding/github-gist/seed-meteor-showers-github.js",
-    "prisma:seed-normal": "node ./prisma/seeding/user-seeding/seed-normal-users.js"
+    "prisma:seed-normal": "node ./prisma/seeding/user-seeding/seed-normal-users.js",
+    "prisma:seed-admin": "node ./prisma/seeding/user-seeding/seed-admin-users.js"
   },
   "type": "module",
   "keywords": [],
