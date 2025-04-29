@@ -7,6 +7,7 @@ import express from "express";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 
 //Importing routes
 import indexRoutes from "./routes/v1/index.js";
@@ -57,6 +58,15 @@ app.use(express.json());
 app.use(
   helmet({
     xPoweredBy: true,
+  })
+);
+
+// This should be declared under - app.use( helmet({ xPoweredBy: true, }));
+app.use(
+  rateLimit({
+    windowMs: 120, // 1 minutes
+    max: 20, // limit each IP to 100 requests per windowMs
+    message: "You have exceeded the number of requests: 20. Please try again in 120 seconds."
   })
 );
 
