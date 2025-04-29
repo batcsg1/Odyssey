@@ -6,6 +6,7 @@
 import express from "express";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
+import helmet from "helmet";
 
 //Importing routes
 import indexRoutes from "./routes/v1/index.js";
@@ -52,6 +53,12 @@ app.use(isContentTypeApplicationJSON);
 app.use(express.urlencoded({ extended: false })); 
 
 app.use(express.json()); 
+
+app.use(
+  helmet({
+    xPoweredBy: true,
+  })
+);
 
 // This should be declared under - const swaggerOptions = { ... };
 const swaggerOptions = {
