@@ -27,8 +27,6 @@
  *       type: http
  *       scheme: bearer
  *       bearerFormat: JWT
- *   security:
- *     - BearerAuth: []
  */
 
 /**
@@ -62,6 +60,8 @@
  *     summary: Get all constellations
  *     tags:
  *       - Constellation
+ *     security:
+ *       - BearerAuth: []
  *     responses:
  *       '200':
  *         description: Success
@@ -106,7 +106,8 @@
  *         name: id
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
+ *           format: uuid
  *     requestBody:
  *       required: true
  *       content:
@@ -134,7 +135,8 @@
  *         name: id
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
+ *           format: uuid
  *     responses:
  *       '200':
  *         description: Constellation successfully deleted
