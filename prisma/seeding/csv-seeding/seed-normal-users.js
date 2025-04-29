@@ -18,8 +18,7 @@ const seedNormalUsers = async () => {
         
                 return { 
                     ...user,
-                    password: hashedPassword,  // <-- replace plain password with hashed
-                    loginAttempts: parseInt(user.loginAttempts), 
+                    password: hashedPassword  // <-- replace plain password with hashed
                 };
             })
         );

@@ -1,6 +1,6 @@
-firstName;lastName;emailAddress;password;loginAttempts;role;homePlanet
-"Leia";"Organa";"leia.organa@alderaan.gov";"hope1977";3;"NORMAL";
-"James";"Kirk";"j.kirk@starfleet.com";"enterprise1701";3;"NORMAL";
-"Frodo";"Baggins";"frodo.b@shire.me";"ringbearer123";3;"NORMAL";
-"Ellen";"Ripley";"ellen.ripley@weyland.com";"n0aliens!";3;"NORMAL";
-"Samus";"Aran";"samus.aran@galacticfederation.org";"metroidZero";3;"NORMAL";
+firstName;lastName;emailAddress;password;role
+"Leia";"Organa";"leia.organa@alderaan.gov";"hope1977";"NORMAL"
+"James";"Kirk";"j.kirk@starfleet.com";"enterprise1701";"NORMAL"
+"Frodo";"Baggins";"frodo.b@shire.me";"ringbearer123";"NORMAL"
+"Ellen";"Ripley";"ellen.ripley@weyland.com";"n0aliens!";"NORMAL"
+"Samus";"Aran";"samus.aran@galacticfederation.org";"metroidZero";"NORMAL"
