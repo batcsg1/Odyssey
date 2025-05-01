@@ -43,8 +43,8 @@ const galaxySchema = Joi.object({
 const validateSchema = (schema, isRequired = false) => {
     return (req, res, next) => {
         const { error } = isRequired
-            ? schema.required().validate(req.body)
-            : schema.validate(req.body);
+            ? schema.required().validate(req.body, { convert: false })
+            : schema.validate(req.body, { convert: false });
 
         if (error) {
             return res.status(409).json({
