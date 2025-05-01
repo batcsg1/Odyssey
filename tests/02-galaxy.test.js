@@ -4,6 +4,7 @@ import { describe, it } from "mocha";
 
 import app from "../app.js";
 import prisma from "../prisma/client.js";
+import { GalaxyType } from "@prisma/client";
 
 const chai = chaiModule.use(chaiHttp);
 
@@ -67,6 +68,21 @@ describe("Galaxies", () => {
 
         chai.expect(res.body.message).to.be.equal("Name should be a string");
     });
+    
+    it("should reject invalid type", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/galaxies")
+            .send({
+                name: "Whitneia",
+                type: "INVALID",
+                distance: 2500000.0,
+                size: 125700.0,
+                brightness: 3.44
+            });
+
+        chai.expect(res.body.message).to.be.equal(`Type must be one of the following: ${Object.values(GalaxyType)}`);
+    });
 
     it("should reject non-numeric distance", async () => {
         const res = await chai
@@ -105,6 +121,14 @@ describe("Galaxies", () => {
             .get("/api/v1/galaxies?name=Andromeda Galaxy");
 
         chai.expect(res.body.data[0].name).to.be.equal("Andromeda Galaxy");
+    });
+
+    it("should filter galaxies by type", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/galaxies?type=BARRED_SPIRAL");
+
+        chai.expect(res.body.data[0].type).to.be.equal("BARRED_SPIRAL");
     });
 
     it("should sort galaxies by name", async () => {
