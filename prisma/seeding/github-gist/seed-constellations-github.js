@@ -21,6 +21,8 @@ const validateConstellation = (constellation) => {
 
 const seedConstellationsFromGitHub = async () => {
   try {
+    await prisma.constellation.deleteMany(); // Delete all constellations
+
     const gistUrl = "https://gist.githubusercontent.com/batcsg1/87bfa3747ec34860db6b36b8c2b3a3f1/raw/743c7b55d9956d215f3e3185fdbc03d7a5cfc44c/seed-constellations.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
     const response = await fetch(gistUrl);
     const constellationData = await response.json();

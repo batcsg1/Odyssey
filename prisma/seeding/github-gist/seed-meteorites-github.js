@@ -21,6 +21,8 @@ const validateMeteorite = (meteorite) => {
 
 const seedMeteoritesFromGitHub = async () => {
     try {
+        await prisma.meteorite.deleteMany(); // Delete all meteorites
+
         const gistUrl = "https://gist.githubusercontent.com/batcsg1/b9a5a9afe44d9f641020148950a8621f/raw/e7bfb0340d804deac38647b7adc8579936b4c682/seed-meteorites.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
         const response = await fetch(gistUrl);
         const meteoriteData = await response.json();

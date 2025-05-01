@@ -21,6 +21,8 @@ const validateAsteroid = (asteroid) => {
 
 const seedAsteroidsFromGitHub = async () => {
     try {
+        await prisma.asteroid.deleteMany(); // Delete all asteroids
+
         const gistUrl = "https://gist.githubusercontent.com/batcsg1/7baba6ac9c1b9ddf0e62f7d8a80ff358/raw/0002a79578cdb41daec85df2f1031c62f1311dba/seed-asteroids.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
         const response = await fetch(gistUrl);
         const asteroidData = await response.json();

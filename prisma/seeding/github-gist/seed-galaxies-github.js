@@ -21,6 +21,7 @@ const validateGalaxy = (galaxy) => {
 
 const seedGalaxiesFromGitHub = async () => {
     try {
+        await prisma.galaxy.deleteMany(); // Delete all galaxies
         const gistUrl = "https://gist.githubusercontent.com/batcsg1/37d70ebb9da5c7c7432e5b073af0870a/raw/3f7909540a54093ae63997d36ff7cc4c158833ba/seed-galaxies.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
         const response = await fetch(gistUrl);
         const galaxyData = await response.json();
