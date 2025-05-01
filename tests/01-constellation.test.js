@@ -129,13 +129,13 @@ describe("Constellations", () => {
             .put(`/api/v1/constellations/${constellationId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
-                name: "Prismaris",
-                shape: "Triangle",
-                area: "999",
-                abbreviation: "Pma"
+                name: "Canis Majora",
+                shape: "Bull",
+                area: "237.4",
+                abbreviation: "CMa"
             });
 
-        chai.expect(res.body.message).to.be.equal("area should be a number");
+        chai.expect(res.body.message).to.be.equal("Area should be a number");
     });
 
     it("should update a valid constellation", async () => {
