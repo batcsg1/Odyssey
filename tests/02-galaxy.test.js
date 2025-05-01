@@ -128,7 +128,7 @@ describe("Galaxies", () => {
         chai.expect(res.body.data[0].name).to.be.equal("Andromeda");
     });
 
-    it("should sort constellations by name", async () => {
+    it("should sort galaxies by name", async () => {
         const res = await chai.request(app).get("/api/v1/galaxies?sortBy=name");
 
         chai.expect(res.body.data[0].name).to.be.equal("Andromeda");
@@ -166,7 +166,7 @@ describe("Galaxies", () => {
         chai.expect(res.body.message).to.be.equal(`Type must be one of the following: ${Object.values(GalaxyType)}`);
     });
 
-    it("should update a valid constellation", async () => {
+    it("should update a valid galaxy", async () => {
         const res = await chai
             .request(app)
             .put(`/api/v1/galaxies/${galaxyId}`)
