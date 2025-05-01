@@ -12,6 +12,13 @@ https://celestidb-api.onrender.com
 
 ### 1. Setup - Docker 🐳
 
+If on Windows download [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+On Ubuntu/Debian
+```bash
+sudo apt install docker.io
+```
+
 Create a new PostgreSQL database container on Docker (if you haven't already) by running the command below in a terminal:
 ```
 docker run --name celestial-db-postgres -e POSTGRES_PASSWORD=P@ssw0rd -p 5445:5432 -d postgres
