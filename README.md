@@ -71,7 +71,7 @@ Server is listening on port 3000. Visit http://localhost:3000/api/v1
 
 Create a new PostgreSQL database container on Docker (if you haven't already) by running the command below in a terminal:
 ```
-docker run --name celestial-db-postgres-test -e POSTGRES_PASSWORD=P@ssw0rd -p 5445:5432 -d postgres
+docker run --name celestial-db-postgres-test -e POSTGRES_PASSWORD=P@ssw0rd -p 5446:5432 -d postgres
 ```
 > Note: Change the local port **5445**:5432 to **5446** to distinguish the testing container from the development container.
 ---
@@ -85,7 +85,7 @@ DATABASE_URL="postgresql://postgres:P@ssw0rd@localhost:5446/postgres"
 JWT_SECRET=HelloWorld123
 JWT_LIFETIME=1hr
 ```
-> Note: Once again change the port in the `DATABASE_URL` variable to **5433**
+> Note: Once again change the port in the `DATABASE_URL` variable to **5446**
 
 ---
 
