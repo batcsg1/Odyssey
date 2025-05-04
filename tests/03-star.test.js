@@ -14,7 +14,6 @@ let galaxyId;
 describe("Stars", () => {
     before(async () => {
         const galaxy = await prisma.galaxy.findFirst();
-
         galaxyId = galaxy.id;
     });
 
@@ -39,7 +38,7 @@ describe("Stars", () => {
         chai
             .expect(res.body.message)
             .to.be.equal("Star successfully created");
-        galaxyId = res.body.data[0].id;
+        starId = res.body.data[0].id;
     });
 
     it("should create another valid star", async () => {
@@ -128,7 +127,7 @@ describe("Stars", () => {
         chai.expect(res.body.message).to.be.equal("Distance should be a number");
     });
 
-    it("should retrieve all galaxies", async () => {
+    it("should retrieve all stars", async () => {
         const res = await chai
             .request(app)
             .get("/api/v1/stars");
@@ -136,81 +135,93 @@ describe("Stars", () => {
         chai.expect(res.body.data).to.be.an("array");
     });
 
-    it("should retrieve a galaxy by ID", async () => {
+    it("should retrieve a star by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/stars/${st}`);
+            .get(`/api/v1/stars/${starId}`);
 
-        chai.expect(res.body.data.name).to.be.equal("Andromeda Galaxy");
+        chai.expect(res.body.data.name).to.be.equal("Sirius");
     });
 
-    it("should filter galaxies by name", async () => {
+    it("should filter stars by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/stars?name=Andromeda Galaxy");
+            .get("/api/v1/stars?name=Sirius");
 
-        chai.expect(res.body.data[0].name).to.be.equal("Andromeda Galaxy");
+        chai.expect(res.body.data[0].name).to.be.equal("Sirius");
     });
 
-    it("should filter galaxies by type", async () => {
+    it("should filter stars by type", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/stars?type=BARRED_SPIRAL");
+            .get("/api/v1/stars?type=MAIN_SEQUENCE");
 
-        chai.expect(res.body.data[0].type).to.be.equal("BARRED_SPIRAL");
+        chai.expect(res.body.data[0].type).to.be.equal("MAIN_SEQUENCE");
     });
 
-    it("should sort galaxies by name", async () => {
+    it("should sort stars by name", async () => {
         const res = await chai
             .request(app)
             .get("/api/v1/stars?sortBy=name");
 
-        chai.expect(res.body.data[0].name).to.be.equal("Andromeda Galaxy");
+        chai.expect(res.body.data[0].name).to.be.equal("Sirius");
     });
 
-    it("should reject non-numeric size during update", async () => {
+    it("should reject non-numeric diameter during update", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/stars/${galaxyId}`)
+            .put(`/api/v1/stars/${starId}`)
             .send({
-                name: "Andromeda Galaxy",
-                type: "BARRED_SPIRAL",
-                distance: 2500000.0,
-                size: "125700.0", // invalid type
-                brightness: 3.44
+                name: "Betelgeuse",
+                age: 8.0e6,
+                mass: 20.0,
+                diameter: "887",
+                type: "RED_GIANT",
+                distance: 642.5,
+                temperature: 3500,
+                luminosity: 126000,
+                hasPlanets: false,
+                brightness: 0.42,
+                galaxyId
             });
 
-        chai.expect(res.body.message).to.be.equal("Size should be a number");
+        chai.expect(res.body.message).to.be.equal("Diameter should be a number");
     });
 
-    it("should update a valid galaxy", async () => {
+    it("should update a valid star", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/stars/${galaxyId}`)
+            .put(`/api/v1/stars/${starId}`)
             .send({
-                name: "Updated Andromeda Galaxy",
-                type: "BARRED_SPIRAL",
-                distance: 2700000.0,
-                size: 125700.0,
-                brightness: 3.44
+                name: "Updated Betelgeuse",
+                age: 8.0e6,
+                mass: 20.0,
+                diameter: 887,
+                type: "RED_GIANT",
+                distance: 642.5,
+                temperature: 3500,
+                luminosity: 126000,
+                hasPlanets: false,
+                brightness: 0.42,
+                galaxyId
             });
 
         chai
             .expect(res.body.message)
             .to.be.equal(
-                `Galaxy with the id: ${galaxyId} successfully updated`
+                `Star with the id: ${starId} successfully updated`
             );
     });
 
-    it("should delete a galaxy by ID", async () => {
+    it("should delete a star by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/stars/${galaxyId}`);
+            .delete(`/api/v1/stars/${starId}`);
 
         chai
             .expect(res.body.message)
             .to.be.equal(
-                `Galaxy with the id: ${galaxyId} successfully deleted`
+                `Star with the id: ${starId} successfully deleted`
             );
     });
 });
