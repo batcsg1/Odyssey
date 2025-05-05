@@ -63,11 +63,14 @@ const createPlanet = async (req, res) => {
         }
       }
     }
-
-    const newPlanets = await planetRepository.create({
+    
+    const newPlanet = await planetRepository.create({
       ...req.body,
       users: users.length > 0 ? { connect: users.map(id => ({ id })) } : undefined
     });
+
+    const newPlanets = await planetRepository.findAll(selectObject);
+
     return res.status(201).json({
       message: "Planet successfully created",
       data: newPlanets,
