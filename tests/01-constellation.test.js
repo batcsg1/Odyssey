@@ -37,6 +37,15 @@ describe("Constellations", () => {
         chai.expect(res).to.not.have.header('x-powered-by') // Expect non-default header
     });
 
+    it("should get all constellations", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/constellations")
+            .set("Authorization", `Bearer ${token}`);
+
+        chai.expect(res.body.data).to.be.an("array");
+    });
+
     it("should reject non-string name", async () => {
         const res = await chai
             .request(app)
