@@ -37,7 +37,7 @@ const createGalaxy = async (req, res) => {
 const getGalaxies = async (req, res) => {
   try {
     const galaxies = await galaxyRepository.findAll(selectObject);
-    if (!galaxies || galaxies.length === 0) {
+    if (!galaxies) {
       return res.status(404).json({ message: "No galaxies found" });
     }
     return res.status(200).json({
