@@ -85,7 +85,7 @@ const createPlanet = async (req, res) => {
 const getPlanets = async (req, res) => {
   try {
     const planets = await planetRepository.findAll(selectObject);
-    if (!planets || planets.length === 0) {
+    if (!planets) {
       return res.status(404).json({ message: "No planets found" });
     }
     return res.status(200).json({

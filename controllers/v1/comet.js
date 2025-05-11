@@ -51,7 +51,7 @@ const createComet = async (req, res) => {
 const getComets = async (req, res) => {
   try {
     const comets = await cometRepository.findAll(selectObject);
-    if (!comets || comets.length === 0) {
+    if (!comets) {
       return res.status(404).json({ message: "No comets found" });
     }
     return res.status(200).json({

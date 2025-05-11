@@ -52,7 +52,7 @@ const createStar = async (req, res) => {
 const getStars = async (req, res) => {
   try {
     const stars = await starRepository.findAll(selectObject);
-    if (!stars || stars.length === 0) {
+    if (!stars) {
       return res.status(404).json({ message: "No stars found" });
     }
     return res.status(200).json({

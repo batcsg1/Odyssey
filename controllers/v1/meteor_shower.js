@@ -77,7 +77,7 @@ const createMeteorShower = async (req, res) => {
 const getMeteorShowers = async (req, res) => {
   try {
     const meteorShowers = await meteorShowerRepository.findAll(selectObject);
-    if (!meteorShowers || meteorShowers.length === 0) {
+    if (!meteorShowers) {
       return res.status(404).json({ message: "No meteor showers found" });
     }
     return res.status(200).json({ data: meteorShowers });

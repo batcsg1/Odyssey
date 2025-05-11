@@ -47,7 +47,7 @@ const createMeteorite = async (req, res) => {
 const getMeteorites = async (req, res) => {
   try {
     const meteorites = await meteoriteRepository.findAll(selectObject);
-    if (!meteorites || meteorites.length === 0) {
+    if (!meteorites) {
       return res.status(404).json({ message: "No meteorites found" });
     }
     return res.status(200).json({
