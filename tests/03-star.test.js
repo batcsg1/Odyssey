@@ -64,6 +64,28 @@ describe("Stars", () => {
             .to.be.equal("Star successfully created");
     });
 
+    it("should reject missing galaxy ID", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/stars")
+            .send({
+                name: "Betelgeuse",
+                age: 8.0e6,
+                mass: 20.0,
+                diameter: 887,
+                type: "RED_GIANT",
+                distance: 642.5,
+                temperature: 3500,
+                luminosity: 126000,
+                hasPlanets: false,
+                brightness: 0.42
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal("Galaxy ID is required");
+    });
+
     it("should reject non-string name", async () => {
         const res = await chai
             .request(app)

@@ -79,6 +79,36 @@ describe("Satellites", () => {
             .to.be.equal("Satellite successfully created");
     });
 
+    it("should reject missing planet ID", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/satellites")
+            .send({
+                name: "Phobos",
+                age: 4.5e9,
+                mass: 1.0659e16,
+                diameter: 22.4,
+                density: 1.876,
+                type: "MOON",
+                atmosphere: false,
+                year: 0.3,
+                perigee: 9234,
+                apogee: 9376,
+                tilt: 0.0,
+                minTemp: 90,
+                maxTemp: 200,
+                gravity: 0.0057,
+                day: 0.3,
+                brightness: 12.4,
+                location: "INNER_SOLAR_SYSTEM",
+                habitable: false
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal("Planet ID is required");
+    });
+
     it("should reject non-string name", async () => {
         const res = await chai
             .request(app)

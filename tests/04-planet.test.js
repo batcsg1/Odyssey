@@ -81,6 +81,37 @@ describe("Planets", () => {
             .to.be.equal("Planet successfully created");
     });
 
+    it("should reject missing star ID", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/planets")
+            .send({
+                name: "Venus",
+                age: 4.5e9,
+                mass: 4.8675e24,
+                diameter: 12104,
+                density: 5.24,
+                type: "TERRESTIAL",
+                atmosphere: true,
+                year: 225,
+                perigee: 0.7154,
+                apogee: 0.7289,
+                tilt: 177.4,
+                hasSatellites: false,
+                minTemp: 737,
+                maxTemp: 737,
+                gravity: 8.87,
+                day: 243,
+                brightness: -4.9,
+                location: "INNER_SOLAR_SYSTEM",
+                habitable: false
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal("Star ID is required");
+    });
+
     it("should reject non-string name", async () => {
         const res = await chai
             .request(app)
