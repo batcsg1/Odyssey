@@ -151,7 +151,7 @@ describe("Meteor Showers", () => {
         chai.expect(res.body.data.name).to.be.equal("Orionids");
     });
 
-    it("should filter comets by name", async () => {
+    it("should filter showers by name", async () => {
         const res = await chai
             .request(app)
             .get("/api/v1/meteor_showers?name=Orionids");
