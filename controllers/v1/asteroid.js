@@ -35,10 +35,11 @@ const createAsteroid = async (req, res) => {
       return res.status(404).json({ message: `Star with id ${starId} not found` });
     }
     
-    const newAsteroid = await asteroidRepository.create(req.body);
+    await asteroidRepository.create(req.body);
+    const newAsteroids = await asteroidRepository.findAll(selectObject);
     return res.status(201).json({
       message: "Asteroid successfully created",
-      data: newAsteroid,
+      data: newAsteroids,
     });
   } catch (err) {
     return res.status(500).json({ message: err.message });
