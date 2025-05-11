@@ -4,7 +4,7 @@ import { describe, it } from "mocha";
 
 import app from "../app.js";
 import prisma from "../prisma/client.js";
-//import { PlanetType } from "@prisma/client";
+import { PlanetType } from "@prisma/client";
 
 const chai = chaiModule.use(chaiHttp);
 
@@ -14,8 +14,7 @@ let planetId;
 describe("Planets", () => {
     before(async () => {
         const star = await prisma.star.findFirst();
-        starId = star.id; 
-        console.log(`Star ID: ${starId}`)
+        starId = star.id;
     });
 
     it("should create a valid planet", async () => {
@@ -44,194 +43,247 @@ describe("Planets", () => {
                 habitable: false,
                 starId
             });
-            console.log(res.body)
         chai
             .expect(res.body.message)
             .to.be.equal("Planet successfully created");
         planetId = res.body.data[0].id;
     });
 
-    // it("should create another valid star", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .post("/api/v1/stars")
-    //         .send({
-    //             name: "Betelgeuse",
-    //             age: 8.0e6,
-    //             mass: 20.0,
-    //             diameter: 887,
-    //             type: "RED_GIANT",
-    //             distance: 642.5,
-    //             temperature: 3500,
-    //             luminosity: 126000,
-    //             hasPlanets: false,
-    //             brightness: 0.42,
-    //             galaxyId
-    //         });
+    it("should create another valid planet", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/planets")
+            .send({
+                name: "Venus",
+                age: 4.5e9,
+                mass: 4.8675e24,
+                diameter: 12104,
+                density: 5.24,
+                type: "TERRESTIAL",
+                atmosphere: true,
+                year: 225,
+                perigee: 0.7154,
+                apogee: 0.7289,
+                tilt: 177.4,
+                hasSatellites: false,
+                minTemp: 737,
+                maxTemp: 737,
+                gravity: 8.87,
+                day: 243,
+                brightness: -4.9,
+                location: "INNER_SOLAR_SYSTEM",
+                habitable: false,
+                starId
+            });
 
-    //     chai
-    //         .expect(res.body.message)
-    //         .to.be.equal("Star successfully created");
-    // });
+        chai
+            .expect(res.body.message)
+            .to.be.equal("Planet successfully created");
+    });
 
-    // it("should reject non-string name", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .post("/api/v1/stars")
-    //         .send({
-    //             name: 2324,
-    //             age: 8.0e6,
-    //             mass: 20.0,
-    //             diameter: 887,
-    //             type: "RED_GIANT",
-    //             distance: 642.5,
-    //             temperature: 3500,
-    //             luminosity: 126000,
-    //             hasPlanets: false,
-    //             brightness: 0.42,
-    //             galaxyId
-    //         });
+    it("should reject non-string name", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/planets")
+            .send({
+                name: 2324,
+                age: 4.5e9,
+                mass: 4.8675e24,
+                diameter: 12104,
+                density: 5.24,
+                type: "TERRESTIAL",
+                atmosphere: true,
+                year: 225,
+                perigee: 0.7154,
+                apogee: 0.7289,
+                tilt: 177.4,
+                hasSatellites: false,
+                minTemp: 737,
+                maxTemp: 737,
+                gravity: 8.87,
+                day: 243,
+                brightness: -4.9,
+                location: "INNER_SOLAR_SYSTEM",
+                habitable: false,
+                starId
+            });
 
-    //     chai.expect(res.body.message).to.be.equal("Name should be a string");
-    // });
+        chai.expect(res.body.message).to.be.equal("Name should be a string");
+    });
 
-    // it("should reject invalid type", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .post("/api/v1/stars")
-    //         .send({
-    //             name: "Betelgeuse",
-    //             age: 8.0e6,
-    //             mass: 20.0,
-    //             diameter: 887,
-    //             type: "INVALID",
-    //             distance: 642.5,
-    //             temperature: 3500,
-    //             luminosity: 126000,
-    //             hasPlanets: false,
-    //             brightness: 0.42,
-    //             galaxyId
-    //         });
+    it("should reject invalid type", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/planets")
+            .send({
+                name: "Venus",
+                age: 4.5e9,
+                mass: 4.8675e24,
+                diameter: 12104,
+                density: 5.24,
+                type: "INVALID",
+                atmosphere: true,
+                year: 225,
+                perigee: 0.7154,
+                apogee: 0.7289,
+                tilt: 177.4,
+                hasSatellites: false,
+                minTemp: 737,
+                maxTemp: 737,
+                gravity: 8.87,
+                day: 243,
+                brightness: -4.9,
+                location: "INNER_SOLAR_SYSTEM",
+                habitable: false,
+                starId
+            });
 
-    //     chai.expect(res.body.message).to.be.equal(`Type must be one of the following: ${Object.values(PlanetType)}`);
-    // });
+        chai.expect(res.body.message).to.be.equal(`Type must be one of the following: ${Object.values(PlanetType)}`);
+    });
 
-    // it("should reject non-numeric distance", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .post("/api/v1/stars")
-    //         .send({
-    //             name: "Betelgeuse",
-    //             age: 8.0e6,
-    //             mass: 20.0,
-    //             diameter: 887,
-    //             type: "RED_GIANT",
-    //             distance: "642.5",
-    //             temperature: 3500,
-    //             luminosity: 126000,
-    //             hasPlanets: false,
-    //             brightness: 0.42,
-    //             galaxyId
-    //         });
+    it("should reject non-numeric mass", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/planets")
+            .send({
+                name: "Venus",
+                age: 4.5e9,
+                mass: "4.8675e24",
+                diameter: 12104,
+                density: 5.24,
+                type: "TERRESTIAL",
+                atmosphere: true,
+                year: 225,
+                perigee: 0.7154,
+                apogee: 0.7289,
+                tilt: 177.4,
+                hasSatellites: false,
+                minTemp: 737,
+                maxTemp: 737,
+                gravity: 8.87,
+                day: 243,
+                brightness: -4.9,
+                location: "INNER_SOLAR_SYSTEM",
+                habitable: false,
+                starId
+            });
 
-    //     chai.expect(res.body.message).to.be.equal("Distance should be a number");
-    // });
+        chai.expect(res.body.message).to.be.equal("Mass should be a number");
+    });
 
-    // it("should retrieve all stars", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .get("/api/v1/stars");
+    it("should retrieve all planets", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/planets");
 
-    //     chai.expect(res.body.data).to.be.an("array");
-    // });
+        chai.expect(res.body.data).to.be.an("array");
+    });
 
-    // it("should retrieve a star by ID", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .get(`/api/v1/stars/${starId}`);
+    it("should retrieve a planet by ID", async () => {
+        const res = await chai
+            .request(app)
+            .get(`/api/v1/planets/${planetId}`);
 
-    //     chai.expect(res.body.data.name).to.be.equal("Sirius");
-    // });
+        chai.expect(res.body.data.name).to.be.equal("Mercury");
+    });
 
-    // it("should filter stars by name", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .get("/api/v1/stars?name=Sirius");
+    it("should filter planets by name", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/planets?name=Mercury");
 
-    //     chai.expect(res.body.data[0].name).to.be.equal("Sirius");
-    // });
+        chai.expect(res.body.data[0].name).to.be.equal("Mercury");
+    });
 
-    // it("should filter stars by type", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .get("/api/v1/stars?type=MAIN_SEQUENCE");
+    it("should filter planets by type", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/planets?type=TERRESTIAL");
 
-    //     chai.expect(res.body.data[0].type).to.be.equal("MAIN_SEQUENCE");
-    // });
+        chai.expect(res.body.data[0].type).to.be.equal("TERRESTIAL");
+    });
 
-    // it("should sort stars by name", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .get("/api/v1/stars?sortBy=name");
+    it("should sort planets by name", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/planets?sortBy=name");
 
-    //     chai.expect(res.body.data[0].name).to.be.equal("Sirius");
-    // });
+        chai.expect(res.body.data[0].name).to.be.equal("Mercury");
+    });
 
-    // it("should reject non-numeric diameter during update", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .put(`/api/v1/stars/${starId}`)
-    //         .send({
-    //             name: "Betelgeuse",
-    //             age: 8.0e6,
-    //             mass: 20.0,
-    //             diameter: "887",
-    //             type: "RED_GIANT",
-    //             distance: 642.5,
-    //             temperature: 3500,
-    //             luminosity: 126000,
-    //             hasPlanets: false,
-    //             brightness: 0.42,
-    //             galaxyId
-    //         });
+    it("should reject non-numeric diameter during update", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/planets/${planetId}`)
+            .send({
+                name: "Venus",
+                age: 4.5e9,
+                mass: 4.8675e24,
+                diameter: "12104",
+                density: 5.24,
+                type: "TERRESTIAL",
+                atmosphere: true,
+                year: 225,
+                perigee: 0.7154,
+                apogee: 0.7289,
+                tilt: 177.4,
+                hasSatellites: false,
+                minTemp: 737,
+                maxTemp: 737,
+                gravity: 8.87,
+                day: 243,
+                brightness: -4.9,
+                location: "INNER_SOLAR_SYSTEM",
+                habitable: false,
+                starId
+            });
 
-    //     chai.expect(res.body.message).to.be.equal("Diameter should be a number");
-    // });
+        chai.expect(res.body.message).to.be.equal("Diameter should be a number");
+    });
 
-    // it("should update a valid star", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .put(`/api/v1/stars/${starId}`)
-    //         .send({
-    //             name: "Updated Betelgeuse",
-    //             age: 8.0e6,
-    //             mass: 20.0,
-    //             diameter: 887,
-    //             type: "RED_GIANT",
-    //             distance: 642.5,
-    //             temperature: 3500,
-    //             luminosity: 126000,
-    //             hasPlanets: false,
-    //             brightness: 0.42,
-    //             galaxyId
-    //         });
+    it("should update a valid planet", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/planets/${planetId}`)
+            .send({
+                name: "Updated Venus",
+                age: 4.5e9,
+                mass: 4.8675e24,
+                diameter: 12104,
+                density: 5.24,
+                type: "TERRESTIAL",
+                atmosphere: true,
+                year: 225,
+                perigee: 0.7154,
+                apogee: 0.7289,
+                tilt: 177.4,
+                hasSatellites: false,
+                minTemp: 737,
+                maxTemp: 737,
+                gravity: 8.87,
+                day: 243,
+                brightness: -4.9,
+                location: "INNER_SOLAR_SYSTEM",
+                habitable: false,
+                starId
+            });
 
-    //     chai
-    //         .expect(res.body.message)
-    //         .to.be.equal(
-    //             `Star with the id: ${starId} successfully updated`
-    //         );
-    // });
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Planet with the id: ${planetId} successfully updated`
+            );
+    });
 
-    // it("should delete a star by ID", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .delete(`/api/v1/stars/${starId}`);
+    it("should delete a planet by ID", async () => {
+        const res = await chai
+            .request(app)
+            .delete(`/api/v1/planets/${planetId}`);
 
-    //     chai
-    //         .expect(res.body.message)
-    //         .to.be.equal(
-    //             `Star with the id: ${starId} successfully deleted`
-    //         );
-    // });
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Planet with the id: ${planetId} successfully deleted`
+            );
+    });
 });
