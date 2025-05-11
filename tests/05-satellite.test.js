@@ -246,7 +246,7 @@ describe("Satellites", () => {
                 mass: 1.0659e16,
                 diameter: "22.4",
                 density: 1.876,
-                type: "INVALID",
+                type: "MOON",
                 atmosphere: false,
                 year: 0.3,
                 perigee: 9234,
