@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from 'joi';
 
 const meteorShowerSchema = Joi.object({
   name: Joi.string().min(3).max(100).required().messages({
@@ -22,11 +22,11 @@ const meteorShowerSchema = Joi.object({
     "number.max": "The next year should be less than or equal to {#limit}",
     "any.required": "The next year is required"
   }),
-  initialDate: Joi.date().required().messages({
+  initialDate: Joi.date().iso().required().messages({
     "date.base": "Initial date should be a valid date",
     "any.required": "Initial date is required"
   }),
-  finalDate: Joi.date().required().messages({
+  finalDate: Joi.date().iso().required().messages({
     "date.base": "Final date should be a valid date",
     "any.required": "Final date is required"
   }),
@@ -54,7 +54,7 @@ const meteorShowerSchema = Joi.object({
     "number.integer": "Meteors per hour should be an integer",
     "number.min": "Meteors per hour should be greater than or equal to {#limit}"
   }),
-  peakDate: Joi.date().optional().messages({
+  peakDate: Joi.date().iso().optional().messages({
     "date.base": "The peak date should be a valid date"
   }),
   comets: Joi.array().items(
