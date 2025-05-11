@@ -31,6 +31,9 @@ const createMeteorShower = async (req, res) => {
       constellationId,
       comets = [],  // Using comets from the request body
       asteroids = [],  // Using asteroids from the request body
+      initialDate,
+      finalDate,
+      peakDate,
     } = req.body;
 
     // Check if constellation exists
@@ -61,13 +64,18 @@ const createMeteorShower = async (req, res) => {
 
     const newMeteorShower = await meteorShowerRepository.create({
       ...req.body,
+      initialDate: new Date(initialDate),
+      finalDate: new Date(finalDate),
+      peakDate: new Date(peakDate),
       comets: comets.length > 0 ? { connect: comets.map(id => ({ id })) } : undefined,
       asteroids: asteroids.length > 0 ? { connect: asteroids.map(id => ({ id })) } : undefined,
     });
     
+    const newMeteorShowers = await meteorShowerRepository.findAll(selectObject);
+
     return res.status(201).json({
       message: "Meteor shower successfully created",
-      data: newMeteorShower,
+      data: newMeteorShowers,
     });
   } catch (err) {
     return res.status(500).json({ message: err.message });
@@ -102,10 +110,10 @@ const updateMeteorShower = async (req, res) => {
   try {
     const meteorShower = await meteorShowerRepository.update(req.params.id, req.body);
     if (!meteorShower) {
-      return res.status(404).json({ message: `No meteor shower with id: ${req.params.id} found` });
+      return res.status(404).json({ message: `No meteor shower with the id: ${req.params.id} found` });
     }
     return res.status(200).json({
-      message: `Meteor shower with id: ${req.params.id} successfully updated`,
+      message: `Meteor shower with the id: ${req.params.id} successfully updated`,
       data: meteorShower,
     });
   } catch (err) {
@@ -117,10 +125,10 @@ const deleteMeteorShower = async (req, res) => {
   try {
     const meteorShower = await meteorShowerRepository.findById(req.params.id);
     if (!meteorShower) {
-      return res.status(404).json({ message: `No meteor shower with id: ${req.params.id} found` });
+      return res.status(404).json({ message: `No meteor shower with the id: ${req.params.id} found` });
     }
     await meteorShowerRepository.delete(req.params.id);
-    return res.status(200).json({ message: `Meteor shower with id: ${req.params.id} successfully deleted` });
+    return res.status(200).json({ message: `Meteor shower with the id: ${req.params.id} successfully deleted` });
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
