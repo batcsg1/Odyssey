@@ -32,13 +32,13 @@ describe("Meteor Showers", () => {
                 name: "Orionids",
                 previousYear: 2024,
                 nextYear: 2025,
-                initialDate: "2024-10-02",
-                finalDate: "2024-11-07",
+                initialDate: "2024-11-06T00:00:00.000Z",
+                finalDate: "2024-11-30T00:00:00.000Z",
                 frequency: 30,
                 duration: 6,
                 velocity: 66,
                 perHour: 20,
-                peakDate: "2024-10-21",
+                peakDate: "2024-11-10T00:00:00.000Z",
                 constellationId
             });
         chai

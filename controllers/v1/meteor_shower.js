@@ -30,10 +30,7 @@ const createMeteorShower = async (req, res) => {
     const {
       constellationId,
       comets = [],  // Using comets from the request body
-      asteroids = [],  // Using asteroids from the request body
-      initialDate,
-      finalDate,
-      peakDate,
+      asteroids = []  // Using asteroids from the request body
     } = req.body;
 
     // Check if constellation exists
@@ -62,11 +59,8 @@ const createMeteorShower = async (req, res) => {
       }
     }
 
-    const newMeteorShower = await meteorShowerRepository.create({
+    await meteorShowerRepository.create({
       ...req.body,
-      initialDate: new Date(initialDate),
-      finalDate: new Date(finalDate),
-      peakDate: new Date(peakDate),
       comets: comets.length > 0 ? { connect: comets.map(id => ({ id })) } : undefined,
       asteroids: asteroids.length > 0 ? { connect: asteroids.map(id => ({ id })) } : undefined,
     });
