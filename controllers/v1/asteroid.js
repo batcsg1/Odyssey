@@ -77,7 +77,7 @@ const updateAsteroid = async (req, res) => {
       return res.status(404).json({ message: `No asteroid with id: ${req.params.id} found` });
     }
     return res.status(200).json({
-      message: `Asteroid with id: ${req.params.id} successfully updated`,
+      message: `Asteroid with the id: ${req.params.id} successfully updated`,
       data: asteroid,
     });
   } catch (err) {
