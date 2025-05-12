@@ -81,6 +81,18 @@
  *         schema:
  *           type: string
  *         description: Filter constellations by abbreviation
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [id, name, shape, area, abbreviation ]
+ *         description: Field to sort the institutions by (default is 'id')
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *         description: Order to sort the institutions by (default is 'asc')
  *     security:
  *       - BearerAuth: []
  *     responses:

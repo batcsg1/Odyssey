@@ -41,7 +41,14 @@ const getConstellations = async (req, res) => {
       abbreviation: req.query.abbreviation || undefined,
     }
 
-    const constellations = await constellationRepository.findAll(filters);
+    const sortBy = req.query.sortBy || "id";
+    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    const constellations = await constellationRepository.findAll(
+      filters,
+      sortBy,
+      sortOrder
+    );
 
     if (!constellations) {
       return res.status(404).json({ message: "No constellations found" });
