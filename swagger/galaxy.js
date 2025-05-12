@@ -102,13 +102,13 @@
  *         schema:
  *           type: string
  *           enum: [id, name, type, distance, size, brightness, constellationId ]
- *         description: Field to sort the institutions by (default is 'id')
+ *         description: Field to sort the galaxies by (default is 'id')
  *       - in: query
  *         name: sortOrder
  *         schema:
  *           type: string
  *           enum: [asc, desc]
- *         description: Order to sort the institutions by (default is 'asc')
+ *         description: Order to sort the galaxies by (default is 'asc')
  *     responses:
  *       '200':
  *         description: Success
