@@ -74,7 +74,8 @@
  *       - in: query
  *         name: area
  *         schema:
- *           type: string
+ *           type: number
+ *           format: float
  *         description: Filter constellations by area
  *       - in: query
  *         name: abbreviation
