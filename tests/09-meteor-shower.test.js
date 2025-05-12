@@ -71,6 +71,30 @@ describe("Meteor Showers", () => {
             .to.be.equal("Meteor shower successfully created");
     });
 
+    it("should reject invalid initial date", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/meteor_showers")
+            .send({
+                name: "Leonids",
+                previousYear: 2024,
+                nextYear: 2025,
+                initialDate: "2024-11-30T00:00:00.000Z",
+                finalDate: "2024-11-30T00:00:00.000Z",
+                frequency: 25,
+                duration: 5,
+                velocity: 71,
+                perHour: 15,
+                peakDate: "2024-11-17T00:00:00.000Z",
+                comets: [cometId],
+                constellationId
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal("Initial date should be a valid date");
+    });
+
     it("should reject missing constellation ID", async () => {
         const res = await chai
             .request(app)
