@@ -9,9 +9,12 @@ class Repository {
     return await prisma[this.model].create({ data });
   }
 
-  async findAll(filters = {}) {
-    // Create an empty query object
-    const query = {};
+  async findAll(filters = {}, sortBy = "id", sortOrder = "asc") {
+    const query = {
+      orderBy: {
+        [sortBy]: sortOrder, // Sort by the specified column and order
+      },
+    };
 
     if (Object.keys(filters).length > 0) {
       query.where = {};
