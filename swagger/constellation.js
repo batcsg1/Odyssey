@@ -87,13 +87,13 @@
  *         schema:
  *           type: string
  *           enum: [id, name, shape, area, abbreviation ]
- *         description: Field to sort the institutions by (default is 'id')
+ *         description: Field to sort the constellations by (default is 'id')
  *       - in: query
  *         name: sortOrder
  *         schema:
  *           type: string
  *           enum: [asc, desc]
- *         description: Order to sort the institutions by (default is 'asc')
+ *         description: Order to sort the constellations by (default is 'asc')
  *     security:
  *       - BearerAuth: []
  *     responses:
