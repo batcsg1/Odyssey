@@ -51,7 +51,30 @@ const createStar = async (req, res) => {
 
 const getStars = async (req, res) => {
   try {
-    const stars = await starRepository.findAll(selectObject);
+    const filters = {
+      name: req.query.name || undefined ,
+      age: req.query.age || undefined,
+      mass: req.query.mass || undefined,
+      diameter: req.query.diameter || undefined,
+      type: req.query.type || undefined,
+      distance: req.query.distance || undefined ,
+      temperature: req.query.temperature || undefined,
+      luminosity: req.query.luminosity || undefined,
+      hasPlanets: req.query.hasPlanets || undefined,
+      brightness: req.query.brightness || undefined,
+      constellationId: req.query.constellationId || undefined,
+      galaxyId: req.query.galaxyId || undefined
+    }
+
+    const sortBy = req.query.sortBy || "id";
+    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    const stars = await starRepository.findAll(
+      filters,
+      sortBy,
+      sortOrder
+    );
+    
     if (!stars) {
       return res.status(404).json({ message: "No stars found" });
     }

@@ -85,6 +85,82 @@
  *     summary: Get all stars
  *     tags:
  *       - Star
+ *     parameters:
+ *       - in: query
+ *         name: name
+ *         schema:
+ *           type: string
+ *         description: Filter stars by name
+ *       - in: query
+ *         name: age
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter stars by age
+ *       - in: query
+ *         name: mass
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter stars by mass
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Filter stars by type
+ *       - in: query
+ *         name: distance
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter stars by distance
+ *       - in: query
+ *         name: temperature
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter stars by temperature
+ *       - in: query
+ *         name: luminosity
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter stars by luminosity
+ *       - in: query
+ *         name: hasPlanets
+ *         schema:
+ *           type: boolean
+ *         description: Filter stars by ones that have planets
+ *       - in: query
+ *         name: brightness
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter stars by brightness
+ *       - in: query
+ *         name: constellationId
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: Filter stars by constellationId
+ *       - in: query
+ *         name: galaxyId
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: Filter stars by galaxyId
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [id, name, mass, diameter, type, distance, temperature, luminosity, hasPlanets, brightness, constellationId, galaxyId ]
+ *         description: Field to sort the stars by (default is 'id')
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *         description: Order to sort the stars by (default is 'asc')
  *     responses:
  *       '200':
  *         description: Success
