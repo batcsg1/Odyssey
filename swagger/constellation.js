@@ -111,6 +111,8 @@
  *     summary: Get a constellation by id
  *     tags:
  *       - Constellation
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -134,6 +136,8 @@
  *     summary: Update a constellation by id
  *     tags:
  *       - Constellation
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -163,6 +167,8 @@
  *     summary: Delete a constellation by id
  *     tags:
  *       - Constellation
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
