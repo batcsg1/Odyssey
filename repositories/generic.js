@@ -9,10 +9,21 @@ class Repository {
     return await prisma[this.model].create({ data });
   }
 
-  async findAll(select = {}) {
-    return await prisma[this.model].findMany({
-      select
-    });
+  async findAll(filters = {}) {
+    // Create an empty query object
+    const query = {};
+
+    if (Object.keys(filters).length > 0) {
+      query.where = {};
+      // Loop through the filters and apply them dynamically
+      for (const [key, value] of Object.entries(filters)) {
+        if (value) {
+          query.where[key] = { contains: value };
+        }
+      }
+    }
+
+    return await prisma[this.model].findMany(query);
   }
 
   async findById(id) {

@@ -34,7 +34,15 @@ const createConstellation = async (req, res) => {
 
 const getConstellations = async (req, res) => {
   try {
-    const constellations = await constellationRepository.findAll(selectObject);
+    const filters = {
+      name: req.query.name || undefined,
+      shape: req.query.shape || undefined,
+      area: req.query.area || undefined,
+      abbreviation: req.query.abbreviation || undefined,
+    }
+
+    const constellations = await constellationRepository.findAll(filters);
+
     if (!constellations) {
       return res.status(404).json({ message: "No constellations found" });
     }

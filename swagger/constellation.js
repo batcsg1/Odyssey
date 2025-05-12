@@ -60,6 +60,27 @@
  *     summary: Get all constellations
  *     tags:
  *       - Constellation
+ *     parameters:
+ *       - in: query
+ *         name: name
+ *         schema:
+ *           type: string
+ *         description: Filter constellations by name
+ *       - in: query
+ *         name: shape
+ *         schema:
+ *           type: string
+ *         description: Filter constellations by shape
+ *       - in: query
+ *         name: area
+ *         schema:
+ *           type: string
+ *         description: Filter constellations by area
+ *       - in: query
+ *         name: abbreviation
+ *         schema:
+ *           type: string
+ *         description: Filter constellations by abbreviation
  *     security:
  *       - BearerAuth: []
  *     responses:
