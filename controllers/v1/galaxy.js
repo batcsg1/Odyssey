@@ -36,7 +36,24 @@ const createGalaxy = async (req, res) => {
 
 const getGalaxies = async (req, res) => {
   try {
-    const galaxies = await galaxyRepository.findAll(selectObject);
+    const filters = {
+      name: req.query.name || undefined, 
+      type: req.query.type || undefined,
+      distance: req.query.distance || undefined,
+      size: req.query.size || undefined,
+      brightness: req.query.brightness || undefined,
+      constellationId: req.query.constellationId || undefined
+    }
+
+    const sortBy = req.query.sortBy || "id";
+    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    const galaxies = await galaxyRepository.findAll(
+      filters,
+      sortBy,
+      sortOrder
+    );
+    
     if (!galaxies) {
       return res.status(404).json({ message: "No galaxies found" });
     }

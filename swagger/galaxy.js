@@ -62,6 +62,53 @@
  *     summary: Get all galaxies
  *     tags:
  *       - Galaxy
+ *     parameters:
+ *       - in: query
+ *         name: name
+ *         schema:
+ *           type: string
+ *         description: Filter galaxies by name
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Filter galaxies by shape
+ *       - in: query
+ *         name: distance
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter galaxies by distance
+ *       - in: query
+ *         name: size
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter galaxies by size
+ *       - in: query
+ *         name: brightness
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter galaxies by brightness
+ *       - in: query
+ *         name: constellationId
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: Filter galaxies by constellationId
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [id, name, type, distance, size, brightness, constellationId ]
+ *         description: Field to sort the institutions by (default is 'id')
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *         description: Order to sort the institutions by (default is 'asc')
  *     responses:
  *       '200':
  *         description: Success
