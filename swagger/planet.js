@@ -156,7 +156,7 @@
  *       - in: query
  *         name: atmosphere
  *         schema:
- *           type: string
+ *           type: boolean
  *         description: Filter planets by atmosphere
  *       - in: query
  *         name: year
