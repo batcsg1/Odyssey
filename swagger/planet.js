@@ -118,6 +118,140 @@
  *     summary: Get all planets
  *     tags:
  *       - Planet
+ *     parameters:
+ *       - in: query
+ *         name: name
+ *         schema:
+ *           type: string
+ *         description: Filter planets by name
+ *       - in: query
+ *         name: age
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by age
+ *       - in: query
+ *         name: mass
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by mass
+ *       - in: query
+ *         name: diameter
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by diameter
+ *       - in: query
+ *         name: density
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by density
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Filter planets by type
+ *       - in: query
+ *         name: atmosphere
+ *         schema:
+ *           type: string
+ *         description: Filter planets by atmosphere
+ *       - in: query
+ *         name: year
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by orbital period
+ *       - in: query
+ *         name: perigee
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by perigee
+ *       - in: query
+ *         name: apogee
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by apogee
+ *       - in: query
+ *         name: tilt
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by tilt
+ *       - in: query
+ *         name: hasSatellites
+ *         schema:
+ *           type: boolean
+ *         description: Filter planets that have satellites
+ *       - in: query
+ *         name: minTemp
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by minimum temperature
+ *       - in: query
+ *         name: maxTemp
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by maximum temperature
+ *       - in: query
+ *         name: gravity
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by gravity
+ *       - in: query
+ *         name: day
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by rotational period
+ *       - in: query
+ *         name: brightness
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by brightness
+ *       - in: query
+ *         name: location
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter planets by location
+ *       - in: query
+ *         name: habitable
+ *         schema:
+ *           type: boolean
+ *         description: Filter planets by habitibility
+ *       - in: query
+ *         name: starId
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: Filter planets by starId
+ *       - in: query
+ *         name: galaxyId
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: Filter planets by galaxyId
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [id, name, age, mass, diameter, density, type, atmosphere, year, perigee, apogee, tilt, hasSatellites, minTemp, maxTemp, gravity, day, brightness, location, habitable, starId ]
+ *         description: Field to sort the planets by (default is 'id')
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *         description: Order to sort the planets by (default is 'asc')
  *     responses:
  *       '200':
  *         description: Success
