@@ -59,7 +59,9 @@ const getMeteorites = async (req, res) => {
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
 
-    const meteorites = await meteoriteRepository.findAll(filters,
+    const meteorites = await meteoriteRepository.findAll(
+      selectObject,
+      filters,
       sortBy,
       sortOrder);
 

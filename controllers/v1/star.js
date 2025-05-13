@@ -70,6 +70,7 @@ const getStars = async (req, res) => {
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
 
     const stars = await starRepository.findAll(
+      selectObject,
       filters,
       sortBy,
       sortOrder

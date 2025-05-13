@@ -111,6 +111,7 @@ const getPlanets = async (req, res) => {
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
 
     const planets = await planetRepository.findAll(
+      selectObject,
       filters,
       sortBy,
       sortOrder

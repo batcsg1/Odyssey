@@ -84,6 +84,7 @@ const getSatellites = async (req, res) => {
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
 
     const satellites = await satelliteRepository.findAll(
+      selectObject,
       filters,
       sortBy,
       sortOrder

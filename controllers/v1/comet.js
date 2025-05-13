@@ -67,7 +67,9 @@ const getComets = async (req, res) => {
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
 
-    const comets = await cometRepository.findAll(filters,
+    const comets = await cometRepository.findAll(
+      selectObject,
+      filters,
       sortBy,
       sortOrder);
       

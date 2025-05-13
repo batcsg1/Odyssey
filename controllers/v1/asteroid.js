@@ -65,7 +65,9 @@ const getAsteroids = async (req, res) => {
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
 
-    const asteroids = await asteroidRepository.findAll(filters,
+    const asteroids = await asteroidRepository.findAll(
+      selectObject,
+      filters,
       sortBy,
       sortOrder);
 

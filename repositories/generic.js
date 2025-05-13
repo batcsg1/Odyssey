@@ -9,19 +9,25 @@ class Repository {
     return await prisma[this.model].create({ data });
   }
 
-  async findAll(filters = {}, sortBy = "id", sortOrder = "asc") {
+  async findAll(select = {}, filters = {}, sortBy = "id", sortOrder = "asc") {
     const query = {
       orderBy: {
         [sortBy]: sortOrder, // Sort by the specified column and order
       },
     };
 
+    if (select) {
+      query.select = select;
+    }
+
     if (Object.keys(filters).length > 0) {
       query.where = {};
       // Loop through the filters and apply them dynamically
       for (const [key, value] of Object.entries(filters)) {
-        if (value) {
-          query.where[key] = { contains: value };
+        if (value !== undefined && value !== null) {
+          query.where[key] = typeof value === "string"
+            ? { contains: value }
+            : { equals: value }
         }
       }
     }

@@ -49,6 +49,7 @@ const getGalaxies = async (req, res) => {
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
 
     const galaxies = await galaxyRepository.findAll(
+      selectObject,
       filters,
       sortBy,
       sortOrder

@@ -45,6 +45,7 @@ const getConstellations = async (req, res) => {
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
 
     const constellations = await constellationRepository.findAll(
+      selectObject,
       filters,
       sortBy,
       sortOrder
