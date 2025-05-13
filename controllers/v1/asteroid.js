@@ -48,7 +48,27 @@ const createAsteroid = async (req, res) => {
 
 const getAsteroids = async (req, res) => {
   try {
-    const asteroids = await asteroidRepository.findAll(selectObject);
+    const filters = {
+      name: req.query.name || undefined,
+      mass: req.query.mass || undefined,
+      diameter: req.query.diameter || undefined,
+      density: req.query.density || undefined,
+      type: req.query.type || undefined,
+      year: req.query.year || undefined,
+      perigee: req.query.perigee || undefined,
+      apogee: req.query.apogee || undefined,
+      brightness: req.query.brightness || undefined,
+      location: req.query.location || undefined,
+      starId: req.query.starId || undefined
+    };
+
+    const sortBy = req.query.sortBy || "id";
+    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    const asteroids = await asteroidRepository.findAll(filters,
+      sortBy,
+      sortOrder);
+
     if (!asteroids) {
       return res.status(404).json({ message: "No asteroids found" });
     }
