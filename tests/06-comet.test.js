@@ -167,9 +167,9 @@ describe("Comets", () => {
     it("should filter comets by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/comets?name=Halley's Comet");
+            .get("/api/v1/comets?name=Hale-Bopp");
 
-        chai.expect(res.body.data[0].name).to.be.equal("Halley's Comet");
+        chai.expect(res.body.data[0].name).to.be.equal("Hale-Bopp");
     });
 
     it("should filter comets by type", async () => {
@@ -185,7 +185,7 @@ describe("Comets", () => {
             .request(app)
             .get("/api/v1/comets?sortBy=name");
 
-        chai.expect(res.body.data[0].name).to.be.equal("Halley's Comet");
+        chai.expect(res.body.data[0].name).to.be.equal("Hale-Bopp");
     });
 
     it("should reject non-numeric diameter during update", async () => {

@@ -191,7 +191,7 @@ describe("Asteroids", () => {
             .request(app)
             .get("/api/v1/asteroids?sortBy=name");
 
-        chai.expect(res.body.data[0].name).to.be.equal("Vesta");
+        chai.expect(res.body.data[0].name).to.be.equal("Pallas");
     });
 
     it("should reject non-numeric diameter during update", async () => {

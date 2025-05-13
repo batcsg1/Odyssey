@@ -217,7 +217,7 @@ describe("Meteor Showers", () => {
             .request(app)
             .get("/api/v1/meteor_showers?sortBy=name");
 
-        chai.expect(res.body.data[0].name).to.be.equal("Orionids");
+        chai.expect(res.body.data[0].name).to.be.equal("Leonids");
     });
 
     it("should update a valid shower", async () => {

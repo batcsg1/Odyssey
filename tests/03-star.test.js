@@ -186,7 +186,7 @@ describe("Stars", () => {
             .request(app)
             .get("/api/v1/stars?sortBy=name");
 
-        chai.expect(res.body.data[0].name).to.be.equal("Sirius");
+        chai.expect(res.body.data[0].name).to.be.equal("Betelgeuse");
     });
 
     it("should reject non-numeric diameter during update", async () => {
