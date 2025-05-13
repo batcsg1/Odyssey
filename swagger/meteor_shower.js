@@ -86,6 +86,62 @@
  *     summary: Get all meteor showers
  *     tags:
  *       - Meteor Shower
+ *     parameters:
+ *       - in: query
+ *         name: name
+ *         schema:
+ *           type: string
+ *         description: Filter meteor showers by name
+ *       - in: query
+ *         name: previousYear
+ *         schema:
+ *           type: number
+ *         description: Filter meteor showers by previous year
+ *       - in: query
+ *         name: nextYear
+ *         schema:
+ *           type: number
+ *         description: Filter meteor showers by next year
+ *       - in: query
+ *         name: frequency
+ *         schema:
+ *           type: number
+ *         description: Filter meteor showers by frequency
+ *       - in: query
+ *         name: duration
+ *         schema:
+ *           type: number
+ *         description: Filter meteor showers by duration
+ *       - in: query
+ *         name: velocity
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter meteor showers by velocity
+ *       - in: query
+ *         name: perHour
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter meteor showers by hourly frequency
+ *       - in: query
+ *         name: constellationId
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: Filter meteor showers by constellationId
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [id, previousYear, nextYear, frequency, duration, velocity, perHour, constellationId ]
+ *         description: Field to sort the meteor showers by (default is 'id')
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *         description: Order to sort the meteor showers by (default is 'asc')
  *     responses:
  *       '200':
  *         description: Success

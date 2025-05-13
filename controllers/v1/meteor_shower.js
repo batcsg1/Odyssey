@@ -64,7 +64,7 @@ const createMeteorShower = async (req, res) => {
       comets: comets.length > 0 ? { connect: comets.map(id => ({ id })) } : undefined,
       asteroids: asteroids.length > 0 ? { connect: asteroids.map(id => ({ id })) } : undefined,
     });
-    
+
     const newMeteorShowers = await meteorShowerRepository.findAll(selectObject);
 
     return res.status(201).json({
@@ -78,7 +78,28 @@ const createMeteorShower = async (req, res) => {
 
 const getMeteorShowers = async (req, res) => {
   try {
-    const meteorShowers = await meteorShowerRepository.findAll(selectObject);
+    const filters = {
+      name: req.query.name || undefined,
+      previousYear: req.query.previousYear || undefined,
+      nextYear: req.query.nextYear || undefined,
+      initialDate: req.query.initialDate || undefined,
+      finalDate: req.query.finalDate || undefined,
+      frequency: req.query.frequency || undefined,
+      duration: req.query.duration || undefined,
+      velocity: req.query.velocity || undefined,
+      perHour: req.query.perHour || undefined,
+      peakDate: req.query.peakDate || undefined,
+      constellationId: req.query.constellationId || undefined,
+    };
+
+    const sortBy = req.query.sortBy || "id";
+    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    const meteorShowers = await meteorShowerRepository.findAll(filters,
+      sortBy,
+      sortOrder
+    );
+    
     if (!meteorShowers) {
       return res.status(404).json({ message: "No meteor showers found" });
     }
