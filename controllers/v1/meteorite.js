@@ -46,7 +46,24 @@ const createMeteorite = async (req, res) => {
 
 const getMeteorites = async (req, res) => {
   try {
-    const meteorites = await meteoriteRepository.findAll(selectObject);
+    const filters = {
+      id: req.query.id || undefined,
+      name: req.query.name || undefined,
+      age: req.query.age || undefined,
+      foundYear: req.query.foundYear || undefined,
+      mass: req.query.mass || undefined,
+      diameter: req.query.diameter || undefined,
+      location: req.query.location || undefined,
+      planetId: req.query.planetId || undefined
+    };
+
+    const sortBy = req.query.sortBy || "id";
+    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    const meteorites = await meteoriteRepository.findAll(filters,
+      sortBy,
+      sortOrder);
+
     if (!meteorites) {
       return res.status(404).json({ message: "No meteorites found" });
     }

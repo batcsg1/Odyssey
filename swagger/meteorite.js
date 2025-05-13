@@ -62,6 +62,58 @@
  *     summary: Get all meteorites
  *     tags:
  *       - Meteorite
+ *     parameters:
+ *       - in: query
+ *         name: name
+ *         schema:
+ *           type: string
+ *         description: Filter meteorites by name
+ *       - in: query
+ *         name: age
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter meteorites by age
+ *       - in: query
+ *         name: mass
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter meteorites by mass
+ *       - in: query
+ *         name: foundYear
+ *         schema:
+ *           type: number
+ *         description: Filter meteorites by discovery
+ *       - in: query
+ *         name: diameter
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter meteorites by diameter
+ *       - in: query
+ *         name: location
+ *         schema:
+ *           type: string
+ *         description: Filter meteorites by location
+ *       - in: query
+ *         name: planetId
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: Filter meteorites by planetId
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [id, name, age, mass, diameter, foundYear, location, starId ]
+ *         description: Field to sort the meteorites by (default is 'id')
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *         description: Order to sort the meteorites by (default is 'asc')
  *     responses:
  *       '200':
  *         description: Success
