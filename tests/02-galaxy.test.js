@@ -128,6 +128,7 @@ describe("Galaxies", () => {
             .request(app)
             .get("/api/v1/galaxies?type=BARRED_SPIRAL");
 
+        console.log(res.body.data[0])
         chai.expect(res.body.data[0].type).to.be.equal("BARRED_SPIRAL");
     });
 

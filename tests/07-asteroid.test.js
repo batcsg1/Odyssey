@@ -173,9 +173,9 @@ describe("Asteroids", () => {
     it("should filter asteroids by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/asteroids?name=Vesta");
+            .get("/api/v1/asteroids?name=Pallas");
 
-        chai.expect(res.body.data[0].name).to.be.equal("Vesta");
+        chai.expect(res.body.data[0].name).to.be.equal("Pallas");
     });
 
     it("should filter asteroids by type", async () => {
