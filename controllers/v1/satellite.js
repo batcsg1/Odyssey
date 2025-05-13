@@ -59,7 +59,6 @@ const createSatellite = async (req, res) => {
 const getSatellites = async (req, res) => {
   try {
     const filters = {
-      id: req.query.id || undefined,
       name: req.query.name || undefined,
       age: req.query.age || undefined,
       mass: req.query.mass || undefined,
