@@ -159,7 +159,7 @@
  *         name: sortBy
  *         schema:
  *           type: string
- *           enum: [id, name, mass, diameter, type, distance, temperature, luminosity, hasPlanets, brightness, constellationId, galaxyId ]
+ *           enum: [id, name, age, mass, diameter, type, distance, temperature, luminosity, hasPlanets, brightness, constellationId, galaxyId ]
  *         description: Field to sort the stars by (default is 'id')
  *       - in: query
  *         name: sortOrder
