@@ -220,8 +220,7 @@
  *       - in: query
  *         name: location
  *         schema:
- *           type: number
- *           format: float
+ *           type: string
  *         description: Filter planets by location
  *       - in: query
  *         name: habitable
