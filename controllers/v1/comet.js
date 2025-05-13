@@ -34,7 +34,7 @@ const createComet = async (req, res) => {
     if (!star) {
       return res.status(404).json({ message: `Star with id ${starId} not found` });
     }
-    
+
     await cometRepository.create(req.body);
     const newComets = await cometRepository.findAll(selectObject);
     return res.status(201).json({
@@ -50,7 +50,28 @@ const createComet = async (req, res) => {
 
 const getComets = async (req, res) => {
   try {
-    const comets = await cometRepository.findAll(selectObject);
+    const filters = {
+      id: req.query.id || undefined,
+      name: req.query.name || undefined,
+      mass: req.query.mass || undefined,
+      diameter: req.query.diameter || undefined,
+      density: req.query.density || undefined,
+      type: req.query.type || undefined,
+      year: req.query.year || undefined,
+      perigee: req.query.perigee || undefined,
+      apogee: req.query.apogee || undefined,
+      brightness: req.query.brightness || undefined,
+      location: req.query.location || undefined,
+      starId: req.query.starId || undefined
+    };
+
+    const sortBy = req.query.sortBy || "id";
+    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    const comets = await cometRepository.findAll(filters,
+      sortBy,
+      sortOrder);
+      
     if (!comets) {
       return res.status(404).json({ message: "No comets found" });
     }
