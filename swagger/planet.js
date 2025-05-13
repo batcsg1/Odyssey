@@ -235,12 +235,6 @@
  *           format: uuid
  *         description: Filter planets by starId
  *       - in: query
- *         name: galaxyId
- *         schema:
- *           type: string
- *           format: uuid
- *         description: Filter planets by galaxyId
- *       - in: query
  *         name: sortBy
  *         schema:
  *           type: string
