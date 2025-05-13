@@ -104,6 +104,12 @@
  *           format: float
  *         description: Filter stars by mass
  *       - in: query
+ *         name: diameter
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter stars by diameter
+ *       - in: query
  *         name: type
  *         schema:
  *           type: string
