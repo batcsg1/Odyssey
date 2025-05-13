@@ -58,8 +58,39 @@ const createSatellite = async (req, res) => {
 
 const getSatellites = async (req, res) => {
   try {
-    const satellites = await satelliteRepository.findAll(selectObject);
-    if (!satellites || satellites.length === 0) {
+    const filters = {
+      id: req.query.id,
+      name: req.query.name,
+      age: req.query.age,
+      mass: req.query.mass,
+      diameter: req.query.diameter,
+      density: req.query.density,
+      type: req.query.type,
+      atmosphere: req.query.atmosphere,
+      year: req.query.year,
+      perigee: req.query.perigee,
+      apogee: req.query.apogee,
+      tilt: req.query.tilt,
+      minTemp: req.query.minTemp,
+      maxTemp: req.query.maxTemp,
+      gravity: req.query.gravity,
+      day: req.query.day,
+      brightness: req.query.brightness,
+      location: req.query.location,
+      habitable: req.query.habitable,
+      planetId: req.query.planetId
+    };
+
+    const sortBy = req.query.sortBy || "id";
+    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    const satellites = await satelliteRepository.findAll(
+      filters,
+      sortBy,
+      sortOrder
+    );
+
+    if (!satellites) {
       return res.status(404).json({ message: "No satellites found" });
     }
     return res.status(200).json({
