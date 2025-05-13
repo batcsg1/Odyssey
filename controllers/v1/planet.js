@@ -63,7 +63,7 @@ const createPlanet = async (req, res) => {
         }
       }
     }
-    
+
     const newPlanet = await planetRepository.create({
       ...req.body,
       users: users.length > 0 ? { connect: users.map(id => ({ id })) } : undefined
@@ -84,7 +84,39 @@ const createPlanet = async (req, res) => {
 
 const getPlanets = async (req, res) => {
   try {
-    const planets = await planetRepository.findAll(selectObject);
+    const filters = {
+      name: req.query.name || undefined,
+      age: req.query.age || undefined,
+      mass: req.query.mass || undefined,
+      diameter: req.query.diameter || undefined,
+      density: req.query.density || undefined,
+      type: req.query.type || undefined,
+      atmosphere: req.query.atmosphere || undefined,
+      year: req.query.year || undefined,
+      perigee: req.query.perigee || undefined,
+      apogee: req.query.apogee || undefined,
+      tilt: req.query.tilt || undefined,
+      hasSatellites: req.query.hasSatellites || undefined,
+      minTemp: req.query.minTemp || undefined,
+      maxTemp: req.query.maxTemp || undefined,
+      gravity: req.query.gravity || undefined,
+      day: req.query.day || undefined,
+      brightness: req.query.brightness || undefined,
+      location: req.query.location || undefined,
+      habitable: req.query.habitable || undefined,
+      starId: req.query.starId || undefined,
+      users: req.query.users
+    }
+    
+    const sortBy = req.query.sortBy || "id";
+    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    const planets = await planetRepository.findAll(
+      filters,
+      sortBy,
+      sortOrder
+    );
+
     if (!planets) {
       return res.status(404).json({ message: "No planets found" });
     }
