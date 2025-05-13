@@ -104,8 +104,7 @@ const getPlanets = async (req, res) => {
       brightness: req.query.brightness || undefined,
       location: req.query.location || undefined,
       habitable: req.query.habitable || undefined,
-      starId: req.query.starId || undefined,
-      users: req.query.users
+      starId: req.query.starId || undefined
     }
     
     const sortBy = req.query.sortBy || "id";
