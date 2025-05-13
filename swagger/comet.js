@@ -142,8 +142,7 @@
  *       - in: query
  *         name: location
  *         schema:
- *           type: number
- *           format: float
+ *           type: string
  *         description: Filter comets by location
  *       - in: query
  *         name: starId
