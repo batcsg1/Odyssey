@@ -59,26 +59,26 @@ const createSatellite = async (req, res) => {
 const getSatellites = async (req, res) => {
   try {
     const filters = {
-      id: req.query.id,
-      name: req.query.name,
-      age: req.query.age,
-      mass: req.query.mass,
-      diameter: req.query.diameter,
-      density: req.query.density,
-      type: req.query.type,
-      atmosphere: req.query.atmosphere,
-      year: req.query.year,
-      perigee: req.query.perigee,
-      apogee: req.query.apogee,
-      tilt: req.query.tilt,
-      minTemp: req.query.minTemp,
-      maxTemp: req.query.maxTemp,
-      gravity: req.query.gravity,
-      day: req.query.day,
-      brightness: req.query.brightness,
-      location: req.query.location,
-      habitable: req.query.habitable,
-      planetId: req.query.planetId
+      id: req.query.id || undefined,
+      name: req.query.name || undefined,
+      age: req.query.age || undefined,
+      mass: req.query.mass || undefined,
+      diameter: req.query.diameter || undefined,
+      density: req.query.density || undefined,
+      type: req.query.type || undefined,
+      atmosphere: req.query.atmosphere || undefined,
+      year: req.query.year || undefined,
+      perigee: req.query.perigee || undefined,
+      apogee: req.query.apogee || undefined,
+      tilt: req.query.tilt || undefined,
+      minTemp: req.query.minTemp || undefined,
+      maxTemp: req.query.maxTemp || undefined,
+      gravity: req.query.gravity || undefined,
+      day: req.query.day || undefined,
+      brightness: req.query.brightness || undefined,
+      location: req.query.location || undefined,
+      habitable: req.query.habitable || undefined,
+      planetId: req.query.planetId || undefined
     };
 
     const sortBy = req.query.sortBy || "id";
