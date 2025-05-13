@@ -80,6 +80,89 @@
  *     summary: Get all comets
  *     tags:
  *       - Comet
+ *     parameters:
+ *       - in: query
+ *         name: name
+ *         schema:
+ *           type: string
+ *         description: Filter comets by name
+ *       - in: query
+ *         name: age
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter comets by age
+ *       - in: query
+ *         name: mass
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter comets by mass
+ *       - in: query
+ *         name: diameter
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter comets by diameter
+ *       - in: query
+ *         name: density
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter comets by density
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Filter comets by type
+ *       - in: query
+ *         name: year
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter comets by orbital period
+ *       - in: query
+ *         name: perigee
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter comets by perigee
+ *       - in: query
+ *         name: apogee
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter comets by apogee
+ *       - in: query
+ *         name: brightness
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter comets by brightness
+ *       - in: query
+ *         name: location
+ *         schema:
+ *           type: number
+ *           format: float
+ *         description: Filter comets by location
+ *       - in: query
+ *         name: starId
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: Filter comets by starId
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [id, name, age, mass, diameter, density, type, year, perigee, apogee, day, brightness, location, starId ]
+ *         description: Field to sort the comets by (default is 'id')
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *         description: Order to sort the comets by (default is 'asc')
  *     responses:
  *       '200':
  *         description: Success

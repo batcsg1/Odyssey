@@ -51,7 +51,6 @@ const createComet = async (req, res) => {
 const getComets = async (req, res) => {
   try {
     const filters = {
-      id: req.query.id || undefined,
       name: req.query.name || undefined,
       mass: req.query.mass || undefined,
       diameter: req.query.diameter || undefined,
