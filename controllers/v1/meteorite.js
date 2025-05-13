@@ -47,7 +47,6 @@ const createMeteorite = async (req, res) => {
 const getMeteorites = async (req, res) => {
   try {
     const filters = {
-      id: req.query.id || undefined,
       name: req.query.name || undefined,
       age: req.query.age || undefined,
       foundYear: req.query.foundYear || undefined,
