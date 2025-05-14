@@ -79,7 +79,7 @@ describe("Meteor Showers", () => {
                 name: "Leonids",
                 previousYear: 2024,
                 nextYear: 2025,
-                initialDate: "2024-11-30T00:00:00.000Z",
+                initialDate: "afg",
                 finalDate: "2024-11-30T00:00:00.000Z",
                 frequency: 25,
                 duration: 5,
@@ -89,10 +89,9 @@ describe("Meteor Showers", () => {
                 comets: [cometId],
                 constellationId
             });
-
         chai
             .expect(res.body.message)
-            .to.be.equal("Initial date should be a valid date");
+            .to.be.equal("Initial date must be a valid date");
     });
 
     it("should reject missing constellation ID", async () => {
@@ -209,6 +208,7 @@ describe("Meteor Showers", () => {
             .request(app)
             .get("/api/v1/meteor_showers?nextYear=2025");
 
+        console.log(`come on!: ${res.body.data[0]}`)
         chai.expect(res.body.data[0].nextYear).to.be.equal(2025);
     });
 
