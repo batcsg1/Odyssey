@@ -30,8 +30,15 @@ const createMeteorShower = async (req, res) => {
     const {
       constellationId,
       comets = [],  // Using comets from the request body
-      asteroids = []  // Using asteroids from the request body
+      asteroids = [],  // Using asteroids from the request body
+      initialDate
     } = req.body;
+
+    function isDateValid(dateStr) {
+      const parsedDateStr = String(dateStr);
+      const date = new Date(parsedDateStr)
+      return !isNaN(date.getTime()) ? date : null;
+    }
 
     // Check if constellation exists
     const constellation = await new Repository("Constellation").findById(constellationId);
@@ -61,6 +68,7 @@ const createMeteorShower = async (req, res) => {
 
     await meteorShowerRepository.create({
       ...req.body,
+      initialDate: isDateValid(initialDate),
       comets: comets.length > 0 ? { connect: comets.map(id => ({ id })) } : undefined,
       asteroids: asteroids.length > 0 ? { connect: asteroids.map(id => ({ id })) } : undefined,
     });
@@ -101,7 +109,7 @@ const getMeteorShowers = async (req, res) => {
       sortBy,
       sortOrder
     );
-    
+
     if (!meteorShowers) {
       return res.status(404).json({ message: "No meteor showers found" });
     }
