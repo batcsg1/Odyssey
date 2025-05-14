@@ -22,8 +22,8 @@ const meteorShowerSchema = Joi.object({
     "number.max": "The next year should be less than or equal to {#limit}",
     "any.required": "The next year is required"
   }),
-  initialDate: Joi.date().iso().required().messages({
-    "date.base": "Initial date should be a valid date",
+  initialDate: Joi.date().required().messages({
+    "date.base": "Initial date must be a valid date",
     "any.required": "Initial date is required"
   }),
   finalDate: Joi.date().iso().required().messages({
