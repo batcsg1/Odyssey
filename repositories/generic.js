@@ -25,9 +25,15 @@ class Repository {
       // Loop through the filters and apply them dynamically
       for (const [key, value] of Object.entries(filters)) {
         if (value !== undefined && value !== null) {
-          query.where[key] = typeof value === "string"
-            ? { contains: value }
-            : { equals: value }
+          if (Array.isArray(value)) { // Handle array case
+            query.where[key] = { in: value };  // Use 'in' for array values
+          } else if (!isNaN(value)) { // Handle numeric fields (non-array)
+            query.where[key] = { equals: Number(value) };  // Use 'equals' for numeric fields
+          } else if (Date.parse(value)) { // Date fields
+            query.where[key] = { equals: new Date(value) };
+          } else {
+            query.where[key] = { equals: value };
+          }
         }
       }
     }
