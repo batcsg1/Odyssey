@@ -31,7 +31,9 @@ const createMeteorShower = async (req, res) => {
       constellationId,
       comets = [],  // Using comets from the request body
       asteroids = [],  // Using asteroids from the request body
-      initialDate
+      initialDate,
+      finalDate,
+      peakDate
     } = req.body;
 
     function isDateValid(dateStr) {
@@ -69,6 +71,8 @@ const createMeteorShower = async (req, res) => {
     await meteorShowerRepository.create({
       ...req.body,
       initialDate: isDateValid(initialDate),
+      finalDate: isDateValid(finalDate),
+      peakDate: isDateValid(peakDate),
       comets: comets.length > 0 ? { connect: comets.map(id => ({ id })) } : undefined,
       asteroids: asteroids.length > 0 ? { connect: asteroids.map(id => ({ id })) } : undefined,
     });
