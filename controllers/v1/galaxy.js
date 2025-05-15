@@ -55,8 +55,11 @@ const getGalaxies = async (req, res) => {
       sortOrder
     );
     
-    if (!galaxies) {
-      return res.status(404).json({ message: "No galaxies found" });
+    if (galaxies.length === 0) {
+      return res.status(404).json({ 
+        message: "No galaxies found",
+        data: galaxies
+      });
     }
     return res.status(200).json({
       data: galaxies,

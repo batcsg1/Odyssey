@@ -90,8 +90,11 @@ const getSatellites = async (req, res) => {
       sortOrder
     );
 
-    if (!satellites) {
-      return res.status(404).json({ message: "No satellites found" });
+    if (satellites.length === 0) {
+      return res.status(404).json({ 
+        message: "No satellites found",
+        data: satellites
+      });
     }
     return res.status(200).json({
       data: satellites,

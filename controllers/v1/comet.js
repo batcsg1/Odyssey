@@ -73,8 +73,11 @@ const getComets = async (req, res) => {
       sortBy,
       sortOrder);
       
-    if (!comets) {
-      return res.status(404).json({ message: "No comets found" });
+    if (comets.length === 0) {
+      return res.status(404).json({ 
+        message: "No comets found",
+        data: comets 
+      });
     }
     return res.status(200).json({
       data: comets,

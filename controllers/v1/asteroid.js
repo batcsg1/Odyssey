@@ -71,8 +71,11 @@ const getAsteroids = async (req, res) => {
       sortBy,
       sortOrder);
 
-    if (!asteroids) {
-      return res.status(404).json({ message: "No asteroids found" });
+    if (asteroids.length === 0) {
+      return res.status(404).json({ 
+        message: "No asteroids found",
+        data: asteroids
+       });
     }
     return res.status(200).json({ data: asteroids });
   } catch (err) {

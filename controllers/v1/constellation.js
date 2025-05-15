@@ -51,8 +51,11 @@ const getConstellations = async (req, res) => {
       sortOrder
     );
 
-    if (!constellations) {
-      return res.status(404).json({ message: "No constellations found" });
+    if (constellations.length === 0) {
+      return res.status(404).json({ 
+        message: "No constellations found",
+        data: constellations 
+      });
     }
     return res.status(200).json({
       data: constellations,

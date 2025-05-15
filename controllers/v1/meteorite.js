@@ -65,8 +65,11 @@ const getMeteorites = async (req, res) => {
       sortBy,
       sortOrder);
 
-    if (!meteorites) {
-      return res.status(404).json({ message: "No meteorites found" });
+    if (meteorites.length === 0) {
+      return res.status(404).json({ 
+        message: "No meteorites found",
+        data: meteorites
+       });
     }
     return res.status(200).json({
       data: meteorites,

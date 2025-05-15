@@ -114,8 +114,11 @@ const getMeteorShowers = async (req, res) => {
       sortOrder
     );
 
-    if (!meteorShowers) {
-      return res.status(404).json({ message: "No meteor showers found" });
+    if (meteorShowers.length === 0) {
+      return res.status(404).json({ 
+        message: "No meteor showers found",
+        data: meteorShowers
+      });
     }
     return res.status(200).json({ data: meteorShowers });
   } catch (err) {

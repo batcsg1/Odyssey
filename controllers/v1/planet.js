@@ -117,8 +117,11 @@ const getPlanets = async (req, res) => {
       sortOrder
     );
 
-    if (!planets) {
-      return res.status(404).json({ message: "No planets found" });
+    if (planets.length === 0) {
+      return res.status(404).json({ 
+        message: "No planets found",
+        data: planets
+      });
     }
     return res.status(200).json({
       data: planets,

@@ -76,8 +76,11 @@ const getStars = async (req, res) => {
       sortOrder
     );
     
-    if (!stars) {
-      return res.status(404).json({ message: "No stars found" });
+    if (stars.length === 0) {
+      return res.status(404).json({ 
+        message: "No stars found",
+        data: stars
+       });
     }
     return res.status(200).json({
       data: stars,
