@@ -35,7 +35,7 @@ model Constellation {
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
   stars         Star[]
-  meteorShowers MeteorShower[]
+  meteorShowers MeteorShower?
   Galaxy        Galaxy[]
 }
 
@@ -175,7 +175,7 @@ model Asteroid {
   brightness    Float
   starId        String
   star          Star           @relation(fields: [starId], references: [id])
-  meteorShowers MeteorShower[] 
+  meteorShowers MeteorShower[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
 }
@@ -236,10 +236,10 @@ model MeteorShower {
   velocity        Float?
   perHour         Int?
   peakDate        DateTime?
-  comets          Comet[]     
-  asteroids       Asteroid[]  
-  constellationId String
-  constellation   Constellation @relation(fields: [constellationId], references: [id])  
+  comets          Comet[]
+  asteroids       Asteroid[]
+  constellationId String        @unique
+  constellation   Constellation @relation(fields: [constellationId], references: [id])
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
 }
