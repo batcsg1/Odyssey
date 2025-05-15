@@ -208,7 +208,6 @@ describe("Meteor Showers", () => {
             .request(app)
             .get("/api/v1/meteor_showers?nextYear=2025");
 
-        console.log(`come on!: ${res.body.data[0]}`)
         chai.expect(res.body.data[0].nextYear).to.be.equal(2025);
     });
 
