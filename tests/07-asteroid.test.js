@@ -10,6 +10,7 @@ const chai = chaiModule.use(chaiHttp);
 
 let starId;
 let asteroidId;
+let token;
 
 describe("Asteroids", () => {
     before(async () => {
@@ -17,10 +18,38 @@ describe("Asteroids", () => {
         starId = star.id;
     });
 
+    it("should reject missing token", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/asteroids");
+
+        chai.expect(res.body.message).to.be.equal("No token provided");
+    });
+
+    it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/auth/login")
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                emailAddress: "john.doe@example.com",
+                password: "password123",
+            });
+
+        chai.expect(res).to.have.status(200); // Expect a succesfull response
+
+        chai.expect(res.body.token).to.exist;
+
+        token = res.body.token;
+
+        chai.expect(res).to.not.have.header('x-powered-by') // Expect non-default header
+    });
+
     it("should create a valid asteroid", async () => {
         const res = await chai
             .request(app)
             .post("/api/v1/asteroids")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Vesta",
                 age: 4500000000,
@@ -45,6 +74,7 @@ describe("Asteroids", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/asteroids")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Pallas",
                 age: 4500000000,
@@ -69,6 +99,7 @@ describe("Asteroids", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/asteroids")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Pallas",
                 age: 4500000000,
@@ -92,6 +123,7 @@ describe("Asteroids", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/asteroids")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 289,
                 age: 4500000000,
@@ -114,6 +146,7 @@ describe("Asteroids", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/asteroids")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Pallas",
                 age: 4500000000,
@@ -136,6 +169,7 @@ describe("Asteroids", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/asteroids")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Pallas",
                 age: 4500000000,
@@ -157,7 +191,8 @@ describe("Asteroids", () => {
     it("should retrieve all asteroids", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/asteroids");
+            .get("/api/v1/asteroids")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
     });
@@ -165,7 +200,8 @@ describe("Asteroids", () => {
     it("should retrieve a asteroid by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/asteroids/${asteroidId}`);
+            .get(`/api/v1/asteroids/${asteroidId}`)
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data.name).to.be.equal("Vesta");
     });
@@ -173,7 +209,8 @@ describe("Asteroids", () => {
     it("should filter asteroids by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/asteroids?name=Pallas");
+            .get("/api/v1/asteroids?name=Pallas")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Pallas");
     });
@@ -181,7 +218,8 @@ describe("Asteroids", () => {
     it("should filter asteroids by type", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/asteroids?type=STONY");
+            .get("/api/v1/asteroids?type=STONY")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].type).to.be.equal("STONY");
     });
@@ -189,7 +227,8 @@ describe("Asteroids", () => {
     it("should sort asteroids by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/asteroids?sortBy=name");
+            .get("/api/v1/asteroids?sortBy=name")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Pallas");
     });
@@ -198,6 +237,7 @@ describe("Asteroids", () => {
         const res = await chai
             .request(app)
             .put(`/api/v1/asteroids/${asteroidId}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Pallas",
                 age: 4500000000,
@@ -220,6 +260,7 @@ describe("Asteroids", () => {
         const res = await chai
             .request(app)
             .put(`/api/v1/asteroids/${asteroidId}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Vesta",
                 age: 4500000000,
@@ -245,7 +286,8 @@ describe("Asteroids", () => {
     it("should delete an asteroid by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/asteroids/${asteroidId}`);
+            .delete(`/api/v1/asteroids/${asteroidId}`)
+            .set("Authorization", `Bearer ${token}`);
 
         chai
             .expect(res.body.message)

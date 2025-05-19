@@ -116,7 +116,7 @@ app.use(`${baseURL}/planets`, auth, planetRoutes);
 
 app.use(`${baseURL}/satellites`, auth, satelliteRoutes);
 
-app.use(`${baseURL}/asteroids`, asteroidRoutes);
+app.use(`${baseURL}/asteroids`, auth, asteroidRoutes);
 
 app.use(`${baseURL}/meteorites`, meteoriteRoutes);
 

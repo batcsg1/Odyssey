@@ -54,6 +54,11 @@
  *           type: string
  *           format: uuid
  *           example: "abcde12345-xyz6789"
+ *   securitySchemes:
+ *     BearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
  */
 
 /**
@@ -63,6 +68,8 @@
  *     summary: Create a new asteroid
  *     tags:
  *       - Asteroid
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -85,6 +92,8 @@
  *     summary: Get all asteroids
  *     tags:
  *       - Asteroid
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: query
  *         name: name
@@ -183,6 +192,8 @@
  *     summary: Get an asteroid by id
  *     tags:
  *       - Asteroid
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -206,6 +217,8 @@
  *     summary: Update an asteroid by id
  *     tags:
  *       - Asteroid
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -235,6 +248,8 @@
  *     summary: Delete an asteroid by id
  *     tags:
  *       - Asteroid
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
