@@ -16,9 +16,7 @@ class Repository {
       },
     };
 
-    if (select) {
-      query.select = select;
-    }
+    query.select = select;
 
     if (Object.keys(filters).length > 0) {
       query.where = {};
