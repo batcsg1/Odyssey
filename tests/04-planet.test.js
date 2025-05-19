@@ -10,6 +10,7 @@ const chai = chaiModule.use(chaiHttp);
 
 let starId;
 let planetId;
+let token;
 
 describe("Planets", () => {
     before(async () => {
@@ -17,10 +18,38 @@ describe("Planets", () => {
         starId = star.id;
     });
 
+    it("should reject missing token", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/planets");
+
+        chai.expect(res.body.message).to.be.equal("No token provided");
+    });
+
+    it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/auth/login")
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                emailAddress: "john.doe@example.com",
+                password: "password123",
+            });
+
+        chai.expect(res).to.have.status(200); // Expect a succesfull response
+
+        chai.expect(res.body.token).to.exist;
+
+        token = res.body.token;
+
+        chai.expect(res).to.not.have.header('x-powered-by') // Expect non-default header
+    });
+
     it("should create a valid planet", async () => {
         const res = await chai
             .request(app)
             .post("/api/v1/planets")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Mercury",
                 age: 4.5e9,
@@ -53,6 +82,7 @@ describe("Planets", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/planets")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Venus",
                 age: 4.5e9,
@@ -85,6 +115,7 @@ describe("Planets", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/planets")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Venus",
                 age: 4.5e9,
@@ -116,6 +147,7 @@ describe("Planets", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/planets")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 2324,
                 age: 4.5e9,
@@ -146,6 +178,7 @@ describe("Planets", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/planets")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Venus",
                 age: 4.5e9,
@@ -176,6 +209,7 @@ describe("Planets", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/planets")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Venus",
                 age: 4.5e9,
@@ -205,7 +239,8 @@ describe("Planets", () => {
     it("should retrieve all planets", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/planets");
+            .get("/api/v1/planets")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
     });
@@ -213,7 +248,8 @@ describe("Planets", () => {
     it("should retrieve a planet by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/planets/${planetId}`);
+            .get(`/api/v1/planets/${planetId}`)
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data.name).to.be.equal("Mercury");
     });
@@ -221,7 +257,8 @@ describe("Planets", () => {
     it("should filter planets by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/planets?name=Mercury");
+            .get("/api/v1/planets?name=Mercury")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Mercury");
     });
@@ -229,7 +266,8 @@ describe("Planets", () => {
     it("should filter planets by type", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/planets?type=TERRESTIAL");
+            .get("/api/v1/planets?type=TERRESTIAL")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].type).to.be.equal("TERRESTIAL");
     });
@@ -237,7 +275,8 @@ describe("Planets", () => {
     it("should sort planets by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/planets?sortBy=name");
+            .get("/api/v1/planets?sortBy=name")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Mercury");
     });
@@ -246,6 +285,7 @@ describe("Planets", () => {
         const res = await chai
             .request(app)
             .put(`/api/v1/planets/${planetId}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Venus",
                 age: 4.5e9,
@@ -276,6 +316,7 @@ describe("Planets", () => {
         const res = await chai
             .request(app)
             .put(`/api/v1/planets/${planetId}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Venus",
                 age: 4.5e9,
@@ -309,7 +350,8 @@ describe("Planets", () => {
     it("should delete a planet by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/planets/${planetId}`);
+            .delete(`/api/v1/planets/${planetId}`)
+            .set("Authorization", `Bearer ${token}`);
 
         chai
             .expect(res.body.message)

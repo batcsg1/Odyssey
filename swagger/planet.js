@@ -87,6 +87,11 @@
  *           type: string
  *           format: array
  *           example: ["123e4567-e89b-12d3-a456-426614174000"]
+ *   securitySchemes:
+ *     BearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
  */
 
 /**
@@ -96,6 +101,8 @@
  *     summary: Create a new planet
  *     tags:
  *       - Planet
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -118,6 +125,8 @@
  *     summary: Get all planets
  *     tags:
  *       - Planet
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: query
  *         name: name
@@ -261,6 +270,8 @@
  *     summary: Get a planet by id
  *     tags:
  *       - Planet
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -284,6 +295,8 @@
  *     summary: Update a planet by id
  *     tags:
  *       - Planet
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -313,6 +326,8 @@
  *     summary: Delete a planet by id
  *     tags:
  *       - Planet
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id

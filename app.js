@@ -112,7 +112,7 @@ app.use(`${baseURL}/galaxies`, auth, galaxyRoutes);
 
 app.use(`${baseURL}/stars`, auth, starRoutes);
 
-app.use(`${baseURL}/planets`, planetRoutes);
+app.use(`${baseURL}/planets`, auth, planetRoutes);
 
 app.use(`${baseURL}/satellites`, satelliteRoutes);
 
