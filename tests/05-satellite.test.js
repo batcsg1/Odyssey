@@ -10,6 +10,7 @@ const chai = chaiModule.use(chaiHttp);
 
 let planetId;
 let satelliteId;
+let token;
 
 describe("Satellites", () => {
     before(async () => {
@@ -17,10 +18,38 @@ describe("Satellites", () => {
         planetId = planet.id;
     });
 
+    it("should reject missing token", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/satellites");
+
+        chai.expect(res.body.message).to.be.equal("No token provided");
+    });
+
+    it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/auth/login")
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                emailAddress: "john.doe@example.com",
+                password: "password123",
+            });
+
+        chai.expect(res).to.have.status(200); // Expect a succesfull response
+
+        chai.expect(res.body.token).to.exist;
+
+        token = res.body.token;
+
+        chai.expect(res).to.not.have.header('x-powered-by') // Expect non-default header
+    });
+
     it("should create a valid satellite", async () => {
         const res = await chai
             .request(app)
             .post("/api/v1/satellites")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Moon",
                 age: 4.5e9,
@@ -52,6 +81,7 @@ describe("Satellites", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/satellites")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Phobos",
                 age: 4.5e9,
@@ -83,6 +113,7 @@ describe("Satellites", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/satellites")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Phobos",
                 age: 4.5e9,
@@ -113,6 +144,7 @@ describe("Satellites", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/satellites")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 234,
                 age: 4.5e9,
@@ -142,6 +174,7 @@ describe("Satellites", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/satellites")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Phobos",
                 age: 4.5e9,
@@ -171,6 +204,7 @@ describe("Satellites", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/satellites")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Phobos",
                 age: 4.5e9,
@@ -199,7 +233,8 @@ describe("Satellites", () => {
     it("should retrieve all satellites", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/satellites");
+            .get("/api/v1/satellites")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
     });
@@ -207,7 +242,8 @@ describe("Satellites", () => {
     it("should retrieve a satellite by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/satellites/${satelliteId}`);
+            .get(`/api/v1/satellites/${satelliteId}`)
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data.name).to.be.equal("Moon");
     });
@@ -215,7 +251,8 @@ describe("Satellites", () => {
     it("should filter satellites by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/satellites?name=Moon");
+            .get("/api/v1/satellites?name=Moon")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Moon");
     });
@@ -223,7 +260,8 @@ describe("Satellites", () => {
     it("should filter satellites by type", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/satellites?type=MOON");
+            .get("/api/v1/satellites?type=MOON")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].type).to.be.equal("MOON");
     });
@@ -231,7 +269,8 @@ describe("Satellites", () => {
     it("should sort satellites by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/satellites?sortBy=name");
+            .get("/api/v1/satellites?sortBy=name")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Moon");
     });
@@ -240,6 +279,7 @@ describe("Satellites", () => {
         const res = await chai
             .request(app)
             .put(`/api/v1/satellites/${satelliteId}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Phobos",
                 age: 4.5e9,
@@ -269,6 +309,7 @@ describe("Satellites", () => {
         const res = await chai
             .request(app)
             .put(`/api/v1/satellites/${satelliteId}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Moon",
                 age: 4.5e9,
@@ -301,7 +342,8 @@ describe("Satellites", () => {
     it("should delete a satellite by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/satellites/${satelliteId}`);
+            .delete(`/api/v1/satellites/${satelliteId}`)
+            .set("Authorization", `Bearer ${token}`);
 
         chai
             .expect(res.body.message)

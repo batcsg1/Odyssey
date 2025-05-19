@@ -80,6 +80,11 @@
  *           type: string
  *           format: uuid
  *           example: "123e4567-e89b-12d3-a456-426614174000"
+ *   securitySchemes:
+ *     BearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
  */
 
 /**
@@ -89,6 +94,8 @@
  *     summary: Create a new satellite
  *     tags:
  *       - Satellite
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -111,6 +118,8 @@
  *     summary: Get all satellites
  *     tags:
  *       - Satellite
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: query
  *         name: name
@@ -249,6 +258,8 @@
  *     summary: Get a satellite by id
  *     tags:
  *       - Satellite
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -272,6 +283,8 @@
  *     summary: Update a satellite by id
  *     tags:
  *       - Satellite
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -301,6 +314,8 @@
  *     summary: Delete a satellite by id
  *     tags:
  *       - Satellite
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
