@@ -108,7 +108,7 @@ app.use(`${baseURL}/auth`, authRoutes);
 
 app.use(`${baseURL}/constellations`, auth, constellationRoutes);
 
-app.use(`${baseURL}/galaxies`, galaxyRoutes);
+app.use(`${baseURL}/galaxies`, auth, galaxyRoutes);
 
 app.use(`${baseURL}/stars`, starRoutes);
 

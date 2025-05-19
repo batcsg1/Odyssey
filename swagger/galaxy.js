@@ -40,6 +40,8 @@
  *     summary: Create a new galaxy
  *     tags:
  *       - Galaxy
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -62,6 +64,8 @@
  *     summary: Get all galaxies
  *     tags:
  *       - Galaxy
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: query
  *         name: name
@@ -125,6 +129,8 @@
  *     summary: Get a galaxy by id
  *     tags:
  *       - Galaxy
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -148,6 +154,8 @@
  *     summary: Update a galaxy by id
  *     tags:
  *       - Galaxy
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -177,6 +185,8 @@
  *     summary: Delete a galaxy by id
  *     tags:
  *       - Galaxy
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
