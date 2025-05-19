@@ -134,7 +134,7 @@
  *         name: sortBy
  *         schema:
  *           type: string
- *           enum: [id, previousYear, nextYear, frequency, duration, velocity, perHour, constellationId ]
+ *           enum: [id, name, previousYear, nextYear, frequency, duration, velocity, perHour, constellationId ]
  *         description: Field to sort the meteor showers by (default is 'id')
  *       - in: query
  *         name: sortOrder
