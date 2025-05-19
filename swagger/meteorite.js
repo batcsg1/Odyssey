@@ -31,6 +31,11 @@
  *           type: string
  *           format: uuid
  *           example: "abcde12345-xyz6789"
+ *   securitySchemes:
+ *     BearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
  */
 
 /**
@@ -40,6 +45,8 @@
  *     summary: Create a new meteorite
  *     tags:
  *       - Meteorite
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -62,6 +69,8 @@
  *     summary: Get all meteorites
  *     tags:
  *       - Meteorite
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: query
  *         name: name
@@ -130,6 +139,8 @@
  *     summary: Get a meteorite by id
  *     tags:
  *       - Meteorite
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -153,6 +164,8 @@
  *     summary: Update a meteorite by id
  *     tags:
  *       - Meteorite
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -182,6 +195,8 @@
  *     summary: Delete a meteorite by id
  *     tags:
  *       - Meteorite
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
