@@ -47,7 +47,7 @@ describe("Meteor Showers", () => {
         meteorShowerId = res.body.data[0].id;
     });
 
-    it("should create another shower", async () => {
+    it("should reject creating another shower part of the same constellation", async () => {
         const res = await chai
             .request(app)
             .post("/api/v1/meteor_showers")
@@ -68,7 +68,7 @@ describe("Meteor Showers", () => {
 
         chai
             .expect(res.body.message)
-            .to.be.equal("Meteor shower successfully created");
+            .to.be.equal(`There is already a meteor shower that belongs to constellation with ${constellationId}`);
     });
 
     it("should reject invalid initial date", async () => {
@@ -195,6 +195,15 @@ describe("Meteor Showers", () => {
         chai.expect(res.body.data.name).to.be.equal("Orionids");
     });
 
+    
+    it("should filter showers by the next year of occurance", async () => {
+        const res = await chai
+        .request(app)
+        .get("/api/v1/meteor_showers?nextYear=2025");
+        
+        chai.expect(res.body.data[0].nextYear).to.be.equal(2025);
+    });
+    
     it("should filter showers by name", async () => {
         const res = await chai
             .request(app)
@@ -203,20 +212,12 @@ describe("Meteor Showers", () => {
         chai.expect(res.body.data[0].name).to.be.equal("Orionids");
     });
 
-    it("should filter showers by the next year of occurance", async () => {
-        const res = await chai
-            .request(app)
-            .get("/api/v1/meteor_showers?nextYear=2025");
-
-        chai.expect(res.body.data[0].nextYear).to.be.equal(2025);
-    });
-
     it("should sort showers by name", async () => {
         const res = await chai
             .request(app)
             .get("/api/v1/meteor_showers?sortBy=name");
 
-        chai.expect(res.body.data[0].name).to.be.equal("Leonids");
+        chai.expect(res.body.data[0].name).to.be.equal("Orionids");
     });
 
     it("should update a valid shower", async () => {
