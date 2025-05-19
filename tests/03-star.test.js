@@ -10,6 +10,7 @@ const chai = chaiModule.use(chaiHttp);
 
 let starId;
 let galaxyId;
+let token;
 
 describe("Stars", () => {
     before(async () => {
@@ -17,10 +18,38 @@ describe("Stars", () => {
         galaxyId = galaxy.id;
     });
 
+    it("should reject missing token", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/stars");
+
+        chai.expect(res.body.message).to.be.equal("No token provided");
+    });
+
+    it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/auth/login")
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                emailAddress: "john.doe@example.com",
+                password: "password123",
+            });
+
+        chai.expect(res).to.have.status(200); // Expect a succesfull response
+
+        chai.expect(res.body.token).to.exist;
+
+        token = res.body.token;
+
+        chai.expect(res).to.not.have.header('x-powered-by') // Expect non-default header
+    });
+
     it("should create a valid star", async () => {
         const res = await chai
             .request(app)
             .post("/api/v1/stars")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Sirius",
                 age: 2.4e8,
@@ -45,6 +74,7 @@ describe("Stars", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/stars")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Betelgeuse",
                 age: 8.0e6,
@@ -68,6 +98,7 @@ describe("Stars", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/stars")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Betelgeuse",
                 age: 8.0e6,
@@ -90,6 +121,7 @@ describe("Stars", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/stars")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 2324,
                 age: 8.0e6,
@@ -111,6 +143,7 @@ describe("Stars", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/stars")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Betelgeuse",
                 age: 8.0e6,
@@ -132,6 +165,7 @@ describe("Stars", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/stars")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Betelgeuse",
                 age: 8.0e6,
@@ -152,7 +186,8 @@ describe("Stars", () => {
     it("should retrieve all stars", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/stars");
+            .get("/api/v1/stars")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
     });
@@ -160,7 +195,8 @@ describe("Stars", () => {
     it("should retrieve a star by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/stars/${starId}`);
+            .get(`/api/v1/stars/${starId}`)
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data.name).to.be.equal("Sirius");
     });
@@ -168,7 +204,8 @@ describe("Stars", () => {
     it("should filter stars by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/stars?name=Betelgeuse");
+            .get("/api/v1/stars?name=Betelgeuse")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Betelgeuse");
     });
@@ -176,7 +213,8 @@ describe("Stars", () => {
     it("should filter stars by type", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/stars?type=MAIN_SEQUENCE");
+            .get("/api/v1/stars?type=MAIN_SEQUENCE")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].type).to.be.equal("MAIN_SEQUENCE");
     });
@@ -184,7 +222,8 @@ describe("Stars", () => {
     it("should sort stars by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/stars?sortBy=name");
+            .get("/api/v1/stars?sortBy=name")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Betelgeuse");
     });
@@ -193,6 +232,7 @@ describe("Stars", () => {
         const res = await chai
             .request(app)
             .put(`/api/v1/stars/${starId}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Betelgeuse",
                 age: 8.0e6,
@@ -214,6 +254,7 @@ describe("Stars", () => {
         const res = await chai
             .request(app)
             .put(`/api/v1/stars/${starId}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Betelgeuse",
                 age: 8.0e6,
@@ -238,7 +279,8 @@ describe("Stars", () => {
     it("should delete a star by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/stars/${starId}`);
+            .delete(`/api/v1/stars/${starId}`)
+            .set("Authorization", `Bearer ${token}`);
 
         chai
             .expect(res.body.message)

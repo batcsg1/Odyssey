@@ -54,6 +54,11 @@
  *           type: string
  *           format: uuid
  *           example: "123e4567-e89b-12d3-a456-426614174000"
+ *   securitySchemes:
+ *     BearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
  */
 
 /**
@@ -63,6 +68,8 @@
  *     summary: Create a new star
  *     tags:
  *       - Star
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -85,6 +92,8 @@
  *     summary: Get all stars
  *     tags:
  *       - Star
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: query
  *         name: name
@@ -183,6 +192,8 @@
  *     summary: Get a star by id
  *     tags:
  *       - Star
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -206,6 +217,8 @@
  *     summary: Update a star by id
  *     tags:
  *       - Star
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -235,6 +248,8 @@
  *     summary: Delete a star by id
  *     tags:
  *       - Star
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
