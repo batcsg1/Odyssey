@@ -122,7 +122,7 @@ app.use(`${baseURL}/meteorites`, auth, meteoriteRoutes);
 
 app.use(`${baseURL}/comets`, auth, cometRoutes);
 
-app.use(`${baseURL}/meteor_showers`, meteorShowerRoutes);
+app.use(`${baseURL}/meteor_showers`, auth, meteorShowerRoutes);
 
 //Swagger route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));

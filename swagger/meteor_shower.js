@@ -55,6 +55,11 @@
  *           type: string
  *           format: uuid
  *           example: "123e4567-e89b-12d3-a456-426614174003"
+ *   securitySchemes:
+ *     BearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
  */
 
 /**
@@ -64,6 +69,8 @@
  *     summary: Create a new meteor shower
  *     tags:
  *       - Meteor Shower
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -86,6 +93,8 @@
  *     summary: Get all meteor showers
  *     tags:
  *       - Meteor Shower
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: query
  *         name: name
@@ -158,6 +167,8 @@
  *     summary: Get a meteor shower by id
  *     tags:
  *       - Meteor Shower
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -181,6 +192,8 @@
  *     summary: Update a meteor shower by id
  *     tags:
  *       - Meteor Shower
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -210,6 +223,8 @@
  *     summary: Delete a meteor shower by id
  *     tags:
  *       - Meteor Shower
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
