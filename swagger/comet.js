@@ -49,6 +49,11 @@
  *           type: string
  *           format: uuid
  *           example: "abcde12345-xyz6789"
+ *   securitySchemes:
+ *     BearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
  */
 
 /**
@@ -58,6 +63,8 @@
  *     summary: Create a new comet
  *     tags:
  *       - Comet
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -80,6 +87,8 @@
  *     summary: Get all comets
  *     tags:
  *       - Comet
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: query
  *         name: name
@@ -178,6 +187,8 @@
  *     summary: Get a comet by id
  *     tags:
  *       - Comet
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -201,6 +212,8 @@
  *     summary: Update a comet by id
  *     tags:
  *       - Comet
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -230,6 +243,8 @@
  *     summary: Delete a comet by id
  *     tags:
  *       - Comet
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id

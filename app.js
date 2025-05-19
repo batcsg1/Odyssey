@@ -120,7 +120,7 @@ app.use(`${baseURL}/asteroids`, auth, asteroidRoutes);
 
 app.use(`${baseURL}/meteorites`, auth, meteoriteRoutes);
 
-app.use(`${baseURL}/comets`, cometRoutes);
+app.use(`${baseURL}/comets`, auth, cometRoutes);
 
 app.use(`${baseURL}/meteor_showers`, meteorShowerRoutes);
 

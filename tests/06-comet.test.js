@@ -10,6 +10,7 @@ const chai = chaiModule.use(chaiHttp);
 
 let starId;
 let cometId;
+let token;
 
 describe("Comets", () => {
     before(async () => {
@@ -17,10 +18,38 @@ describe("Comets", () => {
         starId = star.id;
     });
 
+    it("should reject missing token", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/comets");
+
+        chai.expect(res.body.message).to.be.equal("No token provided");
+    });
+
+    it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/auth/login")
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                emailAddress: "john.doe@example.com",
+                password: "password123",
+            });
+
+        chai.expect(res).to.have.status(200); // Expect a succesfull response
+
+        chai.expect(res.body.token).to.exist;
+
+        token = res.body.token;
+
+        chai.expect(res).to.not.have.header('x-powered-by') // Expect non-default header
+    });
+
     it("should create a valid comet", async () => {
         const res = await chai
             .request(app)
             .post("/api/v1/comets")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Halley's Comet",
                 mass: 2.2e14,
@@ -44,6 +73,7 @@ describe("Comets", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/comets")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Hale-Bopp",
                 mass: 1e14,
@@ -67,6 +97,7 @@ describe("Comets", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/comets")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Hale-Bopp",
                 mass: 1e14,
@@ -89,6 +120,7 @@ describe("Comets", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/comets")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 2747,
                 mass: 1e14,
@@ -110,6 +142,7 @@ describe("Comets", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/comets")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Hale-Bopp",
                 mass: 1e14,
@@ -131,6 +164,7 @@ describe("Comets", () => {
         const res = await chai
             .request(app)
             .post("/api/v1/comets")
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Hale-Bopp",
                 mass: "1e14",
@@ -151,7 +185,8 @@ describe("Comets", () => {
     it("should retrieve all comets", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/comets");
+            .get("/api/v1/comets")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
     });
@@ -159,7 +194,8 @@ describe("Comets", () => {
     it("should retrieve a comet by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/comets/${cometId}`);
+            .get(`/api/v1/comets/${cometId}`)
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data.name).to.be.equal("Halley's Comet");
     });
@@ -167,7 +203,8 @@ describe("Comets", () => {
     it("should filter comets by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/comets?name=Hale-Bopp");
+            .get("/api/v1/comets?name=Hale-Bopp")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Hale-Bopp");
     });
@@ -175,7 +212,8 @@ describe("Comets", () => {
     it("should filter comets by type", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/comets?type=SHORT_PERIOD");
+            .get("/api/v1/comets?type=SHORT_PERIOD")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].type).to.be.equal("SHORT_PERIOD");
     });
@@ -183,7 +221,8 @@ describe("Comets", () => {
     it("should sort comets by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/comets?sortBy=name");
+            .get("/api/v1/comets?sortBy=name")
+            .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Hale-Bopp");
     });
@@ -192,6 +231,7 @@ describe("Comets", () => {
         const res = await chai
             .request(app)
             .put(`/api/v1/comets/${cometId}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Halley's Comet",
                 mass: 2.2e14,
@@ -213,6 +253,7 @@ describe("Comets", () => {
         const res = await chai
             .request(app)
             .put(`/api/v1/comets/${cometId}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Halley's Comet",
                 mass: 2.2e14,
@@ -237,7 +278,8 @@ describe("Comets", () => {
     it("should delete a comet by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/comets/${cometId}`);
+            .delete(`/api/v1/comets/${cometId}`)
+            .set("Authorization", `Bearer ${token}`);
 
         chai
             .expect(res.body.message)
