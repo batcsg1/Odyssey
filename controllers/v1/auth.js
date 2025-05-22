@@ -7,6 +7,12 @@ const register = async (req, res) => {
   try {
     const { firstName, lastName, emailAddress, password, role, homePlanet } = req.body;
 
+    if (role === "ADMIN") {
+      return res
+        .status(403)
+        .json({ message: "User cannot register as an admin" });
+    }
+
     let user = await prisma.user.findUnique({ where: { emailAddress } });
 
     if (user) return res.status(409).json({ message: "User already exists" });
@@ -25,14 +31,19 @@ const register = async (req, res) => {
     const hashedPassword = await bcryptjs.hash(password, salt);
 
     user = await prisma.user.create({
-      data: { firstName, lastName, emailAddress, password: hashedPassword, role, homePlanet },
+      data: {
+        firstName,
+        lastName,
+        emailAddress,
+        password: hashedPassword,
+        role: "NORMAL",
+        homePlanet
+      },
       select: {
-        // Select only the fields you want to return
         id: true,
         firstName: true,
         lastName: true,
         emailAddress: true,
-        role: true,
         homePlanet: true,
         createdAt: true,
         updatedAt: true,
