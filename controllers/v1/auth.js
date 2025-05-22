@@ -3,6 +3,16 @@ import jwt from "jsonwebtoken";
 
 import prisma from "../../prisma/client.js";
 
+const selectObject = {
+  id: true,
+  firstName: true,
+  lastName: true,
+  emailAddress: true,
+  homePlanet: true,
+  createdAt: true,
+  updatedAt: true,
+}
+
 const register = async (req, res) => {
   try {
     const { firstName, lastName, emailAddress, password, role, homePlanet } = req.body;
@@ -39,15 +49,7 @@ const register = async (req, res) => {
         role: "NORMAL",
         homePlanet
       },
-      select: {
-        id: true,
-        firstName: true,
-        lastName: true,
-        emailAddress: true,
-        homePlanet: true,
-        createdAt: true,
-        updatedAt: true,
-      },
+      select: selectObject,
     });
 
     return res.status(201).json({
@@ -136,4 +138,25 @@ const login = async (req, res) => {
   }
 };
 
-export { register, login };
+const getUsers = async (req, res) => {
+  try {
+  
+    const users = await prisma.user.findMany({select: selectObject});
+
+    if (users.length === 0) {
+      return res.status(404).json({
+        message: "No users found",
+        data: users
+      });
+    }
+    return res.status(200).json({
+      data: users,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      message: err.message,
+    });
+  }
+};
+
+export { register, login, getUsers };
