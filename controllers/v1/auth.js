@@ -17,10 +17,10 @@ const register = async (req, res) => {
   try {
     const { firstName, lastName, emailAddress, password, role, homePlanet } = req.body;
 
-    if (role === "ADMIN") {
+    if (role !== "NORMAL") {
       return res
         .status(403)
-        .json({ message: "User cannot register as an admin" });
+        .json({ message: "User must register as a normal user" });
     }
 
     let user = await prisma.user.findUnique({ where: { emailAddress } });
