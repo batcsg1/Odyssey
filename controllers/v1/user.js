@@ -178,7 +178,7 @@ const updateUser = async (req, res) => {
         user = await userRepository.update(req.params.id, req.body);
 
         return res.status(200).json({
-            message: `user with the id: ${req.params.id} successfully updated`,
+            message: `User with the id: ${req.params.id} successfully updated`,
             data: user,
         });
 
@@ -189,28 +189,45 @@ const updateUser = async (req, res) => {
     }
 };
 
-// const deleteConstellation = async (req, res) => {
-//     try {
-//         const constellation = await userRepository.findById(req.params.id);
-//         if (!constellation) {
-//             return res.status(404).json({
-//                 message: `No constellation with the id: ${req.params.id} found`,
-//             });
-//         }
-//         await userRepository.delete(req.params.id);
-//         return res.json({
-//             message: `Constellation with the id: ${req.params.id} successfully deleted`,
-//         });
-//     } catch (err) {
-//         return res.status(500).json({
-//             message: err.message,
-//         });
-//     }
-// };
+const deleteUser = async (req, res) => {
+    try {
+        const { role, id } = req.user;
+        
+        const user = await userRepository.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({
+                message: `No user with the id: ${req.params.id} found`,
+            });
+        }
+
+        // When a normal user tries to delete other users data
+        if (role === "NORMAL" && user.id !== id){
+            return res.status(403).json({
+                message: "You are not authorized to delete other users data."
+            });
+        }
+        // When any user tries to delete their own account
+        if (user.id === id){
+            return res.status(403).json({
+                message: "You cannot delete your own account"
+            });
+        }
+
+        await userRepository.delete(req.params.id);
+        return res.json({
+            message: `User with the id: ${req.params.id} successfully deleted`,
+        });
+    } catch (err) {
+        return res.status(500).json({
+            message: err.message,
+        });
+    }
+};
 
 export {
     createUser,
     getUsers,
     getUser,
-    updateUser
+    updateUser,
+    deleteUser
 };
