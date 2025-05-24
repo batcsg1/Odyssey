@@ -7,7 +7,7 @@ const authorisation = async (req, res, next) => {
     const user = await prisma.user.findUnique({ where: { id: id } });
 
     // Check if the user is an admin or a super admin
-    if (user.role !== "ADMIN" || user.role !== "SUPER_ADMIN") {
+    if (user.role === "NORMAL") {
       return res.status(403).json({
         message: "Not authorized to access this route",
       });
