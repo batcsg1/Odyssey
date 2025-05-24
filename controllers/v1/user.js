@@ -125,6 +125,7 @@ const getUser = async (req, res) => {
         const { role, id } = req.user;
 
         const user = await userRepository.findById(req.params.id);
+
         if (!user) {
             return res.status(404).json({
                 message: `No user with the id: ${req.params.id} found`,
@@ -133,9 +134,17 @@ const getUser = async (req, res) => {
 
         // When the user role is normal and they must access their own data
 
-        if (role === "NORMAL" && user.id !== id){
+        if (role === "NORMAL" && user.id !== id) {
             return res.status(403).json({
                 message: "You are not authorized to access other users data.",
+            });
+        }
+
+        // When an admin tries to access super admin data
+
+        if (role === "ADMIN" && user.role === "SUPER_ADMIN") {
+            return res.status(403).json({
+                message: "You are not authorized to access this super admin user's data.",
             });
         }
 
@@ -162,14 +171,14 @@ const updateUser = async (req, res) => {
         }
 
         // When a normal user tries to update other users data
-        if (role === "NORMAL" && user.id !== id){
+        if (role === "NORMAL" && user.id !== id) {
             return res.status(403).json({
                 message: "You are not authorized to update other users data.",
             });
         }
 
         // When any user tries to update their role
-        if (req.body.role !== role){
+        if (req.body.role !== role) {
             return res.status(403).json({
                 message: "You are not allowed to update role.",
             });
@@ -192,7 +201,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     try {
         const { role, id } = req.user;
-        
+
         const user = await userRepository.findById(req.params.id);
         if (!user) {
             return res.status(404).json({
@@ -201,13 +210,13 @@ const deleteUser = async (req, res) => {
         }
 
         // When a normal user tries to delete other users data
-        if (role === "NORMAL" && user.id !== id){
+        if (role === "NORMAL" && user.id !== id) {
             return res.status(403).json({
                 message: "You are not authorized to delete other users data."
             });
         }
         // When any user tries to delete their own account
-        if (user.id === id){
+        if (user.id === id) {
             return res.status(403).json({
                 message: "You cannot delete your own account"
             });
