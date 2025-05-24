@@ -37,14 +37,14 @@ const createUser = async (req, res) => {
                 return res.status(401).json({
                     message: "ADMINs can only create NORMAL users",
                 });
-            }        
+            }
         }
 
         // Rule: SUPER_ADMIN can create any user, including other SUPER_ADMINs
 
         if (role === "SUPER_ADMIN") {
             if (req.body.role !== "SUPER_ADMIN") {
-                
+
             }
         }
 
@@ -85,14 +85,14 @@ const getUsers = async (req, res) => {
             sortBy,
             sortOrder
         );
-  
+
         // Filter the users based on current users role
 
         users = users.filter(user => {
-            if (role === "NORMAL"){
+            if (role === "NORMAL") {
                 // Rule: NORMAL users can only see their own data
                 return user.id === id;
-            } else if (role === "ADMIN"){
+            } else if (role === "ADMIN") {
                 //Rule: ADMIN can see ADMIN and NORMAL users, but not SUPER_ADMIN users
                 return user.role !== "SUPER_ADMIN"
             } else {
@@ -102,14 +102,14 @@ const getUsers = async (req, res) => {
         })
 
         // Rule: Return error if no users match
-        
+
         if (users.length === 0) {
             return res.status(404).json({
                 message: "No users found",
                 data: users
             });
         }
-        
+
         return res.status(200).json({
             data: users,
         });
@@ -120,23 +120,34 @@ const getUsers = async (req, res) => {
     }
 };
 
-// const getConstellation = async (req, res) => {
-//     try {
-//         const constellation = await userRepository.findById(req.params.id);
-//         if (!constellation) {
-//             return res.status(404).json({
-//                 message: `No constellation with the id: ${req.params.id} found`,
-//             });
-//         }
-//         return res.status(200).json({
-//             data: constellation,
-//         });
-//     } catch (err) {
-//         return res.status(500).json({
-//             message: err.message,
-//         });
-//     }
-// };
+const getUser = async (req, res) => {
+    try {
+        const { role, id } = req.user;
+
+        const user = await userRepository.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({
+                message: `No user with the id: ${req.params.id} found`,
+            });
+        }
+
+        // When the user role is normal and they must access their own data
+        
+        if (role === "NORMAL" && user.id !== id){
+            return res.status(403).json({
+                message: "You are not authorized to access other users data.",
+            });
+        }
+
+        return res.status(200).json({
+            data: user,
+        });
+    } catch (err) {
+        return res.status(500).json({
+            message: err.message,
+        });
+    }
+};
 
 // const updateConstellation = async (req, res) => {
 //     try {
@@ -179,5 +190,6 @@ const getUsers = async (req, res) => {
 
 export {
     createUser,
-    getUsers
+    getUsers,
+    getUser
 };
