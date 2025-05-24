@@ -161,9 +161,17 @@ const updateUser = async (req, res) => {
             });
         }
 
+        // When a normal user tries to update other users data
         if (role === "NORMAL" && user.id !== id){
             return res.status(403).json({
                 message: "You are not authorized to update other users data.",
+            });
+        }
+
+        // When any user tries to update their role
+        if (req.body.role !== role){
+            return res.status(403).json({
+                message: "You are not allowed to update role.",
             });
         }
 
