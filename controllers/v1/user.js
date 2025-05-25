@@ -184,7 +184,7 @@ const updateUser = async (req, res) => {
 
         if (role === "SUPER_ADMIN") {
             // RULE: SUPER_ADMIN can update their own data but not other SUPER_ADMIN users
-            if (user.role == "SUPER_ADMIN" && user.id !== id) {
+            if (user.role == role && user.id !== id) {
                 return res.status(403).json({
                     message: "You cannot update another super admin user",
                 });
@@ -240,7 +240,7 @@ const deleteUser = async (req, res) => {
 
         if (role === "SUPER_ADMIN") {
             // RULE: SUPER_ADMINs can't delete other super admins
-            if (user.role == "SUPER_ADMIN" && user.id !== id) {
+            if (user.role == role && user.id !== id) {
                 return res.status(403).json({
                     message: "You cannot delete another super admin user",
                 });
@@ -248,7 +248,7 @@ const deleteUser = async (req, res) => {
         }
         else if (role === "ADMIN") {
             // RULE: ADMINs can't delete other ADMINs
-            if (user.role == "ADMIN" && user.id !== id) {
+            if (user.role == role && user.id !== id) {
                 return res.status(403).json({
                     message: "You cannot delete another admin user",
                 });
