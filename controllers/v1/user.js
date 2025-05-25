@@ -138,7 +138,6 @@ const getUser = async (req, res) => {
                 message: "You are not authorized to access other users data.",
             });
         } else if (role === "ADMIN") {
-            
             // RULE: ADMINs can't view a SUPER_ADMINs data
             if (user.role === "SUPER_ADMIN") {
                 return res.status(403).json({
@@ -238,23 +237,36 @@ const deleteUser = async (req, res) => {
                 message: "You cannot delete your own account"
             });
         }
-        // RULE: Users can't delete users with the same role
-        if (user.role === role) {
-            return res.status(403).json({
-                message: "Deleting user with the same role not allowed"
-            });
-        }
 
-        if (role === "ADMIN") {
-            //RULE: ADMINs can only delete NORMAL users
-            if (user.role !== "NORMAL") {
+        if (role === "SUPER_ADMIN") {
+            // RULE: SUPER_ADMINs can't delete other super admins
+            if (user.role == "SUPER_ADMIN" && user.id !== id) {
                 return res.status(403).json({
-                    message: "You must delete a normal user",
+                    message: "You cannot delete another super admin user",
                 });
             }
         }
-
-
+        else if (role === "ADMIN") {
+            // RULE: ADMINs can't delete other ADMINs
+            if (user.role == "ADMIN" && user.id !== id) {
+                return res.status(403).json({
+                    message: "You cannot delete another admin user",
+                });
+            }
+            // RULE: ADMIN can delete NORMAL users
+            if (user.role !== "NORMAL") {
+                return res.status(403).json({
+                    message: "Deleting a super admin user not allowed",
+                });
+            }
+        } else if (role === "NORMAL") {
+            // RULE: NORMAL can only update their own data
+            if (user.id !== id) {
+                return res.status(403).json({
+                    message: "Deleting another user not allowed",
+                });
+            }
+        }
 
         await userRepository.delete(req.params.id);
         return res.json({
