@@ -30,6 +30,8 @@ import meteorShowerRoutes from "./routes/v1/meteor_shower.js";
 
 import galaxyRoutes from "./routes/v1/galaxy.js";
 
+import userRoutes from "./routes/v1/user.js";
+
 //Authentication routes
 
 import auth from "./middleware/auth.js";
@@ -123,6 +125,8 @@ app.use(`${baseURL}/meteorites`, auth, meteoriteRoutes);
 app.use(`${baseURL}/comets`, auth, cometRoutes);
 
 app.use(`${baseURL}/meteor_showers`, auth, meteorShowerRoutes);
+
+app.use(`${baseURL}/users`, auth, userRoutes);
 
 //Swagger route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
