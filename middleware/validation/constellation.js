@@ -15,7 +15,7 @@ const validatePostConstellation = (req, res, next) => {
       "string.min": "Shape should have a minimum length of {#limit}",
       "string.max": "Shape should have a maximum length of {#limit}",
     }),
-    area: Joi.number().strict().min(0).max(41253.0).optional().messages({
+    area: Joi.number().min(0).max(41253.0).optional().messages({
       "number.base": "Area should be a number",
       "number.min": "Area should be greater than or equal to {#limit}",
       "number.max": "Area should be lesser than or equal to {#limit}",
@@ -29,7 +29,7 @@ const validatePostConstellation = (req, res, next) => {
     }),
   });
 
-  const { error } = postSchema.validate(req.body);
+  const { error } = postSchema.validate(req.body, { convert: false });
 
   if (error) {
     return res.status(409).json({
@@ -55,7 +55,7 @@ const validatePutConstellation = (req, res, next) => {
       "string.min": "Shape should have a minimum length of {#limit}",
       "string.max": "Shape should have a maximum length of {#limit}",
     }),
-    area: Joi.number().strict().min(0).max(41253.0).optional().messages({
+    area: Joi.number().min(0).max(41253.0).optional().messages({
       "number.base": "Area should be a number",
       "number.min": "Area should be greater than or equal to {#limit}",
       "number.max": "Area should be lesser than or equal to {#limit}",
@@ -69,7 +69,7 @@ const validatePutConstellation = (req, res, next) => {
     }),
   }).min(1);
 
-  const { error } = putSchema.validate(req.body);
+  const { error } = putSchema.validate(req.body, { convert: false });
 
   if (error) {
     return res.status(409).json({
