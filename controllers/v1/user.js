@@ -181,8 +181,7 @@ const updateUser = async (req, res) => {
                     message: "You cannot update another super admin user",
                 });
             }
-        }
-        else if (role === "ADMIN") {
+        } else if (role === "ADMIN") {
             // RULE: ADMIN can update NORMAL users or themselves
             if (user.role !== "NORMAL" && user.id !== id) {
                 return res.status(403).json({
