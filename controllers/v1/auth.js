@@ -112,7 +112,8 @@ const login = async (req, res) => {
     const token = jwt.sign(
       {
         id: user.id,
-        name: user.name,
+        name: `${user.firstName} ${user.lastName}`,
+        role: user.role
       },
       JWT_SECRET,
       { expiresIn: JWT_LIFETIME }
