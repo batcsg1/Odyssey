@@ -165,7 +165,6 @@ describe("Galaxies", () => {
             .get("/api/v1/galaxies?type=BARRED_SPIRAL")
             .set("Authorization", `Bearer ${token}`);
 
-        console.log(res.body.data[0])
         chai.expect(res.body.data[0].type).to.be.equal("BARRED_SPIRAL");
     });
 
