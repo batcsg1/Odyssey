@@ -166,6 +166,22 @@ describe("Constellations", () => {
             );
     });
 
+    it("should update one field of a valid constellation", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/constellations/${constellationId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                name: "Yet another updated Canis Majora",
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Constellation with the id: ${constellationId} successfully updated`
+            );
+    });
+
     it("should delete a constellation by ID", async () => {
         const res = await chai
             .request(app)
