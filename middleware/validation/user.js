@@ -11,7 +11,7 @@ const userSchema = Joi.object({
         "string.empty": "Last name cannot be empty",
         "any.required": "Last name is required"
     }),
-    email: Joi.string()
+    emailAddress: Joi.string()
         .pattern(/^[A-Za-z0-9._%+-]+@[a-z]+\.com$/)
         .required()
         .messages({
