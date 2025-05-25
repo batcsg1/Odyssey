@@ -132,17 +132,14 @@ const getUser = async (req, res) => {
             });
         }
 
-        // When the user role is normal and they must access their own data
-
         if (role === "NORMAL" && user.id !== id) {
+            // RULE: NORMAL users can only view their data
             return res.status(403).json({
                 message: "You are not authorized to access other users data.",
             });
-        }
-
-        // When an admin tries to access super admin data
-
-        if (role === "ADMIN") {
+        } else if (role === "ADMIN") {
+            
+            // RULE: ADMINs can't view a SUPER_ADMINs data
             if (user.role === "SUPER_ADMIN") {
                 return res.status(403).json({
                     message: "You are not authorized to access this super admin user's data.",
