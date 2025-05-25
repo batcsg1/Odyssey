@@ -99,6 +99,11 @@
  *           type: string
  *         description: Filter users by email address
  *       - in: query
+ *         name: role
+ *         schema:
+ *           type: string
+ *         description: Filter users by role
+ *       - in: query
  *         name: homePlanet
  *         schema:
  *           type: string
@@ -108,7 +113,7 @@
  *         name: sortBy
  *         schema:
  *           type: string
- *           enum: [id, firstName, lastName, emailAddress, homePlanet ]
+ *           enum: [id, firstName, lastName, emailAddress, role, homePlanet ]
  *         description: Field to sort the users by (default is 'id')
  *       - in: query
  *         name: sortOrder
