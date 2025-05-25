@@ -172,43 +172,41 @@ const updateUser = async (req, res) => {
             });
         }
 
-        if (user.id !== id) { // Different user
-            // When a normal user tries to update another user
-            if (role === "NORMAL") {
-                return res.status(403).json({
-                    message: "You are not authorized to update any users."
-                });
-            }
-
-            // When the current user tries to update another users data with the same role
-            if (user.role === role) {
-                return res.status(403).json({
-                    message: "You cannot update another user with the same role as you",
-                });
-            }
-
-            if (role === "ADMIN") {
-                // If the user to be updated is a super admin
-                if (user.role == "SUPER_ADMIN") {
-                    return res.status(403).json({
-                        message: "You are not authorized to update this super admin's data.",
-                    });
-                }
-            }
-
-            // Deny any user from updating another user's password
-            if (req.body.password !== user.password) {
-                return res.status(403).json({
-                    message: "You are not authorized to update this user's password",
-                });
-            }
+        // RULE: Changing user role is not allowed
+        if (req.body.role) {
+            return res.status(403).json({
+                message: "Changing user role is not allowed",
+            });
         }
 
-        // When the current user tries to update their role
-        if (req.body.role !== role) {
+        // RULE: Password updates not allowed through this route
+        if (req.body.password) {
             return res.status(403).json({
-                message: "You are not allowed to update your own role.",
+                message: "Password updates not allowed here",
             });
+        }
+
+        // RULE: No user can update other members with the same role
+        if (user.id !== id && user.role === role) {
+            return res.status(403).json({
+                message: "Updating user with the same role not allowed",
+            });
+        }
+
+        if (role === "ADMIN") {
+            // RULE: ADMIN can update NORMAL users or themselves
+            if (user.role !== "NORMAL") {
+                return res.status(403).json({
+                    message: "You must update a normal user",
+                });
+            }
+        } else if (role === "NORMAL") {
+            // RULE: NORMAL can only update their own data
+            if (user.id !== id) {
+                return res.status(403).json({
+                    message: "You cannot update this other user",
+                });
+            }
         }
 
         user = await userRepository.update(req.params.id, req.body);
