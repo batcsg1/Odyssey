@@ -42,14 +42,6 @@ const createUser = async (req, res) => {
 
         // Rule: SUPER_ADMIN can create any user, including other SUPER_ADMINs
 
-        if (role === "SUPER_ADMIN") {
-            if (req.body.role !== "SUPER_ADMIN") {
-
-            }
-        }
-
-        // Create user with request body
-
         await userRepository.create(req.body);
         const newUsers = await userRepository.findAll(selectObject);
         return res.status(201).json({
@@ -90,18 +82,18 @@ const getUsers = async (req, res) => {
 
         users = users.filter(user => {
             if (role === "NORMAL") {
-                // Rule: NORMAL users can only see their own data
+                // RULE: NORMAL users can only see their own data
                 return user.id === id;
             } else if (role === "ADMIN") {
-                //Rule: ADMIN can see ADMIN and NORMAL users, but not SUPER_ADMIN users
+                //RULE: ADMIN can see ADMIN and NORMAL users, but not SUPER_ADMIN users
                 return user.role !== "SUPER_ADMIN"
             } else {
-                // Rule: SUPER_ADMIN can see all users
+                // RULE: SUPER_ADMIN can see all users
                 return true;
             }
         })
 
-        // Rule: Return error if no users match
+        // RULE: Return error if no users match
 
         if (users.length === 0) {
             return res.status(404).json({
