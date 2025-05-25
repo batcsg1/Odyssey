@@ -186,18 +186,19 @@ const updateUser = async (req, res) => {
             });
         }
 
-        // RULE: No user can update other members with the same role
-        if (user.id !== id && user.role === role) {
-            return res.status(403).json({
-                message: "Updating user with the same role not allowed",
-            });
-        }
-
-        if (role === "ADMIN") {
-            // RULE: ADMIN can update NORMAL users or themselves
-            if (user.role !== "NORMAL") {
+        if (role === "SUPER_ADMIN") {
+            // RULE: SUPER_ADMIN can update their own data but not other SUPER_ADMIN users
+            if (user.role == "SUPER_ADMIN" && user.id !== id) {
                 return res.status(403).json({
-                    message: "You must update a normal user",
+                    message: "You cannot update another super admin user",
+                });
+            }
+        }
+        else if (role === "ADMIN") {
+            // RULE: ADMIN can update NORMAL users or themselves
+            if (user.role !== "NORMAL" && user.id !== id) {
+                return res.status(403).json({
+                    message: "Updating a non-normal user not allowed",
                 });
             }
         } else if (role === "NORMAL") {
@@ -234,18 +235,29 @@ const deleteUser = async (req, res) => {
             });
         }
 
-        // When a normal user tries to delete other users data
-        if (role === "NORMAL" && user.id !== id) {
-            return res.status(403).json({
-                message: "You are not authorized to delete other users data."
-            });
-        }
-        // When any user tries to delete their own account
+        // RULE: Users can't delete themselves
         if (user.id === id) {
             return res.status(403).json({
                 message: "You cannot delete your own account"
             });
         }
+        // RULE: Users can't delete users with the same role
+        if (user.role === role) {
+            return res.status(403).json({
+                message: "Deleting user with the same role not allowed"
+            });
+        }
+
+        if (role === "ADMIN") {
+            //RULE: ADMINs can only delete NORMAL users
+            if (user.role !== "NORMAL") {
+                return res.status(403).json({
+                    message: "You must delete a normal user",
+                });
+            }
+        }
+
+
 
         await userRepository.delete(req.params.id);
         return res.json({
