@@ -275,6 +275,22 @@ describe("Comets", () => {
             );
     });
 
+    it("should update one comet field", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/comets/${cometId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                name: "Halley's Comet"
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Comet with the id: ${cometId} successfully updated`
+            );
+    });
+
     it("should delete a comet by ID", async () => {
         const res = await chai
             .request(app)
