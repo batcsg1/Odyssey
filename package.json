@@ -137,6 +137,7 @@
   "scripts": {
     "test": "npm run prisma:reset && mocha tests --recursive --timeout 10000 --exit",
     "dev": "nodemon app.js",
+    "docker": "docker run --name celestial-db-postgres -e POSTGRES_PASSWORD=P@ssw0rd -p 5445:5432 -d postgres",
     "prisma:migrate": "npx prisma migrate dev",
     "prisma:reset": "npx prisma migrate reset --force",
     "prisma:format": "npx prisma format",
