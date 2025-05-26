@@ -216,6 +216,22 @@ describe("Meteorites", () => {
             );
     });
 
+    it("should update one field", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/meteorites/${meteoriteId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                name: "Hoba"
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Meteorite with the id: ${meteoriteId} successfully updated`
+            );
+    });
+
     it("should delete a meteorite by ID", async () => {
         const res = await chai
             .request(app)
