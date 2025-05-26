@@ -339,6 +339,22 @@ describe("Satellites", () => {
             );
     });
 
+    it("should update one satellite field", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/satellites/${satelliteId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                name: "Updated Moon"
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Satellite with the id: ${satelliteId} successfully updated`
+            );
+    });
+
     it("should delete a satellite by ID", async () => {
         const res = await chai
             .request(app)
