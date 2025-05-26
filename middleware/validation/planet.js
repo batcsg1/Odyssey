@@ -260,7 +260,7 @@ const validatePutPlanet = (req, res, next) => {
         "array.base": "Users should be an array of valid UUIDs",
       }),
   });
-  const { error } = postSchema.validate(req.body, { convert: false });
+  const { error } = putSchema.validate(req.body, { convert: false });
 
   if (error) {
     return res.status(409).json({
