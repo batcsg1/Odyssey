@@ -283,6 +283,22 @@ describe("Asteroids", () => {
             );
     });
 
+    it("should update one asteroid field", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/asteroids/${asteroidId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                density: 3.5
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Asteroid with the id: ${asteroidId} successfully updated`
+            );
+    });
+
     it("should delete an asteroid by ID", async () => {
         const res = await chai
             .request(app)
