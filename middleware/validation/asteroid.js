@@ -164,7 +164,7 @@ const validatePutAsteroid = (req, res, next) => {
       "string.guid": "Star ID should be a valid UUID",
       "string.empty": "Star ID cannot be empty"
     }),
-  });
+  }).min(1);
 
   const { error } = putSchema.validate(req.body, { convert: false });
 
