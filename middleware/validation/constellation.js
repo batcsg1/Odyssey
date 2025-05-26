@@ -46,8 +46,7 @@ const validatePutConstellation = (req, res, next) => {
       "string.base": "Name should be a string",
       "string.empty": "Name cannot be empty",
       "string.min": "Name should have a minimum length of {#limit}",
-      "string.max": "Name should have a maximum length of {#limit}",
-      "any.required": "Name is required",
+      "string.max": "Name should have a maximum length of {#limit}"
     }),
     shape: Joi.string().min(3).max(100).optional().messages({
       "string.base": "Shape should be a string",
@@ -65,7 +64,6 @@ const validatePutConstellation = (req, res, next) => {
       "string.empty": "Abbreviation cannot be empty",
       "string.min": "Abbreviation should have a minimum length of {#limit}",
       "string.max": "Abbreviation should have a maximum length of {#limit}",
-      "any.required": "Abbreviation is required",
     }),
   }).min(1);
 
