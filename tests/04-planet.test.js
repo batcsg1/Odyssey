@@ -347,6 +347,22 @@ describe("Planets", () => {
             );
     });
 
+    it("should update one planet field", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/planets/${planetId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                name: "Venus"
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Planet with the id: ${planetId} successfully updated`
+            );
+    });
+
     it("should delete a planet by ID", async () => {
         const res = await chai
             .request(app)
