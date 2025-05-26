@@ -213,6 +213,22 @@ describe("Galaxies", () => {
             );
     });
 
+    it("should update a valid galaxy with one field", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/galaxies/${galaxyId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                name: "Andromeda Galaxy",
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Galaxy with the id: ${galaxyId} successfully updated`
+            );
+    });
+
     it("should delete a galaxy by ID", async () => {
         const res = await chai
             .request(app)
