@@ -226,7 +226,7 @@ const validatePutSatellite = (req, res, next) => {
       "string.guid": "Planet ID should be a valid UUID",
       "string.empty": "Planet ID cannot be empty"
     }),
-  });
+  }).min(1);
   const { error } = putSchema.validate(req.body, { convert: false });
 
   if (error) {
