@@ -192,27 +192,6 @@ describe("Meteor Showers", () => {
         chai.expect(res.body.message).to.be.equal("The next year should be an integer");
     });
 
-    // it("should reject non-numeric next year", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .post("/api/v1/meteor_showers")
-    //         .send({
-    //             name: "Orionids",
-    //             previousYear: 2024,
-    //             nextYear: "2025",
-    //             initialDate: "2024-10-02T00:00:00.000Z",
-    //             finalDate: "2024-11-07T00:00:00.000Z",
-    //             frequency: 30,
-    //             duration: 6,
-    //             velocity: 66,
-    //             perHour: 20,
-    //             peakDate: "2024-10-21T00:00:00.000Z",
-    //             constellationId
-    //         });
-
-    //     chai.expect(res.body.message).to.be.equal("The next year should be a number");
-    // });
-
     it("should retrieve all showers", async () => {
         const res = await chai
             .request(app)
@@ -276,6 +255,22 @@ describe("Meteor Showers", () => {
                 perHour: 20,
                 peakDate: "2024-10-21T00:00:00.000Z",
                 constellationId
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Meteor shower with the id: ${meteorShowerId} successfully updated`
+            );
+    });
+
+    it("should update one field", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/meteor_showers/${meteorShowerId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                frequency: 40
             });
 
         chai
