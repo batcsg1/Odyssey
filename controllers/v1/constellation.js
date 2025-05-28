@@ -12,9 +12,7 @@ const selectObject = {
   name: true,
   shape: true,
   area: true,
-  abbreviation: true,
-  createdAt: true,
-  updatedAt: true
+  abbreviation: true
 };
 
 const createConstellation = async (req, res) => {
@@ -69,7 +67,7 @@ const getConstellations = async (req, res) => {
 
 const getConstellation = async (req, res) => {
   try {
-    const constellation = await constellationRepository.findById(req.params.id);
+    const constellation = await constellationRepository.findById(req.params.id, selectObject);
     if (!constellation) {
       return res.status(404).json({
         message: `No constellation with the id: ${req.params.id} found`,
@@ -93,7 +91,7 @@ const updateConstellation = async (req, res) => {
         message: `No constellation with the id: ${req.params.id} found`,
       });
     }
-    constellation = await constellationRepository.update(req.params.id, req.body);
+    constellation = await constellationRepository.update(req.params.id, req.body, selectObject);
     return res.status(200).json({
       message: `Constellation with the id: ${req.params.id} successfully updated`,
       data: constellation,
