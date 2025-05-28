@@ -39,18 +39,18 @@ class Repository {
     return await prisma[this.model].findMany(query);
   }
 
-  async findById(id, select = {}) {
+  async findById(id, select) {
     return await prisma[this.model].findUnique({
       where: { id },
-      select
+      ...(select && Object.keys(select).length > 0 ? { select } : {})
     });
   }
 
-  async update(id, data, select = {}) {
+  async update(id, data, select) {
     return await prisma[this.model].update({
       where: { id },
       data,
-      select
+      ...(select && Object.keys(select).length > 0 ? { select } : {})
     });
   }
 
