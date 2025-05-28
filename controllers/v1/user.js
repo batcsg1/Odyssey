@@ -215,7 +215,7 @@ const deleteUser = async (req, res) => {
     try {
         const { role, id } = req.user;
 
-        const user = await userRepository.findById(req.params.id);
+        const user = await userRepository.findById(req.params.id, selectObject);
         if (!user) {
             return res.status(404).json({
                 message: `No user with the id: ${req.params.id} found`,
