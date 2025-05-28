@@ -39,9 +39,10 @@ class Repository {
     return await prisma[this.model].findMany(query);
   }
 
-  async findById(id) {
+  async findById(id, select = {}) {
     return await prisma[this.model].findUnique({
       where: { id },
+      select
     });
   }
 
