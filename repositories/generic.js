@@ -46,10 +46,11 @@ class Repository {
     });
   }
 
-  async update(id, data) {
+  async update(id, data, select = {}) {
     return await prisma[this.model].update({
       where: { id },
       data,
+      select
     });
   }
 
