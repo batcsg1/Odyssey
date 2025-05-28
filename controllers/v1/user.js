@@ -20,7 +20,7 @@ const selectObject = {
 
 const createUser = async (req, res) => {
     try {
-        const { role, id } = req.user;
+        const { role } = req.user;
 
         // Rule: NORMAL users cannot create any users
 
@@ -116,7 +116,7 @@ const getUser = async (req, res) => {
     try {
         const { role, id } = req.user;
 
-        const user = await userRepository.findById(req.params.id);
+        const user = await userRepository.findById(req.params.id, selectObject);
 
         if (!user) {
             return res.status(404).json({
@@ -152,7 +152,7 @@ const updateUser = async (req, res) => {
     try {
         const { role, id } = req.user;
 
-        let user = await userRepository.findById(req.params.id);
+        let user = await userRepository.findById(req.params.id, selectObject);
 
         if (!user) {
             return res.status(404).json({
@@ -197,7 +197,7 @@ const updateUser = async (req, res) => {
             }
         }
 
-        user = await userRepository.update(req.params.id, req.body);
+        user = await userRepository.update(req.params.id, req.body, selectObject);
 
         return res.status(200).json({
             message: `User with the id: ${req.params.id} successfully updated`,
