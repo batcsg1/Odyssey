@@ -168,6 +168,61 @@ TBD
 ## AI Documentation 🤖
 ### ChatGPT:
 
+**Resolving issue during password update where the controller was being bypassed**
+
+Prompt:
+```
+im getting this: {
+  "message": "\"password\" is not allowed"
+} instead of the message in here:  if (req.body.password) {
+            return res.status(403).json({
+                message: "Password updates not allowed here",
+            });
+        }
+```
+
+Response:
+
+
+✅ Solution
+You need to explicitly allow unknown fields in your Joi validation or whitelist allowed fields only and handle password manually in the controller.
+
+Option 1: Allow unknown fields (not ideal for security, but allows controller to handle password)
+Update your validator like this:
+
+```js
+const schema = Joi.object({
+  firstName: Joi.string(),
+  lastName: Joi.string(),
+  emailAddress: Joi.string().email(),
+  homePlanet: Joi.string()
+}).unknown(true); // 👈 allows fields not defined in schema (e.g., password)
+This way, req.body.password will reach your controller, and your if (req.body.password) check will work as intended.
+```
+
+**Making a select object and optional parameter for the generic repository's `getById` and `update` functions**
+
+Prompt:
+```
+async findById(id, select = {}) {
+    return await prisma[this.model].findUnique({
+      where: { id },
+      select
+    });
+  } how to make select an optional argument
+```
+Code response:
+```
+async findById(id, select) {
+  return await prisma[this.model].findUnique({
+    where: { id },
+    ...(select && Object.keys(select).length > 0 ? { select } : {})
+  });
+}
+```
+
+
+
 **Implementing many-to-many relationship for Comets, Asteroids and Meteor Shower models:**
 [Issue #7](https://github.com/otago-polytechnic-bit-courses/id607001-s1-25-batcsg1/issues/7)
 
