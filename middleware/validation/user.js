@@ -63,7 +63,7 @@ const validatePutUser = (req, res, next) => {
             "any.only": `Role must be one of the following: ${Object.values(Role)}`,
         }),
         homePlanet: Joi.string().uuid().optional()
-    }).min(1);
+    }).min(1).unknown(true);
 
     const { error } = putSchema.validate(req.body);
 
