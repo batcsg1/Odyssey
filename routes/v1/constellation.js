@@ -18,6 +18,8 @@ import {
   validatePutConstellation,
 } from "../../middleware/validation/constellation.js";
 
+import authorisation from "../../middleware/auth/authorisation.js"
+
 const constellationController = {
   get: getConstellations,
   getById: getConstellation,
@@ -29,6 +31,7 @@ const constellationController = {
 const constellationRouter = createRouter(
   constellationController,
   validatePostConstellation,
+  authorisation,
   validatePutConstellation,
 );
 

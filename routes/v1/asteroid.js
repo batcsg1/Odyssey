@@ -18,6 +18,8 @@ import {
   validatePutAsteroid,
 } from "../../middleware/validation/asteroid.js";
 
+import authorisation from "../../middleware/auth/authorisation.js"
+
 const asteroidController = {
   get: getAsteroids,
   getById: getAsteroid,
@@ -29,6 +31,7 @@ const asteroidController = {
 const asteroidRouter = createRouter(
   asteroidController,
   validatePostAsteroid,
+  authorisation,
   validatePutAsteroid,
 );
 

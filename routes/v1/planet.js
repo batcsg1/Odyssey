@@ -18,6 +18,8 @@ import {
   validatePutPlanet,
 } from "../../middleware/validation/planet.js";
 
+import authorisation from "../../middleware/auth/authorisation.js"
+
 const planetController = {
   get: getPlanets,
   getById: getPlanet,
@@ -29,6 +31,7 @@ const planetController = {
 const planetRouter = createRouter(
   planetController,
   validatePostPlanet,
+  authorisation,
   validatePutPlanet,
 );
 

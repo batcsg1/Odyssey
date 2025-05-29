@@ -18,6 +18,8 @@ import {
   validatePutSatellite,
 } from "../../middleware/validation/satellite.js";
 
+import authorisation from "../../middleware/auth/authorisation.js"
+
 const satelliteController = {
   get: getSatellites,
   getById: getSatellite,
@@ -29,6 +31,7 @@ const satelliteController = {
 const satelliteRouter = createRouter(
   satelliteController,
   validatePostSatellite,
+  authorisation,
   validatePutSatellite,
 );
 

@@ -18,6 +18,8 @@ import {
   validatePutMeteorite,
 } from "../../middleware/validation/meteorite.js";
 
+import authorisation from "../../middleware/auth/authorisation.js"
+
 const meteoriteController = {
   get: getMeteorites,
   getById: getMeteorite,
@@ -29,6 +31,7 @@ const meteoriteController = {
 const meteoriteRouter = createRouter(
   meteoriteController,
   validatePostMeteorite,
+  authorisation,
   validatePutMeteorite,
 );
 

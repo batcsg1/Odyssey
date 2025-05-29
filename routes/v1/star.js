@@ -18,6 +18,8 @@ import {
   validatePutStar,
 } from "../../middleware/validation/star.js";
 
+import authorisation from "../../middleware/auth/authorisation.js"
+
 const starController = {
   get: getStars,
   getById: getStar,
@@ -29,6 +31,7 @@ const starController = {
 const starRouter = createRouter(
   starController,
   validatePostStar,
+  authorisation,
   validatePutStar,
 );
 

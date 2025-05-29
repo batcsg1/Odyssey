@@ -18,6 +18,8 @@ import {
   validatePutMeteorShower,
 } from "../../middleware/validation/meteor_shower.js";
 
+import authorisation from "../../middleware/auth/authorisation.js"
+
 const meteorShowerController = {
   get: getMeteorShowers,
   getById: getMeteorShower,
@@ -29,6 +31,7 @@ const meteorShowerController = {
 const meteorShowerRouter = createRouter(
   meteorShowerController,
   validatePostMeteorShower,
+  authorisation,
   validatePutMeteorShower,
 );
 

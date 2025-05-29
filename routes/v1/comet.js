@@ -18,6 +18,8 @@ import {
   validatePutComet,
 } from "../../middleware/validation/comet.js";  // Validation middleware for comet
 
+import authorisation from "../../middleware/auth/authorisation.js"
+
 const cometController = {
   get: getComets,
   getById: getComet,
@@ -29,6 +31,7 @@ const cometController = {
 const cometRouter = createRouter(
   cometController,
   validatePostComet,  // Validate on POST (create) requests
+  authorisation,
   validatePutComet    // Validate on PUT (update) requests
 );
 

@@ -18,6 +18,8 @@ import {
   validatePutGalaxy,
 } from "../../middleware/validation/galaxy.js";
 
+import authorisation from "../../middleware/auth/authorisation.js"
+
 const galaxyController = {
   get: getGalaxies,
   getById: getGalaxy,
@@ -29,6 +31,7 @@ const galaxyController = {
 const galaxyRouter = createRouter(
   galaxyController,
   validatePostGalaxy,
+  authorisation,
   validatePutGalaxy,
 );
 

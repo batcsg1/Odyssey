@@ -5,14 +5,14 @@
 
 import express from "express";
 
-const createRouter = (controller, postValidator, putValidator) => {
+const createRouter = (controller, postValidator, authorisation, putValidator) => {
     const router = express.Router();
 
     router.get("/", controller.get);
     router.get("/:id", controller.getById);
-    router.post("/", postValidator, controller.create);
-    router.put("/:id", putValidator, controller.update);
-    router.delete("/:id", controller.delete);
+    router.post("/", postValidator, authorisation, controller.create);
+    router.put("/:id", putValidator, authorisation, controller.update);
+    router.delete("/:id", authorisation, controller.delete);
 
     return router;
 };
