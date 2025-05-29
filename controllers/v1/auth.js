@@ -65,7 +65,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const MAX_LOGIN_ATTEMPTS = 5;
-  const LOCK_TIME_MS = 5 * 60 * 1000; // 5 minutes
+  const LOCK_TIME_MS = 10 * 60 * 1000; // 10 minutes
 
   try {
     const { emailAddress, password } = req.body;
