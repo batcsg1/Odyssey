@@ -43,11 +43,14 @@ const createUser = async (req, res) => {
 
         // Rule: SUPER_ADMIN can create any user, including other SUPER_ADMINs
 
-        await userRepository.create(req.body);
-        const newUsers = await userRepository.findAll(selectObject);
+        const createdUser = await userRepository.create(req.body);
+
+        // Return the created user as the data object
+        const user = await userRepository.findById(createdUser.id, selectObject);
+
         return res.status(201).json({
             message: "User successfully created",
-            data: newUsers,
+            data: user,
         });
 
     } catch (err) {
@@ -71,12 +74,16 @@ const getUsers = async (req, res) => {
 
         const sortBy = req.query.sortBy || "id";
         const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+        const page = req.query.page
+        const amount = req.query.amount
 
         let users = await userRepository.findAll(
             selectObject,
             filters,
             sortBy,
-            sortOrder
+            sortOrder,
+            page,
+            amount
         );
 
         // Filter the users based on current users role
