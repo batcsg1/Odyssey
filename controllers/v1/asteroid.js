@@ -35,11 +35,13 @@ const createAsteroid = async (req, res) => {
       return res.status(404).json({ message: `Star with id ${starId} not found` });
     }
     
-    await asteroidRepository.create(req.body);
-    const newAsteroids = await asteroidRepository.findAll(selectObject);
+    const newAsteroid = await asteroidRepository.create(req.body);
+
+    const asteroid = await asteroidRepository.findById(newAsteroid.id, selectObject);
+
     return res.status(201).json({
       message: "Asteroid successfully created",
-      data: newAsteroids,
+      data: asteroid,
     });
   } catch (err) {
     return res.status(500).json({ message: err.message });
@@ -64,12 +66,17 @@ const getAsteroids = async (req, res) => {
 
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+    const page = req.query.page
+    const amount = req.query.amount
 
     const asteroids = await asteroidRepository.findAll(
       selectObject,
       filters,
       sortBy,
-      sortOrder);
+      sortOrder,
+      page,
+      amount
+    );
 
     if (asteroids.length === 0) {
       return res.status(404).json({ 
