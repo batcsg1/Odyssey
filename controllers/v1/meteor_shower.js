@@ -78,7 +78,7 @@ const createMeteorShower = async (req, res) => {
       }
     }
 
-    await meteorShowerRepository.create({
+    const newMeteorShower = await meteorShowerRepository.create({
       ...req.body,
       initialDate: isDateValid(initialDate),
       finalDate: isDateValid(finalDate),
@@ -87,11 +87,11 @@ const createMeteorShower = async (req, res) => {
       asteroids: asteroids.length > 0 ? { connect: asteroids.map(id => ({ id })) } : undefined,
     });
 
-    const newMeteorShowers = await meteorShowerRepository.findAll(selectObject);
+    const meteorShower = await meteorShowerRepository.findById(newMeteorShower.id, selectObject);
 
     return res.status(201).json({
       message: "Meteor shower successfully created",
-      data: newMeteorShowers,
+      data: meteorShower,
     });
   } catch (err) {
     return res.status(500).json({ message: err.message });
@@ -116,12 +116,16 @@ const getMeteorShowers = async (req, res) => {
 
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+    const page = req.query.page
+    const amount = req.query.amount
 
     const meteorShowers = await meteorShowerRepository.findAll(
       selectObject,
       filters,
       sortBy,
-      sortOrder
+      sortOrder,
+      page,
+      amount
     );
 
     if (meteorShowers.length === 0) {
