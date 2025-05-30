@@ -197,7 +197,7 @@ const updateUser = async (req, res) => {
                 });
             }
             // RULE: ADMINs can't update disable or enable NORMAL users
-            if (req.body.status && user.role === "NORMAL") {
+            if (typeof req.body.status === "boolean" && user.role === "NORMAL") {
                 return res.status(403).json({
                     message: "ADMIN users cannot disable or enable NORMAL users",
                 });
