@@ -61,7 +61,7 @@ describe("Meteorites", () => {
         chai
             .expect(res.body.message)
             .to.be.equal("Meteorite successfully created");
-        meteoriteId = res.body.data[0].id;
+        meteoriteId = res.body.data.id;
     });
 
     it("should create another valid meteorite", async () => {

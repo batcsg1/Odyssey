@@ -67,7 +67,7 @@ describe("Stars", () => {
         chai
             .expect(res.body.message)
             .to.be.equal("Star successfully created");
-        starId = res.body.data[0].id;
+        starId = res.body.data.id;
     });
 
     it("should create another valid star", async () => {

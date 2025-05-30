@@ -74,7 +74,7 @@ describe("Satellites", () => {
         chai
             .expect(res.body.message)
             .to.be.equal("Satellite successfully created");
-        satelliteId = res.body.data[0].id;
+        satelliteId = res.body.data.id;
     });
 
     it("should create another valid satellite", async () => {

@@ -66,7 +66,7 @@ describe("Comets", () => {
         chai
             .expect(res.body.message)
             .to.be.equal("Comet successfully created");
-        cometId = res.body.data[0].id;
+        cometId = res.body.data.id;
     });
 
     it("should create another valid comet", async () => {

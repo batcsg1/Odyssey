@@ -73,7 +73,7 @@ describe("Meteor Showers", () => {
         chai
             .expect(res.body.message)
             .to.be.equal("Meteor shower successfully created");
-        meteorShowerId = res.body.data[0].id;
+        meteorShowerId = res.body.data.id;
     });
 
     it("should reject creating another shower part of the same constellation", async () => {

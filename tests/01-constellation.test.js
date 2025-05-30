@@ -76,7 +76,7 @@ describe("Constellations", () => {
         chai
             .expect(res.body.message)
             .to.be.equal("Constellation successfully created");
-        constellationId = res.body.data[0].id;
+        constellationId = res.body.data.id;
     });
 
     it("should create another valid constellation", async () => {
