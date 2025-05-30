@@ -22,20 +22,22 @@ const selectObject = {
 
 const createMeteorite = async (req, res) => {
   try {
-    // Check if constellationId is provided
-    const planetId = req.body.planetId;
+    // Check if planet ID is provided
+    const { planetId } = req.body;
 
-    // Check if institution exists
+    // Check if planet exists
     const planet = await new Repository("Planet").findById(planetId);
     if (!planet) {
       return res.status(404).json({ message: `The planet with id ${planetId} was not found` });
     }
 
-    await meteoriteRepository.create(req.body);
-    const newMeteorite = await meteoriteRepository.findAll(selectObject);
+    const newMeteorite = await meteoriteRepository.create(req.body);
+
+    const meteorite = await meteoriteRepository.findById(newMeteorite.id, selectObject);
+
     return res.status(201).json({
       message: "Meteorite successfully created",
-      data: newMeteorite,
+      data: meteorite,
     });
   } catch (err) {
     return res.status(500).json({
@@ -58,12 +60,17 @@ const getMeteorites = async (req, res) => {
 
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+    const page = req.query.page
+    const amount = req.query.amount
 
     const meteorites = await meteoriteRepository.findAll(
       selectObject,
       filters,
       sortBy,
-      sortOrder);
+      sortOrder,
+      page,
+      amount
+    );
 
     if (meteorites.length === 0) {
       return res.status(404).json({ 
