@@ -9,7 +9,7 @@ class Repository {
     return await prisma[this.model].create({ data });
   }
 
-  async findAll(select = {}, filters = {}, sortBy = "id", sortOrder = "asc", page = 1, amount = 5) {
+  async findAll(select = {}, filters = {}, sortBy = "id", sortOrder = "asc", page = 1, amount = 25) {
 
     const query = {
       take: Number(amount),
