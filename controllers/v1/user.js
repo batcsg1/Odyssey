@@ -43,10 +43,10 @@ const createUser = async (req, res) => {
 
         // Rule: SUPER_ADMIN can create any user, including other SUPER_ADMINs
 
-        const createdUser = await userRepository.create(req.body);
+        const newUser = await userRepository.create(req.body);
 
         // Return the created user as the data object
-        const user = await userRepository.findById(createdUser.id, selectObject);
+        const user = await userRepository.findById(newUser.id, selectObject);
 
         return res.status(201).json({
             message: "User successfully created",
