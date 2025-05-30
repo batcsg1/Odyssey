@@ -125,12 +125,12 @@
  *         name: page
  *         schema:
  *           type: number
- *         description: Page number
+ *         description: Page number (default is 1)
  *       - in: query
  *         name: amount
  *         schema:
  *           type: number
- *         description: Amount of users per page
+ *         description: Amount of users per page (default is 25)
  *     security:
  *       - BearerAuth: []
  *     responses:
