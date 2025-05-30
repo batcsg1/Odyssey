@@ -242,6 +242,16 @@
  *           type: string
  *           enum: [asc, desc]
  *         description: Order to sort the satellites by (default is 'asc')
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: number
+ *         description: Page number (default is 1)
+ *       - in: query
+ *         name: amount
+ *         schema:
+ *           type: number
+ *         description: Amount of users per page (default is 25)
  *     responses:
  *       '200':
  *         description: Success
