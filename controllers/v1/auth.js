@@ -72,6 +72,10 @@ const login = async (req, res) => {
 
     const user = await prisma.user.findUnique({ where: { emailAddress } });
 
+    if (!user.status){
+      return res.status(403).json({ message: "Your account is currently disabled." });
+    }
+
     if (!user)
       return res.status(401).json({ message: "Invalid email address" });
 

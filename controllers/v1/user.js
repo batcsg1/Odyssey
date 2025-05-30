@@ -14,6 +14,7 @@ const selectObject = {
     emailAddress: true,
     homePlanet: true,
     role: true,
+    status: true,
     createdAt: true,
     updatedAt: true,
 }
@@ -174,6 +175,13 @@ const updateUser = async (req, res) => {
             });
         }
 
+        // RULE: User cannot disable or enable their own account
+        if (req.body.status && user.id === id) {
+            return res.status(403).json({
+                message: "You cannot disable or enable your own account",
+            });
+        }
+
         if (role === "SUPER_ADMIN") {
             // RULE: SUPER_ADMIN can update their own data but not other SUPER_ADMIN users
             if (user.role == role && user.id !== id) {
@@ -186,6 +194,12 @@ const updateUser = async (req, res) => {
             if (user.role !== "NORMAL" && user.id !== id) {
                 return res.status(403).json({
                     message: "Updating a non-normal user not allowed",
+                });
+            }
+            // RULE: ADMINs can't update disable or enable NORMAL users
+            if (req.body.status && user.role === "NORMAL") {
+                return res.status(403).json({
+                    message: "ADMIN users cannot disable or enable NORMAL users",
                 });
             }
         } else if (role === "NORMAL") {
