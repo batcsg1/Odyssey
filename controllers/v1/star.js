@@ -57,7 +57,7 @@ const getStars = async (req, res) => {
       mass: req.query.mass || undefined,
       diameter: req.query.diameter || undefined,
       type: req.query.type || undefined,
-      distance: req.query.distance || undefined ,
+      distance: req.query.distance || undefined,
       temperature: req.query.temperature || undefined,
       luminosity: req.query.luminosity || undefined,
       hasPlanets: req.query.hasPlanets || undefined,
