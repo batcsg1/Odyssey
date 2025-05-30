@@ -176,7 +176,7 @@ const updateUser = async (req, res) => {
         }
 
         // RULE: User cannot disable or enable their own account
-        if (req.body.status && user.id === id) {
+        if (typeof req.body.status === "boolean" && user.id === id) {
             return res.status(403).json({
                 message: "You cannot disable or enable your own account",
             });
