@@ -43,11 +43,13 @@ const createSatellite = async (req, res) => {
       return res.status(404).json({ message: `The planet with id ${planetId} was not found` });
     }
 
-    await satelliteRepository.create(req.body);
-    const newSatellites = await satelliteRepository.findAll(selectObject);
+    const newSatellite = await satelliteRepository.create(req.body);
+
+    const satellite = await satelliteRepository.findById(newSatellite.id, selectObject);
+
     return res.status(201).json({
       message: "Satellite successfully created",
-      data: newSatellites,
+      data: satellite,
     });
   } catch (err) {
     return res.status(500).json({
@@ -82,12 +84,16 @@ const getSatellites = async (req, res) => {
 
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+    const page = req.query.page
+    const amount = req.query.amount
 
     const satellites = await satelliteRepository.findAll(
       selectObject,
       filters,
       sortBy,
-      sortOrder
+      sortOrder,
+      page,
+      amount
     );
 
     if (satellites.length === 0) {
