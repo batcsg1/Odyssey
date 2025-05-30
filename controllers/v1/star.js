@@ -52,7 +52,7 @@ const createStar = async (req, res) => {
 const getStars = async (req, res) => {
   try {
     const filters = {
-      name: req.query.name || undefined ,
+      name: req.query.name || undefined,
       age: req.query.age || undefined,
       mass: req.query.mass || undefined,
       diameter: req.query.diameter || undefined,
