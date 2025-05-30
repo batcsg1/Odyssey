@@ -17,11 +17,13 @@ const selectObject = {
 
 const createConstellation = async (req, res) => {
   try {
-    await constellationRepository.create(req.body);
-    const newConstellations = await constellationRepository.findAll(selectObject);
+    const newConstellation = await constellationRepository.create(req.body);
+
+    const constellation = await constellationRepository.findById(newConstellation.id, selectObject);
+
     return res.status(201).json({
       message: "Constellation successfully created",
-      data: newConstellations,
+      data: constellation,
     });
   } catch (err) {
     return res.status(500).json({
@@ -41,18 +43,22 @@ const getConstellations = async (req, res) => {
 
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+    const page = req.query.page
+    const amount = req.query.amount
 
     const constellations = await constellationRepository.findAll(
       selectObject,
       filters,
       sortBy,
-      sortOrder
+      sortOrder,
+      page,
+      amount
     );
 
     if (constellations.length === 0) {
-      return res.status(404).json({ 
+      return res.status(404).json({
         message: "No constellations found",
-        data: constellations 
+        data: constellations
       });
     }
     return res.status(200).json({
