@@ -48,13 +48,13 @@ const createPlanet = async (req, res) => {
       users = [],  // Using comets from the request body
     } = req.body;
 
-    // Check if star exists
+    // Check if a star exists
     const star = await new Repository("Star").findById(starId);
     if (!star) {
       return res.status(404).json({ message: `Star with id ${starId} not found` });
     }
 
-    // Validate each cometId (if comets are provided)
+    // Check if a user exists
     if (users.length > 0) {
       for (const id of users) {
         const user = await new Repository("User").findById(id);
@@ -69,11 +69,11 @@ const createPlanet = async (req, res) => {
       users: users.length > 0 ? { connect: users.map(id => ({ id })) } : undefined
     });
 
-    const newPlanets = await planetRepository.findAll(selectObject);
+    const planet = await planetRepository.findById(newPlanet.id, selectObject);
 
     return res.status(201).json({
       message: "Planet successfully created",
-      data: newPlanets,
+      data: planet,
     });
   } catch (err) {
     return res.status(500).json({
@@ -109,12 +109,16 @@ const getPlanets = async (req, res) => {
     
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+    const page = req.query.page
+    const amount = req.query.amount
 
     const planets = await planetRepository.findAll(
       selectObject,
       filters,
       sortBy,
-      sortOrder
+      sortOrder,
+      page,
+      amount
     );
 
     if (planets.length === 0) {
