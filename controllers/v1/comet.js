@@ -35,11 +35,13 @@ const createComet = async (req, res) => {
       return res.status(404).json({ message: `Star with id ${starId} not found` });
     }
 
-    await cometRepository.create(req.body);
-    const newComets = await cometRepository.findAll(selectObject);
+    const newComet = await cometRepository.create(req.body);
+
+    const comet = await cometRepository.findById(newComet.id, selectObject);
+
     return res.status(201).json({
       message: "Comet successfully created",
-      data: newComets,
+      data: comet,
     });
   } catch (err) {
     return res.status(500).json({
@@ -66,12 +68,17 @@ const getComets = async (req, res) => {
 
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+    const page = req.query.page
+    const amount = req.query.amount
 
     const comets = await cometRepository.findAll(
       selectObject,
       filters,
       sortBy,
-      sortOrder);
+      sortOrder,
+      page,
+      amount
+    );
       
     if (comets.length === 0) {
       return res.status(404).json({ 
