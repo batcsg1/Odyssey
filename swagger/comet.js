@@ -180,7 +180,7 @@
  *         name: amount
  *         schema:
  *           type: number
- *         description: Amount of users per page (default is 25)
+ *         description: Amount of comets per page (default is 25)
  *     responses:
  *       '200':
  *         description: Success

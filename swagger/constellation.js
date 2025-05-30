@@ -103,7 +103,7 @@
  *         name: amount
  *         schema:
  *           type: number
- *         description: Amount of users per page (default is 25)
+ *         description: Amount of constellations per page (default is 25)
  *     security:
  *       - BearerAuth: []
  *     responses:
