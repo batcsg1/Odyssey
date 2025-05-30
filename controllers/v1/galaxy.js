@@ -21,11 +21,13 @@ const selectObject = {
 
 const createGalaxy = async (req, res) => {
   try {
-    await galaxyRepository.create(req.body);
-    const newGalaxies = await galaxyRepository.findAll(selectObject);
+    const newGalaxy = await galaxyRepository.create(req.body);
+
+    const galaxy = await galaxyRepository.findById(newGalaxy.id, selectObject);
+
     return res.status(201).json({
       message: "Galaxy successfully created",
-      data: newGalaxies,
+      data: galaxy,
     });
   } catch (err) {
     return res.status(500).json({
@@ -47,12 +49,16 @@ const getGalaxies = async (req, res) => {
 
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+    const page = req.query.page
+    const amount = req.query.amount
 
     const galaxies = await galaxyRepository.findAll(
       selectObject,
       filters,
       sortBy,
-      sortOrder
+      sortOrder,
+      page,
+      amount
     );
     
     if (galaxies.length === 0) {
