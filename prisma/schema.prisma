@@ -255,6 +255,7 @@ model User {
   role             Role      @default(NORMAL)
   homePlanet       String?
   planet           Planet?   @relation(fields: [homePlanet], references: [id])
+  status           Boolean   @default(true)
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @default(now())
 }
