@@ -121,6 +121,16 @@
  *           type: string
  *           enum: [asc, desc]
  *         description: Order to sort the users by (default is 'asc')
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: number
+ *         description: Page number
+ *       - in: query
+ *         name: amount
+ *         schema:
+ *           type: number
+ *         description: Amount of users per page
  *     security:
  *       - BearerAuth: []
  *     responses:
