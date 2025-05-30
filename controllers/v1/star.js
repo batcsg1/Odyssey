@@ -36,11 +36,11 @@ const createStar = async (req, res) => {
       return res.status(404).json({ message: `The galaxy with id ${galaxyId} was not found` });
     }
 
-    await starRepository.create(req.body);
-    const newStars = await starRepository.findAll(selectObject);
+    const newStar = await starRepository.create(req.body);
+    const star = await starRepository.findById(newStar.id, selectObject);
     return res.status(201).json({
       message: "Star successfully created",
-      data: newStars,
+      data: star,
     });
   } catch (err) {
     return res.status(500).json({
@@ -68,12 +68,16 @@ const getStars = async (req, res) => {
 
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+    const page = req.query.page
+    const amount = req.query.amount
 
     const stars = await starRepository.findAll(
       selectObject,
       filters,
       sortBy,
-      sortOrder
+      sortOrder,
+      page,
+      amount
     );
     
     if (stars.length === 0) {
