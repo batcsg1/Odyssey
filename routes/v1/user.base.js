@@ -6,6 +6,14 @@
 import express from "express";
 import { getLimit, cudLimit } from "../../middleware/limiting/limit.js";
 
+/**
+ * @function createUserRouter
+ * @param {Object} controller - The controller object containing CRUD functions
+ * @param {Function} postValidator - Middleware to validate the POST request body
+ * @param {Function} putValidator - Middleware to validate the PUT request body
+ * @returns {express.Router} Return the configured router to be passed on to app.js
+ */
+
 const createUserRouter = (controller, postValidator, putValidator) => {
     const router = express.Router();
 
