@@ -1,6 +1,12 @@
+/**
+ * @file The validation middleware for the User model
+ * @author Samuel Batchelor
+ */
+
 import { Role } from "@prisma/client";
 import Joi from "joi";
 
+// POST Validation function
 const validatePostUser = (req, res, next) => {
     const postSchema = Joi.object({
         firstName: Joi.string().required().messages({
@@ -38,6 +44,7 @@ const validatePostUser = (req, res, next) => {
         })
     });
 
+    // Validate request body and disable type coersion
     const { error } = postSchema.validate(req.body);
 
     if (error) {
@@ -49,6 +56,7 @@ const validatePostUser = (req, res, next) => {
     next();
 }
 
+// PUT Validation function
 const validatePutUser = (req, res, next) => {
     const putSchema = Joi.object({
         firstName: Joi.string().optional(),
@@ -65,6 +73,7 @@ const validatePutUser = (req, res, next) => {
         homePlanet: Joi.string().uuid().optional()
     }).min(1).unknown(true);
 
+    // Validate request body and disable type coersion
     const { error } = putSchema.validate(req.body);
 
     if (error) {
