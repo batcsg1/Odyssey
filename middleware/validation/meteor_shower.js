@@ -1,5 +1,11 @@
+/**
+ * @file The validation middleware for the Meteor Shower model
+ * @author Samuel Batchelor
+ */
+
 import Joi from "joi";
 
+// POST Validation function
 const validatePostMeteorShower = (req, res, next) => {
   const postSchema = Joi.object({
     name: Joi.string().min(3).max(100).required().messages({
@@ -98,6 +104,7 @@ const validatePostMeteorShower = (req, res, next) => {
     }),
   });
 
+  // Validate request body and disable type coersion
   const { error } = postSchema.validate(req.body);
 
   if (error) {
@@ -109,6 +116,7 @@ const validatePostMeteorShower = (req, res, next) => {
   next();
 };
 
+// PUT Validation function
 const validatePutMeteorShower = (req, res, next) => {
   const putSchema = Joi.object({
     name: Joi.string().min(3).max(100).optional().messages({
@@ -199,6 +207,7 @@ const validatePutMeteorShower = (req, res, next) => {
     }),
   }).min(1);
 
+  // Validate request body and disable type coersion
   const { error } = putSchema.validate(req.body);
 
   if (error) {
