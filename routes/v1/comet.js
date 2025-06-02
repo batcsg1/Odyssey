@@ -22,6 +22,10 @@ import {
 
 // Import the authorisation middleware
 import authorisation from "../../middleware/auth/authorisation.js"
+import { cudLimit, getLimit } from "../../middleware/limiting/limit.js";
+
+const getLimitComet = getLimit();
+const cudLimitComet = cudLimit();
 
 /**
  * Controller object for the comet model
@@ -48,6 +52,8 @@ const cometController = {
 
 const cometRouter = createRouter(
   cometController,
+  getLimitComet,
+  cudLimitComet,
   validatePostComet,
   authorisation,
   validatePutComet

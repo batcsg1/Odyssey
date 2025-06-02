@@ -15,7 +15,7 @@ import { getLimit, cudLimit } from "../../middleware/limiting/limit.js";
  * @returns {express.Router} Return the configured router to be passed on to app.js
  */
 
-const createUserRouter = (controller, postValidator, putValidator) => {
+const createUserRouter = (controller, getLimit, cudLimit,  postValidator, putValidator) => {
     const router = express.Router();
 
     router.get("/", getLimit, controller.get);

@@ -22,6 +22,10 @@ import {
 
 // Import the authorisation middleware
 import authorisation from "../../middleware/auth/authorisation.js"
+import { cudLimit, getLimit } from "../../middleware/limiting/limit.js";
+
+const getLimitMeteorShower = getLimit();
+const cudLimitMeteorShower = cudLimit();
 
 /**
  * Controller object for the meteor shower model
@@ -48,6 +52,8 @@ const meteorShowerController = {
 
 const meteorShowerRouter = createRouter(
   meteorShowerController,
+  getLimitMeteorShower,
+  cudLimitMeteorShower,
   validatePostMeteorShower,
   authorisation,
   validatePutMeteorShower,
