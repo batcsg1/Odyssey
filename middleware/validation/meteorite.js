@@ -1,5 +1,11 @@
+/**
+ * @file The validation middleware for the Meteorite model
+ * @author Samuel Batchelor
+ */
+
 import Joi from "joi";
 
+// POST Validation function
 const validatePostMeteorite = (req, res, next) => {
   const postSchema = Joi.object({
     name: Joi.string().min(3).max(100).required().messages({
@@ -50,6 +56,7 @@ const validatePostMeteorite = (req, res, next) => {
     }),
   });
 
+  // Validate request body and disable type coersion
   const { error } = postSchema.validate(req.body, { convert: false });
 
   if (error) {
@@ -61,6 +68,7 @@ const validatePostMeteorite = (req, res, next) => {
   next();
 };
 
+// PUT Validation function
 const validatePutMeteorite = (req, res, next) => {
   const putSchema = Joi.object({
     name: Joi.string().min(3).max(100).optional().messages({
@@ -104,6 +112,7 @@ const validatePutMeteorite = (req, res, next) => {
     }),
   }).min(1);
 
+  // Validate request body and disable type coersion
   const { error } = putSchema.validate(req.body, { convert: false });
 
   if (error) {
