@@ -63,16 +63,6 @@ app.use(
   })
 );
 
-// This should be declared under - app.use( helmet({ xPoweredBy: true, }));
-// app.use(
-//   rateLimit({
-//     windowMs: 120 * 1000, // 2 minutes
-//     max: 20, // limit each IP to 100 requests per windowMs
-//     message: "You have exceeded the number of requests: 20. Please try again in 120 seconds."
-//   })
-// );
-
-// This should be declared under - const swaggerOptions = { ... };
 const swaggerOptions = {
   definition: {
     openapi: "3.0.0",
