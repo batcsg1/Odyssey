@@ -7,6 +7,7 @@ import express from "express";
 import { getLimit, cudLimit } from "../../middleware/limiting/limit.js";
 
 /**
+ * Function for creating an Express route
  * @function createRouter
  * @param {Object} controller - The controller object containing CRUD functions
  * @param {Function} authorisation - Middleware to apply authorization to routes
