@@ -7,7 +7,6 @@ import express from "express";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import helmet from "helmet";
-import rateLimit from "express-rate-limit";
 
 //Importing routes
 import indexRoutes from "./routes/v1/index.js";
