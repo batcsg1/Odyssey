@@ -1,5 +1,11 @@
+/**
+ * @file The validation middleware for the Constellation model
+ * @author Samuel Batchelor
+ */
+
 import Joi from "joi";
 
+// POST Validation object
 const validatePostConstellation = (req, res, next) => {
   const postSchema = Joi.object({
     name: Joi.string().min(3).max(100).required().messages({
@@ -29,6 +35,7 @@ const validatePostConstellation = (req, res, next) => {
     }),
   });
 
+  // Validate request body and disable type coersion
   const { error } = postSchema.validate(req.body, { convert: false });
 
   if (error) {
@@ -40,6 +47,7 @@ const validatePostConstellation = (req, res, next) => {
   next();
 };
 
+// PUT Validation object
 const validatePutConstellation = (req, res, next) => {
   const putSchema = Joi.object({
     name: Joi.string().min(3).max(100).optional().messages({
@@ -67,6 +75,7 @@ const validatePutConstellation = (req, res, next) => {
     }),
   }).min(1);
 
+  // Validate request body and disable type coersion
   const { error } = putSchema.validate(req.body, { convert: false });
 
   if (error) {
