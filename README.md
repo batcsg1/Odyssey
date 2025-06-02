@@ -168,6 +168,10 @@ TBD
 ## AI Documentation 🤖
 ### ChatGPT:
 
+**Resolving problem with shared rate limiting across all routes**
+
+[Issue #77](https://github.com/otago-polytechnic-bit-courses/id607001-s1-25-batcsg1/issues/77)
+
 **Resolving issue during password update where the controller was being bypassed**
 
 Prompt:
@@ -220,8 +224,6 @@ async findById(id, select) {
   });
 }
 ```
-
-
 
 **Implementing many-to-many relationship for Comets, Asteroids and Meteor Shower models:**
 [Issue #7](https://github.com/otago-polytechnic-bit-courses/id607001-s1-25-batcsg1/issues/7)
