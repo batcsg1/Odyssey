@@ -1,6 +1,12 @@
+/**
+ * @file The validation middleware for the Asteroid model
+ * @author Samuel Batchelor
+ */
+
 import { AsteroidType, Location } from "@prisma/client";
 import Joi from "joi";
 
+// POST Validation function
 const validatePostAsteroid = (req, res, next) => {
   const postSchema = Joi.object({
     name: Joi.string().min(3).max(100).required().messages({
@@ -84,6 +90,7 @@ const validatePostAsteroid = (req, res, next) => {
     }),
   });
 
+  // Validate request body and disable type coersion
   const { error } = postSchema.validate(req.body, { convert: false });
 
   if (error) {
@@ -95,6 +102,7 @@ const validatePostAsteroid = (req, res, next) => {
   next();
 };
 
+// PUT Validation function
 const validatePutAsteroid = (req, res, next) => {
   const putSchema = Joi.object({
     name: Joi.string().min(3).max(100).optional().messages({
@@ -166,6 +174,7 @@ const validatePutAsteroid = (req, res, next) => {
     }),
   }).min(1);
 
+  // Validate request body and disable type coersion
   const { error } = putSchema.validate(req.body, { convert: false });
 
   if (error) {
