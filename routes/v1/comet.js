@@ -5,6 +5,7 @@
 
 import createRouter from "./base.js";  // Assuming a base router utility
 
+// Import the CRUD functions from the controller
 import {
   createComet,
   getComets,
@@ -13,12 +14,24 @@ import {
   deleteComet,
 } from "../../controllers/v1/comet.js";  // Controller functions for comet
 
+// Import the POST and PUT validation middleware
 import {
   validatePostComet,
   validatePutComet,
-} from "../../middleware/validation/comet.js";  // Validation middleware for comet
+} from "../../middleware/validation/comet.js";
 
+// Import the authorisation middleware
 import authorisation from "../../middleware/auth/authorisation.js"
+
+/**
+ * Controller object for the comet model
+ * @type {Object}
+ * @property {Function} get - Getting all comets
+ * @property {Function} getById - Getting a comet by ID
+ * @property {Function} create - Creating a comet
+ * @property {Function} update - Updating a comet
+ * @property {Function} delete - Deleting a comet
+ */
 
 const cometController = {
   get: getComets,
@@ -28,11 +41,16 @@ const cometController = {
   delete: deleteComet,
 };
 
+/**
+ * Creates an Express router for the endpoints of the Comet model
+ * @type {Function}
+ */
+
 const cometRouter = createRouter(
   cometController,
-  validatePostComet,  // Validate on POST (create) requests
+  validatePostComet,
   authorisation,
-  validatePutComet    // Validate on PUT (update) requests
+  validatePutComet
 );
 
 export default cometRouter;
