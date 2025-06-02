@@ -5,6 +5,7 @@
 
 import createRouter from "./base.js";
 
+// Import the CRUD functions from the controller
 import {
   createSatellite,
   getSatellites,
@@ -13,12 +14,24 @@ import {
   deleteSatellite,
 } from "../../controllers/v1/satellite.js";
 
+// Import the POST and PUT validation middleware
 import {
   validatePostSatellite,
   validatePutSatellite,
 } from "../../middleware/validation/satellite.js";
 
+// Import the authorisation middleware
 import authorisation from "../../middleware/auth/authorisation.js"
+
+/**
+ * Controller object for the satellite model
+ * @type {Object}
+ * @property {Function} get - Getting all satellites
+ * @property {Function} getById - Getting a satellite by ID
+ * @property {Function} create - Creating a satellite
+ * @property {Function} update - Updating a satellite
+ * @property {Function} delete - Deleting a satellite
+ */
 
 const satelliteController = {
   get: getSatellites,
@@ -27,6 +40,11 @@ const satelliteController = {
   update: updateSatellite,
   delete: deleteSatellite,
 };
+
+/**
+ * Creates an Express router for the endpoints of the Satellite model
+ * @type {Function}
+ */
 
 const satelliteRouter = createRouter(
   satelliteController,
