@@ -5,7 +5,7 @@
 
 import Joi from "joi";
 
-// POST Validation object
+// POST Validation function
 const validatePostConstellation = (req, res, next) => {
   const postSchema = Joi.object({
     name: Joi.string().min(3).max(100).required().messages({
@@ -47,7 +47,7 @@ const validatePostConstellation = (req, res, next) => {
   next();
 };
 
-// PUT Validation object
+// PUT Validation function
 const validatePutConstellation = (req, res, next) => {
   const putSchema = Joi.object({
     name: Joi.string().min(3).max(100).optional().messages({
