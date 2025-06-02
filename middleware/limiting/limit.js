@@ -5,29 +5,19 @@
 
 import rateLimit from "express-rate-limit";
 
-const GET_WINDOW = 60 * 2000;
-const CUD_WINDOW = 60 * 1000;
-const MAX_GET = 20;
-const MAX_CUD = 20;
+// Anonymous function for creating a rate limiter
 
-const getLimit = rateLimit({
-    windowMs: GET_WINDOW, // 2 minutes
-    max: MAX_GET,
+const createRateLimiter = (windowMs, max) => rateLimit({
+    windowMs,
+    max,
     message: (req, res) => {
         res.status(429).json({
-            error: `You have exceeded the number of requests: ${MAX_GET}. Please try again in ${(GET_WINDOW / 60000)} minutes.`
+            error: `You have exceeded the number of requests: ${max}. Please try again in ${(windowMs / 60000)} minutes.`
         })
     }
 });
 
-const cudLimit = rateLimit({
-    windowMs: CUD_WINDOW, // 1 minute
-    max: MAX_CUD,
-    message: (req, res) => {
-        res.status(429).json({
-            error: `You have exceeded the number of requests: ${MAX_CUD}. Please try again in ${(CUD_WINDOW / 60000)} minutes.`
-        })
-    }
-});
-
-export { getLimit, cudLimit }
+// GET and GETbyID rate limiting functions
+export const getLimit = () => createRateLimiter(15 * 60 * 2000, 20); 
+// CREATE, UPDATE and DELETE rate limiting functions
+export const cudLimit = () => createRateLimiter(15 * 60 * 1000, 20);
