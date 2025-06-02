@@ -1,3 +1,8 @@
+/**
+ * @file This file contains and exports the functions neccesary for limiting requests made to CRUD routes
+ * @author Samuel Batchelor
+ */
+
 import rateLimit from "express-rate-limit";
 
 const GET_WINDOW = 60 * 2000;
