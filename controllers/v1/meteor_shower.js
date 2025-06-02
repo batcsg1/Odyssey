@@ -3,7 +3,7 @@
  * @author Samuel Batchelor
  */
 
-import prisma from "../../prisma/client.js";
+import advancedRepository from "../../repositories/advanced.js";
 import Repository from "../../repositories/generic.js";
 
 const meteorShowerRepository = new Repository("MeteorShower");
@@ -50,10 +50,8 @@ const createMeteorShower = async (req, res) => {
     }
 
     // Find if a meteor shower is already part of a particular constellation
-    const existingMeteorShower = await prisma.meteorShower.findFirst({
-      where: { constellationId: req.body.constellationId },
-    });
-
+    const existingMeteorShower = await new advancedRepository("MeteorShower").findByConstellationId(constellationId);
+ 
     if (existingMeteorShower) {
       return res.status(409).json({ message: `There is already a meteor shower that belongs to constellation with ${constellationId}` });
     }
