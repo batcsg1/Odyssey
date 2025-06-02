@@ -1,3 +1,8 @@
+/**
+ * @file The authorisation middleware for any of the routes
+ * @author Samuel Batchelor
+ */
+
 import prisma from "../../prisma/client.js";
 
 const authorisation = async (req, res, next) => {
