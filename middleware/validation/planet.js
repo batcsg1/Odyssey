@@ -1,3 +1,8 @@
+/**
+ * @file The validation middleware for the Planet model
+ * @author Samuel Batchelor
+ */
+
 import { Location, PlanetType } from "@prisma/client";
 import Joi from "joi";
 
