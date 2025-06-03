@@ -1,5 +1,5 @@
 /**
- * @file The generic repository for all model controllers to construct their CRUD functions
+ * @file A repository file that provides all model controllers with all the generic CRUD database logic functions
  * @author Samuel Batchelor
  */
 
