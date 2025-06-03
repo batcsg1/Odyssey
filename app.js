@@ -39,8 +39,8 @@ const PORT = process.env.PORT || 3000;
 app.use(isContentTypeApplicationJSON);
 
 // Parse URL-encoded and JSON request bodies
-app.use(express.urlencoded({ extended: false })); 
-app.use(express.json()); 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // Add security headers using Helmet
 app.use(
@@ -63,8 +63,9 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
-        //url: "https://celestidb-api.onrender.com"
+        url: process.env.APP_ENV === "production"
+          ? "https://celestidb-api.onrender.com"
+          : "http://localhost:3000",
       },
     ],
   },
@@ -116,7 +117,7 @@ app.listen(PORT, () => {
 */
 
 app.use((req, res) => {
-  res.status(404).sendFile('404.html', { root: './handlers'});
+  res.status(404).sendFile('404.html', { root: './handlers' });
 });
 
 export default app;
