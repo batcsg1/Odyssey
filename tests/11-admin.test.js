@@ -14,7 +14,6 @@ const hashPassword = async (password) => {
 };
 
 let token;
-let userId;
 
 let normalUser;
 let adminUser;
@@ -37,7 +36,6 @@ describe("Admin", () => {
                 emailAddress: "james.doe@example.com",
             },
         });
-        userId = adminUser.id;
     });
 
     it("should reject missing token", async () => {
