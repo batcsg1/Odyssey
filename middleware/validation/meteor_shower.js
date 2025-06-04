@@ -20,6 +20,7 @@ const validatePostMeteorShower = (req, res, next) => {
       .min(1000)
       .max(9999)
       .required()
+      .strict()
       .messages({
         "number.base": "The previous year should be a number",
         "number.integer": "The previous year should be an integer",
@@ -29,7 +30,7 @@ const validatePostMeteorShower = (req, res, next) => {
           "The previous year should be less than or equal to {#limit}",
         "any.required": "The previous year is required",
       }),
-    nextYear: Joi.number().integer().min(1000).max(9999).required().messages({
+    nextYear: Joi.number().integer().min(1000).max(9999).required().strict().messages({
       "number.base": "The next year should be a number",
       "number.integer": "The next year should be an integer",
       "number.min": "The next year should be greater than or equal to {#limit}",
@@ -44,28 +45,28 @@ const validatePostMeteorShower = (req, res, next) => {
       "date.base": "Final date should be a valid date",
       "any.required": "Final date is required",
     }),
-    frequency: Joi.number().min(1).max(365).required().messages({
+    frequency: Joi.number().min(1).max(365).required().strict().messages({
       "number.base": "Frequency should be a number",
       "number.integer": "Frequency should be an integer",
       "number.min": "Frequency should be greater than or equal to {#limit}",
       "number.max": "Frequency should be less than or equal to {#limit}",
       "any.required": "Frequency is required",
     }),
-    duration: Joi.number().min(1).max(24).required().messages({
+    duration: Joi.number().min(1).max(24).required().strict().messages({
       "number.base": "Duration should be a number",
       "number.integer": "Duration should be an integer",
       "number.min": "Duration should be greater than or equal to {#limit}",
       "number.max": "Duration should be less than or equal to {#limit}",
       "any.required": "Duration is required",
     }),
-    velocity: Joi.number().min(0).max(100).optional().messages({
+    velocity: Joi.number().min(0).max(100).optional().strict().messages({
       "number.base": "Meteor velocity should be a number",
       "number.min":
         "Meteor velocity should be greater than or equal to {#limit} km/s",
       "number.max":
         "Meteor velocity should be less than or equal to {#limit} km/s",
     }),
-    perHour: Joi.number().min(1).optional().messages({
+    perHour: Joi.number().min(1).optional().strict().messages({
       "number.base": "Meteors per hour should be a number",
       "number.integer": "Meteors per hour should be an integer",
       "number.min":
@@ -104,7 +105,6 @@ const validatePostMeteorShower = (req, res, next) => {
     }),
   });
 
-  // Validate request body and disable type coersion
   const { error } = postSchema.validate(req.body);
 
   if (error) {
