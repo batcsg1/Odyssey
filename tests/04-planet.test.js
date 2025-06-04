@@ -111,6 +111,15 @@ describe("Planets", () => {
             .to.be.equal("Planet successfully created");
     });
 
+    it("should paginate for 2 planets", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/planets?page=1&amount=2")
+            .set("Authorization", `Bearer ${token}`);
+
+        chai.expect(res.body.count).to.be.equal(2);
+    });
+
     it("should reject missing star ID", async () => {
         const res = await chai
             .request(app)
