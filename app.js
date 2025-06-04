@@ -117,7 +117,7 @@ app.listen(PORT, () => {
 */
 
 app.use((req, res) => {
-  res.status(404).sendFile('404.html', { root: './handlers' });
+  res.status(404).sendFile('404.html', { root: './html' });
 });
 
 export default app;
