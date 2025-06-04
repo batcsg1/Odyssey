@@ -74,4 +74,30 @@ describe("Auth", () => {
         chai.expect(res.body.token).to.exist;
         chai.expect(res).to.not.have.header('x-powered-by') // Expect non-default header
     });
+
+    it("should register a normal user", async () => {
+        const res = await chai.request(app).post("/api/v1/auth/register").send({
+            firstName: "Tom",
+            lastName: "Doe",
+            emailAddress: "tom.doe@example.com",
+            password: await hashPassword("default_pass123"),
+            role: "NORMAL"
+        });
+
+        chai.expect(res).to.have.status(201); // Expect a succesfull response
+        chai.expect(res.body.message).to.be.equal("User successfully registered");
+    });
+
+    it("should reject non-normal user registration", async () => {
+        const res = await chai.request(app).post("/api/v1/auth/register").send({
+            firstName: "Gordon",
+            lastName: "Doe",
+            emailAddress: "gordon.doe@example.com",
+            password: await hashPassword("default_pass123"),
+            role: "ADMIN"
+        });
+
+        chai.expect(res).to.have.status(403); // Expect a succesfull response
+        chai.expect(res.body.message).to.be.equal("User must register as a normal user");
+    });
 });
