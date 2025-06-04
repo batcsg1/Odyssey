@@ -87,6 +87,7 @@ const getComets = async (req, res) => {
       });
     }
     return res.status(200).json({
+      count: comets.length,
       data: comets,
     });
   } catch (err) {

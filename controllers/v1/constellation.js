@@ -62,6 +62,7 @@ const getConstellations = async (req, res) => {
       });
     }
     return res.status(200).json({
+      count: constellations.length,
       data: constellations,
     });
   } catch (err) {

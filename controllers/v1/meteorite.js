@@ -79,6 +79,7 @@ const getMeteorites = async (req, res) => {
        });
     }
     return res.status(200).json({
+      count: meteorites.length,
       data: meteorites,
     });
   } catch (err) {

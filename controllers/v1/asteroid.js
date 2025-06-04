@@ -84,7 +84,10 @@ const getAsteroids = async (req, res) => {
         data: asteroids
        });
     }
-    return res.status(200).json({ data: asteroids });
+    return res.status(200).json({ 
+      count: asteroids.length,
+      data: asteroids 
+    });
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }

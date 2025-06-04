@@ -68,6 +68,7 @@ const getGalaxies = async (req, res) => {
       });
     }
     return res.status(200).json({
+      count: galaxies.length,
       data: galaxies,
     });
   } catch (err) {

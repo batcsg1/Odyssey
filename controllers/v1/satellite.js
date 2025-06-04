@@ -103,6 +103,7 @@ const getSatellites = async (req, res) => {
       });
     }
     return res.status(200).json({
+      count: satellites.length,
       data: satellites,
     });
   } catch (err) {

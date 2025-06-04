@@ -51,7 +51,7 @@ const createMeteorShower = async (req, res) => {
 
     // Find if a meteor shower is already part of a particular constellation
     const existingMeteorShower = await new advancedRepository("MeteorShower").findByConstellationId(constellationId);
- 
+
     if (existingMeteorShower) {
       return res.status(409).json({ message: `There is already a meteor shower that belongs to constellation with ${constellationId}` });
     }
@@ -133,7 +133,10 @@ const getMeteorShowers = async (req, res) => {
       });
     }
 
-    return res.status(200).json({ data: meteorShowers });
+    return res.status(200).json({
+      count: meteorShowers.length,
+      data: meteorShowers
+    });
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }

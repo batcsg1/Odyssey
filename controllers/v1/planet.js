@@ -128,6 +128,7 @@ const getPlanets = async (req, res) => {
       });
     }
     return res.status(200).json({
+      count: planets.length,
       data: planets,
     });
   } catch (err) {
