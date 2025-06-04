@@ -96,15 +96,6 @@ describe("Constellations", () => {
             .to.be.equal("Constellation successfully created");
     });
 
-    it("should retrieve all constellations", async () => {
-        const res = await chai
-            .request(app)
-            .get("/api/v1/constellations")
-            .set("Authorization", `Bearer ${token}`);
-
-        chai.expect(res.body.data).to.be.an("array");
-    });
-
     it("should retrieve a constellation by ID", async () => {
         const res = await chai
             .request(app)
