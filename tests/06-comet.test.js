@@ -93,6 +93,15 @@ describe("Comets", () => {
             .to.be.equal("Comet successfully created");
     });
 
+    it("should paginate for 2 comets", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/comets?page=1&amount=2")
+            .set("Authorization", `Bearer ${token}`);
+
+        chai.expect(res.body.count).to.be.equal(2);
+    });
+
     it("should reject missing star ID", async () => {
         const res = await chai
             .request(app)
