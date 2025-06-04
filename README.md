@@ -6,7 +6,7 @@ REST API Project for the Introductory Application Development paper of the Otago
 
 ## Production REST API on Render 🌐
 
-https://celestidb-api.onrender.com
+https://celestidb-api.onrender.com/api-docs
 
 ## How to setup Development environment </>
 
