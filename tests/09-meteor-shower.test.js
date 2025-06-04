@@ -12,6 +12,7 @@ let cometId;
 let asteroidId;
 let constellationId;
 let token;
+let anotherConstellation;
 
 describe("Meteor Showers", () => {
     before(async () => {
@@ -23,6 +24,12 @@ describe("Meteor Showers", () => {
 
         const constellation = await prisma.constellation.findFirst();
         constellationId = constellation.id;
+
+        anotherConstellation = await prisma.constellation.findFirst({
+            where: {
+                name: "Cassiopeia"
+            },
+        });
     });
 
     it("should reject missing token", async () => {
@@ -201,6 +208,52 @@ describe("Meteor Showers", () => {
         chai.expect(res.body.message).to.be.equal("The next year should be an integer");
     });
 
+    it("should reject string next year", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/meteor_showers")
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                name: "Orionids",
+                previousYear: 2024,
+                nextYear: "2025",
+                initialDate: "2024-11-06T00:00:00.000Z",
+                finalDate: "2024-11-30T00:00:00.000Z",
+                frequency: 30,
+                duration: 6,
+                velocity: 66,
+                perHour: 20,
+                peakDate: "2024-11-10T00:00:00.000Z",
+                constellationId: anotherConstellation.id
+            });
+        chai
+            .expect(res.body.message)
+            .to.be.equal("The next year should be a number");
+    });
+
+    it("should reject string velocity", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/meteor_showers")
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                name: "Orionids",
+                previousYear: 2024,
+                nextYear: 2025,
+                initialDate: "2024-11-06T00:00:00.000Z",
+                finalDate: "2024-11-30T00:00:00.000Z",
+                frequency: 30,
+                duration: 6,
+                velocity: "22.5",
+                perHour: 20,
+                peakDate: "2024-11-10T00:00:00.000Z",
+                constellationId: anotherConstellation.id
+            });
+        chai
+            .expect(res.body.message)
+            .to.be.equal("Meteor velocity should be a number");
+    });
+
     it("should retrieve all showers", async () => {
         const res = await chai
             .request(app)
@@ -219,16 +272,16 @@ describe("Meteor Showers", () => {
         chai.expect(res.body.data.name).to.be.equal("Orionids");
     });
 
-    
+
     it("should filter showers by the next year of occurance", async () => {
         const res = await chai
-        .request(app)
-        .get("/api/v1/meteor_showers?nextYear=2025")
-        .set("Authorization", `Bearer ${token}`);
-        
+            .request(app)
+            .get("/api/v1/meteor_showers?nextYear=2025")
+            .set("Authorization", `Bearer ${token}`);
+
         chai.expect(res.body.data[0].nextYear).to.be.equal(2025);
     });
-    
+
     it("should filter showers by name", async () => {
         const res = await chai
             .request(app)
