@@ -130,102 +130,15 @@ describe("Normal", () => {
             .to.be.equal("NORMAL users cannot create users");
     });
 
-    // it("should create a valid constellation", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .post("/api/v1/users")
-    //         .set("Authorization", `Bearer ${token}`)
-    //         .send({
-    //             name: "Canis Majora",
-    //             shape: "Bull",
-    //             area: 237.4,
-    //             abbreviation: "CMa"
-    //         });
+    //Delete
+    it("should reject a normal user deleting themselves", async () => {
+        const res = await chai
+            .request(app)
+            .delete(`/api/v1/users/${userId}`)
+            .set("Authorization", `Bearer ${token}`);
 
-    //     chai
-    //         .expect(res.body.message)
-    //         .to.be.equal("Constellation successfully created");
-    //     userId = res.body.data.id;
-    // });
-
-    // it("should filter constellations by name", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .get("/api/v1/users?name=Canis Majora")
-    //         .set("Authorization", `Bearer ${token}`);
-
-    //     chai.expect(res.body.data[0].name).to.be.equal("Canis Majora");
-    // });
-
-    // it("should sort constellations by name", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .get("/api/v1/users?sortBy=name")
-    //         .set("Authorization", `Bearer ${token}`);
-
-    //     chai.expect(res.body.data[0].name).to.be.equal("Canis Majora");
-    // });
-
-    // it("should reject non-numeric area during update", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .put(`/api/v1/users/${userId}`)
-    //         .set("Authorization", `Bearer ${token}`)
-    //         .send({
-    //             name: "Canis Majora",
-    //             shape: "Bull",
-    //             area: "237.4",
-    //             abbreviation: "CMa"
-    //         });
-
-    //     chai.expect(res.body.message).to.be.equal("Area should be a number");
-    // });
-
-    // it("should update a valid constellation", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .put(`/api/v1/users/${userId}`)
-    //         .set("Authorization", `Bearer ${token}`)
-    //         .send({
-    //             name: "Updated Canis Majora",
-    //             shape: "Cow",
-    //             area: 237.4,
-    //             abbreviation: "CMa"
-    //         });
-
-    //     chai
-    //         .expect(res.body.message)
-    //         .to.be.equal(
-    //             `Constellation with the id: ${userId} successfully updated`
-    //         );
-    // });
-
-    // it("should update one field of a valid constellation", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .put(`/api/v1/users/${userId}`)
-    //         .set("Authorization", `Bearer ${token}`)
-    //         .send({
-    //             name: "Yet another updated Canis Majora",
-    //         });
-
-    //     chai
-    //         .expect(res.body.message)
-    //         .to.be.equal(
-    //             `Constellation with the id: ${userId} successfully updated`
-    //         );
-    // });
-
-    // it("should delete a constellation by ID", async () => {
-    //     const res = await chai
-    //         .request(app)
-    //         .delete(`/api/v1/users/${userId}`)
-    //         .set("Authorization", `Bearer ${token}`);
-
-    //     chai
-    //         .expect(res.body.message)
-    //         .to.be.equal(
-    //             `Constellation with the id: ${userId} successfully deleted`
-    //         );
-    // });
+        chai
+            .expect(res.body.message)
+            .to.be.equal("You cannot delete your own account");
+    });
 });
