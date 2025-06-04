@@ -94,6 +94,15 @@ describe("Stars", () => {
             .to.be.equal("Star successfully created");
     });
 
+    it("should paginate for 2 stars", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/stars?page=1&amount=2")
+            .set("Authorization", `Bearer ${token}`);
+
+        chai.expect(res.body.count).to.be.equal(2);
+    });
+
     it("should reject missing galaxy ID", async () => {
         const res = await chai
             .request(app)
