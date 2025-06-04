@@ -38,6 +38,13 @@ describe("Auth", () => {
                     password: await hashPassword("P@ssw0rd"),
                     role: "SUPER_ADMIN",
                 },
+                {
+                    firstName: "Ian",
+                    lastName: "Peters",
+                    emailAddress: "ian.peters@example.com",
+                    password: await hashPassword("peters123"),
+                    role: "SUPER_ADMIN",
+                },
             ]
         })
     });
