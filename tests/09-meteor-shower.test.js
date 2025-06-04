@@ -76,6 +76,15 @@ describe("Meteor Showers", () => {
         meteorShowerId = res.body.data.id;
     });
 
+    it("should paginate for 1 shower", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/meteor_showers?page=1&amount=1")
+            .set("Authorization", `Bearer ${token}`);
+
+        chai.expect(res.body.count).to.be.equal(1);
+    });
+
     it("should reject creating another shower part of the same constellation", async () => {
         const res = await chai
             .request(app)
