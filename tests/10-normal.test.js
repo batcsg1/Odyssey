@@ -141,4 +141,16 @@ describe("Normal", () => {
             .expect(res.body.message)
             .to.be.equal("You cannot delete your own account");
     });
+
+    //Delete
+    it("should reject a normal user deleting another user", async () => {
+        const res = await chai
+            .request(app)
+            .delete(`/api/v1/users/${adminUser.id}`)
+            .set("Authorization", `Bearer ${token}`);
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal("Deleting another user not allowed");
+    });
 });
