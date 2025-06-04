@@ -112,6 +112,7 @@ const getUsers = async (req, res) => {
 
         return res.status(200).json({
             data: users,
+            count: users.length
         });
     } catch (err) {
         return res.status(500).json({
