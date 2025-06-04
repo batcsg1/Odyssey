@@ -3,6 +3,7 @@ import chaiHttp from "chai-http";
 import { describe, it } from "mocha";
 
 import app from "../app.js";
+import prisma from "../prisma/client.js";
 
 const chai = chaiModule.use(chaiHttp);
 
@@ -10,6 +11,31 @@ let token;
 let constellationId;
 
 describe("Constellations", () => {
+    before(async () => {
+        await prisma.constellation.createMany({
+            data: [
+                {
+                    "name": "Orion",
+                    "abbreviation": "Ori",
+                    "area": 594,
+                    "shape": "Hunter with belt"
+                },
+                {
+                    "name": "Ursa Major",
+                    "abbreviation": "UMa",
+                    "area": 1280,
+                    "shape": "Big Dipper"
+                },
+                {
+                    "name": "Cassiopeia",
+                    "abbreviation": "Cas",
+                    "area": 598,
+                    "shape": "W shape"
+                }
+            ]
+        })
+    });
+
     it("should reject missing token", async () => {
         const res = await chai
             .request(app)
@@ -44,6 +70,15 @@ describe("Constellations", () => {
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
+    });
+
+    it("should paginate for 2 constellations", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/constellations?page=1&amount=2")
+            .set("Authorization", `Bearer ${token}`);
+
+        chai.expect(res.body.count).to.be.equal(2);
     });
 
     it("should reject non-string name", async () => {
