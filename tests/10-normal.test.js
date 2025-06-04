@@ -4,6 +4,7 @@ import chaiHttp from "chai-http";
 import { describe, it } from "mocha";
 
 import app from "../app.js";
+import prisma from "../prisma/client.js";
 
 const chai = chaiModule.use(chaiHttp);
 
@@ -15,7 +16,17 @@ const hashPassword = async (password) => {
 let token;
 let userId;
 
-describe("Users", () => {
+let adminUser;
+
+describe("Normal", () => {
+    before(async () => {
+        adminUser = await prisma.user.findUnique({
+            where: {
+                emailAddress: "john.doe@example.com",
+            },
+        });
+    });
+
     it("should reject missing token", async () => {
         const res = await chai
             .request(app)
@@ -43,7 +54,7 @@ describe("Users", () => {
         chai.expect(res).to.not.have.header('x-powered-by') // Expect non-default header
     });
 
-    // NORMAL tests
+    // -- NORMAL tests --
 
     it("should retrieve a normal user's own data when retrieving all users", async () => {
         const res = await chai
@@ -65,6 +76,8 @@ describe("Users", () => {
         chai.expect(res.body.data).to.not.be.an("array");
     });
 
+    // Update 
+
     it("should update a normal user's own data", async () => {
         const res = await chai
             .request(app)
@@ -81,7 +94,23 @@ describe("Users", () => {
             );
     });
 
-    // Reject
+    it("should reject a normal user updating another user", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/users/${adminUser.id}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                firstName: "Gen"
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                "You cannot update this other user"
+            );
+    });
+
+    // Create
 
     it("should reject a normal user creating a user", async () => {
         const res = await chai
