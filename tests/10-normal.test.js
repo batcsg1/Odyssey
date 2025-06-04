@@ -1,3 +1,4 @@
+import bcryptjs from "bcryptjs";
 import * as chaiModule from "chai";
 import chaiHttp from "chai-http";
 import { describe, it } from "mocha";
@@ -5,6 +6,11 @@ import { describe, it } from "mocha";
 import app from "../app.js";
 
 const chai = chaiModule.use(chaiHttp);
+
+const hashPassword = async (password) => {
+    const salt = await bcryptjs.genSalt();
+    return bcryptjs.hash(password, salt);
+};
 
 let token;
 let userId;
@@ -38,7 +44,7 @@ describe("Users", () => {
     });
 
     // NORMAL tests
-   
+
     it("should retrieve a normal user's own data when retrieving all users", async () => {
         const res = await chai
             .request(app)
@@ -46,6 +52,8 @@ describe("Users", () => {
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.count).to.be.equal(1);
+
+        userId = res.body.data[0].id;
     });
 
     it("should retrieve the current normal user by ID when retrieving users by ID ", async () => {
@@ -55,6 +63,42 @@ describe("Users", () => {
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.not.be.an("array");
+    });
+
+    it("should update a normal user's own data", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/users/${userId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                firstName: "Jack"
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `User with the id: ${userId} successfully updated`
+            );
+    });
+
+    // Reject
+
+    it("should reject a normal user creating a user", async () => {
+        const res = await chai
+            .request(app)
+            .post("/api/v1/users")
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                firstName: "Grayson",
+                lastName: "Sanders",
+                emailAddress: "grayson.sanders@example.com",
+                password: await hashPassword("josh123"),
+                role: "NORMAL",
+            },);
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal("NORMAL users cannot create users");
     });
 
     // it("should create a valid constellation", async () => {
