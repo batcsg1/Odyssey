@@ -56,7 +56,7 @@ const swaggerOptions = {
     info: {
       title: "CelestiDB",
       version: "1.0.0",
-      description: "API for data about the cosmos",
+      description: "An API for accessing data about stars, planets and more.",
       contact: {
         name: "Samuel Batchelor",
       },
