@@ -20,4 +20,4 @@ const createRateLimiter = (windowMs, max) => rateLimit({
 // GET and GETbyID rate limiting functions
 export const getLimit = () => createRateLimiter(2 * 60 * 1000, 20); 
 // CREATE, UPDATE and DELETE rate limiting functions
-export const cudLimit = () => createRateLimiter(1 * 60 * 1000, 20);
+export const cudLimit = () => createRateLimiter(1 * 60 * 1000, 10);
