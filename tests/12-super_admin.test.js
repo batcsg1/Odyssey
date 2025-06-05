@@ -48,7 +48,7 @@ describe("Super Admin", () => {
         chai.expect(res.body.message).to.be.equal("No token provided");
     });
 
-    it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
+    it("should login a super admin user, return a token, and not have X-Powered-By header", async () => {
         const res = await chai
             .request(app)
             .post("/api/v1/auth/login")
