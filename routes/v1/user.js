@@ -22,9 +22,6 @@ import {
 
 import { cudLimit, getLimit } from "../../middleware/limiting/limit.js";
 
-const getLimitUser = getLimit();
-const cudLimitUser = cudLimit();
-
 /**
  * Controller object for the user model
  * @type {Object}
@@ -50,8 +47,8 @@ const userController = {
 
 const userRouter = createUserRouter(
   userController,
-  getLimitUser,
-  cudLimitUser,
+  getLimit,
+  cudLimit,
   validatePostUser,
   validatePutUser,
 );
