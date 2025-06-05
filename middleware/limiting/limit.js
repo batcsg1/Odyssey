@@ -12,7 +12,7 @@ const createRateLimiter = (windowMs, max) => rateLimit({
     max,
     message: (req, res) => {
         res.status(429).json({
-            error: `You have exceeded the number of requests: ${max}. Please try again in ${(windowMs / 60000)} minutes.`
+            message: `You have exceeded the number of requests: ${max}. Please try again in ${(windowMs / 60000)} minutes.`
         })
     }
 });
