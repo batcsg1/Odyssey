@@ -17,11 +17,11 @@ import express from "express";
 const createUserRouter = (controller, getLimit, cudLimit, postValidator, putValidator) => {
     const router = express.Router();
 
-    router.get("/", getLimit, controller.get);
-    router.get("/:id", getLimit, controller.getById);
-    router.post("/", cudLimit, postValidator, controller.create);
-    router.put("/:id", cudLimit, putValidator, controller.update);
-    router.delete("/:id", cudLimit, controller.delete);
+    router.get("/", getLimit(), controller.get);
+    router.get("/:id", getLimit(), controller.getById);
+    router.post("/", cudLimit(), postValidator, controller.create);
+    router.put("/:id", cudLimit(), putValidator, controller.update);
+    router.delete("/:id", cudLimit(), controller.delete);
 
     return router;
 };
