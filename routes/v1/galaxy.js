@@ -24,9 +24,6 @@ import {
 import authorisation from "../../middleware/auth/authorisation.js"
 import { cudLimit, getLimit } from "../../middleware/limiting/limit.js";
 
-const getLimitGalaxy = getLimit();
-const cudLimitGalaxy = cudLimit();
-
 /**
  * Controller object for the galaxy model
  * @type {Object}
@@ -52,8 +49,8 @@ const galaxyController = {
 
 const galaxyRouter = createRouter(
   galaxyController,
-  getLimitGalaxy,
-  cudLimitGalaxy,
+  getLimit,
+  cudLimit,
   validatePostGalaxy,
   authorisation,
   validatePutGalaxy,

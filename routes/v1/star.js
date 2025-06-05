@@ -24,9 +24,6 @@ import {
 import authorisation from "../../middleware/auth/authorisation.js"
 import { cudLimit, getLimit } from "../../middleware/limiting/limit.js";
 
-const getLimitStar = getLimit();
-const cudLimitStar = cudLimit();
-
 /**
  * Controller object for the star model
  * @type {Object}
@@ -52,8 +49,8 @@ const starController = {
 
 const starRouter = createRouter(
   starController,
-  getLimitStar,
-  cudLimitStar,
+  getLimit,
+  cudLimit,
   validatePostStar,
   authorisation,
   validatePutStar,

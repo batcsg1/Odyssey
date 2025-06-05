@@ -24,9 +24,6 @@ import {
 import authorisation from "../../middleware/auth/authorisation.js"
 import { cudLimit, getLimit } from "../../middleware/limiting/limit.js";
 
-const getLimitSatellite = getLimit();
-const cudLimitSatellite = cudLimit();
-
 /**
  * Controller object for the satellite model
  * @type {Object}
@@ -52,8 +49,8 @@ const satelliteController = {
 
 const satelliteRouter = createRouter(
   satelliteController,
-  getLimitSatellite,
-  cudLimitSatellite,
+  getLimit,
+  cudLimit,
   validatePostSatellite,
   authorisation,
   validatePutSatellite,

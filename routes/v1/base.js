@@ -18,11 +18,11 @@ import express from "express";
 const createRouter = (controller, getLimit, cudLimit, postValidator, authorisation, putValidator) => {
     const router = express.Router();
 
-    router.get("/", getLimit, controller.get);
-    router.get("/:id", getLimit, controller.getById);
-    router.post("/", cudLimit, postValidator, authorisation, controller.create);
-    router.put("/:id", cudLimit, putValidator, authorisation, controller.update);
-    router.delete("/:id", cudLimit, authorisation, controller.delete);
+    router.get("/", getLimit(), controller.get);
+    router.get("/:id", getLimit(), controller.getById);
+    router.post("/", cudLimit(), postValidator, authorisation, controller.create);
+    router.put("/:id", cudLimit(), putValidator, authorisation, controller.update);
+    router.delete("/:id", cudLimit(), authorisation, controller.delete);
 
     return router;
 };

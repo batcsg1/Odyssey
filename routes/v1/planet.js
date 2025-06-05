@@ -24,9 +24,6 @@ import {
 import authorisation from "../../middleware/auth/authorisation.js"
 import { cudLimit, getLimit } from "../../middleware/limiting/limit.js";
 
-const getLimitPlanet = getLimit();
-const cudLimitPlanet = cudLimit();
-
 /**
  * Controller object for the planet model
  * @type {Object}
@@ -52,8 +49,8 @@ const planetController = {
 
 const planetRouter = createRouter(
   planetController,
-  getLimitPlanet,
-  cudLimitPlanet,
+  getLimit,
+  cudLimit,
   validatePostPlanet,
   authorisation,
   validatePutPlanet,
