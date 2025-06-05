@@ -9,8 +9,8 @@ import prisma from "../prisma/client.js";
 const chai = chaiModule.use(chaiHttp);
 
 const hashPassword = async (password) => {
-    const salt = await bcryptjs.genSalt();
-    return bcryptjs.hash(password, salt);
+  const salt = await bcryptjs.genSalt();
+  return bcryptjs.hash(password, salt);
 };
 
 let token;
@@ -20,162 +20,156 @@ let adminUser;
 let superAdminUser;
 
 describe("Admin", () => {
-    before(async () => {
-        normalUser = await prisma.user.findUnique({
-            where: {
-                emailAddress: "david.bowie@example.com",
-            },
-        });
-        adminUser = await prisma.user.findUnique({
-            where: {
-                emailAddress: "john.doe@example.com",
-            },
-        });
-        superAdminUser = await prisma.user.findUnique({
-            where: {
-                emailAddress: "james.doe@example.com",
-            },
-        });
+  before(async () => {
+    normalUser = await prisma.user.findUnique({
+      where: {
+        emailAddress: "david.bowie@example.com",
+      },
     });
-
-    it("should reject missing token", async () => {
-        const res = await chai
-            .request(app)
-            .get("/api/v1/users");
-
-        chai.expect(res.body.message).to.be.equal("No token provided");
+    adminUser = await prisma.user.findUnique({
+      where: {
+        emailAddress: "john.doe@example.com",
+      },
     });
-
-    it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
-        const res = await chai
-            .request(app)
-            .post("/api/v1/auth/login")
-            .set("Authorization", `Bearer ${token}`)
-            .send({
-                emailAddress: "john.doe@example.com",
-                password: "password123",
-            });
-
-        chai.expect(res).to.have.status(200); // Expect a succesfull response
-
-        chai.expect(res.body.token).to.exist;
-
-        token = res.body.token;
-
-        chai.expect(res).to.not.have.header('x-powered-by') // Expect non-default header
+    superAdminUser = await prisma.user.findUnique({
+      where: {
+        emailAddress: "james.doe@example.com",
+      },
     });
+  });
 
-    // -- ADMIN tests --
+  
 
-    it("should retrieve normal and admins data when retrieving all users", async () => {
-        const res = await chai
-            .request(app)
-            .get("/api/v1/users")
-            .set("Authorization", `Bearer ${token}`);
+  it("should reject missing token", async () => {
+    const res = await chai.request(app).get("/api/v1/users");
 
-        chai.expect(res.body.data).to.be.an("array");
-    });
+    chai.expect(res.body.message).to.be.equal("No token provided");
+  });
 
-    it("should retrieve a normal user by id ", async () => {
-        const res = await chai
-            .request(app)
-            .get(`/api/v1/users/${normalUser.id}`)
-            .set("Authorization", `Bearer ${token}`);
+  it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
+    const res = await chai
+      .request(app)
+      .post("/api/v1/auth/login")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        emailAddress: "john.doe@example.com",
+        password: "password123",
+      });
 
-        chai.expect(res.body.data).to.not.be.an("array");
-    });
+    chai.expect(res).to.have.status(200); // Expect a succesfull response
 
-    // Update 
+    chai.expect(res.body.token).to.exist;
 
-    it("should update a normal user's data", async () => {
-        const res = await chai
-            .request(app)
-            .put(`/api/v1/users/${normalUser.id}`)
-            .set("Authorization", `Bearer ${token}`)
-            .send({
-                firstName: "SpongeBob"
-            });
+    token = res.body.token;
 
-        chai
-            .expect(res.body.message)
-            .to.be.equal(
-                `User with the id: ${normalUser.id} successfully updated`
-            );
-    });
+    chai.expect(res).to.not.have.header("x-powered-by"); // Expect non-default header
+  });
 
-    it("should reject an admin user updating a non-normal user", async () => {
-        const res = await chai
-            .request(app)
-            .put(`/api/v1/users/${superAdminUser.id}`)
-            .set("Authorization", `Bearer ${token}`)
-            .send({
-                firstName: "Gen"
-            });
+  // -- ADMIN tests --
 
-        chai
-            .expect(res.body.message)
-            .to.be.equal(
-                "Updating a non-normal user not allowed"
-            );
-    });
+  it("should retrieve normal and admins data when retrieving all users", async () => {
+    const res = await chai
+      .request(app)
+      .get("/api/v1/users")
+      .set("Authorization", `Bearer ${token}`);
 
-    // Create
-    it("should create a normal user", async () => {
-        const res = await chai
-            .request(app)
-            .post("/api/v1/users")
-            .set("Authorization", `Bearer ${token}`)
-            .send({
-                firstName: "Chef",
-                lastName: "Boyardee",
-                emailAddress: "chef.boyardee@example.com",
-                password: await hashPassword("beefaroni123"),
-                role: "NORMAL",
-            },);
+    chai.expect(res.body.data).to.be.an("array");
+  });
 
-        chai
-            .expect(res.body.message)
-            .to.be.equal("User successfully created");
-    });
+  it("should retrieve a normal user by id ", async () => {
+    const res = await chai
+      .request(app)
+      .get(`/api/v1/users/${normalUser.id}`)
+      .set("Authorization", `Bearer ${token}`);
 
-    it("should reject creating a non-normal user", async () => {
-        const res = await chai
-            .request(app)
-            .post("/api/v1/users")
-            .set("Authorization", `Bearer ${token}`)
-            .send({
-                firstName: "Joshua",
-                lastName: "Sanders",
-                emailAddress: "joshua.sanders@example.com",
-                password: await hashPassword("josh123"),
-                role: "ADMIN",
-            },);
+    chai.expect(res.body.data).to.not.be.an("array");
+  });
 
-        chai
-            .expect(res.body.message)
-            .to.be.equal("ADMINs can only create NORMAL users");
-    });
+  // Update
 
-    //Delete
-    it("should reject deleting a super-admin user", async () => {
-        const res = await chai
-            .request(app)
-            .delete(`/api/v1/users/${superAdminUser.id}`)
-            .set("Authorization", `Bearer ${token}`);
+  it("should update a normal user's data", async () => {
+    const res = await chai
+      .request(app)
+      .put(`/api/v1/users/${normalUser.id}`)
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        firstName: "SpongeBob",
+      });
 
-        chai
-            .expect(res.body.message)
-            .to.be.equal("Deleting a super admin user not allowed");
-    });
+    chai
+      .expect(res.body.message)
+      .to.be.equal(`User with the id: ${normalUser.id} successfully updated`);
+  });
 
-    it("should delete a normal user", async () => {
-        const res = await chai
-            .request(app)
-            .delete(`/api/v1/users/${normalUser.id}`)
-            .set("Authorization", `Bearer ${token}`);
+  it("should reject an admin user updating a non-normal user", async () => {
+    const res = await chai
+      .request(app)
+      .put(`/api/v1/users/${superAdminUser.id}`)
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        firstName: "Gen",
+      });
 
-        chai
-            .expect(res.body.message)
-            .to.be.equal(`User with the id: ${normalUser.id} successfully deleted`);
-    });
+    chai
+      .expect(res.body.message)
+      .to.be.equal("Updating a non-normal user not allowed");
+  });
+
+  // Create
+  it("should create a normal user", async () => {
+    const res = await chai
+      .request(app)
+      .post("/api/v1/users")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        firstName: "Chef",
+        lastName: "Boyardee",
+        emailAddress: "chef.boyardee@example.com",
+        password: await hashPassword("beefaroni123"),
+        role: "NORMAL",
+      });
+
+    chai.expect(res.body.message).to.be.equal("User successfully created");
+  });
+
+  it("should reject creating a non-normal user", async () => {
+    const res = await chai
+      .request(app)
+      .post("/api/v1/users")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        firstName: "Joshua",
+        lastName: "Sanders",
+        emailAddress: "joshua.sanders@example.com",
+        password: await hashPassword("josh123"),
+        role: "ADMIN",
+      });
+
+    chai
+      .expect(res.body.message)
+      .to.be.equal("ADMINs can only create NORMAL users");
+  });
+
+  //Delete
+  it("should reject deleting a super-admin user", async () => {
+    const res = await chai
+      .request(app)
+      .delete(`/api/v1/users/${superAdminUser.id}`)
+      .set("Authorization", `Bearer ${token}`);
+
+    chai
+      .expect(res.body.message)
+      .to.be.equal("Deleting a super admin user not allowed");
+  });
+
+  it("should delete a normal user", async () => {
+    const res = await chai
+      .request(app)
+      .delete(`/api/v1/users/${normalUser.id}`)
+      .set("Authorization", `Bearer ${token}`);
+
+    chai
+      .expect(res.body.message)
+      .to.be.equal(`User with the id: ${normalUser.id} successfully deleted`);
+  });
 });
