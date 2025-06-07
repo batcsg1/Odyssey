@@ -27,13 +27,13 @@ enum Location {
 }
 
 model Constellation {
-  id            String         @id @default(uuid())
+  id            String        @id @default(uuid())
   name          String
   shape         String?
   area          Float?
   abbreviation  String
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
   stars         Star[]
   meteorShowers MeteorShower?
   Galaxy        Galaxy[]
@@ -264,4 +264,8 @@ enum Role {
   SUPER_ADMIN
   ADMIN
   NORMAL
+}
+
+model Blacklist {
+  token String @unique
 }
