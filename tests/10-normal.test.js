@@ -171,7 +171,7 @@ describe("Normal", () => {
 
     // UPDATE a constellation
 
-    it("should not update a valid constellation", async () => {
+    it("should not allow normal user to update constellation", async () => {
         const res = await chai
             .request(app)
             .put(`/api/v1/constellations/${constellationId}`)
