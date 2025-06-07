@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import prisma from "../prisma/client";
+import prisma from "../prisma/client.js";
 
-const auth = (req, res, next) => {
+const auth = async (req, res, next) => {
   try {
     /**
      * The authorization request header provides information that authenticates
@@ -27,7 +27,9 @@ const auth = (req, res, next) => {
     const token = authHeader.split(" ")[1];
 
     // Check if the token has been blacklisted
-    const blacklisted = prisma.blacklist.findUnique({ where: { token } });
+    const blacklisted = await prisma.blacklist.findUnique({ 
+      where: { token } 
+    });
 
     if (blacklisted) {
       return res.status(401).json({
