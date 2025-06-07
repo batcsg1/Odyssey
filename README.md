@@ -168,7 +168,7 @@ TBD
 ## AI Documentation 🤖
 ### ChatGPT:
 
-**Resolved issue where tests of a particular model failed all because the rate limit was reached in one model test.
+**Resolved issue where tests of a particular model failed all because the rate limit was reached in one model test.**
 
 [Issue #27](https://github.com/otago-polytechnic-bit-courses/id607001-s1-25-batcsg1/issues/27)
 
