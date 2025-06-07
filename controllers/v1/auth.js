@@ -15,7 +15,7 @@ const selectObject = {
 
 const register = async (req, res) => {
   try {
-    const { firstName, lastName, emailAddress, password, role, homePlanet } = req.body;
+    const { emailAddress, password, role } = req.body;
 
     if (role !== "NORMAL") {
       return res
@@ -42,12 +42,9 @@ const register = async (req, res) => {
 
     user = await prisma.user.create({
       data: {
-        firstName,
-        lastName,
-        emailAddress,
+        ...req.body,
         password: hashedPassword,
-        role: "NORMAL",
-        homePlanet
+        role: "NORMAL"
       },
       select: selectObject,
     });
@@ -72,11 +69,11 @@ const login = async (req, res) => {
 
     const user = await prisma.user.findUnique({ where: { emailAddress } });
 
-    if (!user){
+    if (!user) {
       return res.status(401).json({ message: "Invalid email address" });
     }
-    
-    if (!user.status){
+
+    if (!user.status) {
       return res.status(403).json({ message: "Your account is currently disabled." });
     }
 
@@ -144,4 +141,26 @@ const login = async (req, res) => {
   }
 };
 
-export { register, login };
+const logout = async (req, res) => {
+  try {
+    // Get token from Authorization header
+    const authHeader = req.headers.authorization;
+    const token = authHeader.split(" ")[1];
+
+    // Store token in blacklist
+    await prisma.blacklist.create({
+      data: {
+        token
+      },
+    });
+
+    return res.status(200).json({ message: "Successfully logged out" });
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).json({
+      message: err.message,
+    });
+  }
+}
+
+export { register, login, logout };
