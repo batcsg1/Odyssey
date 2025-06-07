@@ -18,6 +18,7 @@ let token;
 let normalUser;
 let adminUser;
 let superAdminUser;
+let constellationId;
 
 describe("Admin", () => {
   before(async () => {
@@ -36,9 +37,10 @@ describe("Admin", () => {
         emailAddress: "james.doe@example.com",
       },
     });
-  });
+    const constellation = await prisma.constellation.findFirst();
 
-  
+    constellationId = constellation.id;
+  });
 
   it("should reject missing token", async () => {
     const res = await chai.request(app).get("/api/v1/users");
@@ -172,4 +174,34 @@ describe("Admin", () => {
       .expect(res.body.message)
       .to.be.equal(`User with the id: ${normalUser.id} successfully deleted`);
   });
+
+  // GET from constellations
+
+  it("should allow admin user to get all constellations", async () => {
+    const res = await chai
+      .request(app)
+      .get("/api/v1/constellations")
+      .set("Authorization", `Bearer ${token}`);
+
+    chai.expect(res.body.data).to.be.an("array");
+  });
+
+  // UPDATE a constellation
+
+  it("should allow admin user to update a constellation", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/constellations/${constellationId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                name: "Updated Constellation",
+            });
+        chai.expect(res).to.have.status(200);
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Constellation with the id: ${constellationId} successfully updated`
+            );
+    });
 });
