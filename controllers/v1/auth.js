@@ -145,11 +145,14 @@ const logout = async (req, res) => {
   try {
     // Get token from Authorization header
     const authHeader = req.headers.authorization;
-    const token = authHeader.split(" ")[1];
 
+    // Get the JWT from the bearer token
+    const token = authHeader.split(" ")[1];
+    
     // Store token in blacklist
     await prisma.blacklist.create({
       data: {
+        ...req.body,
         token
       },
     });
