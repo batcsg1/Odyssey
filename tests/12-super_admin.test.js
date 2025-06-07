@@ -19,6 +19,7 @@ let adminUser;
 let superAdminUser;
 let anotherSuperAdminUserID;
 let yetAnotherSuperAdminUser;
+let constellationId;
 
 describe("Super Admin", () => {
     before(async () => {
@@ -38,6 +39,10 @@ describe("Super Admin", () => {
             },
         });
         anotherSuperAdminUserID = yetAnotherSuperAdminUser.id;
+
+        const constellation = await prisma.constellation.findFirst();
+
+        constellationId = constellation.id;
     });
 
     it("should reject missing token", async () => {
@@ -160,5 +165,35 @@ describe("Super Admin", () => {
         chai
             .expect(res.body.message)
             .to.be.equal(`User with the id: ${adminUser.id} successfully deleted`);
+    });
+
+    // GET from constellations
+
+  it("should allow admin user to get all constellations", async () => {
+    const res = await chai
+      .request(app)
+      .get("/api/v1/constellations")
+      .set("Authorization", `Bearer ${token}`);
+
+    chai.expect(res.body.data).to.be.an("array");
+  });
+
+  // UPDATE a constellation
+
+  it("should allow super admin user to update a constellation", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/constellations/${constellationId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                name: "Leo",
+            });
+        chai.expect(res).to.have.status(200);
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Constellation with the id: ${constellationId} successfully updated`
+            );
     });
 });
