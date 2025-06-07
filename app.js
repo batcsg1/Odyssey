@@ -20,10 +20,10 @@ import cometRoutes from "./routes/v1/comet.js";
 import meteorShowerRoutes from "./routes/v1/meteor_shower.js";
 import galaxyRoutes from "./routes/v1/galaxy.js";
 import userRoutes from "./routes/v1/user.js";
+import authRoutes from "./routes/v1/auth.js";
 
 // Import middleware
 import auth from "./middleware/auth.js";
-import authRoutes from "./routes/v1/auth.js";
 import logger from "./middleware/logger.js";
 import { isContentTypeApplicationJSON } from "./middleware/utils.js";
 
