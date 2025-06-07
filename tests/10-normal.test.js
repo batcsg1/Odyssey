@@ -15,8 +15,8 @@ const hashPassword = async (password) => {
 
 let token;
 let userId;
-
 let adminUser;
+let constellationId;
 
 describe("Normal", () => {
     before(async () => {
@@ -25,6 +25,10 @@ describe("Normal", () => {
                 emailAddress: "john.doe@example.com",
             },
         });
+
+        const constellation = await prisma.constellation.findFirst();
+
+        constellationId = constellation.id;
     });
 
     it("should reject missing token", async () => {
@@ -152,5 +156,34 @@ describe("Normal", () => {
         chai
             .expect(res.body.message)
             .to.be.equal("Deleting another user not allowed");
+    });
+
+    // GET from constellations
+
+    it("should allow normal user to get all constellations", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/constellations")
+            .set("Authorization", `Bearer ${token}`);
+
+        chai.expect(res.body.data).to.be.an("array");
+    });
+
+    // UPDATE a constellation
+
+    it("should not update a valid constellation", async () => {
+        const res = await chai
+            .request(app)
+            .put(`/api/v1/constellations/${constellationId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                name: "Updated Constellation",
+            });
+
+        chai.expect(res).to.have.status(403);
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal("Not authorized to access this route");
     });
 });
