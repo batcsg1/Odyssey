@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import prisma from "../prisma/client";
 
 const auth = (req, res, next) => {
   try {
@@ -24,6 +25,15 @@ const auth = (req, res, next) => {
 
     // Get the JWT from the bearer token
     const token = authHeader.split(" ")[1];
+
+    // Check if the token has been blacklisted
+    const blacklisted = prisma.blacklist.findUnique({ where: { token } });
+
+    if (blacklisted) {
+      return res.status(401).json({
+        message: "Token has been revoked. Please login again.",
+      });
+    }
 
     /**
      * Verify the signed JWT is valid. The first argument is the token,
