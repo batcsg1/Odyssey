@@ -81,7 +81,7 @@
  *         name: type
  *         schema:
  *           type: string
- *         description: Filter galaxies by shape
+ *         description: Filter galaxies by type
  *       - in: query
  *         name: distance
  *         schema:
