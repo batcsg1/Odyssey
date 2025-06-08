@@ -1,6 +1,13 @@
 import { Location, SatelliteType } from "@prisma/client";
 import Joi from "joi";
 
+/**
+ * @description This function performs POST validation when creating a satellite
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @param {object} next - The next middleware in the stack
+ * @returns {object} - The response object containing the validation message
+ */
 const validatePostSatellite = (req, res, next) => {
   const postSchema = Joi.object({
     name: Joi.string().min(2).max(100).required().messages({
@@ -129,6 +136,13 @@ const validatePostSatellite = (req, res, next) => {
   next();
 };
 
+/**
+ * @description This function performs PUT validation when updating a satellite
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @param {object} next - The next middleware in the stack
+ * @returns {object} - The response object containing the validation message
+ */
 const validatePutSatellite = (req, res, next) => {
   const putSchema = Joi.object({
     name: Joi.string().min(2).max(100).optional().messages({
