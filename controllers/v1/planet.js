@@ -135,7 +135,7 @@ const getPlanets = async (req, res) => {
     const page = req.query.page
     const amount = req.query.amount
 
-    // Apply filtering, sorting and pagination to star model
+    // Apply filtering, sorting and pagination to planet model
     const planets = await planetRepository.findAll(
       selectObject,
       filters,

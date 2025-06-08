@@ -106,7 +106,7 @@ const getSatellites = async (req, res) => {
     const page = req.query.page
     const amount = req.query.amount
 
-    // Apply filtering, sorting and pagination to star model
+    // Apply filtering, sorting and pagination to satellite model
     const satellites = await satelliteRepository.findAll(
       selectObject,
       filters,
