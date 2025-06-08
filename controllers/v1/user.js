@@ -19,6 +19,12 @@ const selectObject = {
     updatedAt: true,
 }
 
+/**
+ * @description This function creates a new user
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const createUser = async (req, res) => {
     try {
         const { role } = req.user;
@@ -43,6 +49,7 @@ const createUser = async (req, res) => {
 
         // Rule: SUPER_ADMIN can create any user, including other SUPER_ADMINs
 
+        // User to be created
         const newUser = await userRepository.create(req.body);
 
         // Return the created user as the data object
@@ -60,10 +67,17 @@ const createUser = async (req, res) => {
     }
 };
 
+/**
+ * @description This function gets all users
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getUsers = async (req, res) => {
     try {
         const { role, id } = req.user;
 
+        // Filtering query parameters
         const filters = {
             firstName: req.query.firstName || undefined,
             lastName: req.query.lastName || undefined,
@@ -72,11 +86,15 @@ const getUsers = async (req, res) => {
             role: req.query.role || undefined
         }
 
+        // Sort query parameters
         const sortBy = req.query.sortBy || "id";
         const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+        // Pagination query parameters
         const page = req.query.page
         const amount = req.query.amount
 
+        // Apply filtering, sorting and pagination to meteor shower model
         let users = await userRepository.findAll(
             selectObject,
             filters,
@@ -121,10 +139,17 @@ const getUsers = async (req, res) => {
     }
 };
 
+/**
+ * @description This function gets a user by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getUser = async (req, res) => {
     try {
         const { role, id } = req.user;
 
+        // Find user by ID
         const user = await userRepository.findById(req.params.id, selectObject);
 
         if (!user) {
@@ -157,11 +182,18 @@ const getUser = async (req, res) => {
     }
 };
 
+/**
+ * @description This function updates a user by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const updateUser = async (req, res) => {
     try {
         const { role, id } = req.user;
 
-        let user = await userRepository.findById(req.params.id, selectObject);
+        // Find a user by ID
+        let user = await userRepository.findById(req.params.id);
 
         if (!user) {
             return res.status(404).json({
@@ -233,11 +265,19 @@ const updateUser = async (req, res) => {
     }
 };
 
+/**
+ * @description This function deletes a user by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const deleteUser = async (req, res) => {
     try {
         const { role, id } = req.user;
 
+        // User to delete
         const user = await userRepository.findById(req.params.id, selectObject);
+        
         if (!user) {
             return res.status(404).json({
                 message: `No user with the id: ${req.params.id} found`,
