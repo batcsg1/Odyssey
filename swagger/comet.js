@@ -52,7 +52,7 @@
  *         starId:
  *           type: string
  *           format: uuid
- *           example: "abcde12345-xyz6789"
+ *           example: "123e4567-e89b-12d3-a456-426614174000"
  *   securitySchemes:
  *     BearerAuth:
  *       type: http
