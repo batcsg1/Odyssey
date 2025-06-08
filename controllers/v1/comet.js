@@ -25,18 +25,28 @@ const selectObject = {
   updatedAt: true
 };
 
+/**
+ * @description This function creates a new comet
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const createComet = async (req, res) => {
   try {
-    const starId = req.body.starId;
+    const { starId } = req.body;
 
     // Check if star exists
-    const star = await new Repository("Star").findById(starId);
-    if (!star) {
-      return res.status(404).json({ message: `Star with id ${starId} not found` });
+    if (starId) {
+      const star = await new Repository("Star").findById(starId);
+      if (!star) {
+        return res.status(404).json({ message: `Star with id ${starId} not found` });
+      }
     }
 
+    // Comet to be created
     const newComet = await cometRepository.create(req.body);
 
+    // Return the newly created comet as the response object
     const comet = await cometRepository.findById(newComet.id, selectObject);
 
     return res.status(201).json({
@@ -50,8 +60,16 @@ const createComet = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets all comets
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getComets = async (req, res) => {
   try {
+
+    // Filtering query parameters
     const filters = {
       name: req.query.name || undefined,
       mass: req.query.mass || undefined,
@@ -66,11 +84,15 @@ const getComets = async (req, res) => {
       starId: req.query.starId || undefined
     };
 
+    // Sort query parameters
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    // Pagination query parameters
     const page = req.query.page
     const amount = req.query.amount
 
+    // Apply filtering, sorting and pagination to comet model
     const comets = await cometRepository.findAll(
       selectObject,
       filters,
@@ -79,11 +101,11 @@ const getComets = async (req, res) => {
       page,
       amount
     );
-      
+
     if (comets.length === 0) {
-      return res.status(404).json({ 
+      return res.status(404).json({
         message: "No comets found",
-        data: comets 
+        data: comets
       });
     }
     return res.status(200).json({
@@ -97,9 +119,18 @@ const getComets = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets a comet by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getComet = async (req, res) => {
   try {
+
+    // Find comet by ID
     const comet = await cometRepository.findById(req.params.id);
+
     if (!comet) {
       return res.status(404).json({
         message: `No comet with the id: ${req.params.id} found`,
@@ -115,8 +146,25 @@ const getComet = async (req, res) => {
   }
 };
 
+/**
+ * @description This function updates a comet by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const updateComet = async (req, res) => {
   try {
+    // Check if star ID is provided
+    const { starId } = req.body;
+
+    // Check if star exists
+    if (starId) {
+      const star = await new Repository("Star").findById(starId);
+      if (!star) {
+        return res.status(404).json({ message: `Star with id ${starId} not found` });
+      }
+    }
+
     let comet = await cometRepository.findById(req.params.id);
     if (!comet) {
       return res.status(404).json({
@@ -135,9 +183,18 @@ const updateComet = async (req, res) => {
   }
 };
 
+/**
+ * @description This function deletes a comet by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const deleteComet = async (req, res) => {
   try {
+
+    // Comet to delete
     const comet = await cometRepository.findById(req.params.id);
+    
     if (!comet) {
       return res.status(404).json({
         message: `No comet with the id: ${req.params.id} found`,
