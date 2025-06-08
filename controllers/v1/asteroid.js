@@ -25,16 +25,24 @@ const selectObject = {
   updatedAt: true
 };
 
+/**
+ * @description This function creates a new asteroid
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const createAsteroid = async (req, res) => {
   try {
-    const starId = req.body.starId;
+    const { starId } = req.body;
 
     // Check if star exists
-    const star = await new Repository("Star").findById(starId);
-    if (!star) {
-      return res.status(404).json({ message: `Star with id ${starId} not found` });
+    if (starId) {
+      const star = await new Repository("Star").findById(starId);
+      if (!star) {
+        return res.status(404).json({ message: `Star with id ${starId} not found` });
+      }
     }
-    
+
     const newAsteroid = await asteroidRepository.create(req.body);
 
     const asteroid = await asteroidRepository.findById(newAsteroid.id, selectObject);
@@ -48,8 +56,16 @@ const createAsteroid = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets all asteroids
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getAsteroids = async (req, res) => {
   try {
+
+    // Filtering query parameters
     const filters = {
       name: req.query.name || undefined,
       mass: req.query.mass || undefined,
@@ -64,11 +80,15 @@ const getAsteroids = async (req, res) => {
       starId: req.query.starId || undefined
     };
 
+    // Sort query parameters
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    // Pagination query parameters
     const page = req.query.page
     const amount = req.query.amount
 
+    // Apply filtering, sorting and pagination to asteroid model
     const asteroids = await asteroidRepository.findAll(
       selectObject,
       filters,
@@ -79,23 +99,32 @@ const getAsteroids = async (req, res) => {
     );
 
     if (asteroids.length === 0) {
-      return res.status(404).json({ 
+      return res.status(404).json({
         message: "No asteroids found",
         data: asteroids
-       });
+      });
     }
-    return res.status(200).json({ 
+    return res.status(200).json({
       count: asteroids.length,
-      data: asteroids 
+      data: asteroids
     });
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
 };
 
+/**
+ * @description This function gets an asteroid by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getAsteroid = async (req, res) => {
   try {
+
+    // Find asteroid by ID
     const asteroid = await asteroidRepository.findById(req.params.id, selectObject);
+
     if (!asteroid) {
       return res.status(404).json({ message: `No asteroid with id: ${req.params.id} found` });
     }
@@ -105,9 +134,25 @@ const getAsteroid = async (req, res) => {
   }
 };
 
+/**
+ * @description This function updates an asteroid by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const updateAsteroid = async (req, res) => {
   try {
-    const asteroid = await asteroidRepository.update(req.params.id, req.body);
+    const { starId } = req.body;
+
+    // Check if star exists
+    if (starId) {
+      const star = await new Repository("Star").findById(starId);
+      if (!star) {
+        return res.status(404).json({ message: `Star with id ${starId} not found` });
+      }
+    }
+
+    let asteroid = await asteroidRepository.update(req.params.id, req.body);
     if (!asteroid) {
       return res.status(404).json({ message: `No asteroid with id: ${req.params.id} found` });
     }
@@ -120,9 +165,18 @@ const updateAsteroid = async (req, res) => {
   }
 };
 
+/**
+ * @description This function deletes an asteroid by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const deleteAsteroid = async (req, res) => {
   try {
+
+    // Asteroid to delete
     const asteroid = await asteroidRepository.findById(req.params.id);
+
     if (!asteroid) {
       return res.status(404).json({ message: `No asteroid with id: ${req.params.id} found` });
     }
