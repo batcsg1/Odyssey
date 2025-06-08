@@ -101,12 +101,12 @@ const getStars = async (req, res) => {
       page,
       amount
     );
-    
+
     if (stars.length === 0) {
-      return res.status(404).json({ 
+      return res.status(404).json({
         message: "No stars found",
         data: stars
-       });
+      });
     }
     return res.status(200).json({
       count: stars.length,
@@ -156,7 +156,7 @@ const getStar = async (req, res) => {
 const updateStar = async (req, res) => {
   try {
 
-     // Find a star by ID
+    // Find a star by ID
     let star = await starRepository.findById(req.params.id);
 
     if (!star) {
