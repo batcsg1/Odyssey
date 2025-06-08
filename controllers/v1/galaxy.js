@@ -27,6 +27,16 @@ const selectObject = {
  */
 const createGalaxy = async (req, res) => {
   try {
+    // Check if galaxyId is provided
+    const { constellationId } = req.body;
+
+    if (constellationId) {
+      // Check if constellation exists
+      const constellation = await new Repository("Constellation").findById(constellationId);
+      if (!constellation) {
+        return res.status(404).json({ message: `The constellation with id ${constellationId} was not found` });
+      }
+    }
 
     // New galaxy to create
     const newGalaxy = await galaxyRepository.create(req.body);
@@ -135,7 +145,17 @@ const getGalaxy = async (req, res) => {
  */
 const updateGalaxy = async (req, res) => {
   try {
+    // Check if galaxyId is provided
+    const { constellationId } = req.body;
 
+    if (constellationId) {
+      // Check if constellation exists
+      const constellation = await new Repository("Constellation").findById(constellationId);
+      if (!constellation) {
+        return res.status(404).json({ message: `The constellation with id ${constellationId} was not found` });
+      }
+    }
+    
     // Find a galaxy by ID
     let galaxy = await galaxyRepository.findById(req.params.id);
 
