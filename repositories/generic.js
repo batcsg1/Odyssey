@@ -50,7 +50,9 @@ class Repository {
       // Loop through the filters and apply them dynamically
       for (const [key, value] of Object.entries(filters)) {
         if (value !== undefined && value !== null) {
-          if (Array.isArray(value)) { // Handle array case
+          if (value === 'true' || value === 'false') {
+            query.where[key] = { equals: value === 'true' }; // convert to actual boolean
+          } else if (Array.isArray(value)) { // Handle array case
             query.where[key] = { in: value };  // Use 'in' for array values
           } else if (!isNaN(value)) { // Handle numeric fields (non-array)
             query.where[key] = { equals: Number(value) };  // Use 'equals' for numeric fields
