@@ -22,6 +22,12 @@ const validatePostComet = (req, res, next) => {
       "string.max": "Name should have a maximum length of {#limit}",
       "any.required": "Name is required",
     }),
+    age: Joi.number().min(0).max(1.6e10).required().messages({
+      "number.base": "Age should be a number",
+      "number.min": "Age should be greater than or equal to {#limit} years",
+      "number.max": "Age should be lesser than or equal to {#limit} years",
+      "any.required": "Age is required",
+    }),
     mass: Joi.number().min(1).max(10e14).required().messages({
       "number.base": "Mass should be a number",
       "number.min": "Mass should be greater than or equal to {#limit} kgs",
@@ -116,6 +122,11 @@ const validatePutComet = (req, res, next) => {
       "string.empty": "Name cannot be empty",
       "string.min": "Name should have a minimum length of {#limit}",
       "string.max": "Name should have a maximum length of {#limit}"
+    }),
+    age: Joi.number().min(0).max(1.6e10).optional().messages({
+      "number.base": "Age should be a number",
+      "number.min": "Age should be greater than or equal to {#limit} years",
+      "number.max": "Age should be lesser than or equal to {#limit} years",
     }),
     mass: Joi.number().min(1).max(10e14).optional().messages({
       "number.base": "Mass should be a number",
