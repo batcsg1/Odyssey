@@ -13,6 +13,8 @@ const hashPassword = async (password) => {
     return bcryptjs.hash(password, salt);
 };
 
+let token;
+
 describe("Auth", () => {
     before(async () => {
         await prisma.user.createMany({
@@ -48,6 +50,33 @@ describe("Auth", () => {
             ]
         })
     });
+
+    it("should register a normal user", async () => {
+        const res = await chai.request(app).post("/api/v1/auth/register").send({
+            firstName: "Tom",
+            lastName: "Doe",
+            emailAddress: "tom.doe@example.com",
+            password: await hashPassword("default_pass123"),
+            role: "NORMAL"
+        });
+
+        chai.expect(res).to.have.status(201); // Expect a succesfull response
+        chai.expect(res.body.message).to.be.equal("User successfully registered");
+    });
+
+    it("should reject non-normal user registration", async () => {
+        const res = await chai.request(app).post("/api/v1/auth/register").send({
+            firstName: "Gordon",
+            lastName: "Doe",
+            emailAddress: "gordon.doe@example.com",
+            password: await hashPassword("default_pass123"),
+            role: "ADMIN"
+        });
+
+        chai.expect(res).to.have.status(403); // Expect a succesfull response
+        chai.expect(res.body.message).to.be.equal("User must register as a normal user");
+    });
+
     it("should login a normal user and return a token", async () => {
         const res = await chai.request(app).post("/api/v1/auth/login").send({
             emailAddress: "david.bowie@example.com",
@@ -77,34 +106,28 @@ describe("Auth", () => {
             password: "P@ssw0rd",
         });
 
-        chai.expect(res).to.have.status(200); // Expect a succesfull response
+        token = res.body.token;
+
+        chai.expect(res).to.have.status(200); // Expect a successfull response
         chai.expect(res.body.token).to.exist;
         chai.expect(res).to.not.have.header('x-powered-by') // Expect non-default header
     });
 
-    it("should register a normal user", async () => {
-        const res = await chai.request(app).post("/api/v1/auth/register").send({
-            firstName: "Tom",
-            lastName: "Doe",
-            emailAddress: "tom.doe@example.com",
-            password: await hashPassword("default_pass123"),
-            role: "NORMAL"
-        });
+    it("should logout a super admin user", async () => {
+        const res = await chai
+            .request(app).post("/api/v1/auth/logout")
+            .set("Authorization", `Bearer ${token}`);
 
-        chai.expect(res).to.have.status(201); // Expect a succesfull response
-        chai.expect(res.body.message).to.be.equal("User successfully registered");
+        chai.expect(res).to.have.status(200); // Expect a successfull response
+        chai.expect(res.body.message).to.be.equal("Successfully logged out");
     });
 
-    it("should reject non-normal user registration", async () => {
-        const res = await chai.request(app).post("/api/v1/auth/register").send({
-            firstName: "Gordon",
-            lastName: "Doe",
-            emailAddress: "gordon.doe@example.com",
-            password: await hashPassword("default_pass123"),
-            role: "ADMIN"
-        });
+    it("should reject blacklisted token", async () => {
+        const res = await chai
+            .request(app)
+            .get("/api/v1/constellations")
+            .set("Authorization", `Bearer ${token}`);
 
-        chai.expect(res).to.have.status(403); // Expect a succesfull response
-        chai.expect(res.body.message).to.be.equal("User must register as a normal user");
+        chai.expect(res).to.have.status(401);
     });
 });
