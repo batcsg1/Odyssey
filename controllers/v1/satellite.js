@@ -32,19 +32,27 @@ const selectObject = {
   updatedAt: true
 };
 
+/**
+ * @description This function creates a new satellite
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const createSatellite = async (req, res) => {
   try {
-    // Check if constellationId is provided
+    // Check if planet ID is provided
     const planetId = req.body.planetId;
 
-    // Check if institution exists
+    // Check if planet exists
     const planet = await new Repository("Planet").findById(planetId);
     if (!planet) {
       return res.status(404).json({ message: `The planet with id ${planetId} was not found` });
     }
 
+    // Satellite to be created
     const newSatellite = await satelliteRepository.create(req.body);
 
+    //  Return the newly created satellite as the response object
     const satellite = await satelliteRepository.findById(newSatellite.id, selectObject);
 
     return res.status(201).json({
@@ -58,8 +66,16 @@ const createSatellite = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets all satellites
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getSatellites = async (req, res) => {
   try {
+
+    // Filtering query parameters
     const filters = {
       name: req.query.name || undefined,
       age: req.query.age || undefined,
@@ -82,11 +98,15 @@ const getSatellites = async (req, res) => {
       planetId: req.query.planetId || undefined
     };
 
+    // Sort query parameters
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    // Pagination query parameters
     const page = req.query.page
     const amount = req.query.amount
 
+    // Apply filtering, sorting and pagination to star model
     const satellites = await satelliteRepository.findAll(
       selectObject,
       filters,
@@ -113,9 +133,18 @@ const getSatellites = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets a satellite by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getSatellite = async (req, res) => {
   try {
-    const satellite = await satelliteRepository.findById(req.params.id);
+
+    // Find satellite by ID
+    const satellite = await satelliteRepository.findById(req.params.id, selectObject);
+
     if (!satellite) {
       return res.status(404).json({
         message: `No satellite with the id: ${req.params.id} found`,
@@ -131,15 +160,26 @@ const getSatellite = async (req, res) => {
   }
 };
 
+/**
+ * @description This function updates a satellite by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const updateSatellite = async (req, res) => {
   try {
+
+    // Find a satellite by ID
     let satellite = await satelliteRepository.findById(req.params.id);
+
     if (!satellite) {
       return res.status(404).json({
         message: `No satellite with the id: ${req.params.id} found`,
       });
     }
-    satellite = await satelliteRepository.update(req.params.id, req.body);
+
+    satellite = await satelliteRepository.update(req.params.id, req.body, selectObject);
+
     return res.status(200).json({
       message: `Satellite with the id: ${req.params.id} successfully updated`,
       data: satellite,
@@ -151,14 +191,24 @@ const updateSatellite = async (req, res) => {
   }
 };
 
+/**
+ * @description This function deletes a satellite by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const deleteSatellite = async (req, res) => {
   try {
+
+    // Satellite to delete
     const satellite = await satelliteRepository.findById(req.params.id);
+
     if (!satellite) {
       return res.status(404).json({
         message: `No satellite with the id: ${req.params.id} found`,
       });
     }
+    
     await satelliteRepository.delete(req.params.id);
     return res.json({
       message: `Satellite with the id: ${req.params.id} successfully deleted`,
