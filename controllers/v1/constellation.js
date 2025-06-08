@@ -23,8 +23,11 @@ const selectObject = {
  */
 const createConstellation = async (req, res) => {
   try {
+    
+    // New constellation to create
     const newConstellation = await constellationRepository.create(req.body);
 
+    // Return the newly created constellation as the response object
     const constellation = await constellationRepository.findById(newConstellation.id, selectObject);
 
     return res.status(201).json({
@@ -107,7 +110,7 @@ const getConstellation = async (req, res) => {
         message: `No constellation with the id: ${req.params.id} found`,
       });
     }
-    
+
     return res.status(200).json({
       data: constellation,
     });
