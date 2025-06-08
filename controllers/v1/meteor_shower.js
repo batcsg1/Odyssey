@@ -214,16 +214,22 @@ const updateMeteorShower = async (req, res) => {
 
     // Check if constellation exists
     if (constellationId) {
+
       const constellation = await new Repository("Constellation").findById(constellationId);
+
       if (!constellation) {
         return res.status(404).json({ message: `The constellation with id ${constellationId} was not found` });
       }
+
       // Find if a meteor shower is already part of a particular constellation
       const existingMeteorShower = await new advancedRepository("MeteorShower").findByConstellationId(constellationId);
-      if (existingMeteorShower) {
+
+      if (existingMeteorShower && existingMeteorShower.id !== req.params.id) {
         return res.status(409).json({ message: `There is already a meteor shower that belongs to constellation with ${constellationId}` });
       }
+
     }
+
 
     // Validate each cometId (if comets are provided)
     if (comets.length > 0) {
@@ -250,11 +256,11 @@ const updateMeteorShower = async (req, res) => {
       req.params.id,
       {
         ...req.body,
-        initialDate: isDateValid(initialDate),
-        finalDate: isDateValid(finalDate),
-        peakDate: isDateValid(peakDate),
-        comets: comets.length > 0 ? { connect: comets.map(id => ({ id })) } : undefined,
-        asteroids: asteroids.length > 0 ? { connect: asteroids.map(id => ({ id })) } : undefined,
+        ...(initialDate && isDateValid(initialDate) && { initialDate: isDateValid(initialDate) }),
+        ...(finalDate && isDateValid(finalDate) && { finalDate: isDateValid(finalDate) }),
+        ...(peakDate && isDateValid(peakDate) && { peakDate: isDateValid(peakDate) }),
+        ...(comets.length > 0 && { comets: { connect: comets.map(id => ({ id })) } }),
+        ...(asteroids.length > 0 && { asteroids: { connect: asteroids.map(id => ({ id })) } }),
       },
       selectObject
     );
@@ -287,7 +293,7 @@ const deleteMeteorShower = async (req, res) => {
     if (!meteorShower) {
       return res.status(404).json({ message: `No meteor shower with the id: ${req.params.id} found` });
     }
-    
+
     await meteorShowerRepository.delete(req.params.id);
     return res.status(200).json({ message: `Meteor shower with the id: ${req.params.id} successfully deleted` });
   } catch (err) {
