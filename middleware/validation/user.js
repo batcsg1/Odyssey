@@ -6,7 +6,13 @@
 import { Role } from "@prisma/client";
 import Joi from "joi";
 
-// POST Validation function
+/**
+ * @description This function performs POST validation when creating a user
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @param {object} next - The next middleware in the stack
+ * @returns {object} - The response object containing the validation message
+ */
 const validatePostUser = (req, res, next) => {
     const postSchema = Joi.object({
         firstName: Joi.string().required().messages({
@@ -56,7 +62,13 @@ const validatePostUser = (req, res, next) => {
     next();
 }
 
-// PUT Validation function
+/**
+ * @description This function performs PUT validation when updating a user
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @param {object} next - The next middleware in the stack
+ * @returns {object} - The response object containing the validation message
+ */
 const validatePutUser = (req, res, next) => {
     const putSchema = Joi.object({
         firstName: Joi.string().optional(),
