@@ -99,7 +99,7 @@
  *         schema:
  *           type: string
  *         description: Filter comets by name
- *        - in: query
+ *       - in: query
  *         name: age
  *         schema:
  *           type: number
