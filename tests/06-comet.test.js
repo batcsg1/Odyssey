@@ -52,6 +52,7 @@ describe("Comets", () => {
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Halley's Comet",
+                age: 4.5e9,
                 mass: 2.2e14,
                 diameter: 11,
                 density: 0.6,
@@ -76,6 +77,7 @@ describe("Comets", () => {
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Hale-Bopp",
+                age: 4.5e9,
                 mass: 1e14,
                 diameter: 60,
                 density: 0.5,
@@ -109,6 +111,7 @@ describe("Comets", () => {
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Hale-Bopp",
+                age: 4.5e9,
                 mass: 1e14,
                 diameter: 60,
                 density: 0.5,
@@ -132,6 +135,7 @@ describe("Comets", () => {
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 2747,
+                age: 4.5e9,
                 mass: 1e14,
                 diameter: 60,
                 density: 0.5,
@@ -154,6 +158,7 @@ describe("Comets", () => {
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Hale-Bopp",
+                age: 4.5e9,
                 mass: 1e14,
                 diameter: 60,
                 density: 0.5,
@@ -176,6 +181,7 @@ describe("Comets", () => {
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Hale-Bopp",
+                age: 4.5e9,
                 mass: "1e14",
                 diameter: 60,
                 density: 0.5,
