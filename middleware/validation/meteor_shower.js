@@ -47,7 +47,7 @@ const validatePostMeteorShower = (req, res, next) => {
       "date.base": "Initial date must be a valid date",
       "any.required": "Initial date is required",
     }),
-    finalDate: Joi.date().iso().required().messages({
+    finalDate: Joi.date().required().messages({
       "date.base": "Final date should be a valid date",
       "any.required": "Final date is required",
     }),
@@ -78,7 +78,7 @@ const validatePostMeteorShower = (req, res, next) => {
       "number.min":
         "Meteors per hour should be greater than or equal to {#limit}",
     }),
-    peakDate: Joi.date().iso().optional().messages({
+    peakDate: Joi.date().optional().messages({
       "date.base": "The peak date should be a valid date",
     }),
     comets: Joi.array()
