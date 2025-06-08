@@ -224,10 +224,10 @@ const updateMeteorShower = async (req, res) => {
       // Find if a meteor shower is already part of a particular constellation
       const existingMeteorShower = await new advancedRepository("MeteorShower").findByConstellationId(constellationId);
 
+      // If meteor shower is part of a constellation and is not the one being currently updated
       if (existingMeteorShower && existingMeteorShower.id !== req.params.id) {
         return res.status(409).json({ message: `There is already a meteor shower that belongs to constellation with ${constellationId}` });
       }
-
     }
 
 
