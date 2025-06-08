@@ -165,7 +165,7 @@ Prisma Studio is up on http://localhost:5555
 ![image](./prisma/ERD.svg)
 
 ## Video demonstrating functionality of REST API and tests 📹
-TBD
+[Functionality Video](https://otagopoly-my.sharepoint.com/personal/batcsg1_student_op_ac_nz/_layouts/15/stream.aspx?id=%2Fpersonal%2Fbatcsg1%5Fstudent%5Fop%5Fac%5Fnz%2FDocuments%2FFunctionality%20Video%202025%2D06%2D08%20215025%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Eedf64b59%2D224c%2D450f%2Db578%2D4e9b747fe9bd)
 
 ## AI Documentation 🤖
 ### ChatGPT:
