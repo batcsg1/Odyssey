@@ -15,6 +15,12 @@ const selectObject = {
   abbreviation: true
 };
 
+/**
+ * @description This function creates a new constellation
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const createConstellation = async (req, res) => {
   try {
     const newConstellation = await constellationRepository.create(req.body);
@@ -32,8 +38,16 @@ const createConstellation = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets all constellations
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getConstellations = async (req, res) => {
   try {
+
+    // Filtering query parameters
     const filters = {
       name: req.query.name || undefined,
       shape: req.query.shape || undefined,
@@ -41,11 +55,15 @@ const getConstellations = async (req, res) => {
       abbreviation: req.query.abbreviation || undefined,
     }
 
+    // Sort query parameters
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    // Pagination query parameters
     const page = req.query.page
     const amount = req.query.amount
 
+    // Apply filtering, sorting and pagination to constellation model
     const constellations = await constellationRepository.findAll(
       selectObject,
       filters,
@@ -72,8 +90,16 @@ const getConstellations = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets a constellation by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getConstellation = async (req, res) => {
   try {
+
+    // Find constellation by ID
     const constellation = await constellationRepository.findById(req.params.id, selectObject);
     if (!constellation) {
       return res.status(404).json({
@@ -90,15 +116,26 @@ const getConstellation = async (req, res) => {
   }
 };
 
+/**
+ * @description This function updates a constellation
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const updateConstellation = async (req, res) => {
   try {
+
+    // Find a constellation by ID
     let constellation = await constellationRepository.findById(req.params.id);
+
     if (!constellation) {
       return res.status(404).json({
         message: `No constellation with the id: ${req.params.id} found`,
       });
     }
+
     constellation = await constellationRepository.update(req.params.id, req.body, selectObject);
+
     return res.status(200).json({
       message: `Constellation with the id: ${req.params.id} successfully updated`,
       data: constellation,
@@ -110,18 +147,29 @@ const updateConstellation = async (req, res) => {
   }
 };
 
+/**
+ * @description This function deletes a constellation by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const deleteConstellation = async (req, res) => {
   try {
+
+    // Constellation to delete
     const constellation = await constellationRepository.findById(req.params.id);
+
     if (!constellation) {
       return res.status(404).json({
         message: `No constellation with the id: ${req.params.id} found`,
       });
     }
+
     await constellationRepository.delete(req.params.id);
     return res.json({
       message: `Constellation with the id: ${req.params.id} successfully deleted`,
     });
+
   } catch (err) {
     return res.status(500).json({
       message: err.message,
