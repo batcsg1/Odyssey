@@ -5,7 +5,13 @@
 
 import Joi from "joi";
 
-// POST Validation function
+/**
+ * @description This function performs POST validation when creating a constellation
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @param {object} next - The next middleware in the stack
+ * @returns {object} - The response object containing the validation message
+ */
 const validatePostConstellation = (req, res, next) => {
   const postSchema = Joi.object({
     name: Joi.string().min(3).max(100).required().messages({
@@ -47,7 +53,13 @@ const validatePostConstellation = (req, res, next) => {
   next();
 };
 
-// PUT Validation function
+/**
+ * @description This function performs PUT validation when updating a constellation
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @param {object} next - The next middleware in the stack
+ * @returns {object} - The response object containing the validation message
+ */
 const validatePutConstellation = (req, res, next) => {
   const putSchema = Joi.object({
     name: Joi.string().min(3).max(100).optional().messages({
