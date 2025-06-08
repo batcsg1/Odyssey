@@ -20,6 +20,12 @@ const selectObject = {
   updatedAt: true
 };
 
+/**
+ * @description This function creates a new meteorite
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const createMeteorite = async (req, res) => {
   try {
     // Check if planet ID is provided
@@ -31,8 +37,10 @@ const createMeteorite = async (req, res) => {
       return res.status(404).json({ message: `The planet with id ${planetId} was not found` });
     }
 
+    // Meteorite to be created
     const newMeteorite = await meteoriteRepository.create(req.body);
 
+    // Return the newly created meteorite as the response object
     const meteorite = await meteoriteRepository.findById(newMeteorite.id, selectObject);
 
     return res.status(201).json({
@@ -46,8 +54,16 @@ const createMeteorite = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets all meteorites
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getMeteorites = async (req, res) => {
   try {
+
+    // Filtering query parameters
     const filters = {
       name: req.query.name || undefined,
       age: req.query.age || undefined,
@@ -58,11 +74,15 @@ const getMeteorites = async (req, res) => {
       planetId: req.query.planetId || undefined
     };
 
+    // Sort query parameters
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    // Pagination query parameters
     const page = req.query.page
     const amount = req.query.amount
 
+    // Apply filtering, sorting and pagination to ,eteorite model
     const meteorites = await meteoriteRepository.findAll(
       selectObject,
       filters,
@@ -89,9 +109,18 @@ const getMeteorites = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets a meteorite by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getMeteorite = async (req, res) => {
   try {
+
+    // Find meteorite by ID
     const meteorite = await meteoriteRepository.findById(req.params.id, selectObject);
+
     if (!meteorite) {
       return res.status(404).json({
         message: `No meteorite with the id: ${req.params.id} found`,
@@ -107,21 +136,26 @@ const getMeteorite = async (req, res) => {
   }
 };
 
+/**
+ * @description This function updates a meteorite by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const updateMeteorite = async (req, res) => {
   try {
+
+    // Find a meteorite by ID
     let meteorite = await meteoriteRepository.findById(req.params.id);
+
     if (!meteorite) {
       return res.status(404).json({
         message: `No meteorite with the id: ${req.params.id} found`,
       });
     }
 
-    // Ensure planetId is provided and exists if updating the planet reference
-    if (req.body.planetId) {
-      meteorite.planetId = req.body.planetId;
-    }
+    meteorite = await meteoriteRepository.update(req.params.id, req.body, selectObject);
 
-    meteorite = await meteoriteRepository.update(req.params.id, req.body);
     return res.status(200).json({
       message: `Meteorite with the id: ${req.params.id} successfully updated`,
       data: meteorite,
@@ -133,14 +167,24 @@ const updateMeteorite = async (req, res) => {
   }
 };
 
+/**
+ * @description This function deletes a meteorite by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const deleteMeteorite = async (req, res) => {
   try {
+
+    // Meteorite to delete
     const meteorite = await meteoriteRepository.findById(req.params.id);
+
     if (!meteorite) {
       return res.status(404).json({
         message: `No meteorite with the id: ${req.params.id} found`,
       });
     }
+    
     await meteoriteRepository.delete(req.params.id);
     return res.json({
       message: `Meteorite with the id: ${req.params.id} successfully deleted`,
