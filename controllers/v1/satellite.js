@@ -52,7 +52,7 @@ const createSatellite = async (req, res) => {
     // Satellite to be created
     const newSatellite = await satelliteRepository.create(req.body);
 
-    //  Return the newly created satellite as the response object
+    // Return the newly created satellite as the response object
     const satellite = await satelliteRepository.findById(newSatellite.id, selectObject);
 
     return res.status(201).json({
@@ -208,7 +208,7 @@ const deleteSatellite = async (req, res) => {
         message: `No satellite with the id: ${req.params.id} found`,
       });
     }
-    
+
     await satelliteRepository.delete(req.params.id);
     return res.json({
       message: `Satellite with the id: ${req.params.id} successfully deleted`,
