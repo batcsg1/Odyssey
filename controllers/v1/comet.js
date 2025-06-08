@@ -73,7 +73,6 @@ const getComets = async (req, res) => {
     const filters = {
       name: req.query.name || undefined,
       mass: req.query.mass || undefined,
-      age: req.query.age || undefined,
       diameter: req.query.diameter || undefined,
       density: req.query.density || undefined,
       type: req.query.type || undefined,
