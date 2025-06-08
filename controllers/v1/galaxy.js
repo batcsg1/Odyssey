@@ -19,10 +19,19 @@ const selectObject = {
   constellationId: true
 };
 
+/**
+ * @description This function creates a new galaxy
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const createGalaxy = async (req, res) => {
   try {
+
+    // New galaxy to create
     const newGalaxy = await galaxyRepository.create(req.body);
 
+    // Return the newly created galaxy as the response object
     const galaxy = await galaxyRepository.findById(newGalaxy.id, selectObject);
 
     return res.status(201).json({
@@ -36,10 +45,18 @@ const createGalaxy = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets all galaxies
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getGalaxies = async (req, res) => {
   try {
+
+    // Filtering query parameters
     const filters = {
-      name: req.query.name || undefined, 
+      name: req.query.name || undefined,
       type: req.query.type || undefined,
       distance: req.query.distance || undefined,
       size: req.query.size || undefined,
@@ -47,11 +64,15 @@ const getGalaxies = async (req, res) => {
       constellationId: req.query.constellationId || undefined
     }
 
+    // Sort query parameters
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    // Pagination query parameters
     const page = req.query.page
     const amount = req.query.amount
 
+    // Apply filtering, sorting and pagination to galaxy model
     const galaxies = await galaxyRepository.findAll(
       selectObject,
       filters,
@@ -60,9 +81,9 @@ const getGalaxies = async (req, res) => {
       page,
       amount
     );
-    
+
     if (galaxies.length === 0) {
-      return res.status(404).json({ 
+      return res.status(404).json({
         message: "No galaxies found",
         data: galaxies
       });
@@ -78,14 +99,24 @@ const getGalaxies = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets a galaxy by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getGalaxy = async (req, res) => {
   try {
-    const galaxy = await galaxyRepository.findById(req.params.id);
+
+    // Find galaxy by ID
+    const galaxy = await galaxyRepository.findById(req.params.id, selectObject);
+
     if (!galaxy) {
       return res.status(404).json({
         message: `No galaxy with the id: ${req.params.id} found`,
       });
     }
+
     return res.status(200).json({
       data: galaxy,
     });
@@ -96,15 +127,26 @@ const getGalaxy = async (req, res) => {
   }
 };
 
+/**
+ * @description This function updates a galaxy by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const updateGalaxy = async (req, res) => {
   try {
+
+    // Find a galaxy by ID
     let galaxy = await galaxyRepository.findById(req.params.id);
+
     if (!galaxy) {
       return res.status(404).json({
         message: `No galaxy with the id: ${req.params.id} found`,
       });
     }
-    galaxy = await galaxyRepository.update(req.params.id, req.body);
+
+    galaxy = await galaxyRepository.update(req.params.id, req.body, selectObject);
+
     return res.status(200).json({
       message: `Galaxy with the id: ${req.params.id} successfully updated`,
       data: galaxy,
@@ -116,18 +158,29 @@ const updateGalaxy = async (req, res) => {
   }
 };
 
+/**
+ * @description This function deletes a galaxy by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const deleteGalaxy = async (req, res) => {
   try {
+
+    // Galaxy to delete
     const galaxy = await galaxyRepository.findById(req.params.id);
+
     if (!galaxy) {
       return res.status(404).json({
         message: `No galaxy with the id: ${req.params.id} found`,
       });
     }
+
     await galaxyRepository.delete(req.params.id);
     return res.json({
       message: `Galaxy with the id: ${req.params.id} successfully deleted`,
     });
+
   } catch (err) {
     return res.status(500).json({
       message: err.message,
