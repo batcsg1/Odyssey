@@ -234,7 +234,9 @@ const updatePlanet = async (req, res) => {
 
     planet = await planetRepository.update(
       req.params.id, 
-      { ...req.body, users: users.length > 0 ? { connect: users.map(id => ({ id })) } : undefined},
+      { ...req.body, 
+        ...(users.length > 0 && { users: { connect: users.map(id => ({ id })) } })
+      },
       selectObject
     );
 
