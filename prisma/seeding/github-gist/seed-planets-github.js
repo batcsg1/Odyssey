@@ -21,9 +21,6 @@ const validatePlanet = (planet) => {
 
 const seedStarsFromGitHub = async () => {
     try {
-
-        await prisma.star.deleteMany(); // Delete all stars
-        
         const gistUrl = "https://gist.githubusercontent.com/batcsg1/30beebce4af6d4adee336c9ab988373d/raw/3d8b660c9f4d7cf718aa58fa8de26b86a4b360b4/seed-planets.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
         const response = await fetch(gistUrl);
         const planetData = await response.json();
