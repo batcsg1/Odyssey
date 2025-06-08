@@ -87,8 +87,8 @@ JWT_LIFETIME=1hr
 ```
 > Note: Once again change the port in the `DATABASE_URL` variable to **5446**
 
-> Optional: If you want the testing environment to run on a different server,
-just add the `PORT` variable to the .env file
+> **Optional:** If you want the testing environment to run on a different server,
+> just add the `PORT` variable to the .env file
 ---
 
 ### 3. Migrate Schema to Database 🛢️
