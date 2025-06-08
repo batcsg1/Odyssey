@@ -122,7 +122,7 @@ const getConstellation = async (req, res) => {
 };
 
 /**
- * @description This function updates a constellation
+ * @description This function updates a constellation by ID
  * @param {object} req - The request object
  * @param {object} res - The response object
  * @returns {object} - The response object
