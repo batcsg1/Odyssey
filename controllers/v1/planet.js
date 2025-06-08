@@ -41,11 +41,19 @@ const selectObject = {
   updatedAt: true
 };
 
+/**
+ * @description This function creates a new planet
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const createPlanet = async (req, res) => {
   try {
+
+    // Grab star ID and users from request body
     const {
       starId,
-      users = [],  // Using comets from the request body
+      users = []
     } = req.body;
 
     // Check if a star exists
@@ -57,18 +65,22 @@ const createPlanet = async (req, res) => {
     // Check if a user exists
     if (users.length > 0) {
       for (const id of users) {
+        // Find a user by ID
         const user = await new Repository("User").findById(id);
+
         if (!user) {
           return res.status(404).json({ message: `User with id ${id} was not found` });
         }
       }
     }
 
+    // Create new planet by adding the array of users (if specified)
     const newPlanet = await planetRepository.create({
       ...req.body,
       users: users.length > 0 ? { connect: users.map(id => ({ id })) } : undefined
     });
 
+    // Return the newly created planet as the response object
     const planet = await planetRepository.findById(newPlanet.id, selectObject);
 
     return res.status(201).json({
@@ -82,8 +94,16 @@ const createPlanet = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets all planets
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getPlanets = async (req, res) => {
   try {
+
+    // Filtering query parameters
     const filters = {
       name: req.query.name || undefined,
       age: req.query.age || undefined,
@@ -107,11 +127,15 @@ const getPlanets = async (req, res) => {
       starId: req.query.starId || undefined
     }
     
+    // Sort query parameters
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
+    // Pagination query parameters
     const page = req.query.page
     const amount = req.query.amount
 
+    // Apply filtering, sorting and pagination to star model
     const planets = await planetRepository.findAll(
       selectObject,
       filters,
@@ -138,9 +162,18 @@ const getPlanets = async (req, res) => {
   }
 };
 
+/**
+ * @description This function gets a planet by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const getPlanet = async (req, res) => {
   try {
-    const planet = await planetRepository.findById(req.params.id);
+
+    // Find planet by ID
+    const planet = await planetRepository.findById(req.params.id, selectObject);
+
     if (!planet) {
       return res.status(404).json({
         message: `No planet with the id: ${req.params.id} found`,
@@ -156,15 +189,26 @@ const getPlanet = async (req, res) => {
   }
 };
 
+/**
+ * @description This function updates a planet by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const updatePlanet = async (req, res) => {
   try {
+
+    // Find a planet by ID
     let planet = await planetRepository.findById(req.params.id);
+
     if (!planet) {
       return res.status(404).json({
         message: `No planet with the id: ${req.params.id} found`,
       });
     }
-    planet = await planetRepository.update(req.params.id, req.body);
+
+    planet = await planetRepository.update(req.params.id, req.body, selectObject);
+    
     return res.status(200).json({
       message: `Planet with the id: ${req.params.id} successfully updated`,
       data: planet,
@@ -176,14 +220,24 @@ const updatePlanet = async (req, res) => {
   }
 };
 
+/**
+ * @description This function deletes a planet by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
 const deletePlanet = async (req, res) => {
   try {
+
+    // Planet to delete
     const planet = await planetRepository.findById(req.params.id);
+
     if (!planet) {
       return res.status(404).json({
         message: `No planet with the id: ${req.params.id} found`,
       });
     }
+    
     await planetRepository.delete(req.params.id);
     return res.json({
       message: `Planet with the id: ${req.params.id} successfully deleted`,
