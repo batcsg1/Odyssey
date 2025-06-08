@@ -21,7 +21,7 @@ const validateSatellite = (satellite) => {
 
 const seedSatellitesFromGitHub = async () => {
     try {
-        await prisma.satellite.deleteMany(); // Delete all constellations
+        await prisma.satellite.deleteMany();
 
         const gistUrl = "https://gist.githubusercontent.com/batcsg1/cf11503fc54c0c0b91ff315a4e185cb7/raw/86b4201a53924402f9a1efe59b0f3ee50abbe10b/seed-satellites.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
         const response = await fetch(gistUrl);
