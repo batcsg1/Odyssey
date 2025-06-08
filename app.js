@@ -30,9 +30,7 @@ import { isContentTypeApplicationJSON } from "./middleware/utils.js";
 // Create an Express application
 const app = express();
 
-/**
- * @constant {number} PORT - The port the server listens on
- */
+// The port the server listens on
 const PORT = process.env.PORT || 3000;
 
 // Use JSON validation
@@ -74,9 +72,7 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
-/**
- * @constant {string} baseURL - The base URL for the REST API
- */
+// The base URL for the REST API
 const baseURL = "/api/v1";
 
 // Log all incoming requests using the custom logger
@@ -99,8 +95,6 @@ app.use(`${baseURL}/meteorites`, auth, meteoriteRoutes);
 app.use(`${baseURL}/comets`, auth, cometRoutes);
 app.use(`${baseURL}/meteor_showers`, auth, meteorShowerRoutes);
 app.use(`${baseURL}/users`, auth, userRoutes);
-
-// Swagger route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Start the server on defined port
@@ -110,12 +104,10 @@ app.listen(PORT, () => {
   );
 });
 
-
 /**
  * Catch for 404 routes by serving a custom error page
  * @see https://stackoverflow.com/questions/26079611/node-js-typeerror-path-must-be-absolute-or-specify-root-to-res-sendfile-failed
 */
-
 app.use((req, res) => {
   res.status(404).sendFile('404.html', { root: './html' });
 });
