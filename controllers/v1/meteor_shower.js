@@ -32,13 +32,6 @@ const selectObject = {
  * @param {object} res - The response object
  * @returns {object} - The response object
  */
-
-/**
- * @description This function creates a new meteor shower
- * @param {object} req - The request object
- * @param {object} res - The response object
- * @returns {object} - The response object
- */
 const createMeteorShower = async (req, res) => {
   try {
     const {
