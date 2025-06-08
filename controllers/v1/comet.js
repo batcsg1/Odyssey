@@ -129,7 +129,7 @@ const getComet = async (req, res) => {
   try {
 
     // Find comet by ID
-    const comet = await cometRepository.findById(req.params.id);
+    const comet = await cometRepository.findById(req.params.id, selectObject);
 
     if (!comet) {
       return res.status(404).json({
@@ -194,7 +194,7 @@ const deleteComet = async (req, res) => {
 
     // Comet to delete
     const comet = await cometRepository.findById(req.params.id);
-    
+
     if (!comet) {
       return res.status(404).json({
         message: `No comet with the id: ${req.params.id} found`,
