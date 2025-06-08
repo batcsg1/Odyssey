@@ -129,7 +129,7 @@ const getStar = async (req, res) => {
   try {
 
     // Find star by ID
-    const star = await starRepository.findById(req.params.id);
+    const star = await starRepository.findById(req.params.id, selectObject);
 
     if (!star) {
       return res.status(404).json({
@@ -200,7 +200,7 @@ const deleteStar = async (req, res) => {
     return res.json({
       message: `Star with the id: ${req.params.id} successfully deleted`,
     });
-    
+
   } catch (err) {
     return res.status(500).json({
       message: err.message,
