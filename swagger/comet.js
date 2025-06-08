@@ -12,6 +12,10 @@
  *         name:
  *           type: string
  *           example: "Halley's Comet"
+ *         age:
+ *           type: number
+ *           format: float
+ *           example: 4600000000
  *         mass:
  *           type: number
  *           format: float
