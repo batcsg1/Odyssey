@@ -47,6 +47,13 @@ describe("Auth", () => {
                     password: await hashPassword("peters123"),
                     role: "SUPER_ADMIN",
                 },
+                {
+                    firstName: "Grayson",
+                    lastName: "Peters",
+                    emailAddress: "grayson.peters@example.com",
+                    password: await hashPassword("password1234"),
+                    role: "NORMAL",
+                },
             ]
         })
     });
@@ -129,5 +136,18 @@ describe("Auth", () => {
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res).to.have.status(401);
+    });
+
+    it("should reject a normal user from logging in after 5 failed attempts", async () => {
+        let res;
+        for (let i = 0; i <= 5; i++) {
+            res = await chai.request(app).post("/api/v1/auth/login").send({
+                emailAddress: "grayson.peters@example.com",
+                password: "password",
+            });
+        }
+
+        chai.expect(res).to.have.status(401);
+        chai.expect(res.body.message).to.be.equal("Maximum login attempts reached. Please try again later");
     });
 });
