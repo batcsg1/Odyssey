@@ -101,11 +101,13 @@ const getConstellation = async (req, res) => {
 
     // Find constellation by ID
     const constellation = await constellationRepository.findById(req.params.id, selectObject);
+
     if (!constellation) {
       return res.status(404).json({
         message: `No constellation with the id: ${req.params.id} found`,
       });
     }
+    
     return res.status(200).json({
       data: constellation,
     });
