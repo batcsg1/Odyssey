@@ -36,9 +36,7 @@ const selectObject = {
       lastName: true,
       emailAddress: true,
     }
-  },
-  createdAt: true,
-  updatedAt: true
+  }
 };
 
 /**
@@ -57,9 +55,11 @@ const createPlanet = async (req, res) => {
     } = req.body;
 
     // Check if a star exists
-    const star = await new Repository("Star").findById(starId);
-    if (!star) {
-      return res.status(404).json({ message: `Star with id ${starId} not found` });
+    if (starId) {
+      const star = await new Repository("Star").findById(starId);
+      if (!star) {
+        return res.status(404).json({ message: `Star with id ${starId} not found` });
+      }
     }
 
     // Check if a user exists
@@ -126,7 +126,7 @@ const getPlanets = async (req, res) => {
       habitable: req.query.habitable || undefined,
       starId: req.query.starId || undefined
     }
-    
+
     // Sort query parameters
     const sortBy = req.query.sortBy || "id";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
@@ -146,7 +146,7 @@ const getPlanets = async (req, res) => {
     );
 
     if (planets.length === 0) {
-      return res.status(404).json({ 
+      return res.status(404).json({
         message: "No planets found",
         data: planets
       });
@@ -197,6 +197,31 @@ const getPlanet = async (req, res) => {
  */
 const updatePlanet = async (req, res) => {
   try {
+    // Grab star ID and users from request body
+    const {
+      starId,
+      users = []
+    } = req.body;
+
+    // Check if a star exists
+    if (starId) {
+      const star = await new Repository("Star").findById(starId);
+      if (!star) {
+        return res.status(404).json({ message: `Star with id ${starId} not found` });
+      }
+    }
+
+    // Check if a user exists
+    if (users.length > 0) {
+      for (const id of users) {
+        // Find a user by ID
+        const user = await new Repository("User").findById(id);
+
+        if (!user) {
+          return res.status(404).json({ message: `User with id ${id} was not found` });
+        }
+      }
+    }
 
     // Find a planet by ID
     let planet = await planetRepository.findById(req.params.id);
@@ -207,8 +232,12 @@ const updatePlanet = async (req, res) => {
       });
     }
 
-    planet = await planetRepository.update(req.params.id, req.body, selectObject);
-    
+    planet = await planetRepository.update(
+      req.params.id, 
+      { ...req.body, users: users.length > 0 ? { connect: users.map(id => ({ id })) } : undefined},
+      selectObject
+    );
+
     return res.status(200).json({
       message: `Planet with the id: ${req.params.id} successfully updated`,
       data: planet,
@@ -237,7 +266,7 @@ const deletePlanet = async (req, res) => {
         message: `No planet with the id: ${req.params.id} found`,
       });
     }
-    
+
     await planetRepository.delete(req.params.id);
     return res.json({
       message: `Planet with the id: ${req.params.id} successfully deleted`,
