@@ -204,6 +204,7 @@ model Comet {
   id            String         @id @default(uuid())
   name          String
   mass          Float
+  age           Float
   diameter      Float
   density       Float
   type          CometType      @default(SHORT_PERIOD)
