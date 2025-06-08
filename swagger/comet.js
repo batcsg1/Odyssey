@@ -96,12 +96,6 @@
  *           type: string
  *         description: Filter comets by name
  *       - in: query
- *         name: age
- *         schema:
- *           type: number
- *           format: float
- *         description: Filter comets by age
- *       - in: query
  *         name: mass
  *         schema:
  *           type: number
