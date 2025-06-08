@@ -32,9 +32,11 @@ const createMeteorite = async (req, res) => {
     const { planetId } = req.body;
 
     // Check if planet exists
-    const planet = await new Repository("Planet").findById(planetId);
-    if (!planet) {
-      return res.status(404).json({ message: `The planet with id ${planetId} was not found` });
+    if (planetId) {
+      const planet = await new Repository("Planet").findById(planetId);
+      if (!planet) {
+        return res.status(404).json({ message: `The planet with id ${planetId} was not found` });
+      }
     }
 
     // Meteorite to be created
@@ -93,10 +95,10 @@ const getMeteorites = async (req, res) => {
     );
 
     if (meteorites.length === 0) {
-      return res.status(404).json({ 
+      return res.status(404).json({
         message: "No meteorites found",
         data: meteorites
-       });
+      });
     }
     return res.status(200).json({
       count: meteorites.length,
@@ -144,7 +146,17 @@ const getMeteorite = async (req, res) => {
  */
 const updateMeteorite = async (req, res) => {
   try {
+    // Check if planet ID is provided
+    const { planetId } = req.body;
 
+    // Check if planet exists
+    if (planetId) {
+      const planet = await new Repository("Planet").findById(planetId);
+      if (!planet) {
+        return res.status(404).json({ message: `The planet with id ${planetId} was not found` });
+      }
+    }
+    
     // Find a meteorite by ID
     let meteorite = await meteoriteRepository.findById(req.params.id);
 
@@ -184,7 +196,7 @@ const deleteMeteorite = async (req, res) => {
         message: `No meteorite with the id: ${req.params.id} found`,
       });
     }
-    
+
     await meteoriteRepository.delete(req.params.id);
     return res.json({
       message: `Meteorite with the id: ${req.params.id} successfully deleted`,
