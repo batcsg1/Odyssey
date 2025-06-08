@@ -20,7 +20,12 @@ const selectObject = {
   velocity: true,
   perHour: true,
   peakDate: true,
-  comets: true,
+  comets: {
+    select: {
+      id: true,
+      name: true
+    }
+  },
   constellationId: true,
   createdAt: true,
   updatedAt: true
