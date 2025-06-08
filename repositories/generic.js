@@ -6,11 +6,11 @@
 import prisma from "../prisma/client.js";
 
 class Repository {
+
   /**
    * Creates an instance of the repository for a specific Prisma model
    * @param {string} model 
    */
-
   constructor(model) {
     this.model = model;
   }
@@ -20,7 +20,6 @@ class Repository {
    * @param {Object} data - The data to create the record with
    * @returns {Promise<Object>} - The newly created record
    */
-
   async create(data) {
     return await prisma[this.model].create({ data });
   }
@@ -35,7 +34,6 @@ class Repository {
    * @param {number} amount - Number of results per page
    * @returns {Promise<Object>} - An array of matching records
    */
-
   async findAll(select = {}, filters = {}, sortBy = "id", sortOrder = "asc", page = 1, amount = 25) {
 
     const query = {
@@ -74,7 +72,6 @@ class Repository {
    * @param {Object} select - Return specific model fields
    * @returns {Promise<Object>} - Record based on ID
    */
-
   async findById(id, select) {
     return await prisma[this.model].findUnique({
       where: { id },
@@ -85,11 +82,10 @@ class Repository {
   /**
    * Update a particular database record by ID
    * @param {string} id - Unique string UUID for a record
-   * @param {*} data - The data to update the record with
-   * @param {*} select - Return specific model fields
+   * @param {object} data - The data to update the record with
+   * @param {object} select - Return specific model fields
    * @returns {Promise<Object>} - Updated database record
    */
-
   async update(id, data, select) {
     return await prisma[this.model].update({
       where: { id },
@@ -103,7 +99,6 @@ class Repository {
    * @param {string} id - Unique string UUID for a record
    * @returns {Promise<Object>} - Deleted database record
    */
-
   async delete(id) {
     return await prisma[this.model].delete({
       where: { id },
