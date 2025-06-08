@@ -41,12 +41,14 @@ const selectObject = {
 const createSatellite = async (req, res) => {
   try {
     // Check if planet ID is provided
-    const planetId = req.body.planetId;
+    const { planetId } = req.body;
 
     // Check if planet exists
-    const planet = await new Repository("Planet").findById(planetId);
-    if (!planet) {
-      return res.status(404).json({ message: `The planet with id ${planetId} was not found` });
+    if (planetId) {
+      const planet = await new Repository("Planet").findById(planetId);
+      if (!planet) {
+        return res.status(404).json({ message: `The planet with id ${planetId} was not found` });
+      }
     }
 
     // Satellite to be created
@@ -117,7 +119,7 @@ const getSatellites = async (req, res) => {
     );
 
     if (satellites.length === 0) {
-      return res.status(404).json({ 
+      return res.status(404).json({
         message: "No satellites found",
         data: satellites
       });
@@ -168,7 +170,17 @@ const getSatellite = async (req, res) => {
  */
 const updateSatellite = async (req, res) => {
   try {
+    // Check if planet ID is provided
+    const { planetId } = req.body;
 
+    // Check if planet exists
+    if (planetId) {
+      const planet = await new Repository("Planet").findById(planetId);
+      if (!planet) {
+        return res.status(404).json({ message: `The planet with id ${planetId} was not found` });
+      }
+    }
+    
     // Find a satellite by ID
     let satellite = await satelliteRepository.findById(req.params.id);
 
