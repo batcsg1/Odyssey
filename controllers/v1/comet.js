@@ -11,6 +11,7 @@ const cometRepository = new Repository("Comet");
 const selectObject = {
   id: true,
   name: true,
+  age: true,
   mass: true,
   diameter: true,
   density: true,
@@ -72,6 +73,7 @@ const getComets = async (req, res) => {
     // Filtering query parameters
     const filters = {
       name: req.query.name || undefined,
+      age: req.query.age || undefined,
       mass: req.query.mass || undefined,
       diameter: req.query.diameter || undefined,
       density: req.query.density || undefined,
