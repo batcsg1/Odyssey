@@ -84,7 +84,7 @@ const getMeteorites = async (req, res) => {
     const page = req.query.page
     const amount = req.query.amount
 
-    // Apply filtering, sorting and pagination to ,eteorite model
+    // Apply filtering, sorting and pagination to meteorite model
     const meteorites = await meteoriteRepository.findAll(
       selectObject,
       filters,
@@ -156,7 +156,7 @@ const updateMeteorite = async (req, res) => {
         return res.status(404).json({ message: `The planet with id ${planetId} was not found` });
       }
     }
-    
+
     // Find a meteorite by ID
     let meteorite = await meteoriteRepository.findById(req.params.id);
 
