@@ -155,6 +155,14 @@ const getStar = async (req, res) => {
  */
 const updateStar = async (req, res) => {
   try {
+    // Check if galaxyId is provided
+    const { galaxyId } = req.body;
+
+    // Check if galaxy exists
+    const galaxy = await new Repository("Galaxy").findById(galaxyId);
+    if (!galaxy) {
+      return res.status(404).json({ message: `The galaxy with id ${galaxyId} was not found` });
+    }
 
     // Find a star by ID
     let star = await starRepository.findById(req.params.id);
