@@ -23,7 +23,7 @@ const seedCometsFromGitHub = async () => {
     try {
         await prisma.comet.deleteMany(); // Delete all comets
 
-        const gistUrl = "https://gist.githubusercontent.com/batcsg1/f75c3d434252b3d222c73bea8c6d06fc/raw/0ab11954ea2b3b8176c246c5b09125c9b6b98710/seed-comets.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
+        const gistUrl = "https://gist.githubusercontent.com/batcsg1/f75c3d434252b3d222c73bea8c6d06fc/raw/44d8a370e8c386ec14c67b2d45d30ae4672a7c41/seed-comets.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
         const response = await fetch(gistUrl);
         const cometData = await response.json();
 
