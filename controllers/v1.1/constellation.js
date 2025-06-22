@@ -153,6 +153,37 @@ const updateConstellation = async (req, res) => {
 };
 
 /**
+ * @description This function partially updates a constellation by ID
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - The response object
+ */
+const patchConstellation = async (req, res) => {
+  try {
+
+    // Find a constellation by ID
+    let constellation = await constellationRepository.findById(req.params.id);
+
+    if (!constellation) {
+      return res.status(404).json({
+        message: `No constellation with the id: ${req.params.id} found`,
+      });
+    }
+
+    constellation = await constellationRepository.update(req.params.id, req.body, selectObject);
+
+    return res.status(200).json({
+      message: `Constellation with the id: ${req.params.id} successfully patched`,
+      data: constellation,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      message: err.message,
+    });
+  }
+};
+
+/**
  * @description This function deletes a constellation by ID
  * @param {object} req - The request object
  * @param {object} res - The response object
@@ -187,5 +218,6 @@ export {
   getConstellations,
   getConstellation,
   updateConstellation,
+  patchConstellation,
   deleteConstellation,
 };
