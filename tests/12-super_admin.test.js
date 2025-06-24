@@ -48,7 +48,7 @@ describe("Super Admin", () => {
     it("should reject missing token", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/users");
+            .get("/api/v1.1/users");
 
         chai.expect(res.body.message).to.be.equal("No token provided");
     });
@@ -56,7 +56,7 @@ describe("Super Admin", () => {
     it("should login a super admin user, return a token, and not have X-Powered-By header", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/auth/login")
+            .post("/api/v1.1/auth/login")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 emailAddress: "james.doe@example.com",
@@ -77,7 +77,7 @@ describe("Super Admin", () => {
     it("should retrieve all users", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/users")
+            .get("/api/v1.1/users")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
@@ -86,7 +86,7 @@ describe("Super Admin", () => {
     it("should create a super admin user", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/users")
+            .post("/api/v1.1/users")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 firstName: "Vaughn",
@@ -104,7 +104,7 @@ describe("Super Admin", () => {
     it("should retrieve a super admin by id ", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/users/${anotherSuperAdminUserID}`)
+            .get(`/api/v1.1/users/${anotherSuperAdminUserID}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.not.be.an("array");
@@ -115,7 +115,7 @@ describe("Super Admin", () => {
     it("should update an admin user's data", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/users/${adminUser.id}`)
+            .patch(`/api/v1.1/users/${adminUser.id}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 firstName: "Patrick"
@@ -131,7 +131,7 @@ describe("Super Admin", () => {
     it("should reject a super admin user updating another super admin user", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/users/${anotherSuperAdminUserID}`)
+            .patch(`/api/v1.1/users/${anotherSuperAdminUserID}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 firstName: "Gen"
@@ -148,7 +148,7 @@ describe("Super Admin", () => {
     it("should reject deleting a super-admin user", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/users/${anotherSuperAdminUserID}`)
+            .delete(`/api/v1.1/users/${anotherSuperAdminUserID}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai
@@ -159,7 +159,7 @@ describe("Super Admin", () => {
     it("should delete an admin user", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/users/${adminUser.id}`)
+            .delete(`/api/v1.1/users/${adminUser.id}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai
@@ -172,7 +172,7 @@ describe("Super Admin", () => {
   it("should allow admin user to get all constellations", async () => {
     const res = await chai
       .request(app)
-      .get("/api/v1/constellations")
+      .get("/api/v1.1/constellations")
       .set("Authorization", `Bearer ${token}`);
 
     chai.expect(res.body.data).to.be.an("array");
@@ -183,7 +183,7 @@ describe("Super Admin", () => {
   it("should allow super admin user to update a constellation", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/constellations/${constellationId}`)
+            .patch(`/api/v1.1/constellations/${constellationId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Leo",

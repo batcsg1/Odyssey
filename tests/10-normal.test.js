@@ -34,7 +34,7 @@ describe("Normal", () => {
     it("should reject missing token", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/users");
+            .get("/api/v1.1/users");
 
         chai.expect(res.body.message).to.be.equal("No token provided");
     });
@@ -42,7 +42,7 @@ describe("Normal", () => {
     it("should login a normal user, return a token, and not have X-Powered-By header", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/auth/login")
+            .post("/api/v1.1/auth/login")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 emailAddress: "david.bowie@example.com",
@@ -63,7 +63,7 @@ describe("Normal", () => {
     it("should retrieve a normal user's own data when retrieving all users", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/users")
+            .get("/api/v1.1/users")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.count).to.be.equal(1);
@@ -74,7 +74,7 @@ describe("Normal", () => {
     it("should retrieve the current normal user by ID when retrieving users by ID ", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/users/${userId}`)
+            .get(`/api/v1.1/users/${userId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.not.be.an("array");
@@ -85,7 +85,7 @@ describe("Normal", () => {
     it("should update a normal user's own data", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/users/${userId}`)
+            .patch(`/api/v1.1/users/${userId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 firstName: "Jack"
@@ -101,7 +101,7 @@ describe("Normal", () => {
     it("should reject a normal user updating another user", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/users/${adminUser.id}`)
+            .patch(`/api/v1.1/users/${adminUser.id}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 firstName: "Gen"
@@ -119,7 +119,7 @@ describe("Normal", () => {
     it("should reject a normal user creating a user", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/users")
+            .post("/api/v1.1/users")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 firstName: "Grayson",
@@ -138,7 +138,7 @@ describe("Normal", () => {
     it("should reject a normal user deleting themselves", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/users/${userId}`)
+            .delete(`/api/v1.1/users/${userId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai
@@ -150,7 +150,7 @@ describe("Normal", () => {
     it("should reject a normal user deleting another user", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/users/${adminUser.id}`)
+            .delete(`/api/v1.1/users/${adminUser.id}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai
@@ -163,7 +163,7 @@ describe("Normal", () => {
     it("should allow normal user to get all constellations", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/constellations")
+            .get("/api/v1.1/constellations")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
@@ -174,7 +174,7 @@ describe("Normal", () => {
     it("should not allow normal user to update constellation", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/constellations/${constellationId}`)
+            .patch(`/api/v1.1/constellations/${constellationId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Constellation",

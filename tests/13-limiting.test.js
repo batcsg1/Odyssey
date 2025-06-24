@@ -29,7 +29,7 @@ describe("Limiting", () => {
   });
 
   it("should reject missing token", async () => {
-    const res = await chai.request(app).get("/api/v1/users");
+    const res = await chai.request(app).get("/api/v1.1/users");
 
     chai.expect(res.body.message).to.be.equal("No token provided");
   });
@@ -37,7 +37,7 @@ describe("Limiting", () => {
   it("should login a super admin user, return a token, and not have X-Powered-By header", async () => {
     const res = await chai
       .request(app)
-      .post("/api/v1/auth/login")
+      .post("/api/v1.1/auth/login")
       .set("Authorization", `Bearer ${token}`)
       .send({
         emailAddress: "james.doe@example.com",
@@ -61,7 +61,7 @@ describe("Limiting", () => {
     for (let i = 0; i <= 20; i++) {
       res = await chai
         .request(app)
-        .get("/api/v1/users")
+        .get("/api/v1.1/users")
         .set("Authorization", `Bearer ${token}`);
     }
 
@@ -80,7 +80,7 @@ describe("Limiting", () => {
     for (let i = 0; i <= 20; i++) {
       res = await chai
         .request(app)
-        .get(`/api/v1/users/${superAdminUserID}`)
+        .get(`/api/v1.1/users/${superAdminUserID}`)
         .set("Authorization", `Bearer ${token}`);
     }
     chai.expect(res).to.have.status(429);
@@ -98,7 +98,7 @@ describe("Limiting", () => {
     for (let i = 0; i <= 10; i++) {
       res = await chai
         .request(app)
-        .put(`/api/v1/users/${superAdminUserID}`)
+        .patch(`/api/v1.1/users/${superAdminUserID}`)
         .set("Authorization", `Bearer ${token}`)
         .send({
             firstName: "Eddie"

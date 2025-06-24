@@ -43,7 +43,7 @@ describe("Admin", () => {
   });
 
   it("should reject missing token", async () => {
-    const res = await chai.request(app).get("/api/v1/users");
+    const res = await chai.request(app).get("/api/v1.1/users");
 
     chai.expect(res.body.message).to.be.equal("No token provided");
   });
@@ -51,7 +51,7 @@ describe("Admin", () => {
   it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
     const res = await chai
       .request(app)
-      .post("/api/v1/auth/login")
+      .post("/api/v1.1/auth/login")
       .set("Authorization", `Bearer ${token}`)
       .send({
         emailAddress: "john.doe@example.com",
@@ -72,7 +72,7 @@ describe("Admin", () => {
   it("should retrieve normal and admins data when retrieving all users", async () => {
     const res = await chai
       .request(app)
-      .get("/api/v1/users")
+      .get("/api/v1.1/users")
       .set("Authorization", `Bearer ${token}`);
 
     chai.expect(res.body.data).to.be.an("array");
@@ -81,7 +81,7 @@ describe("Admin", () => {
   it("should retrieve a normal user by id ", async () => {
     const res = await chai
       .request(app)
-      .get(`/api/v1/users/${normalUser.id}`)
+      .get(`/api/v1.1/users/${normalUser.id}`)
       .set("Authorization", `Bearer ${token}`);
 
     chai.expect(res.body.data).to.not.be.an("array");
@@ -92,7 +92,7 @@ describe("Admin", () => {
   it("should update a normal user's data", async () => {
     const res = await chai
       .request(app)
-      .put(`/api/v1/users/${normalUser.id}`)
+      .patch(`/api/v1.1/users/${normalUser.id}`)
       .set("Authorization", `Bearer ${token}`)
       .send({
         firstName: "SpongeBob",
@@ -106,7 +106,7 @@ describe("Admin", () => {
   it("should reject an admin user updating a non-normal user", async () => {
     const res = await chai
       .request(app)
-      .put(`/api/v1/users/${superAdminUser.id}`)
+      .patch(`/api/v1.1/users/${superAdminUser.id}`)
       .set("Authorization", `Bearer ${token}`)
       .send({
         firstName: "Gen",
@@ -121,7 +121,7 @@ describe("Admin", () => {
   it("should create a normal user", async () => {
     const res = await chai
       .request(app)
-      .post("/api/v1/users")
+      .post("/api/v1.1/users")
       .set("Authorization", `Bearer ${token}`)
       .send({
         firstName: "Chef",
@@ -137,7 +137,7 @@ describe("Admin", () => {
   it("should reject creating a non-normal user", async () => {
     const res = await chai
       .request(app)
-      .post("/api/v1/users")
+      .post("/api/v1.1/users")
       .set("Authorization", `Bearer ${token}`)
       .send({
         firstName: "Joshua",
@@ -156,7 +156,7 @@ describe("Admin", () => {
   it("should reject deleting a super-admin user", async () => {
     const res = await chai
       .request(app)
-      .delete(`/api/v1/users/${superAdminUser.id}`)
+      .delete(`/api/v1.1/users/${superAdminUser.id}`)
       .set("Authorization", `Bearer ${token}`);
 
     chai
@@ -167,7 +167,7 @@ describe("Admin", () => {
   it("should delete a normal user", async () => {
     const res = await chai
       .request(app)
-      .delete(`/api/v1/users/${normalUser.id}`)
+      .delete(`/api/v1.1/users/${normalUser.id}`)
       .set("Authorization", `Bearer ${token}`);
 
     chai
@@ -180,7 +180,7 @@ describe("Admin", () => {
   it("should allow admin user to get all constellations", async () => {
     const res = await chai
       .request(app)
-      .get("/api/v1/constellations")
+      .get("/api/v1.1/constellations")
       .set("Authorization", `Bearer ${token}`);
 
     chai.expect(res.body.data).to.be.an("array");
@@ -191,7 +191,7 @@ describe("Admin", () => {
   it("should allow admin user to update a constellation", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/constellations/${constellationId}`)
+            .patch(`/api/v1.1/constellations/${constellationId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Constellation",
