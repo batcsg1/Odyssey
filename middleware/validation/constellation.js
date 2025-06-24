@@ -4,6 +4,7 @@
  */
 
 import Joi from "joi";
+import validator from "./base.js";
 
 const postPutSchema = Joi.object({
   name: Joi.string().min(3).max(100).required().messages({
@@ -59,64 +60,11 @@ const patchSchema = Joi.object({
   }),
 }).min(1);
 
-/**
- * @description This function performs POST validation when creating a constellation
- * @param {object} req - The request object
- * @param {object} res - The response object
- * @param {object} next - The next middleware in the stack
- * @returns {object} - The response object containing the validation message
- */
-const validatePostConstellation = (req, res, next) => {
-  // Validate request body and disable type coersion
-  const { error } = postPutSchema.validate(req.body, { convert: false });
 
-  if (error) {
-    return res.status(409).json({
-      message: error.details[0].message,
-    });
-  }
+const validatePostConstellation = validator(postPutSchema);
 
-  next();
-};
+const validatePutConstellation = validator(postPutSchema)
 
-/**
- * @description This function performs PUT validation when updating a constellation
- * @param {object} req - The request object
- * @param {object} res - The response object
- * @param {object} next - The next middleware in the stack
- * @returns {object} - The response object containing the validation message
- */
-const validatePutConstellation = (req, res, next) => {
-  // Validate request body and disable type coersion
-  const { error } = postPutSchema.validate(req.body, { convert: false });
-
-  if (error) {
-    return res.status(409).json({
-      message: error.details[0].message,
-    });
-  }
-
-  next();
-};
-
-/**
- * @description This function performs PATCH validation when updating a constellation
- * @param {object} req - The request object
- * @param {object} res - The response object
- * @param {object} next - The next middleware in the stack
- * @returns {object} - The response object containing the validation message
- */
-const validatePatchConstellation = (req, res, next) => {
-  // Validate request body and disable type coersion
-  const { error } = patchSchema.validate(req.body, { convert: false });
-
-  if (error) {
-    return res.status(409).json({
-      message: error.details[0].message,
-    });
-  }
-
-  next();
-};
+const validatePatchConstellation = validator(patchSchema);
 
 export { validatePostConstellation, validatePutConstellation, validatePatchConstellation};
