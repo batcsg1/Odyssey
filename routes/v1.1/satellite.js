@@ -18,6 +18,7 @@ import {
 import {
   validatePostSatellite,
   validatePutSatellite,
+  validatePatchSatellite
 } from "../../middleware/validation/satellite.js";
 
 // Import the authorisation middleware
@@ -54,6 +55,7 @@ const satelliteRouter = createRouter(
   validatePostSatellite,
   authorisation,
   validatePutSatellite,
+  validatePatchSatellite
 );
 
 export default satelliteRouter;
