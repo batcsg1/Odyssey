@@ -14,10 +14,11 @@ import {
   deleteGalaxy,
 } from "../../controllers/v1/galaxy.js";
 
-// Import the POST and PUT validation middleware
+// Import the POST, PUT and PATCH validation middleware
 import {
   validatePostGalaxy,
   validatePutGalaxy,
+  validatePatchGalaxy
 } from "../../middleware/validation/galaxy.js";
 
 // Import the authorisation middleware
@@ -54,6 +55,7 @@ const galaxyRouter = createRouter(
   validatePostGalaxy,
   authorisation,
   validatePutGalaxy,
+  validatePatchGalaxy
 );
 
 export default galaxyRouter;
