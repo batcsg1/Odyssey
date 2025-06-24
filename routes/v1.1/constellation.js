@@ -14,7 +14,7 @@ import {
   deleteConstellation,
 } from "../../controllers/v1/constellation.js";
 
-// Import the POST and PUT validation middleware
+// Import the POST, PUT and PATCH validation middleware
 import {
   validatePostConstellation,
   validatePutConstellation,

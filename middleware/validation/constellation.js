@@ -99,6 +99,13 @@ const validatePutConstellation = (req, res, next) => {
   next();
 };
 
+/**
+ * @description This function performs PATCH validation when updating a constellation
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @param {object} next - The next middleware in the stack
+ * @returns {object} - The response object containing the validation message
+ */
 const validatePatchConstellation = (req, res, next) => {
   // Validate request body and disable type coersion
   const { error } = patchSchema.validate(req.body, { convert: false });
