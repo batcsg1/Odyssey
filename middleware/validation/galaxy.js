@@ -5,6 +5,7 @@
 
 import { GalaxyType } from "@prisma/client";
 import Joi from "joi";
+import validator from "./base.js";
 
 const postPutSchema = Joi.object({
   name: Joi.string().min(3).max(100).required().messages({
@@ -93,67 +94,8 @@ const patchSchema = Joi.object({
   }),
 }).min(1);
 
-/**
- * @description This function performs POST validation when creating a galaxy
- * @param {object} req - The request object
- * @param {object} res - The response object
- * @param {object} next - The next middleware in the stack
- * @returns {object} - The response object containing the validation message
- */
-const validatePostGalaxy = (req, res, next) => {
-
-  // Validate request body and disable type coersion
-  const { error } = postPutSchema.validate(req.body, { convert: false });
-
-  if (error) {
-    return res.status(409).json({
-      message: error.details[0].message,
-    });
-  }
-
-  next();
-};
-
-/**
- * @description This function performs PUT validation when updating a galaxy
- * @param {object} req - The request object
- * @param {object} res - The response object
- * @param {object} next - The next middleware in the stack
- * @returns {object} - The response object containing the validation message
- */
-const validatePutGalaxy = (req, res, next) => {
-
-  // Validate request body and disable type coersion
-  const { error } = postPutSchema.validate(req.body, { convert: false });
-
-  if (error) {
-    return res.status(409).json({
-      message: error.details[0].message,
-    });
-  }
-
-  next();
-};
-
-/**
- * @description This function performs PATCH validation when updating a galaxy
- * @param {object} req - The request object
- * @param {object} res - The response object
- * @param {object} next - The next middleware in the stack
- * @returns {object} - The response object containing the validation message
- */
-const validatePatchGalaxy = (req, res, next) => {
-
-  // Validate request body and disable type coersion
-  const { error } = patchSchema.validate(req.body, { convert: false });
-
-  if (error) {
-    return res.status(409).json({
-      message: error.details[0].message,
-    });
-  }
-
-  next();
-};
+const validatePostGalaxy = validator(postPutSchema);
+const validatePutGalaxy = validator(postPutSchema);
+const validatePatchGalaxy = validator(postPutSchema);
 
 export { validatePostGalaxy, validatePutGalaxy, validatePatchGalaxy };
