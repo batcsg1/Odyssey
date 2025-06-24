@@ -92,7 +92,7 @@ describe("Limiting", () => {
       );
   });
 
-  // GET by ID test
+  // PATCH test
   it("should accept no more than 10 update requests ", async () => {
     let res;
     for (let i = 0; i <= 10; i++) {
