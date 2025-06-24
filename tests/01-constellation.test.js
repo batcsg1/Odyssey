@@ -39,7 +39,7 @@ describe("Constellations", () => {
     it("should reject missing token", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/constellations");
+            .get("/api/v1.1/constellations");
 
         chai.expect(res.body.message).to.be.equal("No token provided");
     });
@@ -47,7 +47,7 @@ describe("Constellations", () => {
     it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/auth/login")
+            .post("/api/v1.1/auth/login")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 emailAddress: "john.doe@example.com",
@@ -66,7 +66,7 @@ describe("Constellations", () => {
     it("should get all constellations", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/constellations")
+            .get("/api/v1.1/constellations")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
@@ -75,7 +75,7 @@ describe("Constellations", () => {
     it("should paginate for 2 constellations", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/constellations?page=1&amount=2")
+            .get("/api/v1.1/constellations?page=1&amount=2")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.count).to.be.equal(2);
@@ -84,7 +84,7 @@ describe("Constellations", () => {
     it("should reject non-string name", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/constellations")
+            .post("/api/v1.1/constellations")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 250,
@@ -99,7 +99,7 @@ describe("Constellations", () => {
     it("should create a valid constellation", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/constellations")
+            .post("/api/v1.1/constellations")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Canis Majora",
@@ -117,7 +117,7 @@ describe("Constellations", () => {
     it("should create another valid constellation", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/constellations")
+            .post("/api/v1.1/constellations")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Prismaris",
@@ -134,7 +134,7 @@ describe("Constellations", () => {
     it("should retrieve a constellation by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/constellations/${constellationId}`)
+            .get(`/api/v1.1/constellations/${constellationId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data.name).to.be.equal("Canis Majora");
@@ -143,7 +143,7 @@ describe("Constellations", () => {
     it("should filter constellations by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/constellations?name=Canis Majora")
+            .get("/api/v1.1/constellations?name=Canis Majora")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Canis Majora");
@@ -152,7 +152,7 @@ describe("Constellations", () => {
     it("should sort constellations by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/constellations?sortBy=name")
+            .get("/api/v1.1/constellations?sortBy=name")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Canis Majora");
@@ -161,7 +161,7 @@ describe("Constellations", () => {
     it("should reject non-numeric area during update", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/constellations/${constellationId}`)
+            .put(`/api/v1.1/constellations/${constellationId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Canis Majora",
@@ -176,7 +176,7 @@ describe("Constellations", () => {
     it("should update a valid constellation", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/constellations/${constellationId}`)
+            .put(`/api/v1.1/constellations/${constellationId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Canis Majora",
@@ -195,12 +195,12 @@ describe("Constellations", () => {
     it("should update one field of a valid constellation", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/constellations/${constellationId}`)
+            .patch(`/api/v1.1/constellations/${constellationId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Yet another updated Canis Majora",
             });
-
+        console.log("RES:", JSON.stringify(res, null, 2));
         chai
             .expect(res.body.message)
             .to.be.equal(
@@ -211,7 +211,7 @@ describe("Constellations", () => {
     it("should delete a constellation by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/constellations/${constellationId}`)
+            .delete(`/api/v1.1/constellations/${constellationId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai

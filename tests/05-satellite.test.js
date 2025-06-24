@@ -21,7 +21,7 @@ describe("Satellites", () => {
     it("should reject missing token", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/satellites");
+            .get("/api/v1.1/satellites");
 
         chai.expect(res.body.message).to.be.equal("No token provided");
     });
@@ -29,7 +29,7 @@ describe("Satellites", () => {
     it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/auth/login")
+            .post("/api/v1.1/auth/login")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 emailAddress: "john.doe@example.com",
@@ -48,7 +48,7 @@ describe("Satellites", () => {
     it("should create a valid satellite", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/satellites")
+            .post("/api/v1.1/satellites")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Moon",
@@ -80,7 +80,7 @@ describe("Satellites", () => {
     it("should create another valid satellite", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/satellites")
+            .post("/api/v1.1/satellites")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Phobos",
@@ -112,7 +112,7 @@ describe("Satellites", () => {
     it("should paginate for 2 satellites", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/satellites?page=1&amount=2")
+            .get("/api/v1.1/satellites?page=1&amount=2")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.count).to.be.equal(2);
@@ -121,7 +121,7 @@ describe("Satellites", () => {
     it("should reject missing planet ID", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/satellites")
+            .post("/api/v1.1/satellites")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Phobos",
@@ -152,7 +152,7 @@ describe("Satellites", () => {
     it("should reject non-string name", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/satellites")
+            .post("/api/v1.1/satellites")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 234,
@@ -182,7 +182,7 @@ describe("Satellites", () => {
     it("should reject invalid type", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/satellites")
+            .post("/api/v1.1/satellites")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Phobos",
@@ -212,7 +212,7 @@ describe("Satellites", () => {
     it("should reject non-numeric mass", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/satellites")
+            .post("/api/v1.1/satellites")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Phobos",
@@ -242,7 +242,7 @@ describe("Satellites", () => {
     it("should retrieve all satellites", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/satellites")
+            .get("/api/v1.1/satellites")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
@@ -251,7 +251,7 @@ describe("Satellites", () => {
     it("should retrieve a satellite by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/satellites/${satelliteId}`)
+            .get(`/api/v1.1/satellites/${satelliteId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data.name).to.be.equal("Moon");
@@ -260,7 +260,7 @@ describe("Satellites", () => {
     it("should filter satellites by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/satellites?name=Moon")
+            .get("/api/v1.1/satellites?name=Moon")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Moon");
@@ -269,7 +269,7 @@ describe("Satellites", () => {
     it("should filter satellites by type", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/satellites?type=MOON")
+            .get("/api/v1.1/satellites?type=MOON")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].type).to.be.equal("MOON");
@@ -278,7 +278,7 @@ describe("Satellites", () => {
     it("should sort satellites by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/satellites?sortBy=name")
+            .get("/api/v1.1/satellites?sortBy=name")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Moon");
@@ -287,7 +287,7 @@ describe("Satellites", () => {
     it("should reject non-numeric diameter during update", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/satellites/${satelliteId}`)
+            .put(`/api/v1.1/satellites/${satelliteId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Phobos",
@@ -317,7 +317,7 @@ describe("Satellites", () => {
     it("should update a valid satellite", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/satellites/${satelliteId}`)
+            .put(`/api/v1.1/satellites/${satelliteId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Moon",
@@ -351,7 +351,7 @@ describe("Satellites", () => {
     it("should update one satellite field", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/satellites/${satelliteId}`)
+            .patch(`/api/v1.1/satellites/${satelliteId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Moon"
@@ -367,7 +367,7 @@ describe("Satellites", () => {
     it("should delete a satellite by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/satellites/${satelliteId}`)
+            .delete(`/api/v1.1/satellites/${satelliteId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai

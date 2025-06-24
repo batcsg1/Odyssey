@@ -21,7 +21,7 @@ describe("Planets", () => {
     it("should reject missing token", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/planets");
+            .get("/api/v1.1/planets");
 
         chai.expect(res.body.message).to.be.equal("No token provided");
     });
@@ -29,7 +29,7 @@ describe("Planets", () => {
     it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/auth/login")
+            .post("/api/v1.1/auth/login")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 emailAddress: "john.doe@example.com",
@@ -48,7 +48,7 @@ describe("Planets", () => {
     it("should create a valid planet", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/planets")
+            .post("/api/v1.1/planets")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Mercury",
@@ -81,7 +81,7 @@ describe("Planets", () => {
     it("should create another valid planet", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/planets")
+            .post("/api/v1.1/planets")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Venus",
@@ -114,7 +114,7 @@ describe("Planets", () => {
     it("should paginate for 2 planets", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/planets?page=1&amount=2")
+            .get("/api/v1.1/planets?page=1&amount=2")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.count).to.be.equal(2);
@@ -123,7 +123,7 @@ describe("Planets", () => {
     it("should reject missing star ID", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/planets")
+            .post("/api/v1.1/planets")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Venus",
@@ -155,7 +155,7 @@ describe("Planets", () => {
     it("should reject non-string name", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/planets")
+            .post("/api/v1.1/planets")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 2324,
@@ -186,7 +186,7 @@ describe("Planets", () => {
     it("should reject invalid type", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/planets")
+            .post("/api/v1.1/planets")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Venus",
@@ -217,7 +217,7 @@ describe("Planets", () => {
     it("should reject non-numeric mass", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/planets")
+            .post("/api/v1.1/planets")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Venus",
@@ -248,7 +248,7 @@ describe("Planets", () => {
     it("should retrieve all planets", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/planets")
+            .get("/api/v1.1/planets")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
@@ -257,7 +257,7 @@ describe("Planets", () => {
     it("should retrieve a planet by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/planets/${planetId}`)
+            .get(`/api/v1.1/planets/${planetId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data.name).to.be.equal("Mercury");
@@ -266,7 +266,7 @@ describe("Planets", () => {
     it("should filter planets by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/planets?name=Mercury")
+            .get("/api/v1.1/planets?name=Mercury")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Mercury");
@@ -275,7 +275,7 @@ describe("Planets", () => {
     it("should filter planets by type", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/planets?type=TERRESTIAL")
+            .get("/api/v1.1/planets?type=TERRESTIAL")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].type).to.be.equal("TERRESTIAL");
@@ -284,7 +284,7 @@ describe("Planets", () => {
     it("should sort planets by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/planets?sortBy=name")
+            .get("/api/v1.1/planets?sortBy=name")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Mercury");
@@ -293,7 +293,7 @@ describe("Planets", () => {
     it("should reject non-numeric diameter during update", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/planets/${planetId}`)
+            .put(`/api/v1.1/planets/${planetId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Venus",
@@ -324,7 +324,7 @@ describe("Planets", () => {
     it("should update a valid planet", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/planets/${planetId}`)
+            .put(`/api/v1.1/planets/${planetId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Venus",
@@ -359,7 +359,7 @@ describe("Planets", () => {
     it("should update one planet field", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/planets/${planetId}`)
+            .patch(`/api/v1.1/planets/${planetId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Venus"
@@ -375,7 +375,7 @@ describe("Planets", () => {
     it("should delete a planet by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/planets/${planetId}`)
+            .delete(`/api/v1.1/planets/${planetId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai

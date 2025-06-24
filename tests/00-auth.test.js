@@ -59,7 +59,7 @@ describe("Auth", () => {
     });
 
     it("should register a normal user", async () => {
-        const res = await chai.request(app).post("/api/v1/auth/register").send({
+        const res = await chai.request(app).post("/api/v1.1/auth/register").send({
             firstName: "Tom",
             lastName: "Doe",
             emailAddress: "tom.doe@example.com",
@@ -72,7 +72,7 @@ describe("Auth", () => {
     });
 
     it("should reject non-normal user registration", async () => {
-        const res = await chai.request(app).post("/api/v1/auth/register").send({
+        const res = await chai.request(app).post("/api/v1.1/auth/register").send({
             firstName: "Gordon",
             lastName: "Doe",
             emailAddress: "gordon.doe@example.com",
@@ -85,7 +85,7 @@ describe("Auth", () => {
     });
 
     it("should login a normal user and return a token", async () => {
-        const res = await chai.request(app).post("/api/v1/auth/login").send({
+        const res = await chai.request(app).post("/api/v1.1/auth/login").send({
             emailAddress: "david.bowie@example.com",
             password: "putonredshoes123",
         });
@@ -97,7 +97,7 @@ describe("Auth", () => {
     });
 
     it("should login an admin user, return a token", async () => {
-        const res = await chai.request(app).post("/api/v1/auth/login").send({
+        const res = await chai.request(app).post("/api/v1.1/auth/login").send({
             emailAddress: "john.doe@example.com",
             password: "password123",
         });
@@ -108,7 +108,7 @@ describe("Auth", () => {
     });
 
     it("should login a super admin user, return a token, and not have X-Powered-By header", async () => {
-        const res = await chai.request(app).post("/api/v1/auth/login").send({
+        const res = await chai.request(app).post("/api/v1.1/auth/login").send({
             emailAddress: "james.doe@example.com",
             password: "P@ssw0rd",
         });
@@ -122,7 +122,7 @@ describe("Auth", () => {
 
     it("should logout a super admin user", async () => {
         const res = await chai
-            .request(app).post("/api/v1/auth/logout")
+            .request(app).post("/api/v1.1/auth/logout")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res).to.have.status(200); // Expect a successfull response
@@ -132,7 +132,7 @@ describe("Auth", () => {
     it("should reject blacklisted token", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/constellations")
+            .get("/api/v1.1/constellations")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res).to.have.status(401);
@@ -141,7 +141,7 @@ describe("Auth", () => {
     it("should reject a normal user from logging in after 5 failed attempts", async () => {
         let res;
         for (let i = 0; i <= 5; i++) {
-            res = await chai.request(app).post("/api/v1/auth/login").send({
+            res = await chai.request(app).post("/api/v1.1/auth/login").send({
                 emailAddress: "grayson.peters@example.com",
                 password: "password",
             });

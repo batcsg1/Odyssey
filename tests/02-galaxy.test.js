@@ -22,7 +22,7 @@ describe("Galaxies", () => {
     it("should reject missing token", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/constellations");
+            .get("/api/v1.1/constellations");
 
         chai.expect(res.body.message).to.be.equal("No token provided");
     });
@@ -30,7 +30,7 @@ describe("Galaxies", () => {
     it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/auth/login")
+            .post("/api/v1.1/auth/login")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 emailAddress: "john.doe@example.com",
@@ -49,7 +49,7 @@ describe("Galaxies", () => {
     it("should create a valid galaxy", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/galaxies")
+            .post("/api/v1.1/galaxies")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Andromeda Galaxy",
@@ -68,7 +68,7 @@ describe("Galaxies", () => {
     it("should create another valid galaxy", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/galaxies")
+            .post("/api/v1.1/galaxies")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Milky way",
@@ -87,7 +87,7 @@ describe("Galaxies", () => {
     it("should reject non-string name", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/galaxies")
+            .post("/api/v1.1/galaxies")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 12345,
@@ -103,7 +103,7 @@ describe("Galaxies", () => {
     it("should reject invalid type", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/galaxies")
+            .post("/api/v1.1/galaxies")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Whitneia",
@@ -119,7 +119,7 @@ describe("Galaxies", () => {
     it("should reject non-numeric distance", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/galaxies")
+            .post("/api/v1.1/galaxies")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Andromeda Galaxy",
@@ -135,7 +135,7 @@ describe("Galaxies", () => {
     it("should retrieve all galaxies", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/galaxies")
+            .get("/api/v1.1/galaxies")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
@@ -144,7 +144,7 @@ describe("Galaxies", () => {
     it("should paginate for 2 galaxies", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/galaxies?page=1&amount=2")
+            .get("/api/v1.1/galaxies?page=1&amount=2")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.count).to.be.equal(2);
@@ -153,7 +153,7 @@ describe("Galaxies", () => {
     it("should retrieve a galaxy by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/galaxies/${galaxyId}`)
+            .get(`/api/v1.1/galaxies/${galaxyId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data.name).to.be.equal("Andromeda Galaxy");
@@ -162,7 +162,7 @@ describe("Galaxies", () => {
     it("should filter galaxies by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/galaxies?name=Andromeda Galaxy")
+            .get("/api/v1.1/galaxies?name=Andromeda Galaxy")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Andromeda Galaxy");
@@ -171,7 +171,7 @@ describe("Galaxies", () => {
     it("should filter galaxies by type", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/galaxies?type=BARRED_SPIRAL")
+            .get("/api/v1.1/galaxies?type=BARRED_SPIRAL")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].type).to.be.equal("BARRED_SPIRAL");
@@ -180,7 +180,7 @@ describe("Galaxies", () => {
     it("should sort galaxies by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/galaxies?sortBy=name")
+            .get("/api/v1.1/galaxies?sortBy=name")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Andromeda Galaxy");
@@ -189,7 +189,7 @@ describe("Galaxies", () => {
     it("should reject non-numeric size during update", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/galaxies/${galaxyId}`)
+            .put(`/api/v1.1/galaxies/${galaxyId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Andromeda Galaxy",
@@ -205,7 +205,7 @@ describe("Galaxies", () => {
     it("should update a valid galaxy", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/galaxies/${galaxyId}`)
+            .put(`/api/v1.1/galaxies/${galaxyId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Andromeda Galaxy",
@@ -225,12 +225,11 @@ describe("Galaxies", () => {
     it("should update a valid galaxy with one field", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/galaxies/${galaxyId}`)
+            .patch(`/api/v1.1/galaxies/${galaxyId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
-                name: "Andromeda Galaxy",
+                name: "Andromeda Galaxy"
             });
-
         chai
             .expect(res.body.message)
             .to.be.equal(
@@ -241,7 +240,7 @@ describe("Galaxies", () => {
     it("should delete a galaxy by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/galaxies/${galaxyId}`)
+            .delete(`/api/v1.1/galaxies/${galaxyId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai

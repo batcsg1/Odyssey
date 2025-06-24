@@ -21,7 +21,7 @@ describe("Stars", () => {
     it("should reject missing token", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/stars");
+            .get("/api/v1.1/stars");
 
         chai.expect(res.body.message).to.be.equal("No token provided");
     });
@@ -29,7 +29,7 @@ describe("Stars", () => {
     it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/auth/login")
+            .post("/api/v1.1/auth/login")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 emailAddress: "john.doe@example.com",
@@ -48,7 +48,7 @@ describe("Stars", () => {
     it("should create a valid star", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/stars")
+            .post("/api/v1.1/stars")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Sirius",
@@ -73,7 +73,7 @@ describe("Stars", () => {
     it("should create another valid star", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/stars")
+            .post("/api/v1.1/stars")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Betelgeuse",
@@ -97,7 +97,7 @@ describe("Stars", () => {
     it("should paginate for 2 stars", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/stars?page=1&amount=2")
+            .get("/api/v1.1/stars?page=1&amount=2")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.count).to.be.equal(2);
@@ -106,7 +106,7 @@ describe("Stars", () => {
     it("should reject missing galaxy ID", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/stars")
+            .post("/api/v1.1/stars")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Betelgeuse",
@@ -129,7 +129,7 @@ describe("Stars", () => {
     it("should reject non-string name", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/stars")
+            .post("/api/v1.1/stars")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 2324,
@@ -151,7 +151,7 @@ describe("Stars", () => {
     it("should reject invalid type", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/stars")
+            .post("/api/v1.1/stars")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Betelgeuse",
@@ -173,7 +173,7 @@ describe("Stars", () => {
     it("should reject non-numeric distance", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1/stars")
+            .post("/api/v1.1/stars")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Betelgeuse",
@@ -195,7 +195,7 @@ describe("Stars", () => {
     it("should retrieve all stars", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/stars")
+            .get("/api/v1.1/stars")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
@@ -204,7 +204,7 @@ describe("Stars", () => {
     it("should retrieve a star by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1/stars/${starId}`)
+            .get(`/api/v1.1/stars/${starId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data.name).to.be.equal("Sirius");
@@ -213,7 +213,7 @@ describe("Stars", () => {
     it("should filter stars by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/stars?name=Betelgeuse")
+            .get("/api/v1.1/stars?name=Betelgeuse")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Betelgeuse");
@@ -222,7 +222,7 @@ describe("Stars", () => {
     it("should filter stars by type", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/stars?type=MAIN_SEQUENCE")
+            .get("/api/v1.1/stars?type=MAIN_SEQUENCE")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].type).to.be.equal("MAIN_SEQUENCE");
@@ -231,7 +231,7 @@ describe("Stars", () => {
     it("should sort stars by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1/stars?sortBy=name")
+            .get("/api/v1.1/stars?sortBy=name")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Betelgeuse");
@@ -240,7 +240,7 @@ describe("Stars", () => {
     it("should reject non-numeric diameter during update", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/stars/${starId}`)
+            .put(`/api/v1.1/stars/${starId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Betelgeuse",
@@ -262,7 +262,7 @@ describe("Stars", () => {
     it("should update a valid star", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1/stars/${starId}`)
+            .put(`/api/v1.1/stars/${starId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Betelgeuse",
@@ -285,10 +285,26 @@ describe("Stars", () => {
             );
     });
 
+    it("should update one field", async () => {
+        const res = await chai
+            .request(app)
+            .patch(`/api/v1.1/stars/${starId}`)
+            .set("Authorization", `Bearer ${token}`)
+            .send({
+                name: "Yet again updated Betelgeuse"
+            });
+
+        chai
+            .expect(res.body.message)
+            .to.be.equal(
+                `Star with the id: ${starId} successfully updated`
+            );
+    });
+
     it("should delete a star by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1/stars/${starId}`)
+            .delete(`/api/v1.1/stars/${starId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai
