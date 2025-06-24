@@ -18,6 +18,7 @@ import {
 import {
   validatePostConstellation,
   validatePutConstellation,
+  validatePatchConstellation
 } from "../../middleware/validation/constellation.js";
 
 // Import the authorisation middleware
@@ -54,7 +55,8 @@ const constellationRouter = createRouter(
   cudLimit,
   validatePostConstellation,
   authorisation,
-  validatePutConstellation
+  validatePutConstellation,
+  validatePatchConstellation
 );
 
 export default constellationRouter;

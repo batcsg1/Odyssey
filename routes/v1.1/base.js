@@ -15,14 +15,15 @@ import express from "express";
  * @returns {express.Router} Return the configured router to be passed on to app.js
  */
 
-const createRouter = (controller, getLimit, cudLimit, postValidator, authorisation, putValidator) => {
+const createRouter = (controller, getLimit, cudLimit, postValidator, authorisation, putValidator, patchValidator) => {
     const router = express.Router();
 
     router.get("/", getLimit(), controller.get);
     router.get("/:id", getLimit(), controller.getById);
     router.post("/", cudLimit(), postValidator, authorisation, controller.create);
     router.put("/:id", cudLimit(), putValidator, authorisation, controller.update);
-    router.delete("/:id", cudLimit(), authorisation, controller.delete);
+    router.patch("/:id", cudLimit(), patchValidator, authorisation, controller.update);
+    router.delete("/:id", cudLimit(), authorisation, authorisation, controller.delete);
 
     return router;
 };
