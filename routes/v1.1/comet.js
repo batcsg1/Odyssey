@@ -18,6 +18,7 @@ import {
 import {
   validatePostComet,
   validatePutComet,
+  validatePatchComet
 } from "../../middleware/validation/comet.js";
 
 // Import the authorisation middleware
@@ -53,7 +54,8 @@ const cometRouter = createRouter(
   cudLimit,
   validatePostComet,
   authorisation,
-  validatePutComet
+  validatePutComet,
+  validatePatchComet
 );
 
 export default cometRouter;
