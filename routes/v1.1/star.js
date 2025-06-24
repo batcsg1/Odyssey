@@ -18,6 +18,7 @@ import {
 import {
   validatePostStar,
   validatePutStar,
+  validatePatchStar
 } from "../../middleware/validation/star.js";
 
 // Import the authorisation middleware
@@ -54,6 +55,7 @@ const starRouter = createRouter(
   validatePostStar,
   authorisation,
   validatePutStar,
+  validatePatchStar
 );
 
 export default starRouter;
