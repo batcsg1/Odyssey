@@ -3,11 +3,9 @@ const isContentTypeApplicationJSON = (req, res, next) => {
     return next(); // skip content-type check on logout
   }
 
-  // Check if the request method is POST or PUT
-  if (req.method === "POST" || req.method === "PUT") {
-    // Check if the Content-Type header is application/json
+  if (["POST", "PUT", "PATCH"].includes(req.method)) {
     const contentType = req.headers["content-type"];
-    if (!contentType || contentType !== "application/json") {
+    if (!contentType || !contentType.startsWith("application/json")) {
       return res.status(409).json({
         error: {
           message: "Content-Type must be application/json",
@@ -15,7 +13,9 @@ const isContentTypeApplicationJSON = (req, res, next) => {
       });
     }
   }
-  next();
+
+  next(); // ✅ always call next if valid
 };
+
 
 export { isContentTypeApplicationJSON };
