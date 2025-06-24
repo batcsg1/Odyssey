@@ -18,6 +18,7 @@ import {
 import {
   validatePostMeteorite,
   validatePutMeteorite,
+  validatePatchMeteorite
 } from "../../middleware/validation/meteorite.js";
 
 // Import the authorisation middleware
@@ -54,6 +55,7 @@ const meteoriteRouter = createRouter(
   validatePostMeteorite,
   authorisation,
   validatePutMeteorite,
+  validatePatchMeteorite
 );
 
 export default meteoriteRouter;
