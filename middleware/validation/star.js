@@ -172,7 +172,7 @@ const validatePostStar = (req, res, next) => {
 const validatePutStar = (req, res, next) => {
 
   // Validate request body and disable type coersion
-  const { error } = putSchema.validate(req.body, { convert: false });
+  const { error } = postPutSchema.validate(req.body, { convert: false });
 
   if (error) {
     return res.status(409).json({
