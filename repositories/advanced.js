@@ -16,7 +16,7 @@ class advancedRepository extends Repository {
         super(model); // Call the parent class's constructor
     }
 
-    async findOne(model, foreignKeyField, foreignKeyValue) {
+    async findOneByForeignKey(model, foreignKeyField, foreignKeyValue) {
         return await prisma[model].findUnique({
             where: { 
                 [foreignKeyField]: foreignKeyValue,
@@ -24,7 +24,7 @@ class advancedRepository extends Repository {
         });
     }
 
-    async findByForeignKey(model, foreignKeyField, foreignKeyValue) {
+    async findManyByForeignKey(model, foreignKeyField, foreignKeyValue) {
         return await prisma[model].findMany({
             where: {
                 [foreignKeyField]: foreignKeyValue,
