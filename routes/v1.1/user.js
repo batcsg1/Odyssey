@@ -18,6 +18,7 @@ import {
 import {
   validatePostUser,
   validatePutUser,
+  validatePatchUser
 } from "../../middleware/validation/user.js";
 
 import { cudLimit, getLimit } from "../../middleware/limiting/limit.js";
@@ -51,6 +52,7 @@ const userRouter = createUserRouter(
   cudLimit,
   validatePostUser,
   validatePutUser,
+  validatePatchUser
 );
 
 export default userRouter;
