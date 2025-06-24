@@ -96,6 +96,6 @@ const patchSchema = Joi.object({
 
 const validatePostGalaxy = validator(postPutSchema);
 const validatePutGalaxy = validator(postPutSchema);
-const validatePatchGalaxy = validator(postPutSchema);
+const validatePatchGalaxy = validator(patchSchema);
 
 export { validatePostGalaxy, validatePutGalaxy, validatePatchGalaxy };
