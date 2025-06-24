@@ -18,6 +18,7 @@ import {
 import {
   validatePostAsteroid,
   validatePutAsteroid,
+  validatePatchAsteroid
 } from "../../middleware/validation/asteroid.js";
 
 // Import the authorisation middleware
@@ -55,6 +56,7 @@ const asteroidRouter = createRouter(
   validatePostAsteroid,
   authorisation,
   validatePutAsteroid,
+  validatePatchAsteroid
 );
 
 export default asteroidRouter;
