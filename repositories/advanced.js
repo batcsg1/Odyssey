@@ -12,7 +12,7 @@ class advancedRepository extends Repository {
      * Creates an instance of the repository based on the repository class's constructor
      * @param {string} model 
      */
-    
+
     constructor(model) {
         super(model); // Call the parent class's constructor
     }
@@ -25,11 +25,11 @@ class advancedRepository extends Repository {
      * @returns {object} The first matching record with the specified foreign key
      */
 
-    async findOneByForeignKey(model, field, value) {
+    async findOneByForeignKeys(model, conditions) {
         return await prisma[model].findUnique({
-            where: { 
-                [field]: value,
-             }
+            where: {
+                ...conditions
+            }
         });
     }
 
@@ -41,12 +41,14 @@ class advancedRepository extends Repository {
      * @returns {<Array>object} An array of matching records with the specified foreign key
      */
 
-    async findManyByForeignKey(model, field, value) {
-        return await prisma[model].findMany({
-            where: {
-                [field]: value,
-            },
-        });
+    async findManyByForeignKeys(models, conditions) {
+        const results = await Promise.all(
+            models.map(model =>
+                prisma[model].findMany({ where: { ...conditions } })
+            )
+        );
+        // Flatten array of arrays into a single array
+        return results.flat();
     }
 
 }

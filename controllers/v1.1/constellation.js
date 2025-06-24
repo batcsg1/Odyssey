@@ -173,12 +173,14 @@ const deleteConstellation = async (req, res) => {
       });
     }
 
-    // Any stars that are foreign keys
-    const relatedStars = advanced.findManyByForeignKey("Star", "constellationId", constellation.id);
+    // Any objects that reference a constellation
+    const children = await advanced.findManyByForeignKeys(["Star", "Galaxy", "MeteorShower"], {
+      constellationId: constellation.id
+    });
 
-    if (relatedStars.length > 0) {
+    if (children.length > 0) {
       return res.status(409).json({
-        message: `Constellation with the id: ${req.params.id} cannot be deleted because it has related stars`,
+        message: `Constellation with the id: ${constellation.id} cannot be deleted because it has child objects`,
       });
     }
 
