@@ -7,7 +7,7 @@ import Repository from "./generic.js";
 import prisma from "../prisma/client.js";
 
 class advancedRepository extends Repository {
-    
+
     /**
      * Creates an instance of the repository based on the repository class's constructor
      * @param {string} model 
@@ -29,5 +29,14 @@ class advancedRepository extends Repository {
             where: { constellationId }
         });
     }
+
+    async findByForeignKey(model, foreignKeyField, foreignKeyValue) {
+        return await prisma[model].findMany({
+            where: {
+                [foreignKeyField]: foreignKeyValue,
+            },
+        });
+    }
+
 }
 export default advancedRepository

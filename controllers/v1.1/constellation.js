@@ -3,9 +3,12 @@
  * @author Samuel Batchelor
  */
 
+import advancedRepository from "../../repositories/advanced.js";
 import Repository from "../../repositories/generic.js";
 
 const constellationRepository = new Repository("Constellation");
+
+const advanced = new advancedRepository("Constellation");
 
 const selectObject = {
   id: true,
@@ -167,6 +170,15 @@ const deleteConstellation = async (req, res) => {
     if (!constellation) {
       return res.status(404).json({
         message: `No constellation with the id: ${req.params.id} found`,
+      });
+    }
+
+    // Any stars that are foreign keys
+    const relatedStars = await advanced.findByForeignKey("Star", "constellationId", constellation.id);
+
+    if (relatedStars.length > 0) {
+      return res.status(409).json({
+        message: `Constellation with the id: ${req.params.id} cannot be deleted because it has related stars`,
       });
     }
 
