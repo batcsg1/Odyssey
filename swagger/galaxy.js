@@ -40,7 +40,7 @@
 
 /**
  * @swagger
- * /api/v1/galaxies:
+ * /api/v1.1/galaxies:
  *   post:
  *     summary: Create a new galaxy
  *     tags:
@@ -64,7 +64,7 @@
 
 /**
  * @swagger
- * /api/v1/galaxies:
+ * /api/v1.1/galaxies:
  *   get:
  *     summary: Get all galaxies
  *     tags:
@@ -139,7 +139,7 @@
 
 /**
  * @swagger
- * /api/v1/galaxies/{id}:
+ * /api/v1.1/galaxies/{id}:
  *   get:
  *     summary: Get a galaxy by id
  *     tags:
@@ -164,7 +164,7 @@
 
 /**
  * @swagger
- * /api/v1/galaxies/{id}:
+ * /api/v1.1/galaxies/{id}:
  *   put:
  *     summary: Update a galaxy by id
  *     tags:
@@ -195,7 +195,38 @@
 
 /**
  * @swagger
- * /api/v1/galaxies/{id}:
+ * /api/v1.1/galaxies/{id}:
+ *   patch:
+ *     summary: Partially update a galaxy by id
+ *     tags:
+ *       - Galaxy
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Galaxy'
+ *     responses:
+ *       '200':
+ *         description: Galaxy successfully updated
+ *       '404':
+ *         description: No galaxy found with the provided id
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/galaxies/{id}:
  *   delete:
  *     summary: Delete a galaxy by id
  *     tags:

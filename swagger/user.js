@@ -53,7 +53,7 @@
 
 /**
  * @swagger
- * /api/v1/users:
+ * /api/v1.1/users:
  *   post:
  *     summary: Create a new user
  *     tags:
@@ -77,7 +77,7 @@
 
 /**
  * @swagger
- * /api/v1/users:
+ * /api/v1.1/users:
  *   get:
  *     summary: Get all users
  *     tags:
@@ -144,7 +144,7 @@
 
 /**
  * @swagger
- * /api/v1/users/{id}:
+ * /api/v1.1/users/{id}:
  *   get:
  *     summary: Get a user by id
  *     tags:
@@ -169,7 +169,7 @@
 
 /**
  * @swagger
- * /api/v1/users/{id}:
+ * /api/v1.1/users/{id}:
  *   put:
  *     summary: Update a user by id
  *     tags:
@@ -200,7 +200,38 @@
 
 /**
  * @swagger
- * /api/v1/users/{id}:
+ * /api/v1.1/users/{id}:
+ *   patch:
+ *     summary: Partially update a user by id
+ *     tags:
+ *       - User
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'
+ *     responses:
+ *       '200':
+ *         description: User successfully updated
+ *       '404':
+ *         description: No user found with the provided id
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/users/{id}:
  *   delete:
  *     summary: Delete a user by id
  *     tags:

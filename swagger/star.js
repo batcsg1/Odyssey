@@ -63,7 +63,7 @@
 
 /**
  * @swagger
- * /api/v1/stars:
+ * /api/v1.1/stars:
  *   post:
  *     summary: Create a new star
  *     tags:
@@ -87,7 +87,7 @@
 
 /**
  * @swagger
- * /api/v1/stars:
+ * /api/v1.1/stars:
  *   get:
  *     summary: Get all stars
  *     tags:
@@ -197,7 +197,7 @@
 
 /**
  * @swagger
- * /api/v1/stars/{id}:
+ * /api/v1.1/stars/{id}:
  *   get:
  *     summary: Get a star by id
  *     tags:
@@ -222,7 +222,7 @@
 
 /**
  * @swagger
- * /api/v1/stars/{id}:
+ * /api/v1.1/stars/{id}:
  *   put:
  *     summary: Update a star by id
  *     tags:
@@ -253,7 +253,38 @@
 
 /**
  * @swagger
- * /api/v1/stars/{id}:
+ * /api/v1.1/stars/{id}:
+ *   patch:
+ *     summary: Partially update a star by id
+ *     tags:
+ *       - Star
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Star'
+ *     responses:
+ *       '200':
+ *         description: Star successfully updated
+ *       '404':
+ *         description: No star found with the provided id
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/stars/{id}:
  *   delete:
  *     summary: Delete a star by id
  *     tags:

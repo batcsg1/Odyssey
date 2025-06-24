@@ -40,7 +40,7 @@
 
 /**
  * @swagger
- * /api/v1/meteorites:
+ * /api/v1.1/meteorites:
  *   post:
  *     summary: Create a new meteorite
  *     tags:
@@ -64,7 +64,7 @@
 
 /**
  * @swagger
- * /api/v1/meteorites:
+ * /api/v1.1/meteorites:
  *   get:
  *     summary: Get all meteorites
  *     tags:
@@ -144,7 +144,7 @@
 
 /**
  * @swagger
- * /api/v1/meteorites/{id}:
+ * /api/v1.1/meteorites/{id}:
  *   get:
  *     summary: Get a meteorite by id
  *     tags:
@@ -169,7 +169,7 @@
 
 /**
  * @swagger
- * /api/v1/meteorites/{id}:
+ * /api/v1.1/meteorites/{id}:
  *   put:
  *     summary: Update a meteorite by id
  *     tags:
@@ -200,7 +200,38 @@
 
 /**
  * @swagger
- * /api/v1/meteorites/{id}:
+ * /api/v1.1/meteorites/{id}:
+ *   patch:
+ *     summary: Partially update a meteorite by id
+ *     tags:
+ *       - Meteorite
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Meteorite'
+ *     responses:
+ *       '200':
+ *         description: Meteorite successfully updated
+ *       '404':
+ *         description: No meteorite found with the provided id
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/meteorites/{id}:
  *   delete:
  *     summary: Delete a meteorite by id
  *     tags:

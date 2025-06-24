@@ -89,7 +89,7 @@
 
 /**
  * @swagger
- * /api/v1/satellites:
+ * /api/v1.1/satellites:
  *   post:
  *     summary: Create a new satellite
  *     tags:
@@ -113,7 +113,7 @@
 
 /**
  * @swagger
- * /api/v1/satellites:
+ * /api/v1.1/satellites:
  *   get:
  *     summary: Get all satellites
  *     tags:
@@ -263,7 +263,7 @@
 
 /**
  * @swagger
- * /api/v1/satellites/{id}:
+ * /api/v1.1/satellites/{id}:
  *   get:
  *     summary: Get a satellite by id
  *     tags:
@@ -288,7 +288,7 @@
 
 /**
  * @swagger
- * /api/v1/satellites/{id}:
+ * /api/v1.1/satellites/{id}:
  *   put:
  *     summary: Update a satellite by id
  *     tags:
@@ -319,7 +319,38 @@
 
 /**
  * @swagger
- * /api/v1/satellites/{id}:
+ * /api/v1.1/satellites/{id}:
+ *   patch:
+ *     summary: Partially update a satellite by id
+ *     tags:
+ *       - Satellite
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Satellite'
+ *     responses:
+ *       '200':
+ *         description: Satellite successfully updated
+ *       '404':
+ *         description: No satellite found with the provided id
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/satellites/{id}:
  *   delete:
  *     summary: Delete a satellite by id
  *     tags:

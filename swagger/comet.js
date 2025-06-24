@@ -62,7 +62,7 @@
 
 /**
  * @swagger
- * /api/v1/comets:
+ * /api/v1.1/comets:
  *   post:
  *     summary: Create a new comet
  *     tags:
@@ -86,7 +86,7 @@
 
 /**
  * @swagger
- * /api/v1/comets:
+ * /api/v1.1/comets:
  *   get:
  *     summary: Get all comets
  *     tags:
@@ -196,7 +196,7 @@
 
 /**
  * @swagger
- * /api/v1/comets/{id}:
+ * /api/v1.1/comets/{id}:
  *   get:
  *     summary: Get a comet by id
  *     tags:
@@ -221,7 +221,7 @@
 
 /**
  * @swagger
- * /api/v1/comets/{id}:
+ * /api/v1.1/comets/{id}:
  *   put:
  *     summary: Update a comet by id
  *     tags:
@@ -252,7 +252,38 @@
 
 /**
  * @swagger
- * /api/v1/comets/{id}:
+ * /api/v1.1/comets/{id}:
+ *   patch:
+ *     summary: Partially update a comet by id
+ *     tags:
+ *       - Comet
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Comet'
+ *     responses:
+ *       '200':
+ *         description: Comet successfully updated
+ *       '404':
+ *         description: No comet found with the provided id
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/comets/{id}:
  *   delete:
  *     summary: Delete a comet by id
  *     tags:

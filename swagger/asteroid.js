@@ -63,7 +63,7 @@
 
 /**
  * @swagger
- * /api/v1/asteroids:
+ * /api/v1.1/asteroids:
  *   post:
  *     summary: Create a new asteroid
  *     tags:
@@ -87,7 +87,7 @@
 
 /**
  * @swagger
- * /api/v1/asteroids:
+ * /api/v1.1/asteroids:
  *   get:
  *     summary: Get all asteroids
  *     tags:
@@ -197,7 +197,7 @@
 
 /**
  * @swagger
- * /api/v1/asteroids/{id}:
+ * /api/v1.1/asteroids/{id}:
  *   get:
  *     summary: Get an asteroid by id
  *     tags:
@@ -222,7 +222,7 @@
 
 /**
  * @swagger
- * /api/v1/asteroids/{id}:
+ * /api/v1.1/asteroids/{id}:
  *   put:
  *     summary: Update an asteroid by id
  *     tags:
@@ -253,7 +253,38 @@
 
 /**
  * @swagger
- * /api/v1/asteroids/{id}:
+ * /api/v1.1/asteroids/{id}:
+ *   patch:
+ *     summary: Partially update an asteroid by id
+ *     tags:
+ *       - Asteroid
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Asteroid'
+ *     responses:
+ *       '200':
+ *         description: Asteroid successfully updated
+ *       '404':
+ *         description: No asteroid found with the provided id
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/asteroids/{id}:
  *   delete:
  *     summary: Delete an asteroid by id
  *     tags:

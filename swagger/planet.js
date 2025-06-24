@@ -96,7 +96,7 @@
 
 /**
  * @swagger
- * /api/v1/planets:
+ * /api/v1.1/planets:
  *   post:
  *     summary: Create a new planet
  *     tags:
@@ -120,7 +120,7 @@
 
 /**
  * @swagger
- * /api/v1/planets:
+ * /api/v1.1/planets:
  *   get:
  *     summary: Get all planets
  *     tags:
@@ -275,7 +275,7 @@
 
 /**
  * @swagger
- * /api/v1/planets/{id}:
+ * /api/v1.1/planets/{id}:
  *   get:
  *     summary: Get a planet by id
  *     tags:
@@ -300,7 +300,7 @@
 
 /**
  * @swagger
- * /api/v1/planets/{id}:
+ * /api/v1.1/planets/{id}:
  *   put:
  *     summary: Update a planet by id
  *     tags:
@@ -331,7 +331,38 @@
 
 /**
  * @swagger
- * /api/v1/planets/{id}:
+ * /api/v1.1/planets/{id}:
+ *   patch:
+ *     summary: Partially update a planet by id
+ *     tags:
+ *       - Planet
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Planet'
+ *     responses:
+ *       '200':
+ *         description: Planet successfully updated
+ *       '404':
+ *         description: No planet found with the provided id
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/planets/{id}:
  *   delete:
  *     summary: Delete a planet by id
  *     tags:

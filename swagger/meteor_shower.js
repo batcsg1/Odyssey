@@ -64,7 +64,7 @@
 
 /**
  * @swagger
- * /api/v1/meteor_showers:
+ * /api/v1.1/meteor_showers:
  *   post:
  *     summary: Create a new meteor shower
  *     tags:
@@ -88,7 +88,7 @@
 
 /**
  * @swagger
- * /api/v1/meteor_showers:
+ * /api/v1.1/meteor_showers:
  *   get:
  *     summary: Get all meteor showers
  *     tags:
@@ -172,7 +172,7 @@
 
 /**
  * @swagger
- * /api/v1/meteor_showers/{id}:
+ * /api/v1.1/meteor_showers/{id}:
  *   get:
  *     summary: Get a meteor shower by id
  *     tags:
@@ -197,7 +197,7 @@
 
 /**
  * @swagger
- * /api/v1/meteor_showers/{id}:
+ * /api/v1.1/meteor_showers/{id}:
  *   put:
  *     summary: Update a meteor shower by id
  *     tags:
@@ -228,7 +228,38 @@
 
 /**
  * @swagger
- * /api/v1/meteor_showers/{id}:
+ * /api/v1.1/meteor_showers/{id}:
+ *   patch:
+ *     summary: Partially update a meteor shower by id
+ *     tags:
+ *       - Meteor Shower
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Meteor Shower'
+ *     responses:
+ *       '200':
+ *         description: Meteor shower successfully updated
+ *       '404':
+ *         description: No meteor shower found with the provided id
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/meteor_showers/{id}:
  *   delete:
  *     summary: Delete a meteor shower by id
  *     tags:
