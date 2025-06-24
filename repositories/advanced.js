@@ -16,17 +16,11 @@ class advancedRepository extends Repository {
         super(model); // Call the parent class's constructor
     }
 
-    // -- Meteor Shower related functions --
-
-    /**
-     * Finds a meteor shower that belongs to a particular constellation
-     * @param {string} constellationId - Unique string UUID for a constellation record
-     * @returns {Promise<Object>} - Record based on Constellation ID
-     */
-
-    async findByConstellationId(constellationId) {
-        return await prisma.meteorShower.findUnique({
-            where: { constellationId }
+    async findOne(model, foreignKeyField, foreignKeyValue) {
+        return await prisma[model].findUnique({
+            where: { 
+                [foreignKeyField]: foreignKeyValue,
+             }
         });
     }
 
