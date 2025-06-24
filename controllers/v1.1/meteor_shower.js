@@ -27,6 +27,12 @@ const selectObject = {
       name: true
     }
   },
+  asteroids: {
+    select: {
+      id: true,
+      name: true
+    }
+  },
   constellationId: true,
   createdAt: true,
   updatedAt: true
@@ -224,7 +230,7 @@ const updateMeteorShower = async (req, res) => {
       const existingMeteorShower = await advanced.findOneByForeignKey("MeteorShower", "constellationId", constellationId);
 
       // If meteor shower is part of a constellation and is not the one being currently updated
-      if (existingMeteorShower && existingMeteorShower.id !== req.params.id) {
+      if (existingMeteorShower) {
         return res.status(409).json({ message: `There is already a meteor shower that belongs to constellation with ${constellationId}` });
       }
     }
