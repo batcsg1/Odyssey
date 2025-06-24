@@ -18,6 +18,7 @@ import {
 import {
   validatePostMeteorShower,
   validatePutMeteorShower,
+  validatePatchMeteorShower
 } from "../../middleware/validation/meteor_shower.js";
 
 // Import the authorisation middleware
@@ -54,6 +55,7 @@ const meteorShowerRouter = createRouter(
   validatePostMeteorShower,
   authorisation,
   validatePutMeteorShower,
+  validatePatchMeteorShower
 );
 
 export default meteorShowerRouter;
