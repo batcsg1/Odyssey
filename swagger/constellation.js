@@ -174,6 +174,37 @@
 /**
  * @swagger
  * /api/v1/constellations/{id}:
+ *   patch:
+ *     summary: Patch a constellation by id
+ *     tags:
+ *       - Constellation
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Constellation'
+ *     responses:
+ *       '200':
+ *         description: Constellation successfully updated
+ *       '404':
+ *         description: No constellation found with the provided id
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1/constellations/{id}:
  *   delete:
  *     summary: Delete a constellation by id
  *     tags:
