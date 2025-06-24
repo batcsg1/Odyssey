@@ -250,6 +250,7 @@ describe("Comets", () => {
             .send({
                 name: "Halley's Comet",
                 mass: 2.2e14,
+                age: 4e9,
                 diameter: "11",
                 density: 0.6,
                 type: "SHORT_PERIOD",
@@ -272,6 +273,7 @@ describe("Comets", () => {
             .send({
                 name: "Updated Halley's Comet",
                 mass: 2.2e14,
+                age: 4.5e9,
                 diameter: 11,
                 density: 0.6,
                 type: "SHORT_PERIOD",
