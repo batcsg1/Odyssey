@@ -174,7 +174,7 @@ const deleteConstellation = async (req, res) => {
     }
 
     // Any stars that are foreign keys
-    const relatedStars = await advanced.findManyByForeignKey("Star", "constellationId", constellation.id);
+    const relatedStars = advanced.findManyByForeignKey("Star", "constellationId", constellation.id);
 
     if (relatedStars.length > 0) {
       return res.status(409).json({
