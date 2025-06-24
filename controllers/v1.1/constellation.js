@@ -174,7 +174,7 @@ const deleteConstellation = async (req, res) => {
     }
 
     // Any objects that reference a constellation
-    const children = await advanced.findManyByForeignKeys(["Star", "Galaxy", "MeteorShower"], {
+    const children = await advanced.findChildren(["Star", "Galaxy", "MeteorShower"], {
       constellationId: constellation.id
     });
 
