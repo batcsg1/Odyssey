@@ -113,6 +113,7 @@ app.use((req, res) => {
   res.status(404).sendFile('404.html', { root: './html' });
 });
 
+// Catch for invalid request body syntax 
 app.use(syntax);
 
 export default app;
