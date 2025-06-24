@@ -18,6 +18,7 @@ import {
 import {
   validatePostPlanet,
   validatePutPlanet,
+  validatePatchPlanet
 } from "../../middleware/validation/planet.js";
 
 // Import the authorisation middleware
@@ -54,6 +55,7 @@ const planetRouter = createRouter(
   validatePostPlanet,
   authorisation,
   validatePutPlanet,
+  validatePatchPlanet
 );
 
 export default planetRouter;
