@@ -200,7 +200,6 @@ describe("Constellations", () => {
             .send({
                 name: "Yet another updated Canis Majora",
             });
-        console.log("RES:", JSON.stringify(res, null, 2));
         chai
             .expect(res.body.message)
             .to.be.equal(
