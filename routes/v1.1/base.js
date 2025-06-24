@@ -12,6 +12,7 @@ import express from "express";
  * @param {Function} authorisation - Middleware to apply authorization to routes
  * @param {Function} postValidator - Middleware to validate the POST request body
  * @param {Function} putValidator - Middleware to validate the PUT request body
+ * @param {Function} patchValidator - Middleware to validate the PATCH request body
  * @returns {express.Router} Return the configured router to be passed on to app.js
  */
 
