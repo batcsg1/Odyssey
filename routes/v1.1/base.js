@@ -23,7 +23,7 @@ const createRouter = (controller, getLimit, cudLimit, postValidator, authorisati
     router.post("/", cudLimit(), postValidator, authorisation, controller.create);
     router.put("/:id", cudLimit(), putValidator, authorisation, controller.update);
     router.patch("/:id", cudLimit(), patchValidator, authorisation, controller.update);
-    router.delete("/:id", cudLimit(), authorisation, authorisation, controller.delete);
+    router.delete("/:id", cudLimit(), authorisation, controller.delete);
 
     return router;
 };
