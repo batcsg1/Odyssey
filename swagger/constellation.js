@@ -31,7 +31,7 @@
 
 /**
  * @swagger
- * /api/v1/constellations:
+ * /api/v1.1/constellations:
  *   post:
  *     summary: Create a new constellation
  *     tags:
@@ -55,7 +55,7 @@
 
 /**
  * @swagger
- * /api/v1/constellations:
+ * /api/v1.1/constellations:
  *   get:
  *     summary: Get all constellations
  *     tags:
@@ -117,7 +117,7 @@
 
 /**
  * @swagger
- * /api/v1/constellations/{id}:
+ * /api/v1.1/constellations/{id}:
  *   get:
  *     summary: Get a constellation by id
  *     tags:
@@ -142,7 +142,7 @@
 
 /**
  * @swagger
- * /api/v1/constellations/{id}:
+ * /api/v1.1/constellations/{id}:
  *   put:
  *     summary: Update a constellation by id
  *     tags:
@@ -173,9 +173,9 @@
 
 /**
  * @swagger
- * /api/v1/constellations/{id}:
+ * /api/v1.1/constellations/{id}:
  *   patch:
- *     summary: Patch a constellation by id
+ *     summary: Partially update a constellation by id
  *     tags:
  *       - Constellation
  *     security:
@@ -204,7 +204,7 @@
 
 /**
  * @swagger
- * /api/v1/constellations/{id}:
+ * /api/v1.1/constellations/{id}:
  *   delete:
  *     summary: Delete a constellation by id
  *     tags:
