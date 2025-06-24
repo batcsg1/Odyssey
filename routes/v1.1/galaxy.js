@@ -12,7 +12,7 @@ import {
   getGalaxy,
   updateGalaxy,
   deleteGalaxy,
-} from "../../controllers/v1/galaxy.js";
+} from "../../controllers/v1.1/galaxy.js";
 
 // Import the POST, PUT and PATCH validation middleware
 import {

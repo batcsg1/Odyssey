@@ -12,7 +12,7 @@ import {
   getAsteroid,
   updateAsteroid,
   deleteAsteroid,
-} from "../../controllers/v1/asteroid.js";
+} from "../../controllers/v1.1/asteroid.js";
 
 // Import the POST and PUT validation middleware
 import {

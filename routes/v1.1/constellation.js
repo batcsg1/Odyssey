@@ -12,7 +12,7 @@ import {
   getConstellation,
   updateConstellation,
   deleteConstellation,
-} from "../../controllers/v1/constellation.js";
+} from "../../controllers/v1.1/constellation.js";
 
 // Import the POST, PUT and PATCH validation middleware
 import {

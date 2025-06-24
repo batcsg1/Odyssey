@@ -12,7 +12,7 @@ import {
   getPlanet,
   updatePlanet,
   deletePlanet,
-} from "../../controllers/v1/planet.js";
+} from "../../controllers/v1.1/planet.js";
 
 // Import the POST and PUT validation middleware
 import {

@@ -12,7 +12,7 @@ import {
   getMeteorite,
   updateMeteorite,
   deleteMeteorite,
-} from "../../controllers/v1/meteorite.js";
+} from "../../controllers/v1.1/meteorite.js";
 
 // Import the POST and PUT validation middleware
 import {

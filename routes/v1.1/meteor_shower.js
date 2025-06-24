@@ -12,7 +12,7 @@ import {
   getMeteorShower,
   updateMeteorShower,
   deleteMeteorShower,
-} from "../../controllers/v1/meteor_shower.js";
+} from "../../controllers/v1.1/meteor_shower.js";
 
 // Import the POST and PUT validation middleware
 import {

@@ -12,7 +12,7 @@ import {
   getStar,
   updateStar,
   deleteStar,
-} from "../../controllers/v1/star.js";
+} from "../../controllers/v1.1/star.js";
 
 // Import the POST and PUT validation middleware
 import {
