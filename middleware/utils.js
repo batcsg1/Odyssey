@@ -18,4 +18,4 @@ const isContentTypeApplicationJSON = (req, res, next) => {
 };
 
 
-export { isContentTypeApplicationJSON };
+export default isContentTypeApplicationJSON;

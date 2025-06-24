@@ -25,7 +25,7 @@ import authRoutes from "./routes/v1.1/auth.js";
 // Import middleware
 import auth from "./middleware/auth.js";
 import logger from "./middleware/logger.js";
-import { isContentTypeApplicationJSON } from "./middleware/utils.js";
+import isContentTypeApplicationJSON from "./middleware/utils.js";
 import syntax from "./middleware/syntax/syntax.js";
 
 // Create an Express application
