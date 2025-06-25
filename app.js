@@ -54,7 +54,7 @@ const swaggerOptions = {
     openapi: "3.0.0",
     info: {
       title: "CelestiDB",
-      version: "1.0.0",
+      version: "1.1",
       description: "An API for accessing data about stars, planets and more.",
       contact: {
         name: "Samuel Batchelor",
