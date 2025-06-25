@@ -293,10 +293,29 @@ const deletePlanet = async (req, res) => {
   }
 };
 
+/**
+ * @description This function checks if a planet exists by ID and returns just the response headers
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - Sends response status
+ */
+const headPlanet = async (req, res) => {
+  try {
+    const planet = await planetRepository.findById(req.params.id);
+    if (!planet) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(200);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+};
+
 export {
   createPlanet,
   getPlanets,
   getPlanet,
   updatePlanet,
   deletePlanet,
+  headPlanet
 };

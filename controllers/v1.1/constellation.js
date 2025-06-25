@@ -196,10 +196,29 @@ const deleteConstellation = async (req, res) => {
   }
 };
 
+/**
+ * @description This function checks if a constellation exists by ID and returns just the response headers
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - Sends response status
+ */
+const headConstellation = async (req, res) => {
+  try {
+    const constellation = await constellationRepository.findById(req.params.id);
+    if (!constellation) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(200);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+};
+
 export {
   createConstellation,
   getConstellations,
   getConstellation,
   updateConstellation,
   deleteConstellation,
+  headConstellation
 };

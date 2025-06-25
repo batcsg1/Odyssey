@@ -188,10 +188,29 @@ const deleteAsteroid = async (req, res) => {
   }
 };
 
+/**
+ * @description This function checks if an asteroid exists by ID and returns just the response headers
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - Sends response status
+ */
+const headAsteroid = async (req, res) => {
+  try {
+    const asteroid = await asteroidRepository.findById(req.params.id);
+    if (!asteroid) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(200);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+};
+
 export {
   createAsteroid,
   getAsteroids,
   getAsteroid,
   updateAsteroid,
   deleteAsteroid,
+  headAsteroid
 };

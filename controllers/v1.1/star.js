@@ -249,10 +249,29 @@ const deleteStar = async (req, res) => {
   }
 };
 
+/**
+ * @description This function checks if a star exists by ID and returns just the response headers
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - Sends response status
+ */
+const headStar = async (req, res) => {
+  try {
+    const star = await starRepository.findById(req.params.id);
+    if (!star) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(200);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+};
+
 export {
   createStar,
   getStars,
   getStar,
   updateStar,
   deleteStar,
+  headStar
 };

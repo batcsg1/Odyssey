@@ -232,10 +232,29 @@ const deleteSatellite = async (req, res) => {
   }
 };
 
+/**
+ * @description This function checks if a satellite exists by ID and returns just the response headers
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - Sends response status
+ */
+const headSatellite = async (req, res) => {
+  try {
+    const satellite = await satelliteRepository.findById(req.params.id);
+    if (!satellite) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(200);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+};
+
 export {
   createSatellite,
   getSatellites,
   getSatellite,
   updateSatellite,
   deleteSatellite,
+  headSatellite
 };
