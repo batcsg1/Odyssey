@@ -32,7 +32,7 @@
  *         role:
  *           type: string
  *           example: "NORMAL"
- *         homePlanet:
+ *         planetId:
  *           type: string
  *           format: uuid
  *           example: "123e4567-e89b-12d3-a456-426614174000"
@@ -104,7 +104,7 @@
  *           type: string
  *         description: Filter users by role
  *       - in: query
- *         name: homePlanet
+ *         name: planetId
  *         schema:
  *           type: string
  *           format: uuid
@@ -113,7 +113,7 @@
  *         name: sortBy
  *         schema:
  *           type: string
- *           enum: [id, firstName, lastName, emailAddress, role, homePlanet ]
+ *           enum: [id, firstName, lastName, emailAddress, role, planetId ]
  *         description: Field to sort the users by (default is 'id')
  *       - in: query
  *         name: sortOrder

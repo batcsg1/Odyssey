@@ -12,7 +12,7 @@ const selectObject = {
     firstName: true,
     lastName: true,
     emailAddress: true,
-    homePlanet: true,
+    planetId: true,
     role: true,
     status: true,
     createdAt: true,
@@ -82,7 +82,7 @@ const getUsers = async (req, res) => {
             firstName: req.query.firstName || undefined,
             lastName: req.query.lastName || undefined,
             emailAddress: req.query.emailAddress || undefined,
-            homePlanet: req.query.homePlanet || undefined,
+            planetId: req.query.planetId || undefined,
             role: req.query.role || undefined
         }
 

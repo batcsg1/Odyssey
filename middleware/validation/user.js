@@ -36,7 +36,7 @@ const postSchema = Joi.object({
         "any.only": `Role must be one of the following: ${Object.values(Role)}`,
         "any.required": "Role is required"
     }),
-    homePlanet: Joi.string().uuid().optional().messages({
+    planetId: Joi.string().uuid().optional().messages({
         "string.base": "Home planet ID should be a string",
         "string.empty": "Home planet ID cannot be empty",
         "string.guid": "Home planet ID should be a valid UUID"
@@ -55,7 +55,7 @@ const putSchema = Joi.object({
     role: Joi.string().valid(...Object.values(Role)).optional().messages({
         "any.only": `Role must be one of the following: ${Object.values(Role)}`,
     }),
-    homePlanet: Joi.string().uuid().optional()
+    planetId: Joi.string().uuid().optional()
 }).min(1).unknown(true);
 
 const validatePostUser = validator(postSchema);
