@@ -12,6 +12,7 @@ import {
   getMeteorite,
   updateMeteorite,
   deleteMeteorite,
+  headMeteorite
 } from "../../controllers/v1.1/meteorite.js";
 
 // Import the POST and PUT validation middleware
@@ -41,6 +42,7 @@ const meteoriteController = {
   create: createMeteorite,
   update: updateMeteorite,
   delete: deleteMeteorite,
+  head: headMeteorite
 };
 
 /**

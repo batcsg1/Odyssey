@@ -12,6 +12,7 @@ import {
   getGalaxy,
   updateGalaxy,
   deleteGalaxy,
+  headGalaxy
 } from "../../controllers/v1.1/galaxy.js";
 
 // Import the POST, PUT and PATCH validation middleware
@@ -41,6 +42,7 @@ const galaxyController = {
   create: createGalaxy,
   update: updateGalaxy,
   delete: deleteGalaxy,
+  head: headGalaxy
 };
 
 /**

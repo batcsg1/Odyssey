@@ -12,6 +12,7 @@ import {
   getConstellation,
   updateConstellation,
   deleteConstellation,
+  headConstellation
 } from "../../controllers/v1.1/constellation.js";
 
 // Import the POST, PUT and PATCH validation middleware
@@ -42,6 +43,7 @@ const constellationController = {
   create: createConstellation,
   update: updateConstellation,
   delete: deleteConstellation,
+  head: headConstellation
 };
 
 /**

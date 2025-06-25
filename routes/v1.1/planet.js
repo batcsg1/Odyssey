@@ -12,6 +12,7 @@ import {
   getPlanet,
   updatePlanet,
   deletePlanet,
+  headPlanet
 } from "../../controllers/v1.1/planet.js";
 
 // Import the POST and PUT validation middleware
@@ -41,6 +42,7 @@ const planetController = {
   create: createPlanet,
   update: updatePlanet,
   delete: deletePlanet,
+  head: headPlanet
 };
 
 /**
