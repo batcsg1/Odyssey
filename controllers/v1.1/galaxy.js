@@ -4,8 +4,10 @@
  */
 
 import Repository from "../../repositories/generic.js";
+import advancedRepository from "../../repositories/advanced.js"
 
 const galaxyRepository = new Repository("Galaxy");
+const advanced = new advancedRepository("Galaxy");
 
 const selectObject = {
   id: true,
@@ -193,6 +195,17 @@ const deleteGalaxy = async (req, res) => {
     if (!galaxy) {
       return res.status(404).json({
         message: `No galaxy with the id: ${req.params.id} found`,
+      });
+    }
+
+    // Any objects that reference a galaxy
+    const children = await advanced.findChildren(["Star"], {
+      galaxyId: galaxy.id
+    });
+
+    if (children.length > 0) {
+      return res.status(409).json({
+        message: `Galaxy with the id: ${galaxy.id} cannot be deleted because it has child objects`,
       });
     }
 

@@ -4,8 +4,10 @@
  */
 
 import Repository from "../../repositories/generic.js";
+import advancedRepository from "../../repositories/advanced.js";
 
 const planetRepository = new Repository("Planet");
+const advanced = new advancedRepository("Planet");
 
 const selectObject = {
   id: true,
@@ -266,6 +268,17 @@ const deletePlanet = async (req, res) => {
     if (!planet) {
       return res.status(404).json({
         message: `No planet with the id: ${req.params.id} found`,
+      });
+    }
+
+    // Any objects that reference a planet
+    const children = await advanced.findChildren(["Satellite", "Meteorite", "User"], {
+      planetId: planet.id
+    });
+
+    if (children.length > 0) {
+      return res.status(409).json({
+        message: `Planet with the id: ${planet.id} cannot be deleted because it has child objects`,
       });
     }
 
