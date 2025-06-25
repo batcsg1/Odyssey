@@ -253,3 +253,39 @@
  *       '500':
  *         description: Internal server error
  */
+
+/**
+ * @swagger
+ * /api/v1.1/meteorites:
+ *   options:
+ *     summary: Get allowed HTTP methods for meteorites route
+ *     tags:
+ *       - Meteorite
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       '204':
+ *         description: No Content - Indicates allowed HTTP methods for the resource
+ *         headers:
+ *           Allow:
+ *             description: Allowed HTTP methods
+ *             schema:
+ *               type: string
+ *               example: GET,POST,OPTIONS
+ *           Access-Control-Allow-Origin:
+ *             description: Allowed origins for CORS
+ *             schema:
+ *               type: string
+ *               example: '*'
+ *           Access-Control-Allow-Methods:
+ *             description: Allowed HTTP methods
+ *             schema:
+ *               type: string
+ *               example: GET,POST,OPTIONS
+ *           Access-Control-Allow-Headers:
+ *             description: Allowed headers for CORS
+ *             schema:
+ *               type: string
+ *               example: Content-Type, Authorization
+ */
+
