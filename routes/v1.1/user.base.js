@@ -4,6 +4,7 @@
  */
 
 import express from "express";
+import userOptions from "../../middleware/options/user.js";
 
 /**
  * Function for creating an Express route
@@ -23,6 +24,7 @@ const createUserRouter = (controller, getLimit, cudLimit, postValidator, putVali
     router.put("/:id", cudLimit(), putValidator, controller.update);
     router.patch("/:id", cudLimit(), patchValidator, controller.update);
     router.delete("/:id", cudLimit(), controller.delete);
+    router.options("/", userOptions);
 
     return router;
 };
