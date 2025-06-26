@@ -7,7 +7,7 @@ A REST API project designed for managing and accessing data about planets, stars
 
 ## Production REST API on Render 🌐
 
-https://celestidb-api.onrender.com/api-docs
+https://celestidb.onrender.com/api-docs
 
 ## How to setup Development environment </>
 
