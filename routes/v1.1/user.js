@@ -12,7 +12,8 @@ import {
   getUser,
   updateUser,
   deleteUser,
-  headUser
+  headUser,
+  headUsers
 } from "../../controllers/v1.1/user.js";
 
 // Import the POST and PUT validation middleware
@@ -40,7 +41,8 @@ const userController = {
   create: createUser,
   update: updateUser,
   delete: deleteUser,
-  head: headUser
+  head: headUsers,
+  headById: headUser
 };
 
 /**

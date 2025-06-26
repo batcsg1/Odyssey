@@ -12,7 +12,8 @@ import {
   getMeteorShower,
   updateMeteorShower,
   deleteMeteorShower,
-  headMeteorShower
+  headMeteorShower,
+  headMeteorShowers
 } from "../../controllers/v1.1/meteor_shower.js";
 
 // Import the POST and PUT validation middleware
@@ -42,7 +43,8 @@ const meteorShowerController = {
   create: createMeteorShower,
   update: updateMeteorShower,
   delete: deleteMeteorShower,
-  head: headMeteorShower
+  head: headMeteorShowers,
+  headById: headMeteorShower
 };
 
 /**

@@ -12,7 +12,8 @@ import {
   getComet,
   updateComet,
   deleteComet,
-  headComet
+  headComet,
+  headComets
 } from "../../controllers/v1.1/comet.js";  // Controller functions for comet
 
 // Import the POST and PUT validation middleware
@@ -42,7 +43,8 @@ const cometController = {
   create: createComet,
   update: updateComet,
   delete: deleteComet,
-  head: headComet
+  head: headComets,
+  headById: headComet
 };
 
 /**

@@ -12,7 +12,8 @@ import {
   getSatellite,
   updateSatellite,
   deleteSatellite,
-  headSatellite
+  headSatellite,
+  headSatellites
 } from "../../controllers/v1.1/satellite.js";
 
 // Import the POST and PUT validation middleware
@@ -42,7 +43,8 @@ const satelliteController = {
   create: createSatellite,
   update: updateSatellite,
   delete: deleteSatellite,
-  head: headSatellite
+  head: headSatellites,
+  headById: headSatellite
 };
 
 /**

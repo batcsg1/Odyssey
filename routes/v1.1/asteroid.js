@@ -12,7 +12,8 @@ import {
   getAsteroid,
   updateAsteroid,
   deleteAsteroid,
-  headAsteroid
+  headAsteroid,
+  headAsteroids
 } from "../../controllers/v1.1/asteroid.js";
 
 // Import the POST and PUT validation middleware
@@ -43,7 +44,8 @@ const asteroidController = {
   create: createAsteroid,
   update: updateAsteroid,
   delete: deleteAsteroid,
-  head: headAsteroid
+  head: headAsteroids,
+  headById: headAsteroid
 };
 
 /**

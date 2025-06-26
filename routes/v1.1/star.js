@@ -12,7 +12,8 @@ import {
   getStar,
   updateStar,
   deleteStar,
-  headStar
+  headStar,
+  headStars
 } from "../../controllers/v1.1/star.js";
 
 // Import the POST and PUT validation middleware
@@ -42,7 +43,8 @@ const starController = {
   create: createStar,
   update: updateStar,
   delete: deleteStar,
-  head: headStar
+  head: headStars,
+  headById: headStar
 };
 
 /**
