@@ -63,7 +63,7 @@ const swaggerOptions = {
     servers: [
       {
         url: process.env.APP_ENV === "production"
-          ? "https://celestidb-api.onrender.com"
+          ? "https://celestidb.onrender.com"
           : `http://localhost:${PORT}`
       },
     ],
