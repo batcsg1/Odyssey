@@ -25,8 +25,13 @@ import {
 
 // Import the authorisation middleware
 import authorisation from "../../middleware/auth/authorisation.js"
-import { cudLimit, getLimit } from "../../middleware/limiting/limit.js";
 
+// Import the rate limiting middleware
+import {
+  cudLimit, 
+  getLimit, 
+  headLimit
+} from "../../middleware/limiting/limit.js";
 
 /**
  * Controller object for the asteroid model
@@ -57,6 +62,7 @@ const asteroidRouter = createRouter(
   asteroidController,
   getLimit,
   cudLimit,
+  headLimit,
   validatePostAsteroid,
   authorisation,
   validatePutAsteroid,
