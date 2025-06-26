@@ -341,3 +341,46 @@
  *               example: Content-Type, Authorization
  */
 
+/**
+ * @swagger
+ * /api/v1.1/comets:
+ *   head:
+ *     summary: Verify if any comets exist
+ *     tags:
+ *       - Comet
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       '204':
+ *         description: Comets exist
+ *       '404':
+ *         description: No comets found
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/comets/{id}:
+ *   head:
+ *     summary: Verify comet existence by ID
+ *     tags:
+ *       - Comet
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       '204':
+ *         description: Comet exists
+ *       '404':
+ *         description: Comet not found
+ *       '500':
+ *         description: Internal server error
+ */
+

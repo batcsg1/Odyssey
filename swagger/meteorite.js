@@ -289,3 +289,46 @@
  *               example: Content-Type, Authorization
  */
 
+/**
+ * @swagger
+ * /api/v1.1/meteorites:
+ *   head:
+ *     summary: Verify if any meteorites exist
+ *     tags:
+ *       - Meteorite
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       '204':
+ *         description: Meteorites exist
+ *       '404':
+ *         description: No meteorites found
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/meteorites/{id}:
+ *   head:
+ *     summary: Verify meteorite existence by ID
+ *     tags:
+ *       - Meteorite
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       '204':
+ *         description: Meteorite exists
+ *       '404':
+ *         description: Meteorite not found
+ *       '500':
+ *         description: Internal server error
+ */
+

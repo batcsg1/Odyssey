@@ -261,3 +261,46 @@
  *               type: string
  *               example: Content-Type, Authorization
  */
+
+/**
+ * @swagger
+ * /api/v1.1/constellations:
+ *   head:
+ *     summary: Verify if any constellations exist
+ *     tags:
+ *       - Constellation
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       '204':
+ *         description: Constellations exist
+ *       '404':
+ *         description: No constellations found
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/constellations/{id}:
+ *   head:
+ *     summary: Verify constellation existence by ID
+ *     tags:
+ *       - Constellation
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       '204':
+ *         description: Constellation exists
+ *       '404':
+ *         description: Constellation not found
+ *       '500':
+ *         description: Internal server error
+ */

@@ -420,3 +420,46 @@
  *               example: Content-Type, Authorization
  */
 
+/**
+ * @swagger
+ * /api/v1.1/planets:
+ *   head:
+ *     summary: Verify if any planets exist
+ *     tags:
+ *       - Planet
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       '204':
+ *         description: Planets exist
+ *       '404':
+ *         description: No planets found
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/planets/{id}:
+ *   head:
+ *     summary: Verify planet existence by ID
+ *     tags:
+ *       - Planet
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       '204':
+ *         description: Planet exists
+ *       '404':
+ *         description: Planet not found
+ *       '500':
+ *         description: Internal server error
+ */
+

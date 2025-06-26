@@ -341,3 +341,46 @@
  *               type: string
  *               example: Content-Type, Authorization
  */
+
+/**
+ * @swagger
+ * /api/v1.1/asteroids:
+ *   head:
+ *     summary: Verify any asteroids exist
+ *     tags:
+ *       - Asteroid
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       '204':
+ *         description: Asteroids exist
+ *       '404':
+ *         description: No asteroids found
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/asteroids/{id}:
+ *   head:
+ *     summary: Verify asteroid existence by ID
+ *     tags:
+ *       - Asteroid
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       '204':
+ *         description: Asteroid exists
+ *       '404':
+ *         description: Asteroid not found
+ *       '500':
+ *         description: Internal server error
+ */

@@ -289,3 +289,46 @@
  *               example: Content-Type, Authorization
  */
 
+/**
+ * @swagger
+ * /api/v1.1/users:
+ *   head:
+ *     summary: Verify if any users exist
+ *     tags:
+ *       - User
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       '204':
+ *         description: Users exist
+ *       '404':
+ *         description: No users found
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/users/{id}:
+ *   head:
+ *     summary: Verify user existence by ID
+ *     tags:
+ *       - User
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       '204':
+ *         description: User exists
+ *       '404':
+ *         description: User not found
+ *       '500':
+ *         description: Internal server error
+ */
+

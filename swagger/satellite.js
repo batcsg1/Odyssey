@@ -407,3 +407,46 @@
  *               type: string
  *               example: Content-Type, Authorization
  */
+
+/**
+ * @swagger
+ * /api/v1.1/satellites:
+ *   head:
+ *     summary: Verify if any satellites exist
+ *     tags:
+ *       - Satellite
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       '204':
+ *         description: Satellites exist
+ *       '404':
+ *         description: No satellites found
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/satellites/{id}:
+ *   head:
+ *     summary: Verify satellite existence by ID
+ *     tags:
+ *       - Satellite
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       '204':
+ *         description: Satellite exists
+ *       '404':
+ *         description: Satellite not found
+ *       '500':
+ *         description: Internal server error
+ */

@@ -284,3 +284,46 @@
  *               example: Content-Type, Authorization
  */
 
+/**
+ * @swagger
+ * /api/v1.1/galaxies:
+ *   head:
+ *     summary: Verify if any galaxies exist
+ *     tags:
+ *       - Galaxy
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       '204':
+ *         description: Galaxies exist
+ *       '404':
+ *         description: No galaxies found
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/galaxies/{id}:
+ *   head:
+ *     summary: Verify galaxy existence by ID
+ *     tags:
+ *       - Galaxy
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       '204':
+ *         description: Galaxy exists
+ *       '404':
+ *         description: Galaxy not found
+ *       '500':
+ *         description: Internal server error
+ */
+

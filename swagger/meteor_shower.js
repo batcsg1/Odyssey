@@ -317,3 +317,46 @@
  *               example: Content-Type, Authorization
  */
 
+/**
+ * @swagger
+ * /api/v1.1/meteor_showers:
+ *   head:
+ *     summary: Verify if any meteor showers exist
+ *     tags:
+ *       - Meteor Shower
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       '204':
+ *         description: Meteor showers exist
+ *       '404':
+ *         description: No meteor showers found
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/meteor_shower/{id}:
+ *   head:
+ *     summary: Verify meteor shower existence by ID
+ *     tags:
+ *       - Meteor Shower
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       '204':
+ *         description: Meteor Shower exists
+ *       '404':
+ *         description: Meteor Shower not found
+ *       '500':
+ *         description: Internal server error
+ */
+

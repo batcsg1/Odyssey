@@ -342,3 +342,46 @@
  *               example: Content-Type, Authorization
  */
 
+/**
+ * @swagger
+ * /api/v1.1/stars:
+ *   head:
+ *     summary: Verify if any stars exist
+ *     tags:
+ *       - Star
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       '204':
+ *         description: Stars exist
+ *       '404':
+ *         description: No stars found
+ *       '500':
+ *         description: Internal server error
+ */
+
+/**
+ * @swagger
+ * /api/v1.1/stars/{id}:
+ *   head:
+ *     summary: Verify star existence by ID
+ *     tags:
+ *       - Star
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       '204':
+ *         description: Star exists
+ *       '404':
+ *         description: Star not found
+ *       '500':
+ *         description: Internal server error
+ */
+
