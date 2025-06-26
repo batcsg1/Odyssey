@@ -189,6 +189,24 @@ const deleteAsteroid = async (req, res) => {
 };
 
 /**
+ * @description This function checks if asteroids exist and returns just the response headers
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - Sends response status
+ */
+const headAsteroids = async (req, res) => {
+  try {
+    const asteroids = await asteroidRepository.findAll();
+    if (asteroids.length === 0) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(204);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+};
+
+/**
  * @description This function checks if an asteroid exists by ID and returns just the response headers
  * @param {object} req - The request object
  * @param {object} res - The response object
@@ -200,7 +218,7 @@ const headAsteroid = async (req, res) => {
     if (!asteroid) {
       return res.sendStatus(404);
     }
-    return res.sendStatus(200);
+    return res.sendStatus(204);
   } catch (err) {
     return res.sendStatus(500);
   }
@@ -212,5 +230,6 @@ export {
   getAsteroid,
   updateAsteroid,
   deleteAsteroid,
+  headAsteroids,
   headAsteroid
 };

@@ -307,6 +307,24 @@ const deleteMeteorShower = async (req, res) => {
 };
 
 /**
+ * @description This function checks if meteor showers exist and returns just the response headers
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - Sends response status
+ */
+const headMeteorShowers = async (req, res) => {
+  try {
+    const meteorShowers = await meteorShowerRepository.findAll();
+    if (meteorShowers.length === 0) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(204);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+};
+
+/**
  * @description This function checks if a meteor shower exists by ID and returns just the response headers
  * @param {object} req - The request object
  * @param {object} res - The response object
@@ -318,7 +336,7 @@ const headMeteorShower = async (req, res) => {
     if (!meteorShower) {
       return res.sendStatus(404);
     }
-    return res.sendStatus(200);
+    return res.sendStatus(204);
   } catch (err) {
     return res.sendStatus(500);
   }
@@ -330,5 +348,6 @@ export {
   getMeteorShower,
   updateMeteorShower,
   deleteMeteorShower,
+  headMeteorShowers,
   headMeteorShower
 };

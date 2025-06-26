@@ -333,6 +333,24 @@ const deleteUser = async (req, res) => {
 };
 
 /**
+ * @description This function checks if users exist and returns just the response headers
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {object} - Sends response status
+ */
+const headUsers = async (req, res) => {
+  try {
+    const users = await userRepository.findAll();
+    if (users.length === 0) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(204);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+};
+
+/**
  * @description This function checks if a user exists by ID and returns just the response headers
  * @param {object} req - The request object
  * @param {object} res - The response object
@@ -356,5 +374,6 @@ export {
     getUser,
     updateUser,
     deleteUser,
+    headUsers,
     headUser
 };
