@@ -8,7 +8,7 @@ const selectObject = {
   firstName: true,
   lastName: true,
   emailAddress: true,
-  homePlanet: true,
+  planetId: true,
   createdAt: true,
   updatedAt: true,
 }

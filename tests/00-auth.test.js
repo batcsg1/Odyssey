@@ -66,7 +66,6 @@ describe("Auth", () => {
             password: await hashPassword("default_pass123"),
             role: "NORMAL"
         });
-
         chai.expect(res).to.have.status(201); // Expect a succesfull response
         chai.expect(res.body.message).to.be.equal("User successfully registered");
     });
