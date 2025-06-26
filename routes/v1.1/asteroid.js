@@ -30,7 +30,7 @@ import authorisation from "../../middleware/auth/authorisation.js"
 import {
   cudLimit, 
   getLimit, 
-  headLimit
+  optionsLimit
 } from "../../middleware/limiting/limit.js";
 
 /**
@@ -62,7 +62,7 @@ const asteroidRouter = createRouter(
   asteroidController,
   getLimit,
   cudLimit,
-  headLimit,
+  optionsLimit,
   validatePostAsteroid,
   authorisation,
   validatePutAsteroid,

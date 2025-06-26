@@ -24,7 +24,7 @@ import {
 } from "../../middleware/validation/user.js";
 
 // Import the rate limiting middleware
-import { cudLimit, getLimit, headLimit } from "../../middleware/limiting/limit.js";
+import { cudLimit, getLimit, optionsLimit } from "../../middleware/limiting/limit.js";
 
 /**
  * Controller object for the user model
@@ -55,7 +55,7 @@ const userRouter = createUserRouter(
   userController,
   getLimit,
   cudLimit,
-  headLimit,
+  optionsLimit,
   validatePostUser,
   validatePutUser,
   validatePatchUser

@@ -27,7 +27,7 @@ import {
 import authorisation from "../../middleware/auth/authorisation.js"
 
 // Import the rate limiting middleware
-import { getLimit, cudLimit, headLimit } from "../../middleware/limiting/limit.js";
+import { getLimit, cudLimit, optionsLimit } from "../../middleware/limiting/limit.js";
 
 /**
  * Controller object for the constellation model
@@ -58,7 +58,7 @@ const constellationRouter = createRouter(
   constellationController,
   getLimit,
   cudLimit,
-  headLimit,
+  optionsLimit,
   validatePostConstellation,
   authorisation,
   validatePutConstellation,

@@ -27,7 +27,7 @@ import {
 import authorisation from "../../middleware/auth/authorisation.js"
 
 // Import the rate limiting middleware
-import { cudLimit, getLimit, headLimit } from "../../middleware/limiting/limit.js";
+import { cudLimit, getLimit, optionsLimit } from "../../middleware/limiting/limit.js";
 
 /**
  * Controller object for the planet model
@@ -58,7 +58,7 @@ const planetRouter = createRouter(
   planetController,
   getLimit,
   cudLimit,
-  headLimit,
+  optionsLimit,
   validatePostPlanet,
   authorisation,
   validatePutPlanet,
