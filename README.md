@@ -6,11 +6,9 @@
 
   <img src="./logo.png" alt="Logo" width="300">
 
+**A high performance platform for exploring the universe.**
 </div>
 
-### Author: <a href="https://github.com/batcsg1" alt="My GitHub account">Samuel Batchelor</a>
-
-A REST API project designed for managing and accessing data about planets, stars, moons and much more...
 
 ## Production REST API on Render 🌐
 
