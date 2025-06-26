@@ -42,8 +42,9 @@ APP_ENV=development
 DATABASE_URL="postgresql://postgres:P@ssw0rd@localhost:5445/postgres"
 JWT_SECRET=HelloWorld123
 JWT_LIFETIME=1hr
+PORT=3000
 ```
-> Note: If you don't have a `.env` file, create it on the root directory of the repository.
+> Note: If you don't have a `.env` file, create it on the root directory of the repository. Also you can set the `PORT` variable to a port of your choosing
 
 ---
 
@@ -60,7 +61,7 @@ Run `npm run dev` to start the server in development mode.
 
 This command will run the `dev` script specified in the `package.json` file.
 
-The server will start on port `3000`.
+The server will start on port `3000` or whatever you set for the `PORT` environment variable.
 
 You should see the following in the terminal: 
 ```
@@ -93,8 +94,9 @@ APP_ENV=testing
 DATABASE_URL="postgresql://postgres:P@ssw0rd@localhost:5446/postgres"
 JWT_SECRET=HelloWorld123
 JWT_LIFETIME=1hr
+PORT=3001
 ```
-> Note: Once again change the port in the `DATABASE_URL` variable to **5446**
+> Note: Change the port in the `DATABASE_URL` variable to **5446** to distinguish the development and testing environments
 
 > **Optional:** If you want the testing environment to run on a different server,
 > just add the `PORT` variable to the .env file
