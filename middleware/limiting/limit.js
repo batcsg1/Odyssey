@@ -18,11 +18,11 @@ const createRateLimiter = (windowMs, max) =>
 
 
 /**
- * @description GET & GETbyID rate limiting middleware
+ * @description GET, GETbyID & HEAD rate limiting middleware
  * @returns {function} - A callback function that declares the rate limiting within a time window
  */
 export const getLimit = () => createRateLimiter(2 * 60 * 1000, 20);
-// * All get requests are limited to 20 request every 2 minutes *
+// * All get and head requests are limited to 20 request every 2 minutes *
 
 /**
  * @description PUT, PATCH & DELETE rate limiting middleware
@@ -32,8 +32,8 @@ export const cudLimit = () => createRateLimiter(1 * 60 * 1000, 10);
 // * All create, update and delete requests are limited to 10 request every minute *
 
 /**
- * @description HEAD & OPTIONS rate limiting middleware
+ * @description OPTIONS rate limiting middleware
  * @returns {function} - A callback function that declares the rate limiting within a time window
  */
-export const headLimit = () => createRateLimiter(3 * 60 * 1000, 30);
-// * All head and options requests are limited to 30 request every 3 minutes *
+export const optionsLimit = () => createRateLimiter(3 * 60 * 1000, 30);
+// * All options requests are limited to 30 request every 3 minutes *
