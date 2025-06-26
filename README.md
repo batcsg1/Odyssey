@@ -107,7 +107,7 @@ Run `npm run prisma:migrate` to **migrate** the **schema** located in the `./pri
 
 > Note: this will ensure your **schema** is in sync with your **database**
 
-### Optional. Use Docker Compose to create development and testing environments 🐳
+### Optional: Use Docker Compose to create development and testing environments 🐳
 
 Once you have cloned the repo to your local machine run the following command on the root directory:
 ```bash
