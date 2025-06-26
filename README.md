@@ -1,5 +1,12 @@
-![image](./logo.png)
+<div align="center">
 
+  [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
+  <br>
+
+  <img src="./logo.png" alt="Logo" width="150">
+
+</div>
 
 ### Author: <a href="https://github.com/batcsg1" alt="My GitHub account">Samuel Batchelor</a>
 
