@@ -21,6 +21,56 @@ Have a wee play around on [celestiDB](https://celestidb.onrender.com/api-docs), 
 | ----------- | ----------- |
 | john.doe@example.com     | password123   |
 
+### Logging in
+When signing in, scroll down to the **Auth** section and navigate to the **Log in an existing user** tab and select the **'Try it out'** button:
+
+![alt text](image.png)
+
+Once you have done so, press the **execute** button down below:
+
+![alt text](image-1.png)
+
+After pressing the **execute** button, the API response should appear and if succesfull, you will be given the API response message and a bearer token _(**circled in red below**)_
+
+![alt text](image-2.png)
+
+> **Note:** Copy the entire token string, except the `"` quotation marks
+
+Next scroll all the way to the top of the webpage and find the **Authorize** button and press it:
+
+![alt text](image-3.png)
+
+You should see the following box on your screen:
+
+![alt text](image-4.png)
+
+Copy the token you copied into the **value** box. Once done you should see this:
+
+![alt text](image-5.png)
+
+Next press the **Close** or `x` button on the top right of the **'available authorizations'** box. Congratulations you are now succesfully authenticated to access information on the API.
+
+### Fetching records
+Navigate to any endpoint on the API, for example you can go to the **Asteroids** section:
+
+![alt text](image-6.png)
+
+Navigate to the **'Get all asteroids'** endpoint and press it.
+
+Once you have done so, you should see a **Try it out** button on the top right of the endpoint panel.
+
+![alt text](image-7.png)
+
+When the **Try it out** button is pressed an **Execute** button should appear at the bottom of the endpoint panel. Scroll down until you find that **Execute** button
+
+![alt text](image-8.png)
+
+Once pressed, you should be returned with a **count** of asteroid records on the API and a **list** of the records too. If there are no asteroid records you will be returned with a message saying `No asteroids found`
+
+![alt text](image-9.png)
+
+
+
 ## How to setup Development environment </>
 
 ### 1. Setup - Docker 🐳
