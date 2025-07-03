@@ -13,9 +13,13 @@
 - ⚠️ The project is under very active development.
 - ⚠️ Expect bugs and breaking changes.
 
-## Production REST API on Render 🌐
+## Try It Out
 
-https://celestidb.onrender.com/api-docs
+Have a wee play around on [celestiDB](https://celestidb.onrender.com/api-docs), and sign in with the following credentials:
+
+| Email       | Password    |
+| ----------- | ----------- |
+| john.doe@example.com     | password123   |
 
 ## How to setup Development environment </>
 
