@@ -138,14 +138,14 @@ const getPlanets = async (req, res) => {
     const amount = req.query.amount
 
     // Apply filtering, sorting and pagination to planet model
-    const planets = await planetRepository.findAll({
-      select: selectObject,
+    const planets = await planetRepository.findAll(
+      selectObject,
       filters,
       sortBy,
       sortOrder,
       page,
       amount
-    });
+    );
 
     if (planets.length === 0) {
       return res.status(404).json({

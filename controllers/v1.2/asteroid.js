@@ -90,14 +90,14 @@ const getAsteroids = async (req, res) => {
     const amount = req.query.amount
 
     // Apply filtering, sorting and pagination to asteroid model
-    const asteroids = await asteroidRepository.findAll({
-      select: selectObject,
+    const asteroids = await asteroidRepository.findAll(
+      selectObject,
       filters,
       sortBy,
       sortOrder,
       page,
       amount
-    });
+    );
 
     if (asteroids.length === 0) {
       return res.status(404).json({

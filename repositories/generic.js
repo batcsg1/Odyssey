@@ -34,14 +34,14 @@ class Repository {
    * @param {number} amount - Number of results per page
    * @returns {Promise<Object>} - An array of matching records
    */
-  async findAll({
+  async findAll(
     select = {}, 
     filters = {}, 
     sortBy = "id", 
     sortOrder = "asc", 
     page = 1, 
     amount = 25 
-  } = {}) {
+  ) {
     const query = {
       take: Number(amount),
       skip: (Number(page) - 1) * Number(amount),

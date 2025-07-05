@@ -85,14 +85,14 @@ const getMeteorites = async (req, res) => {
     const amount = req.query.amount
 
     // Apply filtering, sorting and pagination to meteorite model
-    const meteorites = await meteoriteRepository.findAll({
-      select: selectObject,
+    const meteorites = await meteoriteRepository.findAll(
+      selectObject,
       filters,
       sortBy,
       sortOrder,
       page,
       amount
-    });
+    );
 
     if (meteorites.length === 0) {
       return res.status(404).json({

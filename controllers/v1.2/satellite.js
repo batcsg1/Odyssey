@@ -109,14 +109,14 @@ const getSatellites = async (req, res) => {
     const amount = req.query.amount
 
     // Apply filtering, sorting and pagination to satellite model
-    const satellites = await satelliteRepository.findAll({
-      select: selectObject,
+    const satellites = await satelliteRepository.findAll(
+      selectObject,
       filters,
       sortBy,
       sortOrder,
       page,
       amount
-    });
+    );
 
     if (satellites.length === 0) {
       return res.status(404).json({

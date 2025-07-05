@@ -95,14 +95,14 @@ const getUsers = async (req, res) => {
         const amount = req.query.amount
 
         // Apply filtering, sorting and pagination to user model
-        let users = await userRepository.findAll({
-            select: selectObject,
+        let users = await userRepository.findAll(
+            selectObject,
             filters,
             sortBy,
             sortOrder,
             page,
             amount
-        });
+        );
 
         // Filter the users based on current users role
 
