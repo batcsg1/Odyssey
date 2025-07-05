@@ -346,7 +346,7 @@
  * @swagger
  * /api/v1.2/asteroids:
  *   head:
- *     summary: Verify any asteroids exist
+ *     summary: Verify if any asteroids exist
  *     tags:
  *       - Asteroid
  *     security:
