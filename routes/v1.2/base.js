@@ -17,11 +17,11 @@ import options from "../../middleware/options/general.js";
  * @returns {express.Router} Return the configured router to be passed on to app.js
  */
 
-const createRouter = (controller, getLimit, cudLimit, optionsLimit, postValidator, authorisation, putValidator, patchValidator) => {
+const createRouter = (controller, getLimit, headLimit, cudLimit, optionsLimit, postValidator, authorisation, putValidator, patchValidator) => {
     const router = express.Router();
     
-    router.head("/", getLimit(), controller.head);
-    router.head("/:id", getLimit(), controller.headById);
+    router.head("/", headLimit(), controller.head);
+    router.head("/:id", headLimit(), controller.headById);
     router.get("/", getLimit(), controller.get);
     router.get("/:id", getLimit(), controller.getById);
     router.post("/", cudLimit(), postValidator, authorisation, controller.create);
