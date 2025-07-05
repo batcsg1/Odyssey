@@ -35,21 +35,25 @@ class Repository {
    * @returns {Promise<Object>} - An array of matching records
    */
   async findAll(
-    select = {}, 
-    filters = {}, 
-    sortBy = "id", 
-    sortOrder = "asc", 
-    page = 1, 
-    amount = 25 
+    select = {},
+    filters = {},
+    sortBy = "id",
+    sortOrder = "asc",
+    page = 1,
+    amount = 25
   ) {
     const query = {
       take: Number(amount),
       skip: (Number(page) - 1) * Number(amount),
       orderBy: {
         [sortBy]: sortOrder, // Sort by the specified column and order
-      },
-      select
+      }
     };
+
+    // Only add select if it's not empty
+    if (Object.keys(select).length > 0) {
+      query.select = select;
+    }
 
     if (Object.keys(filters).length > 0) {
       query.where = {};

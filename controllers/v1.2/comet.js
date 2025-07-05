@@ -222,11 +222,16 @@ const deleteComet = async (req, res) => {
 const headComets = async (req, res) => {
   try {
     const comets = await cometRepository.findAll();
+
+    // Set custom header with count before responding
+    res.set("X-Comet-Count", comets.length);
+
     if (comets.length === 0) {
       return res.sendStatus(404);
     }
     return res.sendStatus(204);
   } catch (err) {
+    console.log(err)
     return res.sendStatus(500);
   }
 };
@@ -240,6 +245,10 @@ const headComets = async (req, res) => {
 const headComet = async (req, res) => {
   try {
     const comet = await cometRepository.findById(req.params.id);
+
+    // Set custom header to check if comet exists
+    res.set("X-Comet-Exists", comet ? "true" : "false");
+
     if (!comet) {
       return res.sendStatus(404);
     }
