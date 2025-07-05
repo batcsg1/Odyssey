@@ -35,7 +35,7 @@ describe("Meteor Showers", () => {
     it("should reject missing token", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1.1/meteor_showers");
+            .get("/api/v1.2/meteor_showers");
 
         chai.expect(res.body.message).to.be.equal("No token provided");
     });
@@ -43,7 +43,7 @@ describe("Meteor Showers", () => {
     it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/auth/login")
+            .post("/api/v1.2/auth/login")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 emailAddress: "john.doe@example.com",
@@ -62,7 +62,7 @@ describe("Meteor Showers", () => {
     it("should create a valid shower", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/meteor_showers")
+            .post("/api/v1.2/meteor_showers")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Orionids",
@@ -86,7 +86,7 @@ describe("Meteor Showers", () => {
     it("should paginate for 1 shower", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1.1/meteor_showers?page=1&amount=1")
+            .get("/api/v1.2/meteor_showers?page=1&amount=1")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.count).to.be.equal(1);
@@ -95,7 +95,7 @@ describe("Meteor Showers", () => {
     it("should reject creating another shower part of the same constellation", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/meteor_showers")
+            .post("/api/v1.2/meteor_showers")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Leonids",
@@ -120,7 +120,7 @@ describe("Meteor Showers", () => {
     it("should reject invalid initial date", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/meteor_showers")
+            .post("/api/v1.2/meteor_showers")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Leonids",
@@ -144,7 +144,7 @@ describe("Meteor Showers", () => {
     it("should reject missing constellation ID", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/meteor_showers")
+            .post("/api/v1.2/meteor_showers")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Orionids",
@@ -167,7 +167,7 @@ describe("Meteor Showers", () => {
     it("should reject non-string name", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/meteor_showers")
+            .post("/api/v1.2/meteor_showers")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 768,
@@ -189,7 +189,7 @@ describe("Meteor Showers", () => {
     it("should reject float next year", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/meteor_showers")
+            .post("/api/v1.2/meteor_showers")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Orionids",
@@ -211,7 +211,7 @@ describe("Meteor Showers", () => {
     it("should reject string next year", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/meteor_showers")
+            .post("/api/v1.2/meteor_showers")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Orionids",
@@ -234,7 +234,7 @@ describe("Meteor Showers", () => {
     it("should retrieve all showers", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1.1/meteor_showers")
+            .get("/api/v1.2/meteor_showers")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
@@ -243,7 +243,7 @@ describe("Meteor Showers", () => {
     it("should retrieve a shower by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1.1/meteor_showers/${meteorShowerId}`)
+            .get(`/api/v1.2/meteor_showers/${meteorShowerId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data.name).to.be.equal("Orionids");
@@ -253,7 +253,7 @@ describe("Meteor Showers", () => {
     it("should filter showers by the next year of occurance", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1.1/meteor_showers?nextYear=2025")
+            .get("/api/v1.2/meteor_showers?nextYear=2025")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].nextYear).to.be.equal(2025);
@@ -262,7 +262,7 @@ describe("Meteor Showers", () => {
     it("should filter showers by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1.1/meteor_showers?name=Orionids")
+            .get("/api/v1.2/meteor_showers?name=Orionids")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Orionids");
@@ -271,7 +271,7 @@ describe("Meteor Showers", () => {
     it("should sort showers by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1.1/meteor_showers?sortBy=name")
+            .get("/api/v1.2/meteor_showers?sortBy=name")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Orionids");
@@ -280,7 +280,7 @@ describe("Meteor Showers", () => {
     it("should update a valid shower", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1.1/meteor_showers/${meteorShowerId}`)
+            .put(`/api/v1.2/meteor_showers/${meteorShowerId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Orionids",
@@ -306,7 +306,7 @@ describe("Meteor Showers", () => {
     it("should update one field", async () => {
         const res = await chai
             .request(app)
-            .patch(`/api/v1.1/meteor_showers/${meteorShowerId}`)
+            .patch(`/api/v1.2/meteor_showers/${meteorShowerId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 frequency: 40
@@ -322,7 +322,7 @@ describe("Meteor Showers", () => {
     it("should delete a shower by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1.1/meteor_showers/${meteorShowerId}`)
+            .delete(`/api/v1.2/meteor_showers/${meteorShowerId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai

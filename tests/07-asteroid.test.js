@@ -21,7 +21,7 @@ describe("Asteroids", () => {
     it("should reject missing token", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1.1/asteroids");
+            .get("/api/v1.2/asteroids");
 
         chai.expect(res.body.message).to.be.equal("No token provided");
     });
@@ -29,7 +29,7 @@ describe("Asteroids", () => {
     it("should login an admin user, return a token, and not have X-Powered-By header", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/auth/login")
+            .post("/api/v1.2/auth/login")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 emailAddress: "john.doe@example.com",
@@ -48,7 +48,7 @@ describe("Asteroids", () => {
     it("should create a valid asteroid", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/asteroids")
+            .post("/api/v1.2/asteroids")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Vesta",
@@ -73,7 +73,7 @@ describe("Asteroids", () => {
     it("should create another valid asteroid", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/asteroids")
+            .post("/api/v1.2/asteroids")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Pallas",
@@ -98,7 +98,7 @@ describe("Asteroids", () => {
     it("should paginate for 2 asteroids", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1.1/asteroids?page=1&amount=2")
+            .get("/api/v1.2/asteroids?page=1&amount=2")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.count).to.be.equal(2);
@@ -107,7 +107,7 @@ describe("Asteroids", () => {
     it("should reject missing star ID", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/asteroids")
+            .post("/api/v1.2/asteroids")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Pallas",
@@ -131,7 +131,7 @@ describe("Asteroids", () => {
     it("should reject non-string name", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/asteroids")
+            .post("/api/v1.2/asteroids")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: 289,
@@ -154,7 +154,7 @@ describe("Asteroids", () => {
     it("should reject invalid type", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/asteroids")
+            .post("/api/v1.2/asteroids")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Pallas",
@@ -177,7 +177,7 @@ describe("Asteroids", () => {
     it("should reject non-numeric mass", async () => {
         const res = await chai
             .request(app)
-            .post("/api/v1.1/asteroids")
+            .post("/api/v1.2/asteroids")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Pallas",
@@ -200,7 +200,7 @@ describe("Asteroids", () => {
     it("should retrieve all asteroids", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1.1/asteroids")
+            .get("/api/v1.2/asteroids")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data).to.be.an("array");
@@ -209,7 +209,7 @@ describe("Asteroids", () => {
     it("should retrieve a asteroid by ID", async () => {
         const res = await chai
             .request(app)
-            .get(`/api/v1.1/asteroids/${asteroidId}`)
+            .get(`/api/v1.2/asteroids/${asteroidId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data.name).to.be.equal("Vesta");
@@ -218,7 +218,7 @@ describe("Asteroids", () => {
     it("should filter asteroids by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1.1/asteroids?name=Pallas")
+            .get("/api/v1.2/asteroids?name=Pallas")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Pallas");
@@ -227,7 +227,7 @@ describe("Asteroids", () => {
     it("should filter asteroids by type", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1.1/asteroids?type=STONY")
+            .get("/api/v1.2/asteroids?type=STONY")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].type).to.be.equal("STONY");
@@ -236,7 +236,7 @@ describe("Asteroids", () => {
     it("should sort asteroids by name", async () => {
         const res = await chai
             .request(app)
-            .get("/api/v1.1/asteroids?sortBy=name")
+            .get("/api/v1.2/asteroids?sortBy=name")
             .set("Authorization", `Bearer ${token}`);
 
         chai.expect(res.body.data[0].name).to.be.equal("Pallas");
@@ -245,7 +245,7 @@ describe("Asteroids", () => {
     it("should reject non-numeric diameter during update", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1.1/asteroids/${asteroidId}`)
+            .put(`/api/v1.2/asteroids/${asteroidId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Pallas",
@@ -268,7 +268,7 @@ describe("Asteroids", () => {
     it("should update a valid asteroid", async () => {
         const res = await chai
             .request(app)
-            .put(`/api/v1.1/asteroids/${asteroidId}`)
+            .put(`/api/v1.2/asteroids/${asteroidId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 name: "Updated Vesta",
@@ -295,7 +295,7 @@ describe("Asteroids", () => {
     it("should update one asteroid field", async () => {
         const res = await chai
             .request(app)
-            .patch(`/api/v1.1/asteroids/${asteroidId}`)
+            .patch(`/api/v1.2/asteroids/${asteroidId}`)
             .set("Authorization", `Bearer ${token}`)
             .send({
                 density: 3.5
@@ -311,7 +311,7 @@ describe("Asteroids", () => {
     it("should delete an asteroid by ID", async () => {
         const res = await chai
             .request(app)
-            .delete(`/api/v1.1/asteroids/${asteroidId}`)
+            .delete(`/api/v1.2/asteroids/${asteroidId}`)
             .set("Authorization", `Bearer ${token}`);
 
         chai
