@@ -19,7 +19,9 @@ import options from "../../middleware/options/general.js";
 
 const createRouter = (controller, getLimit, cudLimit, optionsLimit, postValidator, authorisation, putValidator, patchValidator) => {
     const router = express.Router();
-
+    
+    router.head("/", controller.head);
+    router.head("/:id", controller.headById);
     router.get("/", getLimit(), controller.get);
     router.get("/:id", getLimit(), controller.getById);
     router.post("/", cudLimit(), postValidator, authorisation, controller.create);
@@ -27,8 +29,6 @@ const createRouter = (controller, getLimit, cudLimit, optionsLimit, postValidato
     router.patch("/:id", cudLimit(), patchValidator, authorisation, controller.update);
     router.delete("/:id", cudLimit(), authorisation, controller.delete);
     router.options("/", optionsLimit(), options);
-    router.head("/", controller.head);
-    router.head("/:id", controller.headById);
 
     return router;
 };

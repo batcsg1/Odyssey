@@ -26,7 +26,7 @@ const selectObject = {
  */
 const createConstellation = async (req, res) => {
   try {
-    
+
     // New constellation to create
     const newConstellation = await constellationRepository.create(req.body);
 
@@ -204,13 +204,42 @@ const deleteConstellation = async (req, res) => {
  */
 const headConstellations = async (req, res) => {
   try {
-    const constellations = await constellationRepository.findAll();
-    if (constellations.length === 0) {
-      return res.sendStatus(404);
+    
+    // Filtering query parameters
+    const filters = {
+      name: req.query.name || undefined,
+      shape: req.query.shape || undefined,
+      area: req.query.area || undefined,
+      abbreviation: req.query.abbreviation || undefined,
     }
-    return res.sendStatus(204);
+    
+    // Sort query parameters
+    const sortBy = req.query.sortBy || "id";
+    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+    
+    // Pagination query parameters
+    const page = req.query.page
+    const amount = req.query.amount
+    
+    const constellations = await constellationRepository.findAll(
+      selectObject,
+      filters,
+      sortBy,
+      sortOrder,
+      page,
+      amount
+    );
+    
+    // Set custom header with count before responding
+    res.set("X-Constellation-Count", constellations.length);
+
+    if (constellations.length === 0) {
+      return res.status(404).end();
+    }
+    return res.status(204).end();
   } catch (err) {
-    return res.sendStatus(500);
+    console.error("❌ Error in headConstellations:", err); // Add this
+    return res.status(500).end();
   }
 };
 
@@ -223,12 +252,16 @@ const headConstellations = async (req, res) => {
 const headConstellation = async (req, res) => {
   try {
     const constellation = await constellationRepository.findById(req.params.id);
+
+    // Set custom header to check if constellation exists
+    res.set("X-Constellation-Exists", constellation ? "true" : "false");
+
     if (!constellation) {
-      return res.sendStatus(404);
+      return res.status(404).end();
     }
-    return res.sendStatus(204);
+    return res.status(204).end();
   } catch (err) {
-    return res.sendStatus(500);
+    return res.status(500).end();
   }
 };
 
