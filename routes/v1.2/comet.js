@@ -14,7 +14,7 @@ import {
   deleteComet,
   headComet,
   headComets
-} from "../../controllers/v1.1/comet.js";  // Controller functions for comet
+} from "../../controllers/v1.2/comet.js";  // Controller functions for comet
 
 // Import the POST and PUT validation middleware
 import {

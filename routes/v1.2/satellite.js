@@ -14,7 +14,7 @@ import {
   deleteSatellite,
   headSatellite,
   headSatellites
-} from "../../controllers/v1.1/satellite.js";
+} from "../../controllers/v1.2/satellite.js";
 
 // Import the POST and PUT validation middleware
 import {

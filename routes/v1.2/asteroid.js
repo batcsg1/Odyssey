@@ -14,7 +14,7 @@ import {
   deleteAsteroid,
   headAsteroid,
   headAsteroids
-} from "../../controllers/v1.1/asteroid.js";
+} from "../../controllers/v1.2/asteroid.js";
 
 // Import the POST and PUT validation middleware
 import {

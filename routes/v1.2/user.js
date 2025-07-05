@@ -14,7 +14,7 @@ import {
   deleteUser,
   headUser,
   headUsers
-} from "../../controllers/v1.1/user.js";
+} from "../../controllers/v1.2/user.js";
 
 // Import the POST and PUT validation middleware
 import {
