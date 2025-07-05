@@ -29,7 +29,14 @@
 | 📚 Validation Middleware | Joi-based request body validation per entity                 |
 | 🔄 Rate Limiting         | Limit requests to prevent DOS or DDOS attacks etc.                        |
 
+## Rate Limiting
 
+| Request Type | Limit                |
+|--------------|----------------------|
+| **`GET`**          | **20** requests per **2** minutes |
+| **`POST/PUT/PATCH/DELETE`** | **10** requests per minute |
+| **`OPTIONS`**      | **30** requests per **3** minutes | 
+| **`HEAD`**        | **60** requests per **2** minutes |
 
 ## Try It Out
 
