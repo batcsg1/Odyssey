@@ -13,6 +13,24 @@
 - ⚠️ The project is under very active development.
 - ⚠️ Expect bugs and breaking changes.
 
+## 🚀 Features
+
+| Feature                  | Description                                                  |
+|--------------------------|--------------------------------------------------------------|
+| 📄 CRUD Operations       | Create, Read, Update, Delete data records across 10 different entities           |
+| 🔐 Authentication    | Secure login using a bearer token                      |
+| 🧪 API Testing           | Mocha-based test suite for API endpoints and data validation     |
+| ⚙️ Database Access            | Interacting with the API's PostgreSQL database using Prisma            |
+| 🐳 Dockerized Setup      | Easy-to-run development and testing environments             |
+| 👤 Demo User             | Preconfigured account for testing API access                |
+| 🧭 Swagger UI            | Interactive UI for accessing celestiDB                        |
+| 🛰️ Multiple entities | Stars, planets, asteroids, comets, etc.          |
+| 📊 Prisma Studio         | Visual database browser for managing data within local development environment                  |
+| 📚 Validation Middleware | Joi-based request body validation per entity                 |
+| 🔄 Rate Limiting         | Limit requests to prevent DOS or DDOS attacks etc.                        |
+
+
+
 ## Try It Out
 
 Have a wee play around on [celestiDB](https://celestidb.onrender.com/api-docs), and sign in with the following credentials:
