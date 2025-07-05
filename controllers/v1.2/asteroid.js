@@ -90,14 +90,14 @@ const getAsteroids = async (req, res) => {
     const amount = req.query.amount
 
     // Apply filtering, sorting and pagination to asteroid model
-    const asteroids = await asteroidRepository.findAll(
-      selectObject,
+    const asteroids = await asteroidRepository.findAll({
+      select: selectObject,
       filters,
       sortBy,
       sortOrder,
       page,
       amount
-    );
+    });
 
     if (asteroids.length === 0) {
       return res.status(404).json({
@@ -197,6 +197,10 @@ const deleteAsteroid = async (req, res) => {
 const headAsteroids = async (req, res) => {
   try {
     const asteroids = await asteroidRepository.findAll();
+
+    // Set custom header with count before responding
+    res.set("X-Asteroid-Count", asteroids.length);
+
     if (asteroids.length === 0) {
       return res.sendStatus(404);
     }
@@ -215,6 +219,10 @@ const headAsteroids = async (req, res) => {
 const headAsteroid = async (req, res) => {
   try {
     const asteroid = await asteroidRepository.findById(req.params.id);
+    
+    // Set custom header to check if asteroid exists
+    res.set("X-Asteroid-Exists", asteroid ? "true" : "false");
+    
     if (!asteroid) {
       return res.sendStatus(404);
     }

@@ -109,14 +109,14 @@ const getSatellites = async (req, res) => {
     const amount = req.query.amount
 
     // Apply filtering, sorting and pagination to satellite model
-    const satellites = await satelliteRepository.findAll(
-      selectObject,
+    const satellites = await satelliteRepository.findAll({
+      select: selectObject,
       filters,
       sortBy,
       sortOrder,
       page,
       amount
-    );
+    });
 
     if (satellites.length === 0) {
       return res.status(404).json({
@@ -241,6 +241,10 @@ const deleteSatellite = async (req, res) => {
 const headSatellites = async (req, res) => {
   try {
     const satellites = await satelliteRepository.findAll();
+
+    // Set custom header with count before responding
+    res.set("X-Satellites-Count", satellites.length);
+
     if (satellites.length === 0) {
       return res.sendStatus(404);
     }
@@ -259,6 +263,10 @@ const headSatellites = async (req, res) => {
 const headSatellite = async (req, res) => {
   try {
     const satellite = await satelliteRepository.findById(req.params.id);
+
+    // Set custom header to check if satellite exists
+    res.set("X-Satellite-Exists", satellite ? "true" : "false");
+
     if (!satellite) {
       return res.sendStatus(404);
     }

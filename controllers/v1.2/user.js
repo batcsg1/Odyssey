@@ -94,15 +94,15 @@ const getUsers = async (req, res) => {
         const page = req.query.page
         const amount = req.query.amount
 
-        // Apply filtering, sorting and pagination to meteor shower model
-        let users = await userRepository.findAll(
-            selectObject,
+        // Apply filtering, sorting and pagination to user model
+        let users = await userRepository.findAll({
+            select: selectObject,
             filters,
             sortBy,
             sortOrder,
             page,
             amount
-        );
+        });
 
         // Filter the users based on current users role
 
@@ -277,7 +277,7 @@ const deleteUser = async (req, res) => {
 
         // User to delete
         const user = await userRepository.findById(req.params.id, selectObject);
-        
+
         if (!user) {
             return res.status(404).json({
                 message: `No user with the id: ${req.params.id} found`,
@@ -339,15 +339,19 @@ const deleteUser = async (req, res) => {
  * @returns {object} - Sends response status
  */
 const headUsers = async (req, res) => {
-  try {
-    const users = await userRepository.findAll();
-    if (users.length === 0) {
-      return res.sendStatus(404);
+    try {
+        const users = await userRepository.findAll();
+
+        // Set custom header with count before responding
+        res.set("X-Users-Count", users.length);
+
+        if (users.length === 0) {
+            return res.sendStatus(404);
+        }
+        return res.sendStatus(204);
+    } catch (err) {
+        return res.sendStatus(500);
     }
-    return res.sendStatus(204);
-  } catch (err) {
-    return res.sendStatus(500);
-  }
 };
 
 /**
@@ -357,15 +361,19 @@ const headUsers = async (req, res) => {
  * @returns {object} - Sends response status
  */
 const headUser = async (req, res) => {
-  try {
-    const user = await userRepository.findById(req.params.id);
-    if (!user) {
-      return res.sendStatus(404);
+    try {
+        const user = await userRepository.findById(req.params.id);
+
+        // Set custom header to check if user exists
+        res.set("X-User-Exists", user ? "true" : "false");
+
+        if (!user) {
+            return res.sendStatus(404);
+        }
+        return res.sendStatus(200);
+    } catch (err) {
+        return res.sendStatus(500);
     }
-    return res.sendStatus(200);
-  } catch (err) {
-    return res.sendStatus(500);
-  }
 };
 
 export {

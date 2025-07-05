@@ -229,7 +229,12 @@ const deleteGalaxy = async (req, res) => {
  */
 const headGalaxies = async (req, res) => {
   try {
-    const galaxies = await galaxyRepository.findAll();
+    const galaxies = await galaxyRepository.findAll(
+    );
+
+    // Set custom header with count before responding
+    res.set("X-Galaxy-Count", galaxies.length);
+
     if (galaxies.length === 0) {
       return res.sendStatus(404);
     }
@@ -248,6 +253,10 @@ const headGalaxies = async (req, res) => {
 const headGalaxy = async (req, res) => {
   try {
     const galaxy = await galaxyRepository.findById(req.params.id);
+
+    // Set custom header to check if galaxy exists
+    res.set("X-Galaxy-Exists", galaxy ? "true" : "false");
+
     if (!galaxy) {
       return res.sendStatus(404);
     }

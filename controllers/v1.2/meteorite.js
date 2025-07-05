@@ -85,14 +85,14 @@ const getMeteorites = async (req, res) => {
     const amount = req.query.amount
 
     // Apply filtering, sorting and pagination to meteorite model
-    const meteorites = await meteoriteRepository.findAll(
-      selectObject,
+    const meteorites = await meteoriteRepository.findAll({
+      select: selectObject,
       filters,
       sortBy,
       sortOrder,
       page,
       amount
-    );
+    });
 
     if (meteorites.length === 0) {
       return res.status(404).json({
@@ -217,6 +217,10 @@ const deleteMeteorite = async (req, res) => {
 const headMeteorites = async (req, res) => {
   try {
     const meteorites = await meteoriteRepository.findAll();
+
+    // Set custom header with count before responding
+    res.set("X-Meteorite-Count", meteorites.length);
+
     if (meteorites.length === 0) {
       return res.sendStatus(404);
     }
@@ -235,6 +239,10 @@ const headMeteorites = async (req, res) => {
 const headMeteorite = async (req, res) => {
   try {
     const meteorite = await meteoriteRepository.findById(req.params.id);
+
+    // Set custom header to check if meteorite exists
+    res.set("X-Meteorite-Exists", meteorite ? "true" : "false");
+
     if (!meteorite) {
       return res.sendStatus(404);
     }

@@ -138,14 +138,14 @@ const getPlanets = async (req, res) => {
     const amount = req.query.amount
 
     // Apply filtering, sorting and pagination to planet model
-    const planets = await planetRepository.findAll(
-      selectObject,
+    const planets = await planetRepository.findAll({
+      select: selectObject,
       filters,
       sortBy,
       sortOrder,
       page,
       amount
-    );
+    });
 
     if (planets.length === 0) {
       return res.status(404).json({
@@ -302,6 +302,10 @@ const deletePlanet = async (req, res) => {
 const headPlanets = async (req, res) => {
   try {
     const planets = await planetRepository.findAll();
+
+    // Set custom header with count before responding
+    res.set("X-Planets-Count", planets.length);
+
     if (planets.length === 0) {
       return res.sendStatus(404);
     }
@@ -320,6 +324,10 @@ const headPlanets = async (req, res) => {
 const headPlanet = async (req, res) => {
   try {
     const planet = await planetRepository.findById(req.params.id);
+
+    // Set custom header to check if planet exists
+    res.set("X-Planet-Exists", planet ? "true" : "false");
+
     if (!planet) {
       return res.sendStatus(404);
     }

@@ -105,14 +105,14 @@ const getStars = async (req, res) => {
     const amount = req.query.amount
 
     // Apply filtering, sorting and pagination to star model
-    const stars = await starRepository.findAll(
-      selectObject,
+    const stars = await starRepository.findAll({
+      select: selectObject,
       filters,
       sortBy,
       sortOrder,
       page,
       amount
-    );
+    });
 
     if (stars.length === 0) {
       return res.status(404).json({
@@ -258,6 +258,10 @@ const deleteStar = async (req, res) => {
 const headStars = async (req, res) => {
   try {
     const stars = await starRepository.findAll();
+
+    // Set custom header with count before responding
+    res.set("X-Stars-Count", stars.length);
+
     if (stars.length === 0) {
       return res.sendStatus(404);
     }
@@ -276,6 +280,10 @@ const headStars = async (req, res) => {
 const headStar = async (req, res) => {
   try {
     const star = await starRepository.findById(req.params.id);
+
+    // Set custom header to check if star exists
+    res.set("X-Star-Exists", star ? "true" : "false");
+
     if (!star) {
       return res.sendStatus(404);
     }
