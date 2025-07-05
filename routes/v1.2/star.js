@@ -27,8 +27,12 @@ import {
 import authorisation from "../../middleware/auth/authorisation.js"
 
 // Import the rate limiting middleware
-import { cudLimit, getLimit, optionsLimit } from "../../middleware/limiting/limit.js";
-
+import { 
+  getLimit,                                                                            
+  headLimit,                                                              
+  cudLimit,
+  optionsLimit
+} from "../../middleware/limiting/limit.js";
 /**
  * Controller object for the star model
  * @type {Object}
@@ -57,6 +61,7 @@ const starController = {
 const starRouter = createRouter(
   starController,
   getLimit,
+  headLimit,
   cudLimit,
   optionsLimit,
   validatePostStar,
