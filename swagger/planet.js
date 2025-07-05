@@ -96,7 +96,7 @@
 
 /**
  * @swagger
- * /api/v1.1/planets:
+ * /api/v1.2/planets:
  *   post:
  *     summary: Create a new planet
  *     tags:
@@ -120,7 +120,7 @@
 
 /**
  * @swagger
- * /api/v1.1/planets:
+ * /api/v1.2/planets:
  *   get:
  *     summary: Get all planets
  *     tags:
@@ -275,7 +275,7 @@
 
 /**
  * @swagger
- * /api/v1.1/planets/{id}:
+ * /api/v1.2/planets/{id}:
  *   get:
  *     summary: Get a planet by id
  *     tags:
@@ -300,7 +300,7 @@
 
 /**
  * @swagger
- * /api/v1.1/planets/{id}:
+ * /api/v1.2/planets/{id}:
  *   put:
  *     summary: Update a planet by id
  *     tags:
@@ -331,7 +331,7 @@
 
 /**
  * @swagger
- * /api/v1.1/planets/{id}:
+ * /api/v1.2/planets/{id}:
  *   patch:
  *     summary: Partially update a planet by id
  *     tags:
@@ -362,7 +362,7 @@
 
 /**
  * @swagger
- * /api/v1.1/planets/{id}:
+ * /api/v1.2/planets/{id}:
  *   delete:
  *     summary: Delete a planet by id
  *     tags:
@@ -387,7 +387,7 @@
 
 /**
  * @swagger
- * /api/v1.1/planets:
+ * /api/v1.2/planets:
  *   options:
  *     summary: Get allowed HTTP methods for planets route
  *     tags:
@@ -422,7 +422,7 @@
 
 /**
  * @swagger
- * /api/v1.1/planets:
+ * /api/v1.2/planets:
  *   head:
  *     summary: Verify if any planets exist
  *     tags:
@@ -440,7 +440,7 @@
 
 /**
  * @swagger
- * /api/v1.1/planets/{id}:
+ * /api/v1.2/planets/{id}:
  *   head:
  *     summary: Verify planet existence by ID
  *     tags:

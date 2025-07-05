@@ -40,7 +40,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteorites:
+ * /api/v1.2/meteorites:
  *   post:
  *     summary: Create a new meteorite
  *     tags:
@@ -64,7 +64,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteorites:
+ * /api/v1.2/meteorites:
  *   get:
  *     summary: Get all meteorites
  *     tags:
@@ -144,7 +144,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteorites/{id}:
+ * /api/v1.2/meteorites/{id}:
  *   get:
  *     summary: Get a meteorite by id
  *     tags:
@@ -169,7 +169,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteorites/{id}:
+ * /api/v1.2/meteorites/{id}:
  *   put:
  *     summary: Update a meteorite by id
  *     tags:
@@ -200,7 +200,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteorites/{id}:
+ * /api/v1.2/meteorites/{id}:
  *   patch:
  *     summary: Partially update a meteorite by id
  *     tags:
@@ -231,7 +231,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteorites/{id}:
+ * /api/v1.2/meteorites/{id}:
  *   delete:
  *     summary: Delete a meteorite by id
  *     tags:
@@ -256,7 +256,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteorites:
+ * /api/v1.2/meteorites:
  *   options:
  *     summary: Get allowed HTTP methods for meteorites route
  *     tags:
@@ -291,7 +291,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteorites:
+ * /api/v1.2/meteorites:
  *   head:
  *     summary: Verify if any meteorites exist
  *     tags:
@@ -309,7 +309,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteorites/{id}:
+ * /api/v1.2/meteorites/{id}:
  *   head:
  *     summary: Verify meteorite existence by ID
  *     tags:

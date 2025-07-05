@@ -63,7 +63,7 @@
 
 /**
  * @swagger
- * /api/v1.1/stars:
+ * /api/v1.2/stars:
  *   post:
  *     summary: Create a new star
  *     tags:
@@ -87,7 +87,7 @@
 
 /**
  * @swagger
- * /api/v1.1/stars:
+ * /api/v1.2/stars:
  *   get:
  *     summary: Get all stars
  *     tags:
@@ -197,7 +197,7 @@
 
 /**
  * @swagger
- * /api/v1.1/stars/{id}:
+ * /api/v1.2/stars/{id}:
  *   get:
  *     summary: Get a star by id
  *     tags:
@@ -222,7 +222,7 @@
 
 /**
  * @swagger
- * /api/v1.1/stars/{id}:
+ * /api/v1.2/stars/{id}:
  *   put:
  *     summary: Update a star by id
  *     tags:
@@ -253,7 +253,7 @@
 
 /**
  * @swagger
- * /api/v1.1/stars/{id}:
+ * /api/v1.2/stars/{id}:
  *   patch:
  *     summary: Partially update a star by id
  *     tags:
@@ -284,7 +284,7 @@
 
 /**
  * @swagger
- * /api/v1.1/stars/{id}:
+ * /api/v1.2/stars/{id}:
  *   delete:
  *     summary: Delete a star by id
  *     tags:
@@ -309,7 +309,7 @@
 
 /**
  * @swagger
- * /api/v1.1/stars:
+ * /api/v1.2/stars:
  *   options:
  *     summary: Get allowed HTTP methods for stars route
  *     tags:
@@ -344,7 +344,7 @@
 
 /**
  * @swagger
- * /api/v1.1/stars:
+ * /api/v1.2/stars:
  *   head:
  *     summary: Verify if any stars exist
  *     tags:
@@ -362,7 +362,7 @@
 
 /**
  * @swagger
- * /api/v1.1/stars/{id}:
+ * /api/v1.2/stars/{id}:
  *   head:
  *     summary: Verify star existence by ID
  *     tags:

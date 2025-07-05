@@ -64,7 +64,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteor_showers:
+ * /api/v1.2/meteor_showers:
  *   post:
  *     summary: Create a new meteor shower
  *     tags:
@@ -88,7 +88,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteor_showers:
+ * /api/v1.2/meteor_showers:
  *   get:
  *     summary: Get all meteor showers
  *     tags:
@@ -172,7 +172,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteor_showers/{id}:
+ * /api/v1.2/meteor_showers/{id}:
  *   get:
  *     summary: Get a meteor shower by id
  *     tags:
@@ -197,7 +197,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteor_showers/{id}:
+ * /api/v1.2/meteor_showers/{id}:
  *   put:
  *     summary: Update a meteor shower by id
  *     tags:
@@ -228,7 +228,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteor_showers/{id}:
+ * /api/v1.2/meteor_showers/{id}:
  *   patch:
  *     summary: Partially update a meteor shower by id
  *     tags:
@@ -259,7 +259,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteor_showers/{id}:
+ * /api/v1.2/meteor_showers/{id}:
  *   delete:
  *     summary: Delete a meteor shower by id
  *     tags:
@@ -284,7 +284,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteor_showers:
+ * /api/v1.2/meteor_showers:
  *   options:
  *     summary: Get allowed HTTP methods for meteor showers route
  *     tags:
@@ -319,7 +319,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteor_showers:
+ * /api/v1.2/meteor_showers:
  *   head:
  *     summary: Verify if any meteor showers exist
  *     tags:
@@ -337,7 +337,7 @@
 
 /**
  * @swagger
- * /api/v1.1/meteor_shower/{id}:
+ * /api/v1.2/meteor_shower/{id}:
  *   head:
  *     summary: Verify meteor shower existence by ID
  *     tags:

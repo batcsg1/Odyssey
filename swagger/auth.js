@@ -53,7 +53,7 @@
 
 /**
  * @swagger
- * /api/v1.1/auth/register:
+ * /api/v1.2/auth/register:
  *   post:
  *     summary: Register a new user
  *     tags:
@@ -101,7 +101,7 @@
 
 /**
  * @swagger
- * /api/v1.1/auth/login:
+ * /api/v1.2/auth/login:
  *   post:
  *     summary: Log in an existing user
  *     tags:
@@ -148,7 +148,7 @@
 
 /**
  * @swagger
- * /api/v1.1/auth/logout:
+ * /api/v1.2/auth/logout:
  *   post:
  *     summary: Log out the current user and blacklist their token
  *     tags:

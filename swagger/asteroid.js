@@ -63,7 +63,7 @@
 
 /**
  * @swagger
- * /api/v1.1/asteroids:
+ * /api/v1.2/asteroids:
  *   post:
  *     summary: Create a new asteroid
  *     tags:
@@ -87,7 +87,7 @@
 
 /**
  * @swagger
- * /api/v1.1/asteroids:
+ * /api/v1.2/asteroids:
  *   get:
  *     summary: Get all asteroids
  *     tags:
@@ -197,7 +197,7 @@
 
 /**
  * @swagger
- * /api/v1.1/asteroids/{id}:
+ * /api/v1.2/asteroids/{id}:
  *   get:
  *     summary: Get an asteroid by id
  *     tags:
@@ -222,7 +222,7 @@
 
 /**
  * @swagger
- * /api/v1.1/asteroids/{id}:
+ * /api/v1.2/asteroids/{id}:
  *   put:
  *     summary: Update an asteroid by id
  *     tags:
@@ -253,7 +253,7 @@
 
 /**
  * @swagger
- * /api/v1.1/asteroids/{id}:
+ * /api/v1.2/asteroids/{id}:
  *   patch:
  *     summary: Partially update an asteroid by id
  *     tags:
@@ -284,7 +284,7 @@
 
 /**
  * @swagger
- * /api/v1.1/asteroids/{id}:
+ * /api/v1.2/asteroids/{id}:
  *   delete:
  *     summary: Delete an asteroid by id
  *     tags:
@@ -309,7 +309,7 @@
 
 /**
  * @swagger
- * /api/v1.1/asteroids:
+ * /api/v1.2/asteroids:
  *   options:
  *     summary: Get allowed HTTP methods for asteroids route
  *     tags:
@@ -344,7 +344,7 @@
 
 /**
  * @swagger
- * /api/v1.1/asteroids:
+ * /api/v1.2/asteroids:
  *   head:
  *     summary: Verify any asteroids exist
  *     tags:
@@ -362,7 +362,7 @@
 
 /**
  * @swagger
- * /api/v1.1/asteroids/{id}:
+ * /api/v1.2/asteroids/{id}:
  *   head:
  *     summary: Verify asteroid existence by ID
  *     tags:
