@@ -1,5 +1,5 @@
 const isContentTypeApplicationJSON = (req, res, next) => {
-  if (req.path === "/api/v1.1/auth/logout") {
+  if (req.path === "/api/v1.2/auth/logout") {
     return next(); // skip content-type check on logout
   }
 
