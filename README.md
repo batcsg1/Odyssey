@@ -1,4 +1,8 @@
 <picture style="display: block; text-align: center;">
   <source media="(prefers-color-scheme: dark)" srcset="logos\logo-dark.png">
-  <img alt="Text changing depending on mode. Light: 'So light!' Dark: 'So dark!'" src="logos\logo-light.png">
+  <img 
+    src="logos/logo-light.png" 
+    alt="CelestiDB logo — light and dark versions"
+    style="max-width: 100%; height: auto;"
+  >
 </picture>
