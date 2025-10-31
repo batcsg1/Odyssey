@@ -109,7 +109,7 @@ sudo apt install docker.io
 
 Create a new PostgreSQL database container on Docker (if you haven't already) by running the command below in a terminal:
 ```
-docker run --name celestial-db-postgres -e POSTGRES_PASSWORD=P@ssw0rd -p 5445:5432 -d postgres
+docker run --name odyssey-db -e POSTGRES_PASSWORD=P@ssw0rd -p 5445:5432 -d postgres
 ```
 ---
 
@@ -185,18 +185,6 @@ PORT=3001
 Run `npm run prisma:migrate` to **migrate** the **schema** located in the `./prisma/schema.prisma` file to your **PostgreSQL** database.
 
 > Note: this will ensure your **schema** is in sync with your **database**
-
-### Optional: Use Docker Compose to create development and testing environments 🐳
-
-Once you have cloned the repo to your local machine run the following command on the root directory:
-```bash
-docker compose up -d
-```
-This will tell the `docker-compose.yml` file to create the **development** and **testing** docker containers simultaneously.
-
-> **Note:** Depending on what container your using, update the envrionment variables within the `.env` accordingly. _(As specified above.)_
-
-> **Important:** If you have any **online** or **offline** Docker containers in your Docker setup using the same port(s) as your development and testing containers, you may have to configure your other containers with different ports. By having the development and testing containers mapped with ports `5445` and `5446`, it ensures they are out of the so called `PostgreSQL` port scope of `5432` or close.
 
 ---
 
