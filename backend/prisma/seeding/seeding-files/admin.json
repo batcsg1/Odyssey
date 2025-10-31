@@ -1,0 +1,37 @@
+[
+  {
+    "firstName": "Vaughn",
+    "lastName": "Organa",
+    "emailAddress": "vaughn.organa@alderaan.gov",
+    "password": "hope1977",
+    "role": "ADMIN"
+  },
+  {
+    "firstName": "Mon",
+    "lastName": "Mothma",
+    "emailAddress": "mon.mothma@senate.rebellion",
+    "password": "freedom77",
+    "role": "ADMIN"
+  },
+  {
+    "firstName": "Bail",
+    "lastName": "Organa",
+    "emailAddress": "bail.organa@alderaan.gov",
+    "password": "rebellion62",
+    "role": "ADMIN"
+  },
+  {
+    "firstName": "Padmé",
+    "lastName": "Amidala",
+    "emailAddress": "padme.amidala@naboo.senate",
+    "password": "liberty83",
+    "role": "ADMIN"
+  },
+  {
+    "firstName": "Cassian",
+    "lastName": "Andor",
+    "emailAddress": "cassian.andor@intelligence.rebel",
+    "password": "spyforce75",
+    "role": "ADMIN"
+  }
+]

@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE "Planet" ALTER COLUMN "minTemp" DROP NOT NULL,
+ALTER COLUMN "maxTemp" DROP NOT NULL,
+ALTER COLUMN "gravity" DROP NOT NULL;
+
+-- AlterTable
+ALTER TABLE "Satellite" ALTER COLUMN "gravity" DROP NOT NULL;

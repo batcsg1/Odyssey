@@ -1,0 +1,27 @@
+services:
+  celestial-db-development:
+    image: postgres:latest
+    env_file:
+      - .env
+    container_name: celestial-db-postgres-dev
+    ports:
+      - "5445:5432"
+    environment:
+      POSTGRES_PASSWORD: P@ssw0rd
+      APP_ENV: ${APP_ENV}
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_LIFETIME: ${JWT_LIFETIME}
+  celestial-db-test:
+    image: postgres:latest
+    env_file:
+      - .env
+    container_name: celestial-db-postgres-test
+    ports:
+      - "5446:5432"
+    environment:
+      POSTGRES_PASSWORD: P@ssw0rd
+      APP_ENV: ${APP_ENV}
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_LIFETIME: ${JWT_LIFETIME}
