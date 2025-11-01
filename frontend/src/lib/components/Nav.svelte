@@ -70,10 +70,12 @@
     #hamburger{
         position: absolute;
         right: 0;
-        top: 10%;
+        margin-right: 0.5em;
+        top: 13.5%;
         z-index: 1000;
         background-color: white;
         padding: 0.9em 4em 0.9em 1em;
+        border-right: #333 dashed 0.1em;
     }
     #hamburger ul{
         display: flex;
