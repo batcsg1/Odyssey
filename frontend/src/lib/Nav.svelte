@@ -17,6 +17,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-bottom: 0.1em dashed #333;
         
     }
     img {
