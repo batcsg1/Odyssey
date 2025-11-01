@@ -1,20 +1,31 @@
 <script>
     import Logo from "$lib/Images/logo-dark.png"
+    let open = $state(false);
 
+
+    let openMenu = () => (open = !open);
 </script>
 
 <header>
     <a href="/"><img src={Logo} alt="Dark Logo" height="140"></a>
     <nav id="hamburger-parent">
-        <button>☰</button>
+        {#if !open}
+        <button onclick={openMenu}>☰</button>
+        {:else}
+        <button onclick={openMenu}>✖</button>
+        {/if}
     </nav>
+    {#if open}
     <nav id="hamburger">
         <ul>
-            <li></li>
-            <li></li>
-            <li></li>
+            {#each ['HOME', 'ABOUT', 'THE SOLAR SYSTEM', 'THE GREATER COSMOS'] as link, i}
+            <li>
+                {link}
+            </li>
+        {/each}
         </ul>
     </nav>
+    {/if}
 </header>
 
 
@@ -25,8 +36,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 0.1em dashed #333;
-        
+        border-bottom: 0.1em dashed #333;    
     }
     img {
         transition: ease 0.5s;
@@ -63,6 +73,11 @@
         top: 10%;
         z-index: 1000;
         background-color: white;
-        padding: 1em;
+        padding: 0.9em 4em 0.9em 1em;
+    }
+    #hamburger ul{
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
     }
 </style>
