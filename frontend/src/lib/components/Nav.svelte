@@ -5,8 +5,9 @@
 
 <header>
     <img src={Logo} alt="Dark Logo" height="140">
-    <button>☰</button>
-    
+    <nav>
+        <button>☰</button>
+    </nav>
 </header>
 
 
