@@ -4,9 +4,16 @@
 </script>
 
 <header>
-    <img src={Logo} alt="Dark Logo" height="140">
-    <nav>
+    <a href="/"><img src={Logo} alt="Dark Logo" height="140"></a>
+    <nav id="hamburger-parent">
         <button>☰</button>
+    </nav>
+    <nav id="hamburger">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </nav>
 </header>
 
@@ -46,5 +53,16 @@
         transition: ease 0.5s;
         cursor: pointer;
         transform: scale(1.1);
+    }
+    #hamburger-parent{
+        position: relative;
+    }
+    #hamburger{
+        position: absolute;
+        right: 0;
+        top: 10%;
+        z-index: 1000;
+        background-color: white;
+        padding: 1em;
     }
 </style>
