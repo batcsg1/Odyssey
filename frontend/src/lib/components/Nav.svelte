@@ -1,12 +1,11 @@
 <script>
-  import Logo from "$lib/Images/logo-dark.png";
   let open = $state(false);
 
   let openMenu = () => (open = !open);
 </script>
 
 <header>
-  <a href="/"><img src={Logo} alt="Dark Logo" height="140" /></a>
+  <h1>&#123; odyssey &#125;</h1>
   <nav id="hamburger-parent">
     {#if !open}
       <button onclick={openMenu}>☰</button>
@@ -35,6 +34,10 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 0.1em dashed #333;
+  }
+  h1{
+    color: white;
+    padding: 0.1em 1em 0.1em 1em;
   }
   img {
     transition: ease 0.5s;
