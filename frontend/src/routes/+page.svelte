@@ -2,7 +2,7 @@
 </script>
 
 <main>
-  <section id="intro">
+  <section class="page-sections" id="intro">
     <section>
       <h1>GO TO INFINITY AND BEYOND</h1>
       <p>
@@ -11,7 +11,8 @@
       </p>
     </section>
   </section>
-  <section id="sol-sys">
+
+  <section class="page-sections" id="sol-sys">
     <section>
       <h1>THE SOLAR SYSTEM</h1>
       <p>
@@ -22,6 +23,8 @@
       </button>
     </section>  
   </section>
+
+  
 </main>
 
 <style>
@@ -29,7 +32,7 @@
     display: flex;
     flex-direction: column;
   }
-  #intro, #sol-sys{
+  .page-sections{
     height: 35em;
     color: white;
     display: flex;
@@ -54,7 +57,7 @@
      
     mask-image: linear-gradient(to top, black 80%, transparent 100%);
   }
-  #intro section * {
+  .page-sections section * {
     text-shadow: 5px 5px 1px black;
   }
 
