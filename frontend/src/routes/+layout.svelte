@@ -21,4 +21,10 @@
 		font-weight: 300;
 		font-style: normal;
 	}
+	:global(button, a) {
+		font-family: 'Google Sans Code', monospace;
+		font-optical-sizing: auto;
+		font-weight: 300;
+		font-style: normal;
+	}
 </style>
