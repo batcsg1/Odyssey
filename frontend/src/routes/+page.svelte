@@ -30,7 +30,7 @@
     flex-direction: column;
   }
   #intro, #sol-sys{
-    height: 60em;
+    height: 35em;
     color: white;
     display: flex;
     flex-direction: column;
