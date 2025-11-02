@@ -49,6 +49,7 @@
     margin-right: 1em;
     font-weight: bolder;
     transition: ease 0.5s;
+    box-shadow: 3px 3px 0px white;
   }
   button:hover {
     background-color: white;
@@ -56,6 +57,7 @@
     transition: ease 0.5s;
     cursor: pointer;
     transform: scale(1.1);
+    box-shadow: 5px 5px 0px #333;
   }
   #hamburger-parent {
     position: relative;
