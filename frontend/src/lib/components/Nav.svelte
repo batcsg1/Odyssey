@@ -39,14 +39,6 @@
     color: white;
     padding: 0.1em 1em 0.1em 1em;
   }
-  img {
-    transition: ease 0.5s;
-  }
-  img:hover {
-    transition: ease 0.5s;
-    cursor: pointer;
-    transform: scale(1.1);
-  }
   button {
     color: white;
     padding: 0.5em 0.8em 0.5em 0.8em;
