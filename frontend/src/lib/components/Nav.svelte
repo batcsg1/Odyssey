@@ -2,7 +2,28 @@
   let open = $state(false);
 
   let openMenu = () => (open = !open);
+
+  let y = $state(0);
+
+  // $effect(() => {
+	// 	if (y > 100){
+  //     message = "Yay"
+  //   } else {
+  //     message = "Nope"
+  //   }
+	// });
+
+  // let isShrunk = $derived.by(() => {
+  //   if (y > 100){
+  //     return 'Yay'
+  //   }else{
+  //     return 'Nope'
+  //   }
+  // })
+
 </script>
+
+<svelte:window bind:scrollY={y} />
 
 <header>
   <h1><a href="/">&#123; odyssey &#125;</a></h1>
