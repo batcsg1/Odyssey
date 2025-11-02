@@ -16,7 +16,7 @@
   {#if open}
     <nav id="hamburger">
       <ul>
-        {#each [{ name: "HOME", href: "/" }, { name: "ABOUT", href: "/about" }, { name: "THE SOLAR SYSTEM", href: "/solar-system" }, { name: "THE GREATER COSMOS", href: "/cosmos" }] as { name, href }, i}
+        {#each [{ name: "HOME", href: "/" }, { name: "ABOUT", href: "/about" }, { name: "THE SOLAR SYSTEM", href: "/solar-system" }, { name: "THE INTERSTELLAR", href: "/interstellar" }] as { name, href }, i}
           <li>
             <a href={href}>{name}</a>
           </li>
