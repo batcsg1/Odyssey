@@ -34,6 +34,9 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 0.1em dashed #333;
+    position: sticky;
+    z-index: 1000;
+    top: 0;
   }
   h1{
     color: white;
