@@ -28,7 +28,8 @@
 
 <style>
   header {
-    background-color: black;
+    background: #000;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 80%, rgba(227, 227, 227, 1) 100%, rgba(233, 233, 233, 1) 96%, rgba(255, 255, 255, 1) 100%);
     padding: 1em;
     display: flex;
     justify-content: space-between;
