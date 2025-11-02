@@ -5,7 +5,7 @@
 </script>
 
 <header>
-  <h1>&#123; odyssey &#125;</h1>
+  <h1><a href="/">&#123; odyssey &#125;</a></h1>
   <nav id="hamburger-parent">
     {#if !open}
       <button onclick={openMenu}>☰</button>
@@ -42,6 +42,16 @@
   h1{
     color: white;
     padding: 0.1em 1em 0.1em 1em;
+  }
+  h1 a{
+    color: white;
+    font-weight: bolder;
+    transition: ease 0.3s;
+    display: inline-block;
+  }
+  h1 a:hover{
+    transition: ease 0.3s;
+    transform: scale(1.1);
   }
   button {
     color: white;
