@@ -34,8 +34,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 0.1em dashed #333;
-    position: sticky;
-    z-index: 1000;
+    position: sticky;  
     top: 0;
   }
   h1{
@@ -66,10 +65,9 @@
   }
   #hamburger {
     position: absolute;
-    right: 0;
+    right: 0%;
     margin-right: 0.5em;
-    top: 13.5%;
-    z-index: 1000;
+    top: 100%;
     background-color: white;
     padding: 0.9em 4em 0.9em 1em;
     border-right: #333 dashed 0.1em;
