@@ -36,6 +36,7 @@
     border-bottom: 0.1em dashed #333;
     position: sticky;  
     top: 0;
+    z-index: 1000;
   }
   h1{
     color: white;
