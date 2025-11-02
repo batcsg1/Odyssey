@@ -55,7 +55,6 @@
     background-color: white;
     color: #333;
     transition: ease 0.5s;
-    cursor: pointer;
     transform: scale(1.1);
     box-shadow: 5px 5px 0px #333;
   }
@@ -78,7 +77,6 @@
     gap: 1em;
   }
   #hamburger a{
-    text-decoration: none;
     color: #333;
     display: block;          
     width: 100%;          
