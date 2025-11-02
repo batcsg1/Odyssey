@@ -1,4 +1,5 @@
 <script>
+	import "../app.css";
 	import favicon from '$lib/assets/favicon.svg';
 	import Nav from '$lib/components/Nav.svelte';
 
