@@ -16,12 +16,24 @@
     <section>
       <h1>THE SOLAR SYSTEM</h1>
       <p>
-        Discover and contribute to the latest information about our Solar System.
+        Discover and/or contribute to the latest information about our Solar System.
       </p>
       <button>
         <a href="/solar-system">EXPLORE ▶</a>
       </button>
     </section>  
+  </section>
+
+  <section class="page-sections" id="interstellar">
+    <section>
+      <h1>THE INTERSTELLAR</h1>
+      <p>Venture beyond our Solar System and explore the latest discoveries out in
+         the vast realm of interstellar space.
+      </p>
+      <button>
+        <a href="/interstellar">EXPLORE ▶</a>
+      </button>
+    </section>
   </section>
 
   
@@ -44,19 +56,7 @@
     background-repeat: no-repeat;
     background-size: cover;   
   }
-  #intro section {
-    padding: 4em 3.5em 4em 3.5em;
-    background: repeating-linear-gradient(
-      45deg,
-      /* Angle of the stripes */ rgba(0, 0, 0, 0.1),
-      /* First stripe color with 10% opacity */ rgba(0, 0, 0, 0.1) 10px,
-      /* End of the first stripe */ rgba(255, 255, 255, 0.1) 10px,
-      /* Start of the second stripe with 10% opacity */ rgba(255, 255, 255, 0.1)
-        20px /* End of the second stripe */
-    );
-     
-    mask-image: linear-gradient(to top, black 80%, transparent 100%);
-  }
+
   .page-sections section * {
     text-shadow: 5px 5px 1px black;
   }
@@ -66,7 +66,7 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
-  #sol-sys section {
+  .page-sections section {
     padding: 4em 3.5em 4em 3.5em;
     background: repeating-linear-gradient(
       45deg,
@@ -77,6 +77,12 @@
         20px /* End of the second stripe */
     );
     mask-image: linear-gradient(to top, black 80%, transparent 100%);
+  }
+
+  #interstellar{
+    background-image: url(../lib/GIFs/exoplanet.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   button {
