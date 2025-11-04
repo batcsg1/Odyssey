@@ -99,7 +99,6 @@
   #hamburger {
     position: absolute;
     right: 0%;
-    margin-right: 0.5em;
     top: 100%;
     background-color: white;
     padding: 0.9em 4em 0.9em 1em;
@@ -114,7 +113,7 @@
     color: #333;
     display: block;          
     width: 100%;          
-    padding: 0.5em 1em 0.5em 1em;
+    padding: 0.2em 0.3em 0.2em 0.3em;
   }
   #hamburger li {
     padding: 0.2em;
