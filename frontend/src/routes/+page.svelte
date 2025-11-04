@@ -40,10 +40,6 @@
 </main>
 
 <style>
-  main {
-    display: flex;
-    flex-direction: column;
-  }
   .page-sections{
     height: 35em;
     color: white;
