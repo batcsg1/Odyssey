@@ -109,7 +109,7 @@ sudo apt install docker.io
 
 Create a new PostgreSQL database container on Docker (if you haven't already) by running the command below in a terminal:
 ```
-docker run --name odyssey-db -e POSTGRES_PASSWORD=P@ssw0rd -p 5445:5432 -d postgres
+docker run --name odyssey-db-dev -e POSTGRES_PASSWORD=P@ssw0rd -p 5445:5432 -d postgres
 ```
 ---
 
@@ -160,7 +160,7 @@ Server is listening on port 3000. Visit http://localhost:3000/api/v1
 
 Create a new PostgreSQL database container on Docker (if you haven't already) by running the command below in a terminal:
 ```
-docker run --name celestial-db-postgres-test -e POSTGRES_PASSWORD=P@ssw0rd -p 5446:5432 -d postgres
+docker run --name odyssey-db-test -e POSTGRES_PASSWORD=P@ssw0rd -p 5445:5432 -d postgres
 ```
 > Note: Change the local port **5445**:5432 to **5446** to distinguish the testing container from the development container.
 ---
