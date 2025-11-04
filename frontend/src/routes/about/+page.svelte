@@ -1,15 +1,23 @@
 
 <main>
-    <section id="about-image">
+    <header id="about-image">
         <h1>ABOUT</h1>
-    </section>
-    <section id="about">
-        <h2>MISSION</h2>
-        <p>Odyssey is all about making information about our solar system and outer space publically accesible and contributable. And quite simply, it is a website where you can go to infinity and beyond!</p>
-    </section>
+    </header>
+    <article id="about">
+        <section id="mission">
+            <h2>MISSION</h2>
+            <p>Odyssey is all about making information about our solar system and outer space publically accesible and contributable. And quite simply, it is a website where you can go to infinity and beyond!</p>
+        </section>
 
+        <section id="history">
+            <h2>HISTORY</h2>
 
-
+            <h3>THE BEGINNING</h3>
+            <p>
+                The history of Odyssey all stems from the author's deep childhood passion for astronomy. 
+            </p>
+        </section>
+    </article>
 </main>
 
 <style>
@@ -23,20 +31,6 @@
         justify-content: center;
         align-items: center;
     }
-    #about{
-        display: flex;
-        flex-direction: column;
-        padding: 1em;
-        gap: 0.3em;
-    }
-    #about * {
-        margin: 0;
-        text-shadow: 2px 2px 4px rgb(172, 170, 170);
-    }
-    #about p {
-        background-color: gainsboro;
-        padding: 0.8em;
-        border: 0.1em dashed #969595;
-    }
+    
 
 </style>
