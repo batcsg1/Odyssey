@@ -12,9 +12,9 @@
         <section id="history">
             <h2>HISTORY</h2>
 
-            <h3>THE BEGINNING</h3>
             <p>
-                The history of Odyssey all stems from the author's deep childhood passion for astronomy. 
+                The history of Odyssey was founded by Samuel Batchelor,
+                as an accumulation of his child-hood passion for astronomy and love for all things tech-related. Whilst studying full-time at the Bachelor of Information Technology at Otago Polytechnic, he sought a golden opportunity to further fufil his interest in astronomy. The golden opportunity was to build a website devoted entirely to space, and a platform where users can easily find out about our solar system and outer space. 
             </p>
         </section>
     </article>
@@ -31,6 +31,29 @@
         justify-content: center;
         align-items: center;
     }
+    #about {
+      display: flex;
+      flex-direction: column;
+    }
+    #about section{
+        padding: 0.1em 1em 0.1em 1em;
+        
+    }
+    p {
+        background: repeating-linear-gradient(
+        45deg,
+      /* Angle of the stripes */ rgba(0, 0, 0, 0.1),
+      /* First stripe color with 10% opacity */ rgba(0, 0, 0, 0.1) 10px,
+      /* End of the first stripe */ rgba(255, 255, 255, 0.1) 10px,
+      /* Start of the second stripe with 10% opacity */ rgba(255, 255, 255, 0.1)
+        20px /* End of the second stripe */
+    );
+        padding: 0.6em;
+        border: 2px dashed gray;
+        box-shadow: 3px 3px 3px #333;
+        text-shadow: 2px 2px 15px black;
+    }
+
     
 
 </style>
