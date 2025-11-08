@@ -21,11 +21,13 @@
 </main>
 
 <style>
-    #about-image{
-        background-image: url(../../lib/Images/082722_kuiper_feat.webp);
+    main{
+        background-image: url(../../lib/Images/earth_horizon.jpg);
         background-repeat: no-repeat;
         background-size: cover;   
-        height: 10em;
+    }
+    #about-image{
+        height: 15em;
         color: white;
         display: flex;
         justify-content: center;
@@ -34,20 +36,15 @@
     #about {
       display: flex;
       flex-direction: column;
+      background-color: rgba(255, 255, 255, 0.8);
     }
     #about section{
         padding: 0.1em 1em 0.1em 1em;
-        
+        border-bottom: 0.1em #333 dashed;
     }
     p {
-        background: repeating-linear-gradient(
-        45deg,
-      /* Angle of the stripes */ rgba(0, 0, 0, 0.1),
-      /* First stripe color with 10% opacity */ rgba(0, 0, 0, 0.1) 10px,
-      /* End of the first stripe */ rgba(255, 255, 255, 0.1) 10px,
-      /* Start of the second stripe with 10% opacity */ rgba(255, 255, 255, 0.1)
-        20px /* End of the second stripe */
-    );
+        background-color: rgba(0,0,0,0.7);
+        color: white;
         padding: 0.6em;
         border: 2px dashed gray;
         box-shadow: 3px 3px 3px #333;

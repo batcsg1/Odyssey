@@ -55,7 +55,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 0.1em dashed #333;
     position: sticky;  
     top: 0;
     z-index: 1000;
