@@ -1,10 +1,15 @@
-<div align="center">
+<p align="center">
 
   [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-red?style=flat-square)](https://www.gnu.org/licenses/agpl-3.0)
 
-  <br>
 
-  <img src="./logo.png" alt="Logo" width="300">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../logos/logo-dark-api.png">
+    <img alt="Odyssey logo" src="../logos/logo-light-api.png" height="100">
+  </picture>
+  
+</p>
+
 
 **A high performance platform for exploring the universe.**
 </div>
