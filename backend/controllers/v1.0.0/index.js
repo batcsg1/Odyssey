@@ -7,7 +7,7 @@
 const getIndex = async (req, res) => {
     // req is an object that contains information about the HTTP request. res is an object that contains information about the HTTP response.
     return res.status(200).json({
-      message: "This is the base url for the CelestiDB REST API",
+      message: "This is the base url for the Odyssey REST API",
       author: "Samuel Batchelor"
     });
   };
