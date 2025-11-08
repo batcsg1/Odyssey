@@ -53,20 +53,13 @@ const swaggerOptions = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "celestiDB",
-      version: "1.2",
+      title: "Odyssey API",
+      version: "1.0.0",
       description: "A high performance platform for exploring the universe.",
       contact: {
         name: "Samuel Batchelor",
       },
     },
-    servers: [
-      {
-        url: process.env.APP_ENV === "production"
-          ? "https://celestidb.onrender.com"
-          : `http://localhost:${PORT}`
-      },
-    ],
   },
   apis: ["./routes/v1.2/*.js", "./swagger/*.js"]
 };
@@ -96,7 +89,18 @@ app.use(`${baseURL}/meteorites`, auth, meteoriteRoutes);
 app.use(`${baseURL}/comets`, auth, cometRoutes);
 app.use(`${baseURL}/meteor_showers`, auth, meteorShowerRoutes);
 app.use(`${baseURL}/users`, auth, userRoutes);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+app.use("/api-docs", swaggerUi.serve, (req, res, next) => {
+  const dynamicServer = { ...swaggerDocs };
+
+  dynamicServer.servers = [
+    {
+      url: `${req.protocol}://${req.get("host")}${req.get("X-Forwarded-Prefix") || ""}`,
+    },
+  ];
+
+  swaggerUi.setup(dynamicServer)(req, res, next);
+});
 
 // Start the server on defined port
 app.listen(PORT, () => {
