@@ -65,20 +65,35 @@ const createAsteroid = async (req, res) => {
 const getAsteroids = async (req, res) => {
   try {
 
+    const { 
+      name, 
+      mass, 
+      age, 
+      diameter, 
+      density, 
+      type, 
+      year, 
+      perigee, 
+      apogee, 
+      brightness, 
+      location, 
+      starId
+    } = req.query
+
     // Filtering query parameters
     const filters = {
-      name: req.query.name || undefined,
-      mass: req.query.mass || undefined,
-      age: req.query.age || undefined,
-      diameter: req.query.diameter || undefined,
-      density: req.query.density || undefined,
-      type: req.query.type || undefined,
-      year: req.query.year || undefined,
-      perigee: req.query.perigee || undefined,
-      apogee: req.query.apogee || undefined,
-      brightness: req.query.brightness || undefined,
-      location: req.query.location || undefined,
-      starId: req.query.starId || undefined
+      name,
+      mass,
+      age,
+      diameter,
+      density,
+      type,
+      year,
+      perigee,
+      apogee,
+      brightness,
+      location,
+      starId
     };
 
     // Sort query parameters
@@ -86,8 +101,7 @@ const getAsteroids = async (req, res) => {
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
 
     // Pagination query parameters
-    const page = req.query.page
-    const amount = req.query.amount
+    const { page, amount } = req.query
 
     // Apply filtering, sorting and pagination to asteroid model
     const asteroids = await asteroidRepository.findAll(

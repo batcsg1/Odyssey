@@ -14,7 +14,7 @@ import {
   deleteStar,
   headStar,
   headStars
-} from "../../controllers/v1.2/star.js";
+} from "../../controllers/v1.0.0/star.js";
 
 // Import the POST and PUT validation middleware
 import {

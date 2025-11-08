@@ -14,7 +14,7 @@ import {
   deletePlanet,
   headPlanet,
   headPlanets
-} from "../../controllers/v1.2/planet.js";
+} from "../../controllers/v1.0.0/planet.js";
 
 // Import the POST and PUT validation middleware
 import {

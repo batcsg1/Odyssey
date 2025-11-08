@@ -14,7 +14,7 @@ import {
   deleteMeteorShower,
   headMeteorShower,
   headMeteorShowers
-} from "../../controllers/v1.2/meteor_shower.js";
+} from "../../controllers/v1.0.0/meteor_shower.js";
 
 // Import the POST and PUT validation middleware
 import {

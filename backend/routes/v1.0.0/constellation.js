@@ -14,7 +14,7 @@ import {
   deleteConstellation,
   headConstellation,
   headConstellations
-} from "../../controllers/v1.2/constellation.js";
+} from "../../controllers/v1.0.0/constellation.js";
 
 // Import the POST, PUT and PATCH validation middleware
 import {
