@@ -9,18 +9,18 @@ import swaggerUi from "swagger-ui-express";
 import helmet from "helmet";
 
 // Import routes
-import indexRoutes from "./routes/v1.2/index.js";
-import constellationRoutes from "./routes/v1.2/constellation.js";
-import starRoutes from "./routes/v1.2/star.js";
-import planetRoutes from "./routes/v1.2/planet.js";
-import satelliteRoutes from "./routes/v1.2/satellite.js";
-import asteroidRoutes from "./routes/v1.2/asteroid.js";
-import meteoriteRoutes from "./routes/v1.2/meteorite.js";
-import cometRoutes from "./routes/v1.2/comet.js";
-import meteorShowerRoutes from "./routes/v1.2/meteor_shower.js";
-import galaxyRoutes from "./routes/v1.2/galaxy.js";
-import userRoutes from "./routes/v1.2/user.js";
-import authRoutes from "./routes/v1.2/auth.js";
+import indexRoutes from "./routes/v1.0.0/index.js";
+import constellationRoutes from "./routes/v1.0.0/constellation.js";
+import starRoutes from "./routes/v1.0.0/star.js";
+import planetRoutes from "./routes/v1.0.0/planet.js";
+import satelliteRoutes from "./routes/v1.0.0/satellite.js";
+import asteroidRoutes from "./routes/v1.0.0/asteroid.js";
+import meteoriteRoutes from "./routes/v1.0.0/meteorite.js";
+import cometRoutes from "./routes/v1.0.0/comet.js";
+import meteorShowerRoutes from "./routes/v1.0.0/meteor_shower.js";
+import galaxyRoutes from "./routes/v1.0.0/galaxy.js";
+import userRoutes from "./routes/v1.0.0/user.js";
+import authRoutes from "./routes/v1.0.0/auth.js";
 
 // Import middleware
 import auth from "./middleware/auth.js";
@@ -61,13 +61,13 @@ const swaggerOptions = {
       },
     },
   },
-  apis: ["./routes/v1.2/*.js", "./swagger/*.js"]
+  apis: ["./routes/v1.0.0/*.js", "./swagger/*.js"]
 };
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
 // The base URL for the REST API
-const baseURL = "/api/v1.2";
+const baseURL = "/api/v1.0.0";
 
 // Log all incoming requests using the custom logger
 app.use((req, res, next) => {
