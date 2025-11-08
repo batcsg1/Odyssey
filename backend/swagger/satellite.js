@@ -89,7 +89,7 @@
 
 /**
  * @swagger
- * /api/v1.2/satellites:
+ * /api/v1.0.0/satellites:
  *   post:
  *     summary: Create a new satellite
  *     tags:
@@ -113,7 +113,7 @@
 
 /**
  * @swagger
- * /api/v1.2/satellites:
+ * /api/v1.0.0/satellites:
  *   get:
  *     summary: Get all satellites
  *     tags:
@@ -263,7 +263,7 @@
 
 /**
  * @swagger
- * /api/v1.2/satellites/{id}:
+ * /api/v1.0.0/satellites/{id}:
  *   get:
  *     summary: Get a satellite by id
  *     tags:
@@ -288,7 +288,7 @@
 
 /**
  * @swagger
- * /api/v1.2/satellites/{id}:
+ * /api/v1.0.0/satellites/{id}:
  *   put:
  *     summary: Update a satellite by id
  *     tags:
@@ -319,7 +319,7 @@
 
 /**
  * @swagger
- * /api/v1.2/satellites/{id}:
+ * /api/v1.0.0/satellites/{id}:
  *   patch:
  *     summary: Partially update a satellite by id
  *     tags:
@@ -350,7 +350,7 @@
 
 /**
  * @swagger
- * /api/v1.2/satellites/{id}:
+ * /api/v1.0.0/satellites/{id}:
  *   delete:
  *     summary: Delete a satellite by id
  *     tags:
@@ -375,7 +375,7 @@
 
 /**
  * @swagger
- * /api/v1.2/satellites:
+ * /api/v1.0.0/satellites:
  *   options:
  *     summary: Get allowed HTTP methods for satellites route
  *     tags:
@@ -410,7 +410,7 @@
 
 /**
  * @swagger
- * /api/v1.2/satellites:
+ * /api/v1.0.0/satellites:
  *   head:
  *     summary: Verify if any satellites exist
  *     tags:
@@ -428,7 +428,7 @@
 
 /**
  * @swagger
- * /api/v1.2/satellites/{id}:
+ * /api/v1.0.0/satellites/{id}:
  *   head:
  *     summary: Verify satellite existence by ID
  *     tags:

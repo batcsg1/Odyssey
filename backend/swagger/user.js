@@ -53,7 +53,7 @@
 
 /**
  * @swagger
- * /api/v1.2/users:
+ * /api/v1.0.0/users:
  *   post:
  *     summary: Create a new user
  *     tags:
@@ -77,7 +77,7 @@
 
 /**
  * @swagger
- * /api/v1.2/users:
+ * /api/v1.0.0/users:
  *   get:
  *     summary: Get all users
  *     tags:
@@ -144,7 +144,7 @@
 
 /**
  * @swagger
- * /api/v1.2/users/{id}:
+ * /api/v1.0.0/users/{id}:
  *   get:
  *     summary: Get a user by id
  *     tags:
@@ -169,7 +169,7 @@
 
 /**
  * @swagger
- * /api/v1.2/users/{id}:
+ * /api/v1.0.0/users/{id}:
  *   put:
  *     summary: Update a user by id
  *     tags:
@@ -200,7 +200,7 @@
 
 /**
  * @swagger
- * /api/v1.2/users/{id}:
+ * /api/v1.0.0/users/{id}:
  *   patch:
  *     summary: Partially update a user by id
  *     tags:
@@ -231,7 +231,7 @@
 
 /**
  * @swagger
- * /api/v1.2/users/{id}:
+ * /api/v1.0.0/users/{id}:
  *   delete:
  *     summary: Delete a user by id
  *     tags:
@@ -256,7 +256,7 @@
 
 /**
  * @swagger
- * /api/v1.2/users:
+ * /api/v1.0.0/users:
  *   options:
  *     summary: Get allowed HTTP methods for users route
  *     tags:
@@ -291,7 +291,7 @@
 
 /**
  * @swagger
- * /api/v1.2/users:
+ * /api/v1.0.0/users:
  *   head:
  *     summary: Verify if any users exist
  *     tags:
@@ -309,7 +309,7 @@
 
 /**
  * @swagger
- * /api/v1.2/users/{id}:
+ * /api/v1.0.0/users/{id}:
  *   head:
  *     summary: Verify user existence by ID
  *     tags:

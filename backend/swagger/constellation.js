@@ -31,7 +31,7 @@
 
 /**
  * @swagger
- * /api/v1.2/constellations:
+ * /api/v1.0.0/constellations:
  *   post:
  *     summary: Create a new constellation
  *     tags:
@@ -55,7 +55,7 @@
 
 /**
  * @swagger
- * /api/v1.2/constellations:
+ * /api/v1.0.0/constellations:
  *   get:
  *     summary: Get all constellations
  *     tags:
@@ -117,7 +117,7 @@
 
 /**
  * @swagger
- * /api/v1.2/constellations/{id}:
+ * /api/v1.0.0/constellations/{id}:
  *   get:
  *     summary: Get a constellation by id
  *     tags:
@@ -142,7 +142,7 @@
 
 /**
  * @swagger
- * /api/v1.2/constellations/{id}:
+ * /api/v1.0.0/constellations/{id}:
  *   put:
  *     summary: Update a constellation by id
  *     tags:
@@ -173,7 +173,7 @@
 
 /**
  * @swagger
- * /api/v1.2/constellations/{id}:
+ * /api/v1.0.0/constellations/{id}:
  *   patch:
  *     summary: Partially update a constellation by id
  *     tags:
@@ -204,7 +204,7 @@
 
 /**
  * @swagger
- * /api/v1.2/constellations/{id}:
+ * /api/v1.0.0/constellations/{id}:
  *   delete:
  *     summary: Delete a constellation by id
  *     tags:
@@ -229,7 +229,7 @@
 
 /**
  * @swagger
- * /api/v1.2/constellations:
+ * /api/v1.0.0/constellations:
  *   options:
  *     summary: Get allowed HTTP methods for constellations route
  *     tags:
@@ -264,7 +264,7 @@
 
 /**
  * @swagger
- * /api/v1.2/constellations:
+ * /api/v1.0.0/constellations:
  *   head:
  *     summary: Verify if any constellations exist
  *     tags:
@@ -282,7 +282,7 @@
 
 /**
  * @swagger
- * /api/v1.2/constellations/{id}:
+ * /api/v1.0.0/constellations/{id}:
  *   head:
  *     summary: Verify constellation existence by ID
  *     tags:

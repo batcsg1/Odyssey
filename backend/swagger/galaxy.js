@@ -40,7 +40,7 @@
 
 /**
  * @swagger
- * /api/v1.2/galaxies:
+ * /api/v1.0.0/galaxies:
  *   post:
  *     summary: Create a new galaxy
  *     tags:
@@ -64,7 +64,7 @@
 
 /**
  * @swagger
- * /api/v1.2/galaxies:
+ * /api/v1.0.0/galaxies:
  *   get:
  *     summary: Get all galaxies
  *     tags:
@@ -139,7 +139,7 @@
 
 /**
  * @swagger
- * /api/v1.2/galaxies/{id}:
+ * /api/v1.0.0/galaxies/{id}:
  *   get:
  *     summary: Get a galaxy by id
  *     tags:
@@ -164,7 +164,7 @@
 
 /**
  * @swagger
- * /api/v1.2/galaxies/{id}:
+ * /api/v1.0.0/galaxies/{id}:
  *   put:
  *     summary: Update a galaxy by id
  *     tags:
@@ -195,7 +195,7 @@
 
 /**
  * @swagger
- * /api/v1.2/galaxies/{id}:
+ * /api/v1.0.0/galaxies/{id}:
  *   patch:
  *     summary: Partially update a galaxy by id
  *     tags:
@@ -226,7 +226,7 @@
 
 /**
  * @swagger
- * /api/v1.2/galaxies/{id}:
+ * /api/v1.0.0/galaxies/{id}:
  *   delete:
  *     summary: Delete a galaxy by id
  *     tags:
@@ -251,7 +251,7 @@
 
 /**
  * @swagger
- * /api/v1.2/galaxies:
+ * /api/v1.0.0/galaxies:
  *   options:
  *     summary: Get allowed HTTP methods for galaxies route
  *     tags:
@@ -286,7 +286,7 @@
 
 /**
  * @swagger
- * /api/v1.2/galaxies:
+ * /api/v1.0.0/galaxies:
  *   head:
  *     summary: Verify if any galaxies exist
  *     tags:
@@ -304,7 +304,7 @@
 
 /**
  * @swagger
- * /api/v1.2/galaxies/{id}:
+ * /api/v1.0.0/galaxies/{id}:
  *   head:
  *     summary: Verify galaxy existence by ID
  *     tags:

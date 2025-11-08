@@ -62,7 +62,7 @@
 
 /**
  * @swagger
- * /api/v1.2/comets:
+ * /api/v1.0.0/comets:
  *   post:
  *     summary: Create a new comet
  *     tags:
@@ -86,7 +86,7 @@
 
 /**
  * @swagger
- * /api/v1.2/comets:
+ * /api/v1.0.0/comets:
  *   get:
  *     summary: Get all comets
  *     tags:
@@ -196,7 +196,7 @@
 
 /**
  * @swagger
- * /api/v1.2/comets/{id}:
+ * /api/v1.0.0/comets/{id}:
  *   get:
  *     summary: Get a comet by id
  *     tags:
@@ -221,7 +221,7 @@
 
 /**
  * @swagger
- * /api/v1.2/comets/{id}:
+ * /api/v1.0.0/comets/{id}:
  *   put:
  *     summary: Update a comet by id
  *     tags:
@@ -252,7 +252,7 @@
 
 /**
  * @swagger
- * /api/v1.2/comets/{id}:
+ * /api/v1.0.0/comets/{id}:
  *   patch:
  *     summary: Partially update a comet by id
  *     tags:
@@ -283,7 +283,7 @@
 
 /**
  * @swagger
- * /api/v1.2/comets/{id}:
+ * /api/v1.0.0/comets/{id}:
  *   delete:
  *     summary: Delete a comet by id
  *     tags:
@@ -308,7 +308,7 @@
 
 /**
  * @swagger
- * /api/v1.2/comets:
+ * /api/v1.0.0/comets:
  *   options:
  *     summary: Get allowed HTTP methods for comets route
  *     tags:
@@ -343,7 +343,7 @@
 
 /**
  * @swagger
- * /api/v1.2/comets:
+ * /api/v1.0.0/comets:
  *   head:
  *     summary: Verify if any comets exist
  *     tags:
@@ -361,7 +361,7 @@
 
 /**
  * @swagger
- * /api/v1.2/comets/{id}:
+ * /api/v1.0.0/comets/{id}:
  *   head:
  *     summary: Verify comet existence by ID
  *     tags:
