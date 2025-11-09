@@ -101,7 +101,7 @@
     top: 100%;
     background-color: white;
     padding: 0.9em 4em 0.9em 1em;
-    border-right: #333 dashed 0.1em;
+    box-shadow: -4px 4px 10px #050021;
   }
   #hamburger ul {
     display: flex;
