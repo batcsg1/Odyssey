@@ -4,7 +4,7 @@
 <main>
   <section class="page-sections" id="intro">
     <section>
-      <h1>GO TO INFINITY AND BEYOND</h1>
+      <h2>GO TO INFINITY AND BEYOND</h2>
       <p>
         Welcome to your one-stop shop for all the information about our solar
         system and the wider cosmos.
@@ -14,7 +14,7 @@
 
   <section class="page-sections" id="sol-sys">
     <section>
-      <h1>THE SOLAR SYSTEM</h1>
+      <h2>THE SOLAR SYSTEM</h2>
       <p>
         Discover and/or contribute to the latest information about our Solar System.
       </p>
@@ -26,7 +26,7 @@
 
   <section class="page-sections" id="interstellar">
     <section>
-      <h1>THE INTERSTELLAR</h1>
+      <h2>THE INTERSTELLAR</h2>
       <p>Venture beyond our Solar System and explore the latest discoveries out in
          the vast realm of interstellar space.
       </p>
@@ -54,7 +54,7 @@
   }
 
   .page-sections section * {
-    text-shadow: 5px 5px 1px black;
+    text-shadow: 2px 2px 1px black;
   }
 
   #sol-sys {
@@ -73,6 +73,27 @@
         20px /* End of the second stripe */
     );
     mask-image: linear-gradient(to top, black 80%, transparent 100%);
+  }
+
+  .page-sections p {
+    background:
+            repeating-linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.1) 0px,
+                rgba(53, 54, 118, 0.1) 2px,
+                transparent 2px,
+                transparent 6px
+            ),
+            linear-gradient(
+                135deg,
+                rgba(0, 20, 60, 0.9),     /* dark navy blue */
+                rgba(0, 29, 47, 0.6)     /* softer blue tint */
+            );
+        color: white;
+        padding: 0.9em;
+        border: 2px solid gray;
+        box-shadow: 3px 3px 3px black;
+        text-shadow: 2px 2px 15px black;
   }
 
   #interstellar{
