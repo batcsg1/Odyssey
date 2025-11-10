@@ -50,8 +50,7 @@
 <style>
   header {
     background: #000;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 80%, rgba(227, 227, 227, 1) 100%, rgba(233, 233, 233, 1) 96%, rgba(255, 255, 255, 1) 100%);
-    padding: 1em;
+    padding: 0.6em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -75,22 +74,22 @@
   }
   button {
     color: white;
-    padding: 0.5em 0.8em 0.5em 0.8em;
-    background-color: #1d1c1cff;
+    padding: 0.3em 0.6em 0.3em 0.6em;
+    background-color: rgb(10, 10, 10);
     border: none;
     font-size: xx-large;
     border-radius: 0.2em;
     margin-right: 1em;
     font-weight: bolder;
     transition: ease 0.5s;
-    box-shadow: 3px 3px 0px white;
+    box-shadow: 3px 3px 10px white;
   }
   button:hover {
     background-color: white;
     color: #333;
     transition: ease 0.5s;
     transform: scale(1.1);
-    box-shadow: 5px 5px 0px #333;
+    box-shadow: 5px 5px 10px #333;
   }
   #hamburger-parent {
     position: relative;
