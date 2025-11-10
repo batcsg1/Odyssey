@@ -70,7 +70,7 @@
             );
         color: white;
         padding: 0.9em;
-        border: 2px dashed gray;
+        border: 2px white solid;
         box-shadow: 3px 3px 3px #333;
         text-shadow: 2px 2px 15px black;
     }
