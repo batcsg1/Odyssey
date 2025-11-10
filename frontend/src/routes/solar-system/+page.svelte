@@ -36,13 +36,13 @@
 
 <style>
     h1 {
-    letter-spacing: 0.2em;
-    text-shadow: 5px 5px 4px black;
-    background-color: rgba(0, 20, 60, 0.6);
-    padding: 0.1em 0.5em 0.1em 0.5em;
-    color: white;
-    box-shadow: 5px 5px 0px 0px white;
-}
+        letter-spacing: 0.2em;
+        text-shadow: 5px 5px 4px black;
+        background-color: rgba(0, 20, 60, 0.6);
+        padding: 0.1em 0.5em 0.1em 0.5em;
+        color: white;
+        box-shadow: 5px 5px 0px 0px white;
+    }
     header {
         height: 15em;
         color: white;
@@ -74,7 +74,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 5px;
+        gap: 15px;
         padding: 1em;
         height: 30vh;
         overflow-y: auto;
@@ -125,6 +125,25 @@
         text-shadow: 2px 2px 15px black;
         width: 14em;
         text-align: center;
-        
+        transition: 0.3s ease;
+    }
+
+    #contents section:hover{
+        background:
+        repeating-linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.1) 0px,
+            rgba(53, 54, 118, 0.1) 2px,
+            transparent 2px,
+            transparent 6px
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.9),     /* dark navy blue */
+            rgba(160, 149, 149, 0.6)     /* softer blue tint */
+        );
+        cursor: pointer;
+        transition: 0.3s ease;
+        transform: scale(1.1);
     }
 </style>
