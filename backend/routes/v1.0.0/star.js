@@ -33,6 +33,8 @@ import {
   cudLimit,
   optionsLimit
 } from "../../middleware/limiting/limit.js";
+
+import auth from "../../middleware/auth.js";
 /**
  * Controller object for the star model
  * @type {Object}
@@ -67,7 +69,8 @@ const starRouter = createRouter(
   validatePostStar,
   authorisation,
   validatePutStar,
-  validatePatchStar
+  validatePatchStar,
+  auth
 );
 
 export default starRouter;

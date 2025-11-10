@@ -33,6 +33,8 @@ import {
   cudLimit,
   optionsLimit
 } from "../../middleware/limiting/limit.js";
+
+import auth from "../../middleware/auth.js";
 /**
  * Controller object for the asteroid model
  * @type {Object}
@@ -67,7 +69,8 @@ const asteroidRouter = createRouter(
   validatePostAsteroid,
   authorisation,
   validatePutAsteroid,
-  validatePatchAsteroid
+  validatePatchAsteroid,
+  auth
 );
 
 export default asteroidRouter;

@@ -33,6 +33,8 @@ import {
   cudLimit,
   optionsLimit
 } from "../../middleware/limiting/limit.js";
+
+import auth from "../../middleware/auth.js";
 /**
  * Controller object for the satellite model
  * @type {Object}
@@ -67,7 +69,8 @@ const satelliteRouter = createRouter(
   validatePostSatellite,
   authorisation,
   validatePutSatellite,
-  validatePatchSatellite
+  validatePatchSatellite,
+  auth
 );
 
 export default satelliteRouter;

@@ -33,6 +33,9 @@ import {
   cudLimit,
   optionsLimit
 } from "../../middleware/limiting/limit.js";
+
+import auth from "../../middleware/auth.js";
+
 /**
  * Controller object for the comet model
  * @type {Object}
@@ -67,7 +70,8 @@ const cometRouter = createRouter(
   validatePostComet,
   authorisation,
   validatePutComet,
-  validatePatchComet
+  validatePatchComet,
+  auth
 );
 
 export default cometRouter;

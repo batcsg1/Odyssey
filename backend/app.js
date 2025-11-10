@@ -79,15 +79,15 @@ app.use((req, res, next) => {
 app.use(baseURL, indexRoutes);
 app.use(`${baseURL}/auth`, authRoutes);
 
-app.use(`${baseURL}/constellations`, auth, constellationRoutes);
-app.use(`${baseURL}/galaxies`, auth, galaxyRoutes);
-app.use(`${baseURL}/stars`, auth, starRoutes);
-app.use(`${baseURL}/planets`, auth, planetRoutes);
-app.use(`${baseURL}/satellites`, auth, satelliteRoutes);
-app.use(`${baseURL}/asteroids`, auth, asteroidRoutes);
-app.use(`${baseURL}/meteorites`, auth, meteoriteRoutes);
-app.use(`${baseURL}/comets`, auth, cometRoutes);
-app.use(`${baseURL}/meteor_showers`, auth, meteorShowerRoutes);
+app.use(`${baseURL}/constellations`, constellationRoutes);
+app.use(`${baseURL}/galaxies`, galaxyRoutes);
+app.use(`${baseURL}/stars`, starRoutes);
+app.use(`${baseURL}/planets`, planetRoutes);
+app.use(`${baseURL}/satellites`, satelliteRoutes);
+app.use(`${baseURL}/asteroids`, asteroidRoutes);
+app.use(`${baseURL}/meteorites`, meteoriteRoutes);
+app.use(`${baseURL}/comets`, cometRoutes);
+app.use(`${baseURL}/meteor_showers`, meteorShowerRoutes);
 app.use(`${baseURL}/users`, auth, userRoutes);
 
 app.use("/api-docs", swaggerUi.serve, (req, res, next) => {

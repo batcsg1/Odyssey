@@ -33,6 +33,8 @@ import {
   cudLimit,
   optionsLimit
 } from "../../middleware/limiting/limit.js";
+
+import auth from "../../middleware/auth.js";
 /**
  * Controller object for the meteor shower model
  * @type {Object}
@@ -67,7 +69,8 @@ const meteorShowerRouter = createRouter(
   validatePostMeteorShower,
   authorisation,
   validatePutMeteorShower,
-  validatePatchMeteorShower
+  validatePatchMeteorShower,
+  auth
 );
 
 export default meteorShowerRouter;

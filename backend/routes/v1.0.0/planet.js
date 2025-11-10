@@ -33,6 +33,8 @@ import {
   cudLimit,
   optionsLimit
 } from "../../middleware/limiting/limit.js";
+
+import auth from "../../middleware/auth.js";
 /**
  * Controller object for the planet model
  * @type {Object}
@@ -67,7 +69,8 @@ const planetRouter = createRouter(
   validatePostPlanet,
   authorisation,
   validatePutPlanet,
-  validatePatchPlanet
+  validatePatchPlanet,
+  auth
 );
 
 export default planetRouter;

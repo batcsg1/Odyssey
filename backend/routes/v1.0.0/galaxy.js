@@ -33,6 +33,7 @@ import {
   cudLimit,
   optionsLimit
 } from "../../middleware/limiting/limit.js";
+import auth from "../../middleware/auth.js";
 /**
  * Controller object for the galaxy model
  * @type {Object}
@@ -67,7 +68,8 @@ const galaxyRouter = createRouter(
   validatePostGalaxy,
   authorisation,
   validatePutGalaxy,
-  validatePatchGalaxy
+  validatePatchGalaxy,
+  auth
 );
 
 export default galaxyRouter;

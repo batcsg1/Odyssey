@@ -34,6 +34,8 @@ import {
   optionsLimit
 } from "../../middleware/limiting/limit.js";
 
+import auth from "../../middleware/auth.js";
+
 /**
  * Controller object for the meteorite model
  * @type {Object}
@@ -68,7 +70,8 @@ const meteoriteRouter = createRouter(
   validatePostMeteorite,
   authorisation,
   validatePutMeteorite,
-  validatePatchMeteorite
+  validatePatchMeteorite,
+  auth
 );
 
 export default meteoriteRouter;
