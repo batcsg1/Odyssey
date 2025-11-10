@@ -71,7 +71,7 @@
         height: 30vh;
         overflow-y: auto;
         scrollbar-width: thin; /* "auto" | "thin" | "none" */
-        scrollbar-color: #4455cc #0b0f1a; /* thumb color | track color */
+        scrollbar-color: #ffffff #1b2952; /* thumb color | track color */
     }
 
         /* For Chrome, Edge, and Safari */
@@ -91,7 +91,7 @@
     }
 
     #contents::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(135deg, #3a66ff, #66aaff); /* hover effect */
+        background: linear-gradient(135deg, rgb(18, 39, 117) 98, 161), #66aaff); /* hover effect */
     }
 
 
