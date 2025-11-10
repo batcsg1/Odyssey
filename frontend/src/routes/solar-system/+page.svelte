@@ -35,6 +35,14 @@
 </main>
 
 <style>
+    h1 {
+    letter-spacing: 0.2em;
+    text-shadow: 5px 5px 4px black;
+    background-color: rgba(0, 20, 60, 0.6);
+    padding: 0.1em 0.5em 0.1em 0.5em;
+    color: white;
+    box-shadow: 5px 5px 0px 0px white;
+}
     header {
         height: 15em;
         color: white;
