@@ -59,7 +59,7 @@
         rgba(0,0,0, 0.7),  /* more transparent at top */
         rgba(0,0,0, 0.8)   /* normal opacity at bottom */
     );
-    mask-image: linear-gradient(to top, black 98%, transparent 100%);
+    mask-image: linear-gradient(to top, black 96%, transparent 100%);
     color: white;
     }
 
