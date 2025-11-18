@@ -1,36 +1,101 @@
+<script>
+</script>
 
 <main>
     <header>
         <h1>THE SOLAR SYSTEM</h1>
     </header>
-    <article id="contents">
-        <section>
-            <h2>CONSTELLATIONS</h2>
-        </section>
-        <section>
-            <h2>GALAXIES</h2>
-        </section>
-        <section>
-            <h2>STARS</h2>
-        </section>
-        <section>
-            <h2>PLANETS</h2>
-        </section>
-        <section>
-            <h2>SATELLITES</h2>
-        </section>
-        <section>
-            <h2>COMETS</h2>
-        </section>
-        <section>
-            <h2>ASTEROIDS</h2>
-        </section>
-        <section>
-            <h2>METEORITES</h2>
-        </section>
-        <section>
-            <h2>METEOR SHOWERS</h2>
-        </section>
+    <article id="contents" class="d-flex flex-wrap justify-content-center gap-3 p-3 overflow-auto">
+        <!-- Card template -->
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Constellations</h5>
+                <p class="card-text">
+                    Descriptions and details about constellations.
+                </p>
+                <a href="#" class="card-link">Learn More</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Galaxies</h5>
+                <p class="card-text">
+                    Descriptions and details about galaxies.
+                </p>
+                <a href="#" class="card-link">Learn More</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Stars</h5>
+                <p class="card-text">
+                    Descriptions and details about stars.
+                </p>
+                <a href="#" class="card-link">Learn More</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Planets</h5>
+                <p class="card-text">
+                    Descriptions and details about planets.
+                </p>
+                <a href="#" class="card-link">Learn More</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Satellites</h5>
+                <p class="card-text">
+                    Descriptions and details about satellites.
+                </p>
+                <a href="#" class="card-link">Learn More</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Comets</h5>
+                <p class="card-text">
+                    Descriptions and details about comets.
+                </p>
+                <a href="#" class="card-link">Learn More</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Asteroids</h5>
+                <p class="card-text">
+                    Descriptions and details about asteroids.
+                </p>
+                <a href="#" class="card-link">Learn More</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Meteorites</h5>
+                <p class="card-text">
+                    Descriptions and details about meteorites.
+                </p>
+                <a href="#" class="card-link">Learn More</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Meteor Showers</h5>
+                <p class="card-text">
+                    Descriptions and details about meteor showers.
+                </p>
+                <a href="#" class="card-link">Learn More</a>
+            </div>
+        </div>
     </article>
 </main>
 
@@ -126,6 +191,8 @@
         width: 14em;
         text-align: center;
         transition: 0.3s ease;
+        overflow-wrap: break-word;   /* break long words */
+        
     }
 
     #contents section:hover{
