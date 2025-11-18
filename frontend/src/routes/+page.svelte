@@ -64,36 +64,12 @@
   }
   .page-sections section {
     padding: 4em 3.5em 4em 3.5em;
-    background: repeating-linear-gradient(
-      45deg,
-      /* Angle of the stripes */ rgba(0, 0, 0, 0.1),
-      /* First stripe color with 10% opacity */ rgba(0, 0, 0, 0.1) 10px,
-      /* End of the first stripe */ rgba(255, 255, 255, 0.1) 10px,
-      /* Start of the second stripe with 10% opacity */ rgba(255, 255, 255, 0.1)
-        20px /* End of the second stripe */
-    );
-    mask-image: linear-gradient(to top, black 80%, transparent 100%);
+    background-color: rgba(0,0,0,0.7);
+    mask-image: linear-gradient(to top, black 95%, transparent 100%);
   }
 
   .page-sections p {
-    background:
-            repeating-linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.1) 0px,
-                rgba(53, 54, 118, 0.1) 2px,
-                transparent 2px,
-                transparent 6px
-            ),
-            linear-gradient(
-                135deg,
-                rgba(0, 20, 60, 0.9),     /* dark navy blue */
-                rgba(0, 29, 47, 0.6)     /* softer blue tint */
-            );
-        color: white;
-        padding: 0.9em;
-        border: 2px solid gray;
-        box-shadow: 3px 3px 3px black;
-        text-shadow: 2px 2px 15px black;
+      color: white;
   }
 
   #interstellar{
