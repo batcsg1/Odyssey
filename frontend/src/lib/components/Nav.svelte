@@ -57,7 +57,7 @@
 <style>
   header {
     background: #000;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 80%, rgba(227, 227, 227, 1) 100%, rgba(233, 233, 233, 1) 96%, rgba(255, 255, 255, 1) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 95%, rgba(227, 227, 227, 1) 100%, rgba(233, 233, 233, 1) 96%, rgba(255, 255, 255, 1) 100%);
     padding: 1em;
     display: flex;
     justify-content: space-between;
@@ -100,6 +100,7 @@
     transform: scale(1.1);
     box-shadow: 5px 5px 0px #333;
   }
+  
   #hamburger-parent {
     position: relative;
   }
@@ -115,7 +116,7 @@
   #hamburger ul {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 0.1em;
   }
   #hamburger a{
     color: #333;
