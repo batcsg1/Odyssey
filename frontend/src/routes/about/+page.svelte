@@ -49,11 +49,13 @@
     }
 
     #about section{
-        padding: 0.1em 1em 0.1em 1em;
+        padding: 0.1em 1em 1.5em 1em;
+        border-bottom: 0.1em dashed white;
     }
 
     #about{
-        padding-top: 1.5em;
+        padding-top: 2em;
+        gap: 2em;
     }
 
 </style>
