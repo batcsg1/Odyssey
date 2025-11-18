@@ -21,6 +21,13 @@
   //   }
   // })
 
+  let menu = [
+  { name: "HOME", href: "/" }, 
+  { name: "ABOUT", href: "/about" }, 
+  { name: "THE SOLAR SYSTEM", href: "/solar-system" }, 
+  { name: "THE INTERSTELLAR", href: "/interstellar" }
+  ];
+
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -37,7 +44,7 @@
   {#if open}
     <nav id="hamburger">
       <ul>
-        {#each [{ name: "HOME", href: "/" }, { name: "ABOUT", href: "/about" }, { name: "THE SOLAR SYSTEM", href: "/solar-system" }, { name: "THE INTERSTELLAR", href: "/interstellar" }] as { name, href }, i}
+        {#each menu as { name, href }, i}
           <li>
             <a href={href}>{name}</a>
           </li>
@@ -50,10 +57,12 @@
 <style>
   header {
     background: #000;
-    padding: 0.6em;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 80%, rgba(227, 227, 227, 1) 100%, rgba(233, 233, 233, 1) 96%, rgba(255, 255, 255, 1) 100%);
+    padding: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 0.1em dashed #333;
     position: sticky;  
     top: 0;
     z-index: 1000;
@@ -74,22 +83,22 @@
   }
   button {
     color: white;
-    padding: 0.3em 0.6em 0.3em 0.6em;
-    background-color: rgb(10, 10, 10);
+    padding: 0.5em 0.8em 0.5em 0.8em;
+    background-color: #1d1c1cff;
     border: none;
     font-size: xx-large;
     border-radius: 0.2em;
     margin-right: 1em;
     font-weight: bolder;
     transition: ease 0.5s;
-    box-shadow: 3px 3px 10px white;
+    box-shadow: 3px 3px 0px white;
   }
   button:hover {
     background-color: white;
     color: #333;
     transition: ease 0.5s;
     transform: scale(1.1);
-    box-shadow: 5px 5px 10px #333;
+    box-shadow: 5px 5px 0px #333;
   }
   #hamburger-parent {
     position: relative;
@@ -97,10 +106,11 @@
   #hamburger {
     position: absolute;
     right: 0%;
+    margin-right: 0.5em;
     top: 100%;
     background-color: white;
     padding: 0.9em 4em 0.9em 1em;
-    box-shadow: -4px 4px 10px #050021;
+    border-right: #333 dashed 0.1em;
   }
   #hamburger ul {
     display: flex;
@@ -111,7 +121,7 @@
     color: #333;
     display: block;          
     width: 100%;          
-    padding: 0.2em 0.3em 0.2em 0.3em;
+    padding: 0.5em 1em 0.5em 1em;
   }
   #hamburger li {
     padding: 0.2em;
