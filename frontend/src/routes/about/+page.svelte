@@ -11,7 +11,6 @@
 
         <section id="history">
             <h2>HISTORY</h2>
-
             <p>
                 <strong>Odyssey</strong> was founded by <strong>Samuel Batchelor</strong>,
                 as an accumulation of his child-hood passion for astronomy and love for all things tech-related. Whilst studying full-time at the Bachelor of Information Technology at Otago Polytechnic, he sought a golden opportunity to further fufil his interest in astronomy. The golden opportunity was to build a website devoted entirely to space, and a platform where users can easily find out about our solar system and outer space. 
@@ -22,16 +21,8 @@
 
 <style>
     h1 {
-        letter-spacing: 0.2em;
-        text-shadow: 5px 5px 4px black;
-        background-color: rgba(0, 20, 60, 0.6);
-        padding: 0.1em 0.5em 0.1em 0.5em;
+        letter-spacing: 0.2em;       
         color: white;
-        box-shadow: 5px 5px 0px 0px white;
-    }
-    h2{
-        text-shadow: 2px 2px 4px rgb(255, 255, 255);
-        color: rgb(13, 1, 56);
     }
     main{
         background-image: url(../../lib/Images/earth_horizon.jpg);
@@ -50,34 +41,15 @@
       flex-direction: column;
       background: linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.3),  /* more transparent at top */
-        rgba(255, 255, 255, 0.8)   /* normal opacity at bottom */
+        rgba(0,0,0, 0.7),  /* more transparent at top */
+        rgba(0,0,0, 0.8)   /* normal opacity at bottom */
     );
-    mask-image: linear-gradient(to top, black 95%, transparent 100%);
+    mask-image: linear-gradient(to top, black 98%, transparent 100%);
+    color: white;
     }
 
     #about section{
         padding: 0.1em 1em 0.1em 1em;
-    }
-    p {
-        background:
-            repeating-linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.1) 0px,
-                rgba(53, 54, 118, 0.1) 2px,
-                transparent 2px,
-                transparent 6px
-            ),
-            linear-gradient(
-                135deg,
-                rgba(0, 20, 60, 0.9),     /* dark navy blue */
-                rgba(0, 29, 47, 0.6)     /* softer blue tint */
-            );
-        color: white;
-        padding: 0.9em;
-        border: 2px white solid;
-        box-shadow: 3px 3px 3px #333;
-        text-shadow: 2px 2px 15px black;
     }
 
     #about{
