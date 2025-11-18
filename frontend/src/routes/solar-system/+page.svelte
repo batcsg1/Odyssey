@@ -101,24 +101,32 @@
 
 <style>
     h1 {
-        letter-spacing: 0.2em;
-        text-shadow: 5px 5px 4px black;
-        background-color: rgba(0, 20, 60, 0.6);
-        padding: 0.1em 0.5em 0.1em 0.5em;
+        letter-spacing: 0.2em;    
         color: white;
         box-shadow: 5px 5px 0px 0px white;
+        text-shadow: 3px 3px 3px #333;
+        z-index: 2;
     }
     header {
+        position: relative;
         height: 15em;
         color: white;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-image: 
-            url(../../lib/Images/solsys.webp);
+        background-image: url(../../lib/Images/solsys.webp);
         background-repeat: no-repeat;
         background-size: cover;   
-        background-position: center;  
+        background-position: center;
+    }
+
+    header::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: rgba(0,0,0,0.3); /* semi-transparent overlay */
+        z-index: 1;
     }
     
     #contents{

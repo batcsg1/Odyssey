@@ -21,14 +21,19 @@
 
 <style>
     h1 {
-        letter-spacing: 0.2em;       
+        letter-spacing: 0.2em;    
         color: white;
+        box-shadow: 5px 5px 0px 0px white;
+        text-shadow: 3px 3px 3px #333;
+        z-index: 1;
     }
+
     main{
         background-image: url(../../lib/Images/earth_horizon.jpg);
         background-repeat: no-repeat;
         background-size: cover;   
     }
+    
     #about-image{
         height: 15em;
         color: white;
@@ -36,6 +41,16 @@
         justify-content: center;
         align-items: center;
     }
+    
+    #about-image::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: rgba(0,0,0,0.4); /* semi-transparent overlay */
+        z-index: 0;
+    }
+
     #about {
       display: flex;
       flex-direction: column;
