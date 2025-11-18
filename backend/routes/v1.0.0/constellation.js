@@ -24,7 +24,7 @@ import {
 } from "../../middleware/validation/constellation.js";
 
 // Import the authorisation middleware
-import authorisation from "../../middleware/auth/authorisation.js"
+import rbac from "../../middleware/auth/rbac.js"
 
 // Import the rate limiting middleware
 import { getLimit, headLimit, cudLimit, optionsLimit } from "../../middleware/limiting/limit.js";
@@ -63,7 +63,7 @@ const constellationRouter = createRouter(
   cudLimit,
   optionsLimit,
   validatePostConstellation,
-  authorisation,
+  rbac,
   validatePutConstellation,
   validatePatchConstellation,
   auth

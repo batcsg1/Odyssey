@@ -23,8 +23,8 @@ import {
   validatePatchGalaxy
 } from "../../middleware/validation/galaxy.js";
 
-// Import the authorisation middleware
-import authorisation from "../../middleware/auth/authorisation.js"
+// Import the rbac middleware
+import rbac from "../../middleware/auth/rbac.js"
 
 // Import the rate limiting middleware
 import { 
@@ -66,7 +66,7 @@ const galaxyRouter = createRouter(
   cudLimit,
   optionsLimit,
   validatePostGalaxy,
-  authorisation,
+  rbac,
   validatePutGalaxy,
   validatePatchGalaxy,
   auth

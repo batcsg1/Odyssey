@@ -5,7 +5,7 @@
 
 import prisma from "../../prisma/client.js";
 
-const authorisation = async (req, res, next) => {
+const rbac = async (req, res, next) => {
   try {
     const { id } = req.user;
 
@@ -26,4 +26,4 @@ const authorisation = async (req, res, next) => {
   }
 };
 
-export default authorisation;
+export default rbac;

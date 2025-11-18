@@ -23,8 +23,8 @@ import {
   validatePatchMeteorite
 } from "../../middleware/validation/meteorite.js";
 
-// Import the authorisation middleware
-import authorisation from "../../middleware/auth/authorisation.js"
+// Import the rbac middleware
+import rbac from "../../middleware/auth/rbac.js"
 
 // Import the rate limiting middleware
 import { 
@@ -68,7 +68,7 @@ const meteoriteRouter = createRouter(
   cudLimit,
   optionsLimit,
   validatePostMeteorite,
-  authorisation,
+  rbac,
   validatePutMeteorite,
   validatePatchMeteorite,
   auth

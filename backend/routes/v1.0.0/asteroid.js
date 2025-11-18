@@ -24,7 +24,7 @@ import {
 } from "../../middleware/validation/asteroid.js";
 
 // Import the authorisation middleware
-import authorisation from "../../middleware/auth/authorisation.js"
+import rbac from "../../middleware/auth/rbac.js"
 
 // Import the rate limiting middleware
 import { 
@@ -67,7 +67,7 @@ const asteroidRouter = createRouter(
   cudLimit,
   optionsLimit,
   validatePostAsteroid,
-  authorisation,
+  rbac,
   validatePutAsteroid,
   validatePatchAsteroid,
   auth
