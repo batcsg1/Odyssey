@@ -28,12 +28,14 @@
   { name: "THE INTERSTELLAR", href: "/interstellar" }
   ];
 
+  import logo from "$lib/Images/logo-dark.png";
+
 </script>
 
 <svelte:window bind:scrollY={y} />
 
 <header>
-  <h1><a href="/">&#123; odyssey &#125;</a></h1>
+  <h1><a href="/"><img src={logo} alt="logo" height="100"></a></h1>
   <nav id="hamburger-parent">
     {#if !open}
       <button onclick={openMenu}>☰</button>
