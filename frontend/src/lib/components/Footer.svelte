@@ -10,7 +10,7 @@
     </section>
 
     <section id="copyright">
-       © 2025 Odyssey
+       © 2025 Samuel Batchelor. All rights reserved.
     </section>
 </footer>
 
