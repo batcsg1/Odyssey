@@ -42,35 +42,27 @@
         align-items: center;
     }
     
-    #about-image::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background-color: rgba(0,0,0,0.4); /* semi-transparent overlay */
-        z-index: 0;
-    }
-
-    #about {
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0, 0.7),  /* more transparent at top */
-        rgba(0,0,0, 0.8)   /* normal opacity at bottom */
-    );
-    mask-image: linear-gradient(to top, black 96%, transparent 100%);
-    color: white;
+    #about {  
+        background-color: rgba(0,0,0,0.6);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        padding: 3em;
     }
 
     #about section{
-        padding: 0.1em 1em 1.5em 1em;
-        border-bottom: 0.1em dashed white;
+        padding: 1em;
     }
 
-    #about{
-        padding-top: 2em;
-        gap: 2em;
+    #about section p {
+        max-width: 55em;
+        line-height: 1.7em;
+        padding: 0.5em;
     }
 
+    #about section h2{
+        text-decoration: underline;
+        text-align: center;
+    }
 </style>
