@@ -1,7 +1,7 @@
 <script>
 	import "../app.css";
-	import favicon from '$lib/assets/favicon.svg';
-	import Nav from '$lib/components/Nav.svelte';
+	import favicon from "$lib/assets/favicon.svg";
+	import Nav from "$lib/components/Nav.svelte";
 	import Footer from "$lib/components/Footer.svelte";
 
 	let { children } = $props();
@@ -11,20 +11,19 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-
-<Nav/>
+<Nav />
 {@render children()}
-<Footer/>
+<Footer />
 
 <style>
 	:global(body) {
-		font-family: 'Google Sans Code', monospace;
+		font-family: "Inter", sans-serif;
 		font-optical-sizing: auto;
-		font-weight: 300;
+		font-weight: 400;
 		font-style: normal;
 	}
 	:global(button, a) {
-		font-family: 'Google Sans Code', monospace;
+		font-family: "Inter", sans-serif;
 		font-optical-sizing: auto;
 		font-weight: 300;
 		font-style: normal;
