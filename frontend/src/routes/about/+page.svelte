@@ -43,26 +43,28 @@
     }
     
     #about {  
-        background-color: rgba(0,0,0,0.6);
+        background-color: rgba(0,0,0,0.8);
         display: flex;
         flex-direction: column;
         align-items: center;
         color: white;
         padding: 3em;
+        gap: 2.2em;
     }
 
     #about section{
-        padding: 1em;
+        padding: 2em 1em 2em 1em;
+        border: white 0.1em solid;
+        border-radius: 0.3em;
     }
 
     #about section p {
-        max-width: 55em;
+        max-width: 45em;
         line-height: 1.7em;
         padding: 0.5em;
     }
 
-    #about section h2{
-        text-decoration: underline;
+    h2{
         text-align: center;
     }
 </style>
