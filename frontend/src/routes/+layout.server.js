@@ -13,7 +13,7 @@ export const load = async ({ cookies, fetch }) => {
     },
     {
       "header": "WHAT IS THE SOLAR SYSTEM?",
-      "description": "The Solar System</strong> is the area of space where we live, consisting of the Sun, eight planets, including our home planet Earth, and many more celestial bodies.Our Solar System formed about 4.6 billion years ago from a giant cloud of gas and dust, and it continues to captivate scientists and enthusiasts alike with its mysteries and wonders."
+      "description": "The Solar System is the area of space where we live, consisting of the Sun, eight planets, including our home planet Earth, and many more celestial bodies.Our Solar System formed about 4.6 billion years ago from a giant cloud of gas and dust, and it continues to captivate scientists and enthusiasts alike with its mysteries and wonders."
     }
   ];
 
