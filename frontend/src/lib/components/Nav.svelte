@@ -102,6 +102,8 @@
     box-shadow: 5px 5px 0px #333;
   }
   
+  /* Hamburger Menu Styles */
+
   #hamburger-parent {
     position: relative;
   }
@@ -112,12 +114,12 @@
     top: 100%;
     background-color: white;
     padding: 0.9em 4em 0.9em 1em;
-    border-right: #333 dashed 0.1em;
+    box-shadow: 6px 6px 0px #66aaff;
   }
   #hamburger ul {
     display: flex;
     flex-direction: column;
-    gap: 0.1em;
+    padding: 0;
   }
   #hamburger a{
     color: #333;
@@ -129,11 +131,11 @@
     padding: 0.2em;
     transition: ease 0.5s;
     border-radius: 0.3em;
-    list-style: circle;
+    list-style: none;
   }
   #hamburger li:hover {
     transition: ease 0.5s;
-    background-color: #333;
+    background-color: #66aaff;
     cursor: pointer;
     text-decoration: underline;
     transform: scale(1.05);
