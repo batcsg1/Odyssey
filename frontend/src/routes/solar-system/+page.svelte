@@ -158,6 +158,9 @@
 
     #cards {
        padding: 1em;
+       background-color: #001427;
+       border: 0.1em solid white;
+       border-radius: 0.5em;
     }
     .card{
         color: white;
@@ -209,7 +212,7 @@
     }
     
     #contents{
-        background-color: #000912;
+        background-color: black;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
