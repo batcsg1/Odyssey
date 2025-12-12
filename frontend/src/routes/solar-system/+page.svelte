@@ -72,7 +72,7 @@
     background-color: rgba(0, 0, 0);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     color: white;
     padding: 3em;
     gap: 2.2em;
@@ -86,7 +86,7 @@
   }
 
   #intro section p {
-    max-width: 45em;
+    max-width: 50em;
     line-height: 1.7em;
   }
 
@@ -132,7 +132,6 @@
     background-color: black;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 1em;
     padding: 3em;
     height: 35vh;
@@ -158,7 +157,6 @@
   }
 
   #contents::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, rgb(18, 39, 117) 98, 161, #66aaff);
-    /* hover effect */
+    background: linear-gradient(135deg, rgb(18, 39, 117), #66aaff);
   }
 </style>

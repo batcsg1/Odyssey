@@ -62,7 +62,7 @@
     background-color: rgba(0, 0, 0);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     color: white;
     padding: 3em;
     gap: 2.2em;
@@ -76,7 +76,7 @@
   }
 
   #about section p {
-    max-width: 45em;
+    max-width: 50em;
     line-height: 1.7em;
   }
 </style>
