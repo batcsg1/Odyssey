@@ -13,12 +13,22 @@
                 comets, explore detailed information about planets, moons, asteroids, and more.
             </p>
         </section>
+
+        <section>
+            <h2>WHAT IS THE SOLAR SYSTEM?</h2>
+            <p>
+                <strong>The Solar System</strong> is the area of space where we live, consisting of the Sun, eight planets, including our home planet Earth, and many more celestial bodies.
+                Our Solar System formed about <strong>4.6 billion years ago</strong> from a giant cloud of gas and dust, and it
+                continues to captivate scientists and enthusiasts alike with its mysteries and
+                wonders.
+            </p>
+        </section>
     </section>
     <article
         id="contents"
         class="d-flex flex-wrap justify-content-center gap-3 p-3 overflow-auto"
     >
-        <h2>CATALOGUE</h2>
+        <h3>BODIES OF THE SOLAR SYSTEM</h3>
         <section id="cards" class="d-flex flex-wrap justify-content-center gap-3">
             <!-- Card template -->
         <div class="card" style="width: 18rem;">
@@ -114,11 +124,11 @@
         padding: 0em 0em 0.3em 0em;
         border-bottom: #66aaff 0.1em solid;
     }
-    main {
-        background-image: url(../../lib/Images/solsys.webp);
-        background-repeat: no-repeat;
-        background-size: cover;   
-        background-position: center;
+    h3 {
+        font-weight: bold;
+        padding: 0em 0em 0.3em 0em;
+        color: white;
+        border-bottom: #66aaff 0.1em solid;
     }
     #intro{
         background-color: rgba(0,0,0);
@@ -192,6 +202,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        background-image: url(../../lib/Images/solsys.webp);
+        background-repeat: no-repeat;
+        background-size: cover;   
+        background-position: center;
     }
     
     #contents{
