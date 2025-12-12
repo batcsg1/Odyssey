@@ -6,12 +6,12 @@
   let y = $state(0);
 
   // $effect(() => {
-	// 	if (y > 100){
+  // 	if (y > 100){
   //     message = "Yay"
   //   } else {
   //     message = "Nope"
   //   }
-	// });
+  // });
 
   // let isShrunk = $derived.by(() => {
   //   if (y > 100){
@@ -21,21 +21,24 @@
   //   }
   // })
 
+  let isTransparent = $derived.by(() => {
+    return y > 30 ? true : false;
+  });
+
   let menu = [
-  { name: "HOME", href: "/" }, 
-  { name: "ABOUT", href: "/about" }, 
-  { name: "THE SOLAR SYSTEM", href: "/solar-system" }, 
-  { name: "THE INTERSTELLAR", href: "/interstellar" }
+    { name: "HOME", href: "/" },
+    { name: "ABOUT", href: "/about" },
+    { name: "THE SOLAR SYSTEM", href: "/solar-system" },
+    { name: "THE INTERSTELLAR", href: "/interstellar" },
   ];
 
   import logo from "$lib/Images/logo-dark.png";
-
 </script>
 
 <svelte:window bind:scrollY={y} />
 
-<header>
-  <h1><a href="/"><img src={logo} alt="logo" height="100"></a></h1>
+<header class:transparent={isTransparent}>
+  <h1><a href="/">{`{ odyssey }`}</a></h1>
   <nav id="hamburger-parent">
     {#if !open}
       <button onclick={openMenu}>☰</button>
@@ -48,7 +51,7 @@
       <ul>
         {#each menu as { name, href }, i}
           <li>
-            <a href={href}>{name}</a>
+            <a {href}>{name}</a>
           </li>
         {/each}
       </ul>
@@ -59,26 +62,45 @@
 <style>
   header {
     background: #000;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 95%, rgba(227, 227, 227, 1) 100%, rgba(233, 233, 233, 1) 96%, rgba(255, 255, 255, 1) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 1) 95%,
+      rgba(227, 227, 227, 1) 100%,
+      rgba(233, 233, 233, 1) 96%,
+      rgba(255, 255, 255, 1) 100%
+    );
     padding: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;  
+    position: sticky;
     top: 0;
     z-index: 1000;
+    transition: 0.3s ease;
   }
-  h1{
+
+  header.transparent {
+    background: rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease;
+  }
+
+  header.transparent h1 {
+    font-size: x-large;
+    transition: font-size 0.3s ease;
+  }
+
+  h1 {
     color: white;
     padding: 0.1em 1em 0.1em 1em;
+    font-size: xx-large;
   }
-  h1 a{
+  h1 a {
     color: white;
     font-weight: bolder;
     transition: ease 0.3s;
     display: inline-block;
   }
-  h1 a:hover{
+  h1 a:hover {
     transition: ease 0.3s;
     transform: scale(1.1);
   }
@@ -101,7 +123,7 @@
     transform: scale(1.1);
     box-shadow: 5px 5px 0px #333;
   }
-  
+
   /* Hamburger Menu Styles */
 
   #hamburger-parent {
@@ -121,10 +143,10 @@
     flex-direction: column;
     padding: 0;
   }
-  #hamburger a{
+  #hamburger a {
     color: #333;
-    display: block;          
-    width: 100%;          
+    display: block;
+    width: 100%;
     padding: 0.5em 1em 0.5em 1em;
   }
   #hamburger li {
