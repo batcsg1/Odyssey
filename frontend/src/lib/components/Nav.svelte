@@ -41,9 +41,9 @@
   <h1><a href="/">{`{ odyssey }`}</a></h1>
   <nav id="hamburger-parent">
     {#if !open}
-      <button onclick={openMenu}>☰</button>
+      <button class:transparent={isTransparent} onclick={openMenu}>☰</button>
     {:else}
-      <button onclick={openMenu}>✖</button>
+      <button class:transparent={isTransparent} onclick={openMenu}>✖</button>
     {/if}
   </nav>
   {#if open}
@@ -122,6 +122,15 @@
     transition: ease 0.5s;
     transform: scale(1.1);
     box-shadow: 5px 5px 0px #333;
+  }
+
+  button.transparent {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  button.transparent:hover {
+    background-color: white;
   }
 
   /* Hamburger Menu Styles */
