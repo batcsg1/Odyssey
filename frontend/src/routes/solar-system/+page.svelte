@@ -16,7 +16,7 @@
       </section>
     {/each}
   </section>
-  
+
   <article
     id="contents"
     class="d-flex flex-wrap justify-content-center gap-3 p-3 overflow-auto"
@@ -165,7 +165,7 @@
     color: #66aaff;
     font-weight: bold;
     border: 0.1em solid #66aaff;
-    border-radius: 0.5em;
+    border-radius: 0.3em;
     padding: 0.2em 0.5em 0.2em 0.5em;
     transition: ease 0.3s;
   }
