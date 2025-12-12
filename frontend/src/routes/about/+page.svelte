@@ -1,6 +1,6 @@
 <main>
   <header>
-    <p>Home &gt; About &gt;</p>
+    <p>Home &gt; <strong>About &gt;</strong></p>
     <h1>ABOUT</h1>
   </header>
   <article id="about">

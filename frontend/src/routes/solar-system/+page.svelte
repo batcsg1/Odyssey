@@ -1,11 +1,11 @@
 <script>
-  export let data;
+  let { data } = $props();
   const { solar_system } = data;
 </script>
 
 <main>
   <header>
-    <p>Home &gt; Solar System &gt;</p>
+    <p>Home &gt; <strong>Solar System &gt;</strong></p>
     <h1>THE SOLAR SYSTEM</h1>
   </header>
 
