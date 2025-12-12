@@ -1,6 +1,6 @@
 <script>
   let { data } = $props();
-  const { solar_system } = data;
+  const { solar_system, cards } = data;
 </script>
 
 <main>
@@ -24,82 +24,15 @@
   >
     <h3>BODIES OF THE SOLAR SYSTEM</h3>
     <section id="cards" class="d-flex flex-wrap justify-content-center gap-3">
-      <!-- Card template -->
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Constellations</h5>
-          <p class="card-text">
-            Descriptions and details about constellations.
-          </p>
-          <a href="#" class="card-link">Learn More</a>
+      {#each cards as card}
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{card.title}</h5>
+            <p class="card-text">{card.text}</p>
+            <a href={card.url} class="card-link">Learn More</a>
+          </div>
         </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Galaxies</h5>
-          <p class="card-text">Descriptions and details about galaxies.</p>
-          <a href="#" class="card-link">Learn More</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Stars</h5>
-          <p class="card-text">Descriptions and details about stars.</p>
-          <a href="#" class="card-link">Learn More</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Planets</h5>
-          <p class="card-text">Descriptions and details about planets.</p>
-          <a href="#" class="card-link">Learn More</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Satellites</h5>
-          <p class="card-text">Descriptions and details about satellites.</p>
-          <a href="#" class="card-link">Learn More</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Comets</h5>
-          <p class="card-text">Descriptions and details about comets.</p>
-          <a href="#" class="card-link">Learn More</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Asteroids</h5>
-          <p class="card-text">Descriptions and details about asteroids.</p>
-          <a href="#" class="card-link">Learn More</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Meteorites</h5>
-          <p class="card-text">Descriptions and details about meteorites.</p>
-          <a href="#" class="card-link">Learn More</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Meteor Showers</h5>
-          <p class="card-text">
-            Descriptions and details about meteor showers.
-          </p>
-          <a href="#" class="card-link">Learn More</a>
-        </div>
-      </div>
+      {/each}
     </section>
   </article>
 </main>
@@ -114,7 +47,7 @@
     background-size: cover;
     background-position: center;
   }
-  h1{
+  h1 {
     max-width: fit-content;
     letter-spacing: 0.1em;
     color: white;
