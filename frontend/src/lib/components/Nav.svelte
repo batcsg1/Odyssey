@@ -1,4 +1,8 @@
 <script>
+  import { page } from "$app/stores";
+
+  let currentPath = $derived($page.url.pathname);
+
   let open = $state(false);
 
   let openMenu = () => (open = !open);
@@ -21,9 +25,7 @@
   //   }
   // })
 
-  let isTransparent = $derived.by(() => {
-    return y > 30 ? true : false;
-  });
+  let isTransparent = $derived(y > 30);
 
   let menu = [
     { name: "HOME", href: "/" },
@@ -51,7 +53,7 @@
       <ul>
         {#each menu as { name, href }, i}
           <li>
-            <a {href}>{name}</a>
+            <a class:currentPath={href === currentPath} {href}>{name}</a>
           </li>
         {/each}
       </ul>
@@ -158,6 +160,13 @@
     width: 100%;
     padding: 0.5em 1em 0.5em 1em;
   }
+
+  #hamburger a.currentPath {
+    font-weight: bolder;
+    color: #66aaff;
+    text-decoration: underline;
+  }
+
   #hamburger li {
     padding: 0.2em;
     transition: ease 0.5s;
