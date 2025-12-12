@@ -32,6 +32,8 @@
 
     h2 {
         font-weight: bold;
+        padding: 0em 0em 0.3em 0em;
+        border-bottom: #66aaff 0.1em solid;
     }
 
     main{

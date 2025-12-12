@@ -5,11 +5,22 @@
     <header>
         <h1>THE SOLAR SYSTEM</h1>
     </header>
+    <section id="intro">
+        <section>
+            <h2>WELCOME TO THE SOLAR SYSTEM</h2>
+            <p>
+                Dive into the wonders of our Solar System! From the blazing Sun to the icy
+                comets, explore detailed information about planets, moons, asteroids, and more.
+            </p>
+        </section>
+    </section>
     <article
         id="contents"
         class="d-flex flex-wrap justify-content-center gap-3 p-3 overflow-auto"
     >
-        <!-- Card template -->
+        <h2>CATALOGUE</h2>
+        <section id="cards" class="d-flex flex-wrap justify-content-center gap-3">
+            <!-- Card template -->
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Constellations</h5>
@@ -93,19 +104,53 @@
                 <a href="#" class="card-link">Learn More</a>
             </div>
         </div>
+        </section>
     </article>
 </main>
 
 <style>
+    h2 {
+        font-weight: bold;
+        padding: 0em 0em 0.3em 0em;
+        border-bottom: #66aaff 0.1em solid;
+    }
     main {
         background-image: url(../../lib/Images/solsys.webp);
         background-repeat: no-repeat;
         background-size: cover;   
         background-position: center;
     }
+    #intro{
+        background-color: rgba(0,0,0);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        padding: 3em;
+        gap: 2.2em;
+    }
+
+    #intro section{
+        padding: 2em 2em 2em 2em;
+        border: white 0.1em solid;
+        border-radius: 0.3em;
+        box-shadow: 0.5em 0.5em 0px white;
+    }
+
+    #intro section p {
+        max-width: 45em;
+        line-height: 1.7em;   
+    }
+
+    .card, #intro section{
+        box-shadow: 0.5em 0.5em 0px white;
+    }
+
+    #cards {
+       padding: 1em;
+    }
     .card{
         color: white;
-        box-shadow: 3px 3px 2px white;
         background: linear-gradient(
         to bottom,
         rgba(0,0,0, 0.7),  /* more transparent at top */
@@ -113,19 +158,36 @@
     );
         border: 3px solid white;
     }
-    .card-body{
-        text-shadow: 3px 3px 2px black;
+    .card-title {
+        text-transform: uppercase;
+        font-weight: bold;
     }
+    .card-link{
+        color: #66aaff;
+        font-weight: bold;
+        border: 0.1em solid #66aaff;
+        border-radius: 0.5em;
+        padding: 0.2em 0.5em 0.2em 0.5em;
+        transition: ease 0.3s;
+    }
+    .card-link:hover{
+        background-color: white;
+        color: #66aaff;
+        transition: ease 0.3s;
+    }
+
     h1 {
-        letter-spacing: 0.2em;    
+        letter-spacing: 0.1em;    
         color: white;
         box-shadow: 5px 5px 0px 0px white;
         text-shadow: 3px 3px 3px #333;
         z-index: 2;
+        font-weight: bolder;
+        padding: 0.2em;
     }
     header {
         position: relative;
-        height: 15em;
+        height: 10em;
         color: white;
         display: flex;
         justify-content: center;
@@ -133,21 +195,16 @@
     }
     
     #contents{
-        background: linear-gradient(
-        to bottom,
-        rgba(0,0,0, 0.7),  /* more transparent at top */
-        rgba(0,0,0, 0.8)   /* normal opacity at bottom */
-    );
-    mask-image: linear-gradient(to top, black 96%, transparent 100%);
+        background-color: #000912;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
-        padding: 2em;
-        height: 30vh;
+        gap: 1em;
+        padding: 3em;
+        height: 35vh;
         overflow-y: auto;
         scrollbar-width: thin; /* "auto" | "thin" | "none" */
-        scrollbar-color: #ffffff #1b2952; /* thumb color | track color */
+        scrollbar-color: #000000 #66aaff; /* thumb color | track color */
     }
     
 
@@ -168,7 +225,8 @@
     }
 
     #contents::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(135deg, rgb(18, 39, 117) 98, 161), #66aaff); /* hover effect */
+        background: linear-gradient(135deg, rgb(18, 39, 117) 98, 161, #66aaff); 
+        /* hover effect */
     }
 
 </style>
