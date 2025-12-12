@@ -40,6 +40,10 @@
 </main>
 
 <style>
+  h2 {
+    font-weight: bold;
+    font-size: 2.5em;
+  }
   .page-sections{
     height: 35em;
     color: white;
