@@ -43,6 +43,8 @@
   h2 {
     font-weight: bold;
     font-size: 2.5em;
+    padding: 0em 0em 0.2em 0em;
+    border-bottom: #66aaff 0.1em solid;
   }
   .page-sections{
     height: 35em;
