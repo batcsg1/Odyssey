@@ -57,9 +57,7 @@
     background-size: cover;   
   }
 
-  .page-sections section * {
-    text-shadow: 2px 2px 1px black;
-  }
+  
 
   #sol-sys {
     background-image: url(../lib/GIFs/jupiter.gif);
