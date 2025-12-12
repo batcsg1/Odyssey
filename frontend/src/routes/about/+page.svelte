@@ -21,11 +21,17 @@
 
 <style>
     h1 {
-        letter-spacing: 0.2em;    
+        letter-spacing: 0.1em;    
         color: white;
         box-shadow: 5px 5px 0px 0px white;
         text-shadow: 3px 3px 3px #333;
         z-index: 1;
+        padding: 0.2em;
+        font-weight: bolder;
+    }
+
+    h2 {
+        font-weight: bold;
     }
 
     main{
@@ -35,7 +41,7 @@
     }
     
     #about-image{
-        height: 15em;
+        height: 10em;
         color: white;
         display: flex;
         justify-content: center;
@@ -43,7 +49,7 @@
     }
     
     #about {  
-        background-color: rgba(0,0,0,0.8);
+        background-color: rgba(0,0,0);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -53,18 +59,17 @@
     }
 
     #about section{
-        padding: 2em 1em 2em 1em;
+        padding: 2em 2em 2em 2em;
         border: white 0.1em solid;
         border-radius: 0.3em;
+        box-shadow: 0.5em 0.5em 0px white;
     }
 
     #about section p {
         max-width: 45em;
-        line-height: 1.7em;
-        padding: 0.5em;
+        line-height: 1.7em;   
     }
 
-    h2{
-        text-align: center;
-    }
+  
+
 </style>
