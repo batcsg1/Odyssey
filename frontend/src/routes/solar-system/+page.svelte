@@ -5,6 +5,7 @@
 
 <main>
   <header>
+    <p>Home &gt; Solar System &gt;</p>
     <h1>THE SOLAR SYSTEM</h1>
   </header>
 
@@ -104,6 +105,25 @@
 </main>
 
 <style>
+  header {
+    position: relative;
+    color: white;
+    padding: 3em;
+    background-image: url(../../lib/Images/solsys.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  h1{
+    max-width: fit-content;
+    letter-spacing: 0.1em;
+    color: white;
+    box-shadow: 5px 5px 0px 0px white;
+    text-shadow: 3px 3px 3px #333;
+    z-index: 2;
+    font-weight: bolder;
+    padding: 0.2em;
+  }
   h2 {
     font-weight: bold;
     padding: 0em 0em 0.3em 0em;
@@ -173,28 +193,6 @@
     background-color: white;
     color: #66aaff;
     transition: ease 0.3s;
-  }
-
-  h1 {
-    letter-spacing: 0.1em;
-    color: white;
-    box-shadow: 5px 5px 0px 0px white;
-    text-shadow: 3px 3px 3px #333;
-    z-index: 2;
-    font-weight: bolder;
-    padding: 0.2em;
-  }
-  header {
-    position: relative;
-    height: 10em;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url(../../lib/Images/solsys.webp);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
   }
 
   #contents {
