@@ -5,6 +5,7 @@
 
   import Header from "$lib/components/Header.svelte";
   import Section from "$lib/components/Section.svelte";
+  import Fetch from "$lib/components/Fetch.svelte";
 
   import { page } from "$app/stores";
   let currentPath = $derived($page.url.pathname);
@@ -23,6 +24,10 @@
         <Section header={section.header} text={section.text}></Section>
       {/each}
     </section>
+    <section>
+      <h3>VIEW CONSTELLATIONS</h3>
+      <Fetch />
+    </section>
   </article>
 </main>
 
@@ -40,11 +45,17 @@
     justify-content: flex-end;
   }
 
+  h3 {
+    font-weight: bold;
+    padding: 0em 0em 0.3em 0em;
+    border-bottom: #66aaff 0.1em solid;
+    text-align: center;
+  }
+
   article {
     background-color: rgba(0, 0, 0);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     color: white;
     padding: 3em;
     gap: 2.2em;
