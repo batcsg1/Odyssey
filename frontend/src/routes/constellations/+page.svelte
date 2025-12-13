@@ -2,7 +2,7 @@
   let { data } = $props();
 
   const { intro, blurb } = data;
-  
+
   import Header from "$lib/components/Header.svelte";
   import Section from "$lib/components/Section.svelte";
 
@@ -18,14 +18,16 @@
     <Header {location} />
   </header>
   <article>
-    {#each [intro, blurb] as section}
-      <Section header={section.header} text={section.text}></Section>
-    {/each}
+    <section>
+      {#each [intro, blurb] as section}
+        <Section header={section.header} text={section.text}></Section>
+      {/each}
+    </section>
   </article>
 </main>
 
 <style>
-    header {
+  header {
     position: relative;
     color: white;
     background-image: url(../../lib/Images/constellation.webp);
@@ -38,7 +40,7 @@
     justify-content: flex-end;
   }
 
-   article {
+  article {
     background-color: rgba(0, 0, 0);
     display: flex;
     flex-direction: column;
@@ -46,5 +48,12 @@
     color: white;
     padding: 3em;
     gap: 2.2em;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2em;
+    max-width: 50em;
   }
 </style>

@@ -22,7 +22,7 @@
   }
 
   p {
-    max-width: 50em;
+    
     line-height: 1.7em;
   }
 </style>

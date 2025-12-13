@@ -70,6 +70,7 @@
     color: white;
     padding: 3em;
     gap: 2.2em;
+    max-width: 50em;
   }
 
   .card{

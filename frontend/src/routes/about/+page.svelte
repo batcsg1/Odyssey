@@ -16,8 +16,10 @@
       <Header {location} />
   </header>
   <article id="about">
+    <section>
     <Section header={mission.header} text={mission.text}></Section>
     <Section header={history.header} text={history.text}></Section>
+    </section>
   </article>
 </main>
 
@@ -43,5 +45,12 @@
     color: white;
     padding: 3em;
     gap: 2.2em;
+  }
+
+  #about section {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2em;
+    max-width: 50em;
   }
 </style>
