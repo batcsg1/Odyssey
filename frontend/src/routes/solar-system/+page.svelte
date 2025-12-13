@@ -1,12 +1,21 @@
 <script>
   let { data } = $props();
   const { solar_system, cards } = data;
+
+  import { page } from "$app/stores";
+  import Header from "$lib/components/Header.svelte";
+
+  let currentPath = $derived($page.url.pathname);
+  let location = currentPath.replace("/", "").replace("-", " ");
+
+  console.log(location);
 </script>
 
 <main>
   <header>
-    <p>Home &gt; <strong>Solar System &gt;</strong></p>
-    <h1>THE SOLAR SYSTEM</h1>
+    <section>
+      <Header {location} />
+    </section>
   </header>
 
   <section id="intro">
@@ -41,22 +50,40 @@
   header {
     position: relative;
     color: white;
-    padding: 3em;
     background-image: url(../../lib/Images/solsys.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
-  h1 {
+
+  header section {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 1) 75%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    padding: 4em 1em 2em 1em;
+  }
+
+  header section h1 {
     max-width: fit-content;
     letter-spacing: 0.1em;
     color: white;
     box-shadow: 5px 5px 0px 0px white;
-    text-shadow: 3px 3px 3px #333;
+    border-radius: 10px;
     z-index: 2;
     font-weight: bolder;
-    padding: 0.2em;
+    padding: 0.2em 0.4em 0.2em 0.4em;
   }
+
+  header section p {
+    padding: 1em 0.5em 0em 0.5em;
+  }
+
   h2 {
     font-weight: bold;
     padding: 0em 0em 0.3em 0em;

@@ -1,7 +1,17 @@
+<script>
+  import { page } from "$app/stores";
+  import Header from "$lib/components/Header.svelte";
+
+  let currentPath = $derived($page.url.pathname);
+  let location = currentPath.replace("/", "");
+
+  console.log(location);
+</script>
 <main>
   <header>
-    <p>Home &gt; <strong>About &gt;</strong></p>
-    <h1>ABOUT</h1>
+    <section>
+      <Header location={location} />
+    </section>
   </header>
   <article id="about">
     <section id="mission">
@@ -40,23 +50,25 @@
   header {
     position: relative;
     color: white;
-    padding: 3em;
     background-image: url(../../lib/Images/earth_horizon.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
-  h1{
-    max-width: fit-content;
-    letter-spacing: 0.1em;
-    color: white;
-    box-shadow: 5px 5px 0px 0px white;
-    text-shadow: 3px 3px 3px #333;
-    z-index: 2;
-    font-weight: bolder;
-    padding: 0.2em;
+  header section{
+    background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+    padding: 4em 1em 2em 1em;
   }
+
 
   #about {
     background-color: rgba(0, 0, 0);
