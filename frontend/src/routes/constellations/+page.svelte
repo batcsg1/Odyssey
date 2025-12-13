@@ -1,7 +1,7 @@
 <script>
   let { data } = $props();
 
-  const { about } = data;
+  const { intro } = data;
   
   import Header from "$lib/components/Header.svelte";
   import Section from "$lib/components/Section.svelte";
@@ -18,7 +18,7 @@
     <Header {location} />
   </header>
   <article>
-    <Section header={about.header} text={about.text}></Section>
+    <Section header={intro.header} text={intro.text}></Section>
   </article>
 </main>
 
