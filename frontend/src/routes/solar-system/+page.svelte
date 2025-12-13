@@ -4,6 +4,7 @@
 
   import { page } from "$app/stores";
   import Header from "$lib/components/Header.svelte";
+  import Section from "$lib/components/Section.svelte";
 
   let currentPath = $derived($page.url.pathname);
   let location = currentPath.replace("/", "").replace("-", " ");
@@ -18,10 +19,7 @@
 
   <section id="intro">
     {#each solar_system as info}
-      <section>
-        <h2>{info.header}</h2>
-        <p>{info.description}</p>
-      </section>
+      <Section header={info.header} text={info.description}></Section>
     {/each}
   </section>
 
@@ -58,11 +56,6 @@
     justify-content: flex-end;
   }
 
-  h2 {
-    font-weight: bold;
-    padding: 0em 0em 0.3em 0em;
-    border-bottom: #66aaff 0.1em solid;
-  }
   h3 {
     font-weight: bold;
     padding: 0em 0em 0.3em 0em;
@@ -79,20 +72,7 @@
     gap: 2.2em;
   }
 
-  #intro section {
-    padding: 2em 2em 2em 2em;
-    border: white 0.1em solid;
-    border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 0px white;
-  }
-
-  #intro section p {
-    max-width: 50em;
-    line-height: 1.7em;
-  }
-
-  .card,
-  #intro section {
+  .card{
     box-shadow: 0.5em 0.5em 0px white;
   }
 
