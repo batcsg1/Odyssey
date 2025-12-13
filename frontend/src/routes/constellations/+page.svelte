@@ -1,7 +1,7 @@
 <script>
   let { data } = $props();
 
-  const { intro } = data;
+  const { intro, blurb } = data;
   
   import Header from "$lib/components/Header.svelte";
   import Section from "$lib/components/Section.svelte";
@@ -18,7 +18,9 @@
     <Header {location} />
   </header>
   <article>
-    <Section header={intro.header} text={intro.text}></Section>
+    {#each [intro, blurb] as section}
+      <Section header={section.header} text={section.text}></Section>
+    {/each}
   </article>
 </main>
 
