@@ -8,6 +8,15 @@
 </section>
 
 <style>
+  section{
+    background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+    padding: 4em 1em 2em 1em;
+  }
+
   h1 {
     max-width: fit-content;
     letter-spacing: 0.1em;
