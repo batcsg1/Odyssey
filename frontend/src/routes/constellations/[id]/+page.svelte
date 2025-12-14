@@ -13,7 +13,6 @@
 
   // Retrieve the list of constellations
   const list = constellations.data;
-  console.log(list);
 
   // Find the constellation with the matching ID
   const constellation = $derived(
