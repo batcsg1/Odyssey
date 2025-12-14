@@ -114,7 +114,7 @@
       transition:fly={{ x: 200, duration: 300, easing: cubicOut }}
       onclick={hideMessage}
     >
-      {message}
+      ✖ {message}
     </button>
   {/if}
 </main>
@@ -163,7 +163,7 @@
   }
 
   #message {
-    font-style: italic;
+    font-weight: 400;
     margin-top: 1em;
     text-align: center;
     color: white;
