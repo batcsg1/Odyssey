@@ -6,7 +6,7 @@
 <article>
   <h4>{trimmedLocation}</h4>
   <h5>Number of {trimmedLocation}: {count}</h5>
-  {#if items.length === 0}
+  {#if items.length === 0 || !items}
     <p>No data available.</p>
   {:else}
     <table>
@@ -74,7 +74,7 @@
     color: gray;
     font-size: medium;
   }
-  
+
   table {
     color: #333;
     border: 1px solid rgb(197, 189, 189);
