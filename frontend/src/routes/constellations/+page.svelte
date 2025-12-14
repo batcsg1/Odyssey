@@ -1,16 +1,16 @@
 <script>
-  let { data } = $props();
-
-  const { intro, blurb } = data;
-
   import Header from "$lib/components/Header.svelte";
   import Section from "$lib/components/Section.svelte";
   import Fetch from "$lib/components/Fetch.svelte";
-
   import { page } from "$app/stores";
+
+  let { data } = $props();
+  const { intro, blurb, constellations } = data;
+
   let currentPath = $derived($page.url.pathname);
   let location = currentPath.replace("/", "");
-
+  
+  console.log(constellations);
   console.log(location);
 </script>
 
@@ -18,15 +18,27 @@
   <header>
     <Header {location} />
   </header>
+
   <article>
     <section>
       {#each [intro, blurb] as section}
         <Section header={section.header} text={section.text}></Section>
       {/each}
     </section>
+
     <section>
       <h3>VIEW CONSTELLATIONS</h3>
-      <Fetch />
+      <Fetch
+        location={location}
+        items={constellations.data}
+        count={constellations.count}
+        columns={[
+          { key: "name", label: "Name" },
+          { key: "shape", label: "Shape" },
+          { key: "area", label: "Area (sq. deg.)" },
+          { key: "abbreviation", label: "Abbreviation" },
+        ]}
+      />
     </section>
   </article>
 </main>
