@@ -60,7 +60,6 @@
   article {
     background-color: white;
     border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 0px #66aaff;
     padding: 1em;
     overflow-x: auto;
   }

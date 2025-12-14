@@ -44,6 +44,8 @@
 <style>
   #constellations-table {
     overflow-x: auto;
+    border-radius: 0.3em;
+    box-shadow: 0.5em 0.5em 0px #66aaff;
   }
   header {
     position: relative;
