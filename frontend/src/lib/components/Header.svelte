@@ -18,7 +18,9 @@
   }
 
   h1 {
-    max-width: fit-content;
+    max-width: 100%;
+    word-wrap: break-word;
+    white-space: normal;         /* allow wrapping */
     letter-spacing: 0.1em;
     color: white;
     box-shadow: 5px 5px 0px 0px white;
@@ -30,5 +32,11 @@
 
   p {
     padding: 1em 0.5em 0em 0.5em;
+  }
+
+  @media (width <= 500){
+    section{
+      overflow-x: auto;
+    }
   }
 </style>

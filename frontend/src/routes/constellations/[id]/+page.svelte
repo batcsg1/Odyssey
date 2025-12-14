@@ -251,11 +251,16 @@
   @media (width <= 820px) {
     #constellation {
       flex-direction: column;
-      align-items: center;
     }
 
-    #constellation * {
-      width: 100%;
+    form, article {
+      min-width: 300px;
+    }
+  }
+
+  @media (width <= 500px){
+    #constellation {
+      width: 90%;
     }
   }
 </style>
