@@ -24,9 +24,9 @@
 
   const handleInput = (e) => (message = `You typed ${e.target.value}`);
 
-  const handleFocus = () => (message = "Username input field focused");
+  const handleFocus = (field) => (message = `${field} input field focused`);
 
-  const handleBlur = () => (message = "Username input field lost focus");
+  const handleBlur = (field) => (message = `${field} input field lost focus`);
 
   let editable = $state(false);
   const toggleEditable = () =>editable = !editable;
@@ -45,8 +45,8 @@
       type="text"
       value={constellation.name}  
       oninput={handleInput}
-      onfocus={handleFocus}
-      onblur={handleBlur}
+      onfocus={() => handleFocus('Name')}
+      onblur={() => handleBlur('Name')}
       readonly={!editable}
       />
 
@@ -54,6 +54,8 @@
       <input 
       id="shape" 
       type="text" value={constellation.shape}
+      onfocus={() => handleFocus('Shape')}
+      onblur={() => handleBlur('Shape')}
       readonly={!editable}
        />
 
@@ -62,6 +64,8 @@
       id="area" 
       type="text" 
       value={constellation.area} 
+      onfocus={() => handleFocus('Area')}
+      onblur={() => handleBlur('Area')}
       readonly={!editable}
       />
 
@@ -70,6 +74,8 @@
       id="abbreviation" 
       type="text" 
       value={constellation.abbreviation}
+      onfocus={() => handleFocus('Abbreviation')}
+      onblur={() => handleBlur('Abbreviation')}
       readonly={!editable}
       />
 
@@ -81,10 +87,16 @@
     {/if}
   </form>
 
-  <p>{message}</p>
+  <p id="message">{message}</p>
 </main>
 
 <style>
+  #message {
+    font-style: italic;
+    margin-top: 1em;
+    text-align: center;
+    color: white;
+  }
   h3 {
     font-weight: bold;
     padding: 0em 0em 0.3em 0em;
@@ -93,6 +105,9 @@
     color: white;
     max-width: 30em;
     align-self: center;
+  }
+  label {
+    font-weight: bold;
   }
   header {
     position: relative;
@@ -110,7 +125,7 @@
     background-color: white;
     border-radius: 0.3em;
     box-shadow: 0.5em 0.5em 0px #66aaff;
-    padding: 1em;
+    padding: 2em;
     overflow-x: auto;
     max-width: 40em;
     align-self: center;
