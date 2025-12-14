@@ -21,7 +21,7 @@
         {#each items as item (item.id)}
           <tr>
             <td id="id-cell">
-              <a href={`${location}/${item.id}`}>{item.id}</a>
+              <a href={`/${location}/${item.id}`}>{item.id}</a>
             </td>
             {#each columns as column}
               <td>{item[column.key]}</td>
