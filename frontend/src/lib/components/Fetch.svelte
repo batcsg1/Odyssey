@@ -1,10 +1,11 @@
 <script>
   let { location = "", items = [], count = 0, columns = [] } = $props();
+  let trimmedLocation = location.charAt(0).toUpperCase() + location.slice(1).replace("-", " ")
 </script>
 
 <article>
-  <h4>{location.charAt(0).toUpperCase() + location.slice(1).replace("-", " ")}</h4>
-  <h5>Number of items: {count}</h5>
+  <h4>{trimmedLocation}</h4>
+  <h5>Number of {trimmedLocation}: {count}</h5>
   {#if items.length === 0}
     <p>No data available.</p>
   {:else}
@@ -68,6 +69,12 @@
     color: #333;
     font-weight: bolder;
   }
+
+  h5 {
+    color: gray;
+    font-size: medium;
+  }
+  
   table {
     color: #333;
     border: 1px solid rgb(197, 189, 189);
