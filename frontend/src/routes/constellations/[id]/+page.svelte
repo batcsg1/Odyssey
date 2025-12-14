@@ -90,6 +90,7 @@
     </form>
     <article>
       <h4>Raw JSON</h4>
+
       <section>
         {#if constellation}
           <pre>{JSON.stringify(constellation, null, 2)}</pre>
@@ -124,14 +125,27 @@
     flex-direction: column;
   }
 
-  article section{
-    background-color: #333;
-    padding: 1em;
-    border-radius: 0.3em;
+  form {
+    gap: 0.3em;
+    
   }
 
-  pre {
+  article section{
+    background-color: #1c1b1b;
+    padding: 1em;
+    border-radius: 0.3em;
+    box-shadow: 6px 6px 0px 0px #66aaff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+
+  pre{
     color: white;
+    text-shadow: #66aaff 2px 2px 3px;
   }
 
   #message {
@@ -151,6 +165,12 @@
     align-self: center;
   }
 
+  h4 {
+    color: #333;
+    font-weight: bolder;
+    margin-bottom: 0.5em;
+  }
+
   label {
     font-weight: bold;
   }
@@ -168,9 +188,34 @@
     justify-content: flex-end;
   }
 
+  input {
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 0.3em;
+    font-size: 1em;
+  }
   input[readonly] {
     background-color: #f0f0f0;
     cursor: not-allowed;
+    color: grey;
+  }
+
+  button {
+    margin-top: 1em;
+    padding: 0.5em;
+    background-color: #66aaff;
+    color: white;
+    border: none;
+    border-radius: 0.3em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #eed755;
+    transition: 0.3s ease;
+    transform: scale(1.1);
   }
 
   @media (width <= 820px) {
