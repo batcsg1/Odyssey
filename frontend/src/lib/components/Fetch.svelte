@@ -3,7 +3,8 @@
 </script>
 
 <article>
-  <h4>Constellations: {count}</h4>
+  <h4>{location.charAt(0).toUpperCase() + location.slice(1).replace("-", " ")}</h4>
+  <h5>Number of items: {count}</h5>
   {#if items.length === 0}
     <p>No data available.</p>
   {:else}
