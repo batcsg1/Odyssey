@@ -36,7 +36,7 @@
 <style>
   #id-cell {
     background-color: #66aaff;
-    padding: 0; 
+    overflow-x: auto;
   }
 
   #id-cell a {

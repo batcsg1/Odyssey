@@ -2,6 +2,9 @@
   import Header from "$lib/components/Header.svelte";
   import { page } from "$app/stores";
 
+  import { fly } from "svelte/transition";
+  import { cubicOut } from "svelte/easing";
+
   let currentPath = $derived($page.url.pathname);
   let location = currentPath.replace("/", "");
 
@@ -21,7 +24,10 @@
 
   let message = $state("");
 
-  const handleInput = (e) => (message = `You typed ${e.target.value}`);
+  const handleInput = (e) => {
+    message = "";
+    setTimeout(() => (message = `You typed ${e.target.value}`), 0);
+  };
 
   const handleFocus = (field) => (message = `${field} input field focused`);
 
@@ -29,6 +35,8 @@
 
   let editable = $state(false);
   const toggleEditable = () => (editable = !editable);
+
+  const hideMessage = () => message = "";
 </script>
 
 <main>
@@ -100,7 +108,15 @@
     </article>
   </section>
 
-  <p id="message">{message}</p>
+  {#if message}
+    <button
+      id="message"
+      transition:fly={{ x: 200, duration: 300, easing: cubicOut }}
+      onclick={hideMessage}
+    >
+      {message}
+    </button>
+  {/if}
 </main>
 
 <style>
@@ -126,10 +142,9 @@
 
   form {
     gap: 0.3em;
-    
   }
 
-  article section{
+  article section {
     background-color: #1c1b1b;
     padding: 1em;
     border-radius: 0.3em;
@@ -142,7 +157,7 @@
     overflow-x: auto;
   }
 
-  pre{
+  pre {
     color: white;
     text-shadow: #66aaff 2px 2px 3px;
   }
@@ -152,6 +167,22 @@
     margin-top: 1em;
     text-align: center;
     color: white;
+    position: absolute;
+    z-index: 2000;
+    left: 70%;
+    top: 35%;
+    background-color: white;
+    color: #333;
+    border-radius: 0.3em;
+    padding: 1em 1em 1em 1em;
+    box-shadow: 3px 3px 0px #66aaff;
+  }
+
+  #message:hover {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px white;
   }
 
   h3 {
@@ -223,8 +254,8 @@
       align-items: center;
     }
 
-    #constellation *{
-        width: 100%;
+    #constellation * {
+      width: 100%;
     }
   }
 </style>

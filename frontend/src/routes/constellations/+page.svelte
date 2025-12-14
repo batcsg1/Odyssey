@@ -24,7 +24,7 @@
       {/each}
     </section>
 
-    <section>
+    <section id="constellations-table">
       <h3>VIEW CONSTELLATIONS</h3>
       <Fetch
         location={location}
@@ -42,6 +42,9 @@
 </main>
 
 <style>
+  #constellations-table {
+    overflow-x: auto;
+  }
   header {
     position: relative;
     color: white;
