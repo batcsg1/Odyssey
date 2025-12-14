@@ -9,9 +9,7 @@
 
   let currentPath = $derived($page.url.pathname);
   let location = currentPath.replace("/", "");
-  
-  console.log(constellations);
-  console.log(location);
+
 </script>
 
 <main>
