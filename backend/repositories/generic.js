@@ -66,10 +66,10 @@ class Repository {
             query.where[key] = { in: value };  // Use 'in' for array values
           } else if (!isNaN(value)) { // Handle numeric fields (non-array)
             query.where[key] = { equals: Number(value) };  // Use 'equals' for numeric fields
-          } else if (Date.parse(value)) { // Date fields
+          } else if (value instanceof Date && !isNaN(value.getTime())) { // Date fields
             query.where[key] = { equals: new Date(value) };
-          } else {
-            query.where[key] = { equals: value };
+          } else if (typeof value === 'string') { // String fields
+            query.where[key] = { contains: value, mode: "insensitive" };
           }
         }
       }
