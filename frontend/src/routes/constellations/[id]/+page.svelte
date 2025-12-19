@@ -4,6 +4,7 @@
 
   import { fly } from "svelte/transition";
   import { cubicOut } from "svelte/easing";
+  import Parent from "$lib/components/Parent.svelte";
 
   let currentPath = $derived($page.url.pathname);
   let location = currentPath.replace("/", "");
@@ -85,6 +86,8 @@
         <button type="button" onclick={toggleEditable}>
           {editable ? "Save" : "Update"}
         </button>
+
+        <Parent name="galaxy" location="galaxies" />
       {:else}
         <p>Constellation not found</p>
       {/if}
