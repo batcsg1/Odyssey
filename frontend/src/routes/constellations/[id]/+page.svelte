@@ -11,18 +11,13 @@
   const constellationId = $page.params.id;
 
   // Retrieve data passed to the constellation page
-  let { data } = $props();
-  const { constellations } = data;
+  let { data, form } = $props();
 
   // Retrieve the list of constellations
-  const list = constellations.data;
-
-  // Find the constellation with the matching ID
-  const constellation = $derived(
-    list.find((constellation) => constellation.id === constellationId)
-  );
+  const { constellation } = data;
 
   let message = $state("");
+  const hideMessage = () => message = "";
 
   const handleInput = (e) => {
     message = "";
@@ -36,7 +31,6 @@
   let editable = $state(false);
   const toggleEditable = () => (editable = !editable);
 
-  const hideMessage = () => message = "";
 </script>
 
 <main>
@@ -45,7 +39,7 @@
   </header>
   <h3>CONSTELLATION INFO:</h3>
   <section id="constellation">
-    <form>
+    <form method="PUT" action="?/update">
       {#if constellation}
         <label for="name">Name:</label>
         <input
