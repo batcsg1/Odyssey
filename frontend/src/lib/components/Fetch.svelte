@@ -7,7 +7,7 @@
   <h4>{trimmedLocation}</h4>
   <h5>Number of {trimmedLocation}: {count}</h5>
   {#if items.length === 0 || !items}
-    <p>No data available.</p>
+    <p id="no-data">404 - No {trimmedLocation} available :(</p>
   {:else}
     <table>
       <thead>
@@ -36,6 +36,10 @@
 </article>
 
 <style>
+  #no-data {
+    font-style: italic;
+    color: gray;
+  }
   #id-cell {
     background-color: #66aaff;
     overflow-x: auto;
