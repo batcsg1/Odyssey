@@ -99,7 +99,7 @@
         {#if constellation}
           <pre>{JSON.stringify(constellation, null, 2)}</pre>
         {:else}
-          <p>No data available</p>
+          <pre>{JSON.stringify(error, null, 2)}</pre>
         {/if}
       </section>
     </article>
