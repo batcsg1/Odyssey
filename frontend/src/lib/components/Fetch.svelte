@@ -28,6 +28,12 @@
             {#each columns as column}
               <td>{item[column.key]}</td>
             {/each}
+            <td>
+              <p>Delete</p>
+            </td>
+            <td>
+               <a href={`/${location}/${item.id}`}>Update</a>
+            </td>
           </tr>
         {/each}
       </tbody>
