@@ -7,16 +7,23 @@ export const load = async ({ cookies, fetch }) => {
 
   try {
     const res = await fetch(`${url}/constellations`);
-    const constellations = await res.json();
+    const json = await res.json();
+
+    if (!res.ok) {
+     return {
+        constellations: null,
+        error: json.message
+      };
+    }
 
     return {
-      constellations,
+      constellations: json,
       error: null
     };
   } catch (err) {
     return {
-      constellations: [],
-      error: err.message
+      constellations: null,
+      error: "Server is offline. Please try again later."
     }
   }
 }

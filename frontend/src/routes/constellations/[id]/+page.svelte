@@ -15,7 +15,7 @@
   let { data, form } = $props();
 
   // Retrieve the list of constellations
-  const { constellation } = data;
+  const { constellation, error } = data;
 
   let message = $state("");
   const hideMessage = () => message = "";
@@ -89,7 +89,7 @@
         
         <Parent name="galaxy" location="galaxies" />
       {:else}
-        <p>Constellation not found</p>
+        <p>{error}</p>
       {/if}
     </form>
     <article>

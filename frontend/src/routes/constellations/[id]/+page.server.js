@@ -6,14 +6,20 @@ export const load = async ({ params, cookies, fetch }) => {
   const { id } = params;
   const token = cookies.get("token") || null;
 
-  if (!id) {
-    throw error(400, "Constellation ID is required");
-  }
-
   try {
-    const res = await fetch(`${url}/constellations/${id}`);
+    const res = await fetch(`${url}/constellations/${id}`, {
+      headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+    });
+
     const json = await res.json();
 
+    if (!res.ok) {
+     return {
+        constellation: null,
+        error: json.message
+      };
+    }
+    
     return {
       constellation: json.data,
       error: null
@@ -21,7 +27,7 @@ export const load = async ({ params, cookies, fetch }) => {
   } catch (err) {
     return {
       constellation: null,
-      error: err.message
+      error: "Server is offline. Please try again later."
     }
   }
 }
