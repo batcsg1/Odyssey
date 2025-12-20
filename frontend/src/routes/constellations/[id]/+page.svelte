@@ -87,7 +87,7 @@
           {editable ? "Save" : "Update"}
         </button>
         
-        <Parent name="galaxy" location="galaxies" />
+        <!-- <Parent name="galaxy" location="galaxies" /> -->
       {:else}
         <p>{error}</p>
       {/if}
