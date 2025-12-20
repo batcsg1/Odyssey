@@ -5,6 +5,7 @@
 
   let suggestions = $state([]);
   let selection = $state({});
+  let message = $state("");
 
   const fetchSuggestions = async () => {
     if (query.length === 0) {
@@ -16,14 +17,15 @@
       `/api/${location}?name=${encodeURIComponent(query)}`
     );
 
+    const json = await res.json();
+
     if (!res.ok) {
       suggestions = [];
+      message = json.message
       return;
     }
 
-    const data = await res.json();
-
-    suggestions = data.data ?? [];
+    suggestions = json.data;
 
     console.log(suggestions);
   };
@@ -59,6 +61,10 @@
           {suggestion.name}
         </li>
       {/each}
+    </ul>
+  {:else if message}
+    <ul class="suggestions">
+      {message}
     </ul>
   {/if}
 </div>
