@@ -12,10 +12,10 @@ export const load = async ({ params, cookies, fetch }) => {
 
   try {
     const res = await fetch(`${url}/constellations/${id}`);
-    const constellation = await res.json();
+    const json = await res.json();
 
     return {
-      constellation,
+      constellation: json.data,
       error: null
     };
   } catch (err) {

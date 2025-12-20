@@ -86,7 +86,7 @@
         <button type="button" onclick={toggleEditable}>
           {editable ? "Save" : "Update"}
         </button>
-
+        
         <Parent name="galaxy" location="galaxies" />
       {:else}
         <p>Constellation not found</p>
