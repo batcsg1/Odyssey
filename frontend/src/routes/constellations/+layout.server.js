@@ -6,11 +6,13 @@ export const load = async ({ cookies, fetch }) => {
   const token = cookies.get("token") || null;
 
   try {
-    const res = await fetch(`${url}/constellations`);
+    const res = await fetch(`${url}/constellations`, {
+      headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+    });
     const json = await res.json();
 
     if (!res.ok) {
-     return {
+      return {
         constellations: null,
         error: json.message
       };
