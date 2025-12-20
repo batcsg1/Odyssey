@@ -30,6 +30,7 @@
     console.log(suggestions);
   };
 
+  
   const select = (item) => {
     selection = {
       id: item.id,
