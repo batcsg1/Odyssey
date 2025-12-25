@@ -1,16 +1,17 @@
 <script>
     import logo from "$lib/Images/logo-dark.png";
+    import sb from "$lib/Images/sb-logo.png";
 </script>
 
 <footer>
     <h1>{`{ odyssey }`}</h1>
 
     <section id="footer-bar">
-        Terms | Privacy | Login | Site by <strong>Samuel Batchelor</strong>
+        Terms | Privacy | Login | Site by <img src={sb} alt="sb" height="30">
     </section>
 
     <section id="copyright">
-       © 2025 Samuel Batchelor. All rights reserved.
+       © 2025 <img src={sb} alt="sb" height="30">. All rights reserved.
     </section>
 </footer>
 
