@@ -1,5 +1,6 @@
 <script>
   let { form } = $props();
+  const { error } = form ?? {};
 </script>
 
 <main>
@@ -16,10 +17,19 @@
       placeholder="Password"
     />
     <button type="submit">Sign in now</button>
+
+    {#if error}
+      <p class="error">{error}</p>
+    {/if}
   </form>
 </main>
 
 <style>
+  .error {
+    color: #ffb3b3;
+    margin-bottom: 1em;
+    text-align: center;
+  }
   main {
     display: flex;
     flex-direction: row;
