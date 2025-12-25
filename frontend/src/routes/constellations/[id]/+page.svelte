@@ -17,6 +17,7 @@
   // Retrieve the list of constellations
   const { constellation, error } = data;
 
+  // The form object is a runtime-only object that only exists when the form is submitted
   const { success, error: formError } = form ?? {};
 
   let message = $state("");
