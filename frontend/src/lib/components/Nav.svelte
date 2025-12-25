@@ -34,9 +34,6 @@
     { name: "ABOUT", href: "/about" },
     { name: "THE SOLAR SYSTEM", href: "/solar-system" },
     { name: "THE INTERSTELLAR", href: "/interstellar" },
-    isLoggedIn
-      ? { name: "LOGOUT", href: "" }
-      : { name: "LOGIN", href: "/login" },
   ]);
 
   import logo from "$lib/Images/logo-dark.png";
@@ -61,6 +58,17 @@
             <a class:currentPath={href === currentPath} {href}>{name}</a>
           </li>
         {/each}
+        {#if isLoggedIn}
+            <li>
+              <form method="POST" action="/logout">
+                <button id="auth" type="submit">LOGOUT</button>
+              </form>
+            </li>
+          {:else}
+            <li>
+              <a id="auth" href="/login">LOGIN</a>
+            </li>
+          {/if}
       </ul>
     </nav>
   {/if}
@@ -111,7 +119,20 @@
     transition: ease 0.3s;
     transform: scale(1.1);
   }
-  button {
+
+  #auth {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius: 0.3em;
+    font-weight: bolder;
+    box-shadow: 3px 3px 0px white;
+    transition: ease 0.5s;
+    margin-left: 1em;
+  }
+
+  #hamburger-parent button {
     color: white;
     padding: 0.5em 0.8em 0.5em 0.8em;
     background-color: #1d1c1cff;
@@ -123,7 +144,7 @@
     transition: ease 0.5s;
     box-shadow: 3px 3px 0px white;
   }
-  button:hover {
+  #hamburger-parent button:hover {
     background-color: white;
     color: #333;
     transition: ease 0.5s;
@@ -131,12 +152,12 @@
     box-shadow: 5px 5px 0px #333;
   }
 
-  button.transparent {
+  #hamburger-parent button.transparent {
     background-color: transparent;
     box-shadow: none;
   }
 
-  button.transparent:hover {
+  #hamburger-parent button.transparent:hover {
     background-color: white;
   }
 
