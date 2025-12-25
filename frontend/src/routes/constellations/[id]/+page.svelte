@@ -102,7 +102,7 @@
         {/if}
 
         {#if success}
-          <p id="success">Posted succesfully!</p>
+          <p id="success">Constellation updated successfully!</p>
         {/if}
 
       {:else}
