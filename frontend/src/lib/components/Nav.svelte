@@ -1,4 +1,5 @@
 <script>
+  import { goto } from '$app/navigation';
   import { page } from "$app/stores";
 
   let currentPath = $derived($page.url.pathname);
@@ -26,6 +27,10 @@
   //     return 'Nope'
   //   }
   // })
+
+  const login = () => {
+    goto('/login');
+  }
 
   let isTransparent = $derived(y > 30);
 
@@ -59,16 +64,12 @@
           </li>
         {/each}
         {#if isLoggedIn}
-            <li>
-              <form method="POST" action="/logout">
-                <button id="auth" type="submit">LOGOUT</button>
-              </form>
-            </li>
-          {:else}
-            <li>
-              <a id="auth" href="/login">LOGIN</a>
-            </li>
-          {/if}
+          <form method="POST" action="/logout">
+            <button id="auth" type="submit">LOGOUT</button>
+          </form>
+        {:else}
+          <button id="auth" onclick={login}>LOGIN</button>
+        {/if}
       </ul>
     </nav>
   {/if}
@@ -130,6 +131,14 @@
     box-shadow: 3px 3px 0px white;
     transition: ease 0.5s;
     margin-left: 1em;
+  }
+
+  #auth:hover {
+    background-color: white;
+    color: #ff4d4d;
+    transition: ease 0.5s;
+    transform: scale(1.1);
+    box-shadow: 5px 5px 0px #ff4d4d;
   }
 
   #hamburger-parent button {
