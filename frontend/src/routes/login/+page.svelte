@@ -44,6 +44,7 @@
         border: 0.1em solid white;
         padding: 2em;
         border-radius: 0.3em;
+        box-shadow: 0.6em 0.6em 0em white;
     }
     form input{
         margin-bottom: 1em;
