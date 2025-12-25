@@ -97,12 +97,13 @@
         <!-- <Parent name="galaxy" location="galaxies" /> -->
 
         {#if formError}
-          <p>{formError}</p>
+          <p id="error">{formError}</p>
         {/if}
 
         {#if success}
-          <p>Posted succesfully!</p>
+          <p id="success">Posted succesfully!</p>
         {/if}
+
       {:else}
         <p>{error}</p>
       {/if}
@@ -132,6 +133,16 @@
 </main>
 
 <style>
+  #error {
+    color: red;
+    font-weight: bold;
+    margin-top: 1em;
+  }
+  #success {
+    color: green;
+    font-weight: bold;
+    margin-top: 1em;
+  }
   #constellation {
     display: flex;
     justify-content: center;
