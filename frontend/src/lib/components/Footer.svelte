@@ -11,7 +11,7 @@
     </section>
 
     <section id="copyright">
-       © 2025 <img src={sb} alt="sb" height="30">. All rights reserved.
+       © 2025 <img src={sb} alt="sb" height="30"> - All rights reserved.
     </section>
 </footer>
 
