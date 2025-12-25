@@ -3,6 +3,8 @@
 
   let currentPath = $derived($page.url.pathname);
 
+  let isLoggedIn = $derived($page.data.user != null);
+
   let open = $state(false);
 
   let openMenu = () => (open = !open);
@@ -27,12 +29,15 @@
 
   let isTransparent = $derived(y > 30);
 
-  let menu = [
+  let menu = $derived([
     { name: "HOME", href: "/" },
     { name: "ABOUT", href: "/about" },
     { name: "THE SOLAR SYSTEM", href: "/solar-system" },
     { name: "THE INTERSTELLAR", href: "/interstellar" },
-  ];
+    isLoggedIn
+      ? { name: "LOGOUT", href: "" }
+      : { name: "LOGIN", href: "/login" },
+  ]);
 
   import logo from "$lib/Images/logo-dark.png";
 </script>
