@@ -47,7 +47,7 @@
     }
     form input{
         margin-bottom: 1em;
-        padding: 0.5em 2em 0.5em 2em;
+        padding: 0.5em 2em 0.5em 0.9em;
         border-radius: 0.3em;
         border: none;
         outline: none;
