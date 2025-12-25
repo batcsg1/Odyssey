@@ -20,7 +20,7 @@
       name="password"
       placeholder="Password"
     />
-    <button data-cy="submit" type="submit">Sign in now</button>
+    <button type="submit">Sign in now</button>
   </form>
 </main>
 
