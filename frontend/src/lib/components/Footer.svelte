@@ -7,7 +7,7 @@
     <h1>{`{ odyssey }`}</h1>
 
     <section id="footer-bar">
-        Terms | Privacy | Login | Site by <img src={sb} alt="sb" height="30">
+        Terms | Privacy | <a href="/login">Login</a> | Site by <img src={sb} alt="sb" height="30">
     </section>
 
     <section id="copyright">
@@ -33,6 +33,11 @@
     #footer-bar{
         padding-top: 1em;
         border-top: 0.1em dashed #666;
+    }
+
+    #footer-bar a{
+        color: white;
+        text-decoration: none;
     }
 
     #copyright{
