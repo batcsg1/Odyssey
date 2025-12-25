@@ -30,7 +30,8 @@
         flex-direction: row;
         align-items: center;
         height: 100vh;
-        justify-content: space-around;
+        gap: 8em;
+        justify-content: center;
         color: white;
     }
     h1{
