@@ -35,6 +35,7 @@ export const load = async ({ params, cookies, fetch }) => {
 
 export const actions = {
   update: async ({ request, params, cookies, fetch }) => {
+    const { id } = params;
     const formData = await request.formData();
     const token = cookies.get("token") || null;
 
@@ -46,7 +47,7 @@ export const actions = {
     }
 
     try {
-      const res = await fetch(`${url}/constellations/${params.id}`, {
+      const res = await fetch(`${url}/constellations/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
