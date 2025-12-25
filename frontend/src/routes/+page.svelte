@@ -14,12 +14,12 @@
 
   <section class="page-sections" id="sol-sys">
     <section>
-      <h2>THE SOLAR SYSTEM</h2>
+      <h2>EXPLORE THE UNIVERSE</h2>
       <p>
-        Discover and/or contribute to the latest information about our Solar System.
+        Discover and/or contribute to the latest information about all the fascinating entities that reside throughout the universe, such as red supergiant stars, spiral shaped galaxies, exoplanets, red dwarfs any many more.
       </p>
       <button>
-        <a href="/solar-system">EXPLORE ▶</a>
+        <a href="/the-universe">EXPLORE ▶</a>
       </button>
     </section>  
   </section>

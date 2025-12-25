@@ -37,7 +37,7 @@
   let menu = $derived([
     { name: "HOME", href: "/" },
     { name: "ABOUT", href: "/about" },
-    { name: "THE SOLAR SYSTEM", href: "/solar-system" },
+    { name: "THE UNIVERSE", href: "/the-universe" },
     { name: "THE INTERSTELLAR", href: "/interstellar" },
   ]);
 

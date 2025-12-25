@@ -27,7 +27,7 @@
     id="contents"
     class="d-flex flex-wrap justify-content-center gap-3 p-3 overflow-auto"
   >
-    <h3>BODIES OF THE SOLAR SYSTEM</h3>
+    <h3>BODIES OF THE UNIVERSE</h3>
     <section id="cards" class="d-flex flex-wrap justify-content-center gap-3">
       {#each cards as card}
         <div class="card" style="width: 18rem;">
