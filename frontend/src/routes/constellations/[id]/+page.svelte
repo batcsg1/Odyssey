@@ -17,8 +17,10 @@
   // Retrieve the list of constellations
   const { constellation, error } = data;
 
+  const { success, error: formError } = form ?? {};
+
   let message = $state("");
-  const hideMessage = () => message = "";
+  const hideMessage = () => (message = "");
 
   const handleInput = (e) => {
     message = "";
@@ -31,7 +33,6 @@
 
   let editable = $state(false);
   const toggleEditable = () => (editable = !editable);
-
 </script>
 
 <main>
@@ -40,11 +41,12 @@
   </header>
   <h3>CONSTELLATION INFO:</h3>
   <section id="constellation">
-    <form method="PUT" action="?/update">
+    <form method="POST" action="?/update">
       {#if constellation}
         <label for="name">Name:</label>
         <input
           id="name"
+          name="name"
           type="text"
           value={constellation.name}
           oninput={handleInput}
@@ -56,6 +58,7 @@
         <label for="shape">Shape:</label>
         <input
           id="shape"
+          name="shape"
           type="text"
           value={constellation.shape}
           onfocus={() => handleFocus("Shape")}
@@ -66,6 +69,7 @@
         <label for="area">Area (sq. deg.):</label>
         <input
           id="area"
+          name="area"
           type="text"
           value={constellation.area}
           onfocus={() => handleFocus("Area")}
@@ -76,6 +80,7 @@
         <label for="abbreviation">Abbreviation:</label>
         <input
           id="abbreviation"
+          name="abbreviation"
           type="text"
           value={constellation.abbreviation}
           onfocus={() => handleFocus("Abbreviation")}
@@ -83,11 +88,21 @@
           readonly={!editable}
         />
 
-        <button type="button" onclick={toggleEditable}>
-          {editable ? "Save" : "Update"}
-        </button>
-        
+        {#if editable}
+          <button type="submit">Save</button>
+        {:else}
+          <button type="button" onclick={toggleEditable}>Update</button>
+        {/if}
+
         <!-- <Parent name="galaxy" location="galaxies" /> -->
+
+        {#if formError}
+          <p>{formError}</p>
+        {/if}
+
+        {#if success}
+          <p>Posted succesfully!</p>
+        {/if}
       {:else}
         <p>{error}</p>
       {/if}
@@ -250,12 +265,13 @@
       flex-direction: column;
     }
 
-    form, article {
+    form,
+    article {
       min-width: 300px;
     }
   }
 
-  @media (width <= 500px){
+  @media (width <= 500px) {
     #constellation {
       width: 90%;
     }
