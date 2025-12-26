@@ -1,6 +1,21 @@
 <script>
-  let { location = "", items = [], count = 0, columns = [] } = $props();
-  let trimmedLocation = location.charAt(0).toUpperCase() + location.slice(1).replace("-", " ")
+  let {
+    location = "",
+    items = [],
+    count = 0,
+    columns = [],
+    maps = {},
+  } = $props();
+  let trimmedLocation =
+    location.charAt(0).toUpperCase() + location.slice(1).replace("-", " ");
+
+  const helper = (item, column) => {
+    const map = maps?.[column.key];
+    const value = item?.[column.key];
+
+    return map && value ? map[value] : value;
+    
+  };
 </script>
 
 <article>
@@ -26,7 +41,7 @@
               <a href={`/${location}/${item.id}`}>{item.id}</a>
             </td>
             {#each columns as column}
-              <td>{item[column.key]}</td>
+              <td>{helper(item, column) ?? "-"}</td>
             {/each}
           </tr>
         {/each}
