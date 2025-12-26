@@ -48,11 +48,10 @@
     oninput={fetchSuggestions}
     placeholder="Enter"
     autocomplete="off"
-    data-cy="address-disaster"
   />
 
   <!-- Hidden fields -->
-  <input type="hidden" name="id" value={selection.id} />
+  <input type="hidden" name={location} value={selection.id} />
 
   <!--List of suggested inputs-->
   {#if suggestions.length > 0}
