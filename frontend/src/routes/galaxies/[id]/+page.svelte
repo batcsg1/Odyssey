@@ -40,7 +40,7 @@
   <header>
     <Header {location}></Header>
   </header>
-  <h3>CONSTELLATION INFO:</h3>
+  <h3>GALAXY INFO:</h3>
   <section id="galaxy">
     <form method="POST" action="?/update">
       {#if galaxy}
