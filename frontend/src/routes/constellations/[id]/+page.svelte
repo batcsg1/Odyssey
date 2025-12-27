@@ -145,7 +145,11 @@
     font-weight: bolder;
   }
   #error {
-    color: red;
+    background-color: red;
+    text-align: center;
+    color: white;
+    padding: 0.8em 0em 0.8em 0em;
+    border-radius: 0.3em;
     font-weight: bold;
     margin-top: 1em;
   }
@@ -197,7 +201,6 @@
   }
 
   #message {
-    font-weight: 400;
     margin-top: 1em;
     text-align: center;
     color: white;
@@ -208,7 +211,7 @@
     background-color: white;
     color: #333;
     border-radius: 0.3em;
-    padding: 1em 1em 1em 1em;
+    padding: 2em 2em 2em 2em;
     box-shadow: 3px 3px 0px #66aaff;
   }
 

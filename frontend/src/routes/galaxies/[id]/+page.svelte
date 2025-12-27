@@ -168,7 +168,11 @@
     font-weight: bolder;
   }
   #error {
-    color: red;
+    background-color: red;
+    text-align: center;
+    color: white;
+    padding: 0.8em 0em 0.8em 0em;
+    border-radius: 0.3em;
     font-weight: bold;
     margin-top: 1em;
   }
