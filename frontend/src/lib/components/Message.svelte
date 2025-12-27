@@ -1,13 +1,15 @@
 <script>
-  let { message = $bindable() } = $props();
-
-  const hideMessage = () => (message = "");
+  import { fly } from "svelte/transition";
+  import { cubicOut } from "svelte/easing";
+  export let message;
+  export let onClose;
 </script>
 
 <button
   id="message"
-  transition:fly={{ x: 200, duration: 300, easing: cubicOut }}
-  onclick={hideMessage}
+  in:fly={{ x: 200, duration: 300, easing: cubicOut }}
+  out:fly={{ x: 200, duration: 200, easing: cubicOut }}
+  onclick={onClose}
 >
   ✖ | {message}
 </button>
@@ -26,6 +28,7 @@
     border-radius: 0.3em;
     padding: 2em 2em 2em 2em;
     box-shadow: 3px 3px 0px #66aaff;
+    font-weight: bolder;
   }
 
   #message:hover {

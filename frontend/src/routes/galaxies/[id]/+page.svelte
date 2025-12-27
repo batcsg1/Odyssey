@@ -2,8 +2,6 @@
   import Header from "$lib/components/Header.svelte";
   import { page } from "$app/stores";
 
-  import { fly } from "svelte/transition";
-  import { cubicOut } from "svelte/easing";
   import Parent from "$lib/components/Parent.svelte";
   import Json from "$lib/components/Json.svelte";
   import Message from "$lib/components/Message.svelte";
@@ -23,7 +21,7 @@
   const { success, error: formError } = form ?? {};
 
   let message = $state("");
-  
+
   const handleInput = (e) => {
     message = "";
     setTimeout(() => (message = `You typed ${e.target.value}`), 0);
@@ -43,9 +41,8 @@
   </header>
   <h3>GALAXY INFO:</h3>
   <section id="galaxy">
-
     {#if galaxy}
-    <form method="POST" action="?/update">
+      <form method="POST" action="?/update">
         <label for="name">Name:</label>
         <input
           id="name"
@@ -110,7 +107,7 @@
           value={galaxy.constellationId}
           onfocus={() => handleFocus("constellationId")}
           onblur={() => handleBlur("constellationId")}
-          readonly=true
+          readonly="true"
         />
 
         {#if editable}
@@ -128,21 +125,18 @@
         {#if success}
           <p id="success">Galaxy updated successfully!</p>
         {/if}
-
       </form>
     {/if}
 
-    <Json object={galaxy} error={error} />
-
+    <Json object={galaxy} {error} />
   </section>
 
   {#if message}
-    <Message {message} />
+    <Message {message} onClose={() => (message = "")} />
   {/if}
 </main>
 
 <style>
-
   #error {
     background-color: red;
     text-align: center;
@@ -177,8 +171,6 @@
     flex-direction: column;
     gap: 0.3em;
   }
-
-  
 
   h3 {
     font-weight: bold;
