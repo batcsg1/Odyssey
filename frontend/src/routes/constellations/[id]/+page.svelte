@@ -41,7 +41,7 @@
 
 <main>
   <header>
-    <Header {location}></Header>
+    <Header/>
   </header>
   <h3>CONSTELLATION INFO:</h3>
   <section id="constellation">

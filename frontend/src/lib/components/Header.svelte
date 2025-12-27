@@ -1,41 +1,46 @@
 <script>
-    let { location = $bindable("") } = $props();
+  import { page } from "$app/stores";
+
+  const segments = $derived($page.url.pathname.split("/").filter(Boolean));
+  console.log(segments);
+  const base = segments[0]; // "constellations"
+  const id = segments[1]; // the id parameter
+    console.log(id);
 </script>
 
 <section>
-  <p>Home &gt; <strong>{location.charAt(0).toUpperCase() + location.slice(1)} &gt;</strong></p>
-  <h1>{location.toUpperCase()}</h1>
+  <p>
+    <a href="/{base}">
+      {base.charAt(0).toUpperCase() + base.slice(1)}
+    </a>
+    &gt;
+    <strong>{id}</strong>
+  </p>
+
+  
 </section>
 
 <style>
-  section{
+  section {
     background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 1) 75%,
-    rgba(0, 0, 0, 0) 100%
-  );
+      to top,
+      rgba(0, 0, 0, 1) 75%,
+      rgba(0, 0, 0, 0) 100%
+    );
     padding: 4em 1em 2em 1em;
-  }
-
-  h1 {
-    max-width: 100%;
-    word-wrap: break-word;
-    white-space: normal;         /* allow wrapping */
-    letter-spacing: 0.1em;
-    color: white;
-    box-shadow: 5px 5px 0px 0px white;
-    border-radius: 10px;
-    z-index: 2;
-    font-weight: bolder;
-    padding: 0.2em 0.4em 0.2em 0.4em;
   }
 
   p {
     padding: 1em 0.5em 0em 0.5em;
   }
 
-  @media (width <= 500){
-    section{
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+
+  @media (width <= 500) {
+    section {
       overflow-x: auto;
     }
   }
