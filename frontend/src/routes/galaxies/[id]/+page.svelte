@@ -134,11 +134,11 @@
     <article>
       <h4>Raw JSON</h4>
 
-      <section>
+      <section class={error ? "api-err" : ""}>
         {#if galaxy}
           <pre>{JSON.stringify(galaxy, null, 2)}</pre>
         {:else}
-          <pre>{JSON.stringify("Server is offline, please try again later.", null, 2)}</pre>
+          <pre>{JSON.stringify(error, null, 2)}</pre>
         {/if}
       </section>
     </article>
@@ -156,6 +156,17 @@
 </main>
 
 <style>
+  .api-err{
+    background-color: #ffe6e6;
+    padding: 1em;
+    border-radius: 0.3em;
+    box-shadow: 6px 6px 0px 0px #ff6666;
+  }
+  .api-err pre {
+    color: red;
+    text-shadow: none;
+    font-weight: bolder;
+  }
   #error {
     color: red;
     font-weight: bold;
