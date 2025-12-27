@@ -114,6 +114,7 @@
         {#if editable}
           <Parent location="constellations" label="New Constellation ID" />
           <button type="submit">Save</button>
+          <button type="button" onclick={toggleEditable}>Cancel</button>
         {:else}
           <button type="button" onclick={toggleEditable}>Update</button>
         {/if}
