@@ -7,6 +7,7 @@
   import Parent from "$lib/components/Parent.svelte";
   import Json from "$lib/components/Json.svelte";
   import Message from "$lib/components/Message.svelte";
+  import FormError from "$lib/components/FormError.svelte";
 
   let currentPath = $derived($page.url.pathname);
   let location = currentPath.replace("/", "");
@@ -97,15 +98,8 @@
           <button type="button" onclick={toggleEditable}>Update</button>
         {/if}
 
-        <!-- <Parent name="galaxy" location="galaxies" /> -->
+       <FormError error={formError} success={success}/>
 
-        {#if formError}
-          <p id="error">{formError}</p>
-        {/if}
-
-        {#if success}
-          <p id="success">Constellation updated successfully!</p>
-        {/if}
       </form>
     {/if}
 
@@ -118,20 +112,6 @@
 </main>
 
 <style>
-  #error {
-    background-color: red;
-    text-align: center;
-    color: white;
-    padding: 0.8em 0em 0.8em 0em;
-    border-radius: 0.3em;
-    font-weight: bold;
-    margin-top: 1em;
-  }
-  #success {
-    color: green;
-    font-weight: bold;
-    margin-top: 1em;
-  }
   #constellation {
     display: flex;
     justify-content: center;
