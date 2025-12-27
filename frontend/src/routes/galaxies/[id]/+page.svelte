@@ -5,6 +5,7 @@
   import Parent from "$lib/components/Parent.svelte";
   import Json from "$lib/components/Json.svelte";
   import Message from "$lib/components/Message.svelte";
+  import FormError from "$lib/components/FormError.svelte";
 
   let currentPath = $derived($page.url.pathname);
   let location = currentPath.replace("/", "");
@@ -118,13 +119,7 @@
 
         <Parent location="constellations" />
 
-        {#if formError}
-          <p id="error">{formError}</p>
-        {/if}
-
-        {#if success}
-          <p id="success">Galaxy updated successfully!</p>
-        {/if}
+        <FormError error={formError} success={success}/>
       </form>
     {/if}
 
@@ -137,21 +132,6 @@
 </main>
 
 <style>
-  #error {
-    background-color: red;
-    text-align: center;
-    color: white;
-    padding: 0.8em 0em 0.8em 0em;
-    border-radius: 0.3em;
-    font-weight: bold;
-    margin-top: 1em;
-  }
-  #success {
-    color: green;
-    font-weight: bold;
-    margin-top: 1em;
-  }
-
   #galaxy {
     display: flex;
     justify-content: center;

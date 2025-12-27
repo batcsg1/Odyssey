@@ -40,14 +40,17 @@ export const actions = {
     const formData = await request.formData();
     const token = cookies.get("token") || null;
 
+    const constellationId = formData.get("constellations") ?? formData.get("constellationId");
+
     const data = {
       name: formData.get("name"),
       type: formData.get("type"),
       distance: parseInt(formData.get("distance")),
       size: parseInt(formData.get("size")),
       brightness: parseFloat(formData.get("brightness")),
-      constellationId: formData.get("constellations") || formData.get("constellationId"),
     }
+
+    constellationId && (data.constellationId = constellationId);
 
     try {
       const res = await fetch(`${url}/galaxies/${id}`, {
