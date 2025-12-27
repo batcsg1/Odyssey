@@ -63,8 +63,8 @@
           name="type"
           type="text"
           value={galaxy.type}
-          onfocus={() => handleFocus("type")}
-          onblur={() => handleBlur("type")}
+          onfocus={() => handleFocus("Type")}
+          onblur={() => handleBlur("Type")}
           readonly={!editable}
         />
 
@@ -74,8 +74,8 @@
           name="distance"
           type="text"
           value={galaxy.distance}
-          onfocus={() => handleFocus("distance")}
-          onblur={() => handleBlur("distance")}
+          onfocus={() => handleFocus("Distance")}
+          onblur={() => handleBlur("Distance")}
           readonly={!editable}
         />
 
@@ -85,8 +85,8 @@
           name="size"
           type="text"
           value={galaxy.size}
-          onfocus={() => handleFocus("size")}
-          onblur={() => handleBlur("size")}
+          onfocus={() => handleFocus("Size")}
+          onblur={() => handleBlur("Size")}
           readonly={!editable}
         />
 
@@ -96,8 +96,8 @@
           name="brightness"
           type="text"
           value={galaxy.brightness}
-          onfocus={() => handleFocus("brightness")}
-          onblur={() => handleBlur("brightness")}
+          onfocus={() => handleFocus("Brightness")}
+          onblur={() => handleBlur("Brightness")}
           readonly={!editable}
         />
 
@@ -150,7 +150,7 @@
       transition:fly={{ x: 200, duration: 300, easing: cubicOut }}
       onclick={hideMessage}
     >
-      ✖ {message}
+      ✖ | {message}
     </button>
   {/if}
 </main>
@@ -220,7 +220,6 @@
   }
 
   #message {
-    font-weight: 400;
     margin-top: 1em;
     text-align: center;
     color: white;
@@ -231,7 +230,7 @@
     background-color: white;
     color: #333;
     border-radius: 0.3em;
-    padding: 1em 1em 1em 1em;
+    padding: 2em 2em 2em 2em;
     box-shadow: 3px 3px 0px #66aaff;
   }
 
