@@ -179,7 +179,7 @@
   }
 
   article section {
-    background-color: #1c1b1b;
+    background-color: rgb(13, 13, 30);
     padding: 1em;
     border-radius: 0.3em;
     box-shadow: 6px 6px 0px 0px #66aaff;
@@ -193,7 +193,7 @@
 
   pre {
     color: white;
-    text-shadow: #66aaff 2px 2px 3px;
+    font-weight: bolder;
   }
 
   #message {
