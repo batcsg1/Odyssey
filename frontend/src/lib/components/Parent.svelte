@@ -1,5 +1,5 @@
 <script>
-  let { location = $bindable("") } = $props();
+  let { location = $bindable(""), label="" } = $props();
 
   let query = $state("");
 
@@ -42,6 +42,7 @@
 </script>
 
 <div class="autocomplete">
+  <label for={label}>{label}:</label>
   <input
     type="text"
     bind:value={query}
@@ -70,6 +71,9 @@
 </div>
 
 <style>
+  label {
+    font-weight: bolder;
+  }
   .autocomplete {
     position: relative;
   }

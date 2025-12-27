@@ -105,20 +105,20 @@
           id="constellationId"
           name="constellationId"
           type="text"
-          value={galaxy.constellationId}
+          value={galaxy.constellationId ?? "None"}
           onfocus={() => handleFocus("constellationId")}
           onblur={() => handleBlur("constellationId")}
           readonly="true"
         />
 
         {#if editable}
+          <Parent location="constellations" label="New Constellation ID" />
           <button type="submit">Save</button>
         {:else}
           <button type="button" onclick={toggleEditable}>Update</button>
         {/if}
 
-        <Parent location="constellations" />
-
+    
         <FormError error={formError} success={success}/>
       </form>
     {/if}
