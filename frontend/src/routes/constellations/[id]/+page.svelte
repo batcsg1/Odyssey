@@ -5,6 +5,8 @@
   import { fly } from "svelte/transition";
   import { cubicOut } from "svelte/easing";
   import Parent from "$lib/components/Parent.svelte";
+  import Json from "$lib/components/Json.svelte";
+  import Message from "$lib/components/Message.svelte";
 
   let currentPath = $derived($page.url.pathname);
   let location = currentPath.replace("/", "");
@@ -43,7 +45,7 @@
   <h3>CONSTELLATION INFO:</h3>
   <section id="constellation">
     {#if constellation}
-    <form method="POST" action="?/update">
+      <form method="POST" action="?/update">
         <label for="name">Name:</label>
         <input
           id="name"
@@ -104,46 +106,18 @@
         {#if success}
           <p id="success">Constellation updated successfully!</p>
         {/if}
-
-    </form>
+      </form>
     {/if}
 
-    <article>
-      <h4>Raw JSON</h4>
-
-      <section class={error ? "api-err" : ""}>
-        {#if constellation}
-          <pre>{JSON.stringify(constellation, null, 2)}</pre>
-        {:else}
-          <pre>{JSON.stringify(error, null, 2)}</pre>
-        {/if}
-      </section>
-    </article>
+    <Json object={constellation} {error} />
   </section>
 
   {#if message}
-    <button
-      id="message"
-      transition:fly={{ x: 200, duration: 300, easing: cubicOut }}
-      onclick={hideMessage}
-    >
-      ✖ {message}
-    </button>
+    <Message {message} onClose={() => (message = "")} />
   {/if}
 </main>
 
 <style>
-  .api-err{
-    background-color: #ffe6e6;
-    padding: 1em;
-    border-radius: 0.3em;
-    box-shadow: 6px 6px 0px 0px #ff6666;
-  }
-  .api-err pre {
-    color: red;
-    text-shadow: none;
-    font-weight: bolder;
-  }
   #error {
     background-color: red;
     text-align: center;
@@ -168,59 +142,16 @@
     gap: 1em;
   }
 
-  form,
-  article {
+  form {
     background-color: white;
     border-radius: 0.3em;
     box-shadow: 0.5em 0.5em 0px #66aaff;
     padding: 2em;
     display: flex;
     flex-direction: column;
-  }
-
-  form {
     gap: 0.3em;
   }
 
-  article section {
-    background-color: rgb(13, 13, 30);
-    padding: 1em;
-    border-radius: 0.3em;
-    box-shadow: 6px 6px 0px 0px #66aaff;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow-y: auto;
-    overflow-x: auto;
-  }
-
-  pre {
-    color: white;
-    font-weight: bolder;
-  }
-
-  #message {
-    margin-top: 1em;
-    text-align: center;
-    color: white;
-    position: absolute;
-    z-index: 2000;
-    left: 70%;
-    top: 35%;
-    background-color: white;
-    color: #333;
-    border-radius: 0.3em;
-    padding: 2em 2em 2em 2em;
-    box-shadow: 3px 3px 0px #66aaff;
-  }
-
-  #message:hover {
-    background-color: red;
-    color: white;
-    cursor: pointer;
-    box-shadow: 3px 3px 0px white;
-  }
 
   h3 {
     font-weight: bold;
@@ -230,12 +161,6 @@
     color: white;
     max-width: 30em;
     align-self: center;
-  }
-
-  h4 {
-    color: #333;
-    font-weight: bolder;
-    margin-bottom: 0.5em;
   }
 
   label {
@@ -290,8 +215,7 @@
       flex-direction: column;
     }
 
-    form,
-    article {
+    form {
       min-width: 300px;
     }
   }
