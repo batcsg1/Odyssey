@@ -42,8 +42,8 @@
   </header>
   <h3>CONSTELLATION INFO:</h3>
   <section id="constellation">
+    {#if constellation}
     <form method="POST" action="?/update">
-      {#if constellation}
         <label for="name">Name:</label>
         <input
           id="name"
@@ -105,10 +105,9 @@
           <p id="success">Constellation updated successfully!</p>
         {/if}
 
-      {:else}
-        <p>{error}</p>
-      {/if}
     </form>
+    {/if}
+
     <article>
       <h4>Raw JSON</h4>
 
@@ -116,7 +115,7 @@
         {#if constellation}
           <pre>{JSON.stringify(constellation, null, 2)}</pre>
         {:else}
-          <pre>{JSON.stringify(error, null, 2)}</pre>
+          <pre>{JSON.stringify("Server is offline, please try again later.", null, 2)}</pre>
         {/if}
       </section>
     </article>

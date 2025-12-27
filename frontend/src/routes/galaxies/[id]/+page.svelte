@@ -42,8 +42,9 @@
   </header>
   <h3>GALAXY INFO:</h3>
   <section id="galaxy">
+
+    {#if galaxy}
     <form method="POST" action="?/update">
-      {#if galaxy}
         <label for="name">Name:</label>
         <input
           id="name"
@@ -127,10 +128,9 @@
           <p id="success">Galaxy updated successfully!</p>
         {/if}
 
-      {:else}
-        <p>{error}</p>
-      {/if}
-    </form>
+      </form>
+    {/if}
+
     <article>
       <h4>Raw JSON</h4>
 
@@ -138,7 +138,7 @@
         {#if galaxy}
           <pre>{JSON.stringify(galaxy, null, 2)}</pre>
         {:else}
-          <pre>{JSON.stringify(error, null, 2)}</pre>
+          <pre>{JSON.stringify("Server is offline, please try again later.", null, 2)}</pre>
         {/if}
       </section>
     </article>
