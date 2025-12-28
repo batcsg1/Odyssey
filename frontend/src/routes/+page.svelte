@@ -74,6 +74,7 @@
 
   .page-sections p {
       color: white;
+      padding: 0.9em 0em 0em 0em;
   }
 
   #interstellar{
