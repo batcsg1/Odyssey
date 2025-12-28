@@ -17,7 +17,7 @@
 <section>
   <p>
     <a href="/{location}">
-      {base.charAt(0).toUpperCase() + base.slice(1)}
+      {base}
     </a>
     &gt;
     <strong>{id}</strong>
