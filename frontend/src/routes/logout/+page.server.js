@@ -8,12 +8,16 @@ export const actions = {
     const token = cookies.get("token");
 
     if (token) {
-      await fetch(`${url}/auth/logout`, {
+      const res = await fetch(`${url}/auth/logout`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
+
+      const json = await res.json();
+
+      console.log(json.message);
     }
 
     // Remove the auth token

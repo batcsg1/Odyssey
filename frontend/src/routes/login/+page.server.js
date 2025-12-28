@@ -31,6 +31,8 @@ export const actions = {
             json = await res.json();
             token = json.token;
 
+            console.log(json.message)
+
         } catch (err) {
             return { error: "Server is offline. Please try again later." };
         }
