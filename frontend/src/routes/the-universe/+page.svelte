@@ -58,7 +58,7 @@
 
   h3 {
     font-weight: bold;
-    padding: 0em 0em 0.3em 0em;
+    padding: 1em 0em 0.3em 0em;
     color: white;
     border-bottom: #66aaff 0.1em solid;
   }
@@ -66,11 +66,11 @@
     background-color: rgba(0, 0, 0);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     color: white;
     padding: 3em;
     gap: 2.2em;
     max-width: 50em;
+    align-self: center;
   }
 
   .card{
@@ -111,7 +111,8 @@
   }
 
   #contents {
-    background-color: black;
+    background-color: #131212;
+    border-radius: 0.3em;
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
@@ -120,6 +121,8 @@
     overflow-y: auto;
     scrollbar-width: thin; /* "auto" | "thin" | "none" */
     scrollbar-color: #000000 #66aaff; /* thumb color | track color */
+    max-width: 70em;
+    align-self: center;
   }
 
   /* For Chrome, Edge, and Safari */
