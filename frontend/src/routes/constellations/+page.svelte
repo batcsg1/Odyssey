@@ -18,7 +18,7 @@
   </header>
 
   <article>
-    <section>
+    <section id="intro-blurb">
       {#each [intro, blurb] as section}
         <Section header={section.header} text={section.text}></Section>
       {/each}
@@ -48,6 +48,8 @@
     box-shadow: 0.5em 0.5em 0px #66aaff;
     background-color: #131212;
     padding: 1em;
+    align-self: center;
+    max-width: 80em;
   }
   header {
     position: relative;
@@ -83,6 +85,10 @@
     display: flex;
     flex-direction: column;
     gap: 2.2em;
-    max-width: 50em;
+  }
+
+  #intro-blurb {
+    align-self: center;
+    max-width: 70em;
   }
 </style>
