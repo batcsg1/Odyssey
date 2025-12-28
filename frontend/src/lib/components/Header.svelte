@@ -3,14 +3,20 @@
 
   const segments = $derived($page.url.pathname.split("/").filter(Boolean));
   console.log(segments);
-  const base = segments[0]; // "constellations"
+  const location = segments[0];
+
+  const base = location // the base parameter
+  .split("-")
+  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  .join(" ");
+
   const id = segments[1]; // the id parameter
     console.log(id);
 </script>
 
 <section>
   <p>
-    <a href="/{base}">
+    <a href="/{location}">
       {base.charAt(0).toUpperCase() + base.slice(1)}
     </a>
     &gt;
@@ -34,9 +40,13 @@
     padding: 1em 0.5em 0em 0.5em;
   }
 
+  p,strong{
+    font-size: x-large;
+  }
+
   a {
     color: white;
-    text-decoration: underline;
+    font-weight: bolder;
   }
 
   @media (width <= 500) {
