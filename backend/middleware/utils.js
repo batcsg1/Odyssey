@@ -1,6 +1,6 @@
 const isContentTypeApplicationJSON = (req, res, next) => {
-  if (req.path === "/api/v1.2/auth/logout") {
-    return next(); // skip content-type check on logout
+  if (req.path.endsWith("/auth/logout")) {
+    return next();
   }
 
   if (["POST", "PUT", "PATCH"].includes(req.method)) {
