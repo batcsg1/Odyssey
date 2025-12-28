@@ -14,7 +14,6 @@
     const value = item?.[column.key];
 
     return map && value ? map[value] : value;
-    
   };
 </script>
 
@@ -105,9 +104,14 @@
   thead tr {
     color: #66aaff;
   }
-  th {
-    padding: 0em 0em 0.5em 0em;
+  th,
+  td {
+    padding: 0.5em;
+    text-align: left;
+    vertical-align: top;
+    word-break: break-word;
   }
+
   tr {
     border-bottom: 1px solid rgb(197, 189, 189);
   }
