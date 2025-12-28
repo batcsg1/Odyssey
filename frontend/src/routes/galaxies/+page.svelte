@@ -37,8 +37,8 @@
           { key: "brightness", label: "Brightness (apparent magnitude)" },
           { key: "constellationId", label: "Constellation" },
         ]}
-        maps={{ 
-          constellationId: constellationMap 
+        maps={{
+          constellationId: constellationMap,
         }}
       />
     </section>
@@ -50,6 +50,8 @@
     overflow-x: auto;
     border-radius: 0.3em;
     box-shadow: 0.5em 0.5em 0px #66aaff;
+    background-color: #131212;
+    padding: 1em;
   }
   header {
     position: relative;
@@ -66,9 +68,10 @@
 
   h3 {
     font-weight: bold;
-    padding: 0em 0em 0.3em 0em;
+    padding: 1em 0em 0.3em 0em;
     border-bottom: #66aaff 0.1em solid;
     text-align: center;
+    margin-inline: 8em;
   }
 
   article {
