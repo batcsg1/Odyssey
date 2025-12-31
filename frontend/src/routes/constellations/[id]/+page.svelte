@@ -31,12 +31,14 @@
     setTimeout(() => (message = `You typed ${e.target.value}`), 0);
   };
 
-  const handleFocus = (field) => (message = `${field} input field focused`);
+  const handleFocus = field => message = `${field} input field focused`;
 
-  const handleBlur = (field) => (message = `${field} input field lost focus`);
+  const handleBlur = field => message = `${field} input field lost focus`;
 
   let editable = $state(false);
-  const toggleEditable = () => (editable = !editable);
+
+  const toggleEditable = () => editable = !editable;
+  
 </script>
 
 <main>

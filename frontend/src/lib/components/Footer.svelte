@@ -7,11 +7,15 @@
     <h1>{`{ odyssey }`}</h1>
 
     <section id="footer-bar">
-        Terms | Privacy | <a href="/login">Login</a> | Site by <img src={sb} alt="sb" height="30">
+        Terms | Privacy | <a href="/login">Login</a>
     </section>
 
+    <a href="https://batchelornz.com">
+        <img src={sb} alt="sb" height="100">
+    </a>
+
     <section id="copyright">
-       © 2025 <img src={sb} alt="sb" height="30"> - All rights reserved.
+       © 2026 Samuel Batchelor - All rights reserved.
     </section>
 </footer>
 
@@ -30,8 +34,16 @@
         padding: 0.3em;
     }
 
+    img {
+        transition: ease 0.3s;
+    }
+    img:hover{
+        transform: scale(1.1);
+        transition: ease 0.3s;
+    }
+
     #footer-bar{
-        padding-top: 1em;
+        padding: 1em;
         border-top: 0.1em dashed #666;
     }
 

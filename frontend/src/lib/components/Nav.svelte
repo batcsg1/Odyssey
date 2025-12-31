@@ -28,9 +28,8 @@
   //   }
   // })
 
-  const login = () => {
-    goto('/login');
-  }
+  const login = () => goto('/login');
+  
 
   let isTransparent = $derived(y > 30);
 
