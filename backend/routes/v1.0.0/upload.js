@@ -22,16 +22,25 @@ const upload = multer({
 });
 
 router.post("/", upload.single("file"), (req, res) => {
-    console.log("Upload hit:", req.originalUrl);
-    console.log("File:", req.file);
+    try {
+        console.log("Upload hit:", req.originalUrl);
+        console.log("File:", req.file);
 
-    if (!req.file) {
-        return res.status(400).json({ message: "No file provided" });
+        let { filename, destination } = req.file
+
+        if (!req.file) {
+            return res.status(400).json({ message: "No file provided" });
+        }
+
+        return res.status(200).json({
+            file: req.file,
+            path: `${req.protocol}://${req.get("host")}/${destination}${filename}`
+        });
+    } catch (err) {
+        return res.status(500).json({
+            message: err.message,
+        });
     }
-
-    res.json({
-        file: req.file
-    });
 });
 
 

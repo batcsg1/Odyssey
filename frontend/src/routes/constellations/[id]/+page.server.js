@@ -102,10 +102,7 @@ export const actions = {
 
       //Adding file path to constellations model
 
-      let { filename, destination } = uploadJson.file;
-
-      const fileURL = `${url.replace("/api/v1.0.0", "")}/${destination}${filename}`
-      console.log(fileURL)
+      const fileURL = uploadJson.path;
 
       const patchRes = await fetch(`${url}/constellations/${id}`, {
         method: "PATCH",
