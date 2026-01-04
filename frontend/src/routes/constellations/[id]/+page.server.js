@@ -66,8 +66,68 @@ export const actions = {
 
     } catch (err) {
       return { success: false, error: "Server is offline. Please try again later." };
-    } 
+    }
 
+  },
+
+  upload: async ({ request, fetch, cookies, params }) => {
+    try {
+      const { id } = params;
+      const formData = await request.formData();
+      const file = formData.get("file");
+      const token = cookies.get("token") || null;
+
+      if (!file || file.size === 0) {
+        return {
+          error: "You must provide a file to upload"
+        };
+      }
+
+      const apiFormData = new FormData();
+      apiFormData.append("file", file);
+
+      const uploadRes = await fetch(`${url}/uploads`, {
+        method: "POST",
+        headers: {
+          ...(token && { Authorization: `Bearer ${token}` })
+        },
+        body: apiFormData
+      });
+
+      const uploadJson = await uploadRes.json();
+
+      if (!uploadRes.ok) {
+        return { success: false, error: uploadJson.message };
+      }
+
+      //Adding file path to constellations model
+
+      let { filename, destination } = uploadJson.file;
+
+      const fileURL = `${url.replace("/api/v1.0.0", "")}/${destination}${filename}`
+      console.log(fileURL)
+
+      const patchRes = await fetch(`${url}/constellations/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          ...(token && { 'Authorization': `Bearer ${token}` })
+        },
+        body: JSON.stringify({ imagePath: fileURL })
+      });
+
+      const patchJson = await patchRes.json();
+
+      if (!patchRes.ok) {
+        return { success: false, error: patchJson.message };
+      }
+
+      return {
+        success: true
+      };
+    } catch (err) {
+      return { success: false, error: "Server is offline. Please try again later." };
+    }
   }
 }
 

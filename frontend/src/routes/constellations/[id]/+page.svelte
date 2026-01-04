@@ -31,19 +31,18 @@
     setTimeout(() => (message = `You typed ${e.target.value}`), 0);
   };
 
-  const handleFocus = field => message = `${field} input field focused`;
+  const handleFocus = (field) => (message = `${field} input field focused`);
 
-  const handleBlur = field => message = `${field} input field lost focus`;
+  const handleBlur = (field) => (message = `${field} input field lost focus`);
 
   let editable = $state(false);
 
-  const toggleEditable = () => editable = !editable;
-  
+  const toggleEditable = () => (editable = !editable);
 </script>
 
 <main>
   <header>
-    <Header/>
+    <Header />
   </header>
   <h3>CONSTELLATION INFO:</h3>
   <section id="constellation">
@@ -101,8 +100,26 @@
           <button type="button" onclick={toggleEditable}>Update</button>
         {/if}
 
-       <FormError error={formError} success={success}/>
+        <FormError error={formError} {success} />
+      </form>
+      <form
+        method="POST"
+        use:enhance
+        enctype="multipart/form-data"
+        action="?/upload"
+      >
+        <div class="group">
+          <label for="file">Upload your file</label>
+          <input
+            type="file"
+            id="file"
+            name="file"
+            accept=".jpg, .jpeg, .png, .webp"
+            required
+          />
+        </div>
 
+        <button type="submit">Submit</button>
       </form>
     {/if}
 
@@ -134,7 +151,6 @@
     flex-direction: column;
     gap: 0.3em;
   }
-
 
   h3 {
     font-weight: bold;

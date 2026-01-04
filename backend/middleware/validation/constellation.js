@@ -58,6 +58,7 @@ const patchSchema = Joi.object({
     "string.min": "Abbreviation should have a minimum length of {#limit}",
     "string.max": "Abbreviation should have a maximum length of {#limit}",
   }),
+  imagePath: Joi.string().uri().optional()
 }).min(1);
 
 

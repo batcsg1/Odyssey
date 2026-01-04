@@ -15,7 +15,8 @@ const selectObject = {
   name: true,
   shape: true,
   area: true,
-  abbreviation: true
+  abbreviation: true,
+  imagePath: true
 };
 
 /**
