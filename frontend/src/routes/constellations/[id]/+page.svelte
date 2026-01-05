@@ -8,7 +8,6 @@
   import Json from "$lib/components/Json.svelte";
   import Message from "$lib/components/Message.svelte";
   import FormError from "$lib/components/FormError.svelte";
-  import { preventDefault } from "svelte/legacy";
 
   let currentPath = $derived($page.url.pathname);
   let location = currentPath.replace("/", "");
@@ -107,7 +106,7 @@
         method="POST"
         enctype="multipart/form-data"
         action="?/upload"
-        onsubmit={preventDefault}
+        
       >
         <div class="group">
           <label for="file">Upload your file</label>
