@@ -29,6 +29,7 @@ import auth from "./middleware/auth.js";
 import logger from "./middleware/logger.js";
 import isContentTypeApplicationJSON from "./middleware/utils.js";
 import syntax from "./middleware/syntax/syntax.js";
+import cors from "cors"
 
 // Create an Express application
 const app = express();
@@ -91,7 +92,7 @@ app.use(`${baseURL}/meteorites`, meteoriteRoutes);
 app.use(`${baseURL}/comets`, cometRoutes);
 app.use(`${baseURL}/meteor_showers`, meteorShowerRoutes);
 app.use(`${baseURL}/users`, auth, userRoutes);
-app.use(`${baseURL}/uploads`, uploadRoutes);
+app.use(`${baseURL}/uploads`, cors(), uploadRoutes);
 
 app.use(
   "/uploads",
