@@ -94,8 +94,12 @@ app.use(`${baseURL}/users`, auth, userRoutes);
 app.use(`${baseURL}/uploads`, uploadRoutes);
 
 app.use(
-  '/uploads',
-  express.static(path.join(process.cwd(), 'uploads'))
+  "/uploads",
+  (req, res, next) => {
+    res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+    next();
+  },
+  express.static(path.join(process.cwd(), "uploads"))
 );
 
 app.use("/api-docs", swaggerUi.serve, (req, res, next) => {
