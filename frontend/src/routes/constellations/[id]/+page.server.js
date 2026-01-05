@@ -77,12 +77,6 @@ export const actions = {
       const file = formData.get("file");
       const token = cookies.get("token") || null;
 
-      if (!file || file.size === 0) {
-        return {
-          error: "You must provide a file to upload"
-        };
-      }
-
       const apiFormData = new FormData();
       apiFormData.append("file", file);
 
@@ -120,7 +114,7 @@ export const actions = {
       }
 
       return {
-        success: true
+        success: true, constellation: patchJson.data
       };
     } catch (err) {
       return { success: false, error: "Server is offline. Please try again later." };

@@ -8,6 +8,9 @@
   import Json from "$lib/components/Json.svelte";
   import Message from "$lib/components/Message.svelte";
   import FormError from "$lib/components/FormError.svelte";
+  import { enhance } from "$app/forms";
+  import { invalidateAll } from "$app/navigation";
+  import { preventDefault } from "svelte/legacy";
 
   let currentPath = $derived($page.url.pathname);
   let location = currentPath.replace("/", "");
@@ -104,9 +107,9 @@
       </form>
       <form
         method="POST"
-        use:enhance
         enctype="multipart/form-data"
         action="?/upload"
+        onsubmit={preventDefault}
       >
         <div class="group">
           <label for="file">Upload your file</label>
@@ -120,6 +123,18 @@
         </div>
 
         <button type="submit">Submit</button>
+
+        {#if constellation.imagePath}
+          <img
+            src={constellation.imagePath}
+            alt={constellation.imagePath}
+            height="500"
+          />
+        {:else}
+          <section id="no-image">
+            <p>No Image found</p>
+          </section>
+        {/if}
       </form>
     {/if}
 
@@ -132,6 +147,15 @@
 </main>
 
 <style>
+  #no-image {
+    background-color: rgb(243, 239, 239);
+    border: 0.1em dashed rgb(176, 174, 174);
+    border-radius: 0.3em;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   #constellation {
     display: flex;
     justify-content: center;
