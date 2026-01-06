@@ -80,7 +80,7 @@ export const actions = {
       const apiFormData = new FormData();
       apiFormData.append("file", file);
 
-      const uploadRes = await fetch(`${url}/uploads`, {
+      const uploadRes = await fetch(`${url}/upload`, {
         method: "POST",
         headers: {
           ...(token && { Authorization: `Bearer ${token}` })

@@ -22,13 +22,14 @@ import meteorShowerRoutes from "./routes/v1.0.0/meteor_shower.js";
 import galaxyRoutes from "./routes/v1.0.0/galaxy.js";
 import userRoutes from "./routes/v1.0.0/user.js";
 import authRoutes from "./routes/v1.0.0/auth.js";
+import uploadRoutes from "./routes/v1.0.0/upload.js"
 
 // Import middleware
 import auth from "./middleware/auth.js";
 import logger from "./middleware/logger.js";
 import isContentTypeApplicationJSON from "./middleware/utils.js";
 import syntax from "./middleware/syntax/syntax.js";
-import cors from "cors"
+import cors from "./middleware/cors/cors.js"
 
 // Create an Express application
 const app = express();
@@ -91,17 +92,10 @@ app.use(`${baseURL}/meteorites`, meteoriteRoutes);
 app.use(`${baseURL}/comets`, cometRoutes);
 app.use(`${baseURL}/meteor_showers`, meteorShowerRoutes);
 app.use(`${baseURL}/users`, auth, userRoutes);
+app.use(`${baseURL}/upload`, uploadRoutes)
 
-app.use('/uploads', express.static('uploads'));
-
-app.use(
-  "/uploads",
-  (req, res, next) => {
-    res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-    next();
-  },
-  express.static(path.join(process.cwd(), "uploads"))
-);
+// Serve static files
+app.use('/uploads', cors, express.static('uploads'));
 
 app.use("/api-docs", swaggerUi.serve, (req, res, next) => {
   const dynamicServer = { ...swaggerDocs };
