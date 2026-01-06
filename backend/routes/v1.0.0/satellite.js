@@ -24,7 +24,7 @@ import {
 } from "../../middleware/validation/satellite.js";
 
 // Import the rbac middleware
-import rbac from "../../middleware/auth/rbac.js"
+import rbac from "../../middleware/rbac/rbac.js"
 
 // Import the rate limiting middleware
 import { 
