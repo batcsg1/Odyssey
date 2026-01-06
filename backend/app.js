@@ -22,7 +22,6 @@ import meteorShowerRoutes from "./routes/v1.0.0/meteor_shower.js";
 import galaxyRoutes from "./routes/v1.0.0/galaxy.js";
 import userRoutes from "./routes/v1.0.0/user.js";
 import authRoutes from "./routes/v1.0.0/auth.js";
-import uploadRoutes from "./routes/v1.0.0/upload.js"
 
 // Import middleware
 import auth from "./middleware/auth.js";
@@ -92,7 +91,8 @@ app.use(`${baseURL}/meteorites`, meteoriteRoutes);
 app.use(`${baseURL}/comets`, cometRoutes);
 app.use(`${baseURL}/meteor_showers`, meteorShowerRoutes);
 app.use(`${baseURL}/users`, auth, userRoutes);
-app.use(`${baseURL}/uploads`, cors(), uploadRoutes);
+
+app.use('/uploads', express.static('uploads'));
 
 app.use(
   "/uploads",
