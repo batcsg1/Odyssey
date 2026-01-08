@@ -52,6 +52,7 @@
   pre {
     color: white;
     font-weight: bolder;
+    font-family: "JetBrains Mono", monospace;
   }
 
     h4 {
