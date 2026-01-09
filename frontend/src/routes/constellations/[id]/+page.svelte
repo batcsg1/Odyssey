@@ -44,7 +44,7 @@
   <header>
     <Header />
   </header>
-  <h3>CONSTELLATION INFO:</h3>
+  <h3>{constellation.name}</h3>
   <section id="constellation">
     {#if constellation}
       <form method="POST" action="?/update">
@@ -102,12 +102,7 @@
 
         <FormError error={formError} {success} />
       </form>
-      <form
-        method="POST"
-        enctype="multipart/form-data"
-        action="?/upload"
-        
-      >
+      <form method="POST" enctype="multipart/form-data" action="?/upload">
         <div class="group">
           <label for="file">Upload your file</label>
           <input
@@ -155,18 +150,23 @@
   }
   #constellation {
     display: flex;
-    justify-content: center;
     margin-bottom: 2em;
-    max-width: 50em;
+    max-width: 70em;
     align-self: center;
     padding: 1em;
     gap: 1em;
+    overflow-x: scroll;
   }
 
   form {
-    background-color: white;
+    background: linear-gradient(
+      90deg,
+      rgba(10, 10, 10, 1) 0%,
+      rgb(12, 12, 12) 62%,
+      rgb(21, 24, 24) 100%
+    );
     border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 0px #66aaff;
+    box-shadow: 0.5em 0.5em 0px white;
     padding: 2em;
     display: flex;
     flex-direction: column;
@@ -181,12 +181,11 @@
     color: white;
     max-width: 30em;
     align-self: center;
+    font-size: xx-large;
+    text-transform: uppercase;
   }
 
-  label {
-    font-weight: bold;
-  }
-
+  
   header {
     position: relative;
     color: white;
@@ -199,17 +198,24 @@
     flex-direction: column;
     justify-content: flex-end;
   }
-
+  
+  label {
+    font-weight: bold;
+    color: white;
+  }
   input {
+    background-color: #0a0a0a;
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 0.3em;
     font-size: 1em;
+    color: white;
   }
   input[readonly] {
-    background-color: #f0f0f0;
+    background-color: black;
+    border: 1px solid gray;
     cursor: not-allowed;
-    color: grey;
+    color: gray;
   }
 
   button {
