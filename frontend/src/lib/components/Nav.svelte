@@ -108,6 +108,7 @@
     color: white;
     padding: 0.1em 1em 0.1em 1em;
     font-size: xx-large;
+    font-weight: bolder;
   }
   h1 a {
     color: white;

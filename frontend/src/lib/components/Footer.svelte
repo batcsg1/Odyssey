@@ -32,6 +32,7 @@
     h1{
         font-weight: bolder;
         padding: 0.3em;
+        font-size: xx-large;
     }
 
     img {
