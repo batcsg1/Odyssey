@@ -63,7 +63,6 @@
     border-bottom: #66aaff 0.1em solid;
   }
   #intro {
-    background-color: rgba(0, 0, 0);
     display: flex;
     flex-direction: column;
     color: white;
@@ -79,7 +78,6 @@
 
   #cards {
     padding: 1em;
-    background-color: #1a1c1e;
     border-radius: 0.5em;
   }
   .card {
@@ -89,7 +87,8 @@
       rgba(0, 0, 0, 0.7),
       /* more transparent at top */ rgba(0, 0, 0, 0.8)
     );
-    border: 3px solid white;
+    border: 0.1em solid white;
+    box-shadow: 0.1em 0.1em 3em rgb(24, 90, 144);
   }
   .card-title {
     text-transform: uppercase;
@@ -110,7 +109,6 @@
   }
 
   #contents {
-    background-color: #131212;
     border-radius: 0.3em;
     display: flex;
     flex-wrap: wrap;
@@ -118,8 +116,6 @@
     padding: 3em;
     height: 35vh;
     overflow-y: auto;
-    scrollbar-width: thin; /* "auto" | "thin" | "none" */
-    scrollbar-color: #000000 #66aaff; /* thumb color | track color */
     max-width: 70em;
     align-self: center;
   }
