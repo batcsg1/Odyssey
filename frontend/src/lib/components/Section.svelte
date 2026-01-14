@@ -9,10 +9,11 @@
 
 <style>
   section {
-    padding: 2em 2em 2em 2em;
+    padding: 2em 2em 0.9em 2em;
     border: white 0.1em solid;
     border-radius: 0.3em;
     box-shadow: 0.5em 0.5em 0px white;
+    background-color: rgb(30, 35, 39);
   }
   
   h2 {
@@ -22,7 +23,9 @@
   }
 
   p {
-    
+    background-color: rgb(19, 22, 24);
     line-height: 1.7em;
+    padding: 1em 0.9em 1em 0.9em;
+    border-radius: 0.6em;
   }
 </style>
