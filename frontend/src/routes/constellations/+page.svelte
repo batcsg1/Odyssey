@@ -5,7 +5,7 @@
   import { page } from "$app/stores";
 
   let { data } = $props();
-  const { intro, blurb, constellations } = data;
+  const { intro, blurb, constellations, error } = data;
 
   let currentPath = $derived($page.url.pathname);
   let location = currentPath.replace("/", "");
@@ -23,9 +23,10 @@
         <Section header={section.header} text={section.text}></Section>
       {/each}
     </section>
-
+    
     <section id="constellations-table">
       <h3>VIEW CONSTELLATIONS</h3>
+      {#if constellations?.data}
       <Fetch
         location={location}
         items={constellations.data}
@@ -37,11 +38,24 @@
           { key: "abbreviation", label: "Abbreviation" },
         ]}
       />
+      {:else}
+          <p class="error">{error}</p>
+      {/if}
     </section>
   </article>
 </main>
 
 <style>
+  .error {
+    background-color: #ffe6e6;
+    padding: 1em;
+    border-radius: 0.3em;
+    box-shadow: 6px 6px 0px 0px #ff6666;
+    color: #ff6666;
+    width: 30em;
+    text-align: center;
+    font-weight: bolder;
+  }
   #constellations-table {
     overflow-x: auto;
     border-radius: 0.3em;
@@ -50,6 +64,8 @@
     padding: 1em;
     align-self: center;
     max-width: 80em;
+    display: flex;
+    align-items: center;
   }
   header {
     position: relative;
