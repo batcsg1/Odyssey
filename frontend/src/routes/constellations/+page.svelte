@@ -50,7 +50,7 @@
     background-color: #ffe6e6;
     padding: 1em;
     border-radius: 0.3em;
-    box-shadow: 6px 6px 0px 0px #ff6666;
+    box-shadow: 6px 6px 2em #ff6666;
     color: #ff6666;
     width: 30em;
     text-align: center;
@@ -59,8 +59,6 @@
   #constellations-table {
     overflow-x: auto;
     border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 0px #66aaff;
-    background-color: #131212;
     padding: 1em;
     align-self: center;
     max-width: 80em;
