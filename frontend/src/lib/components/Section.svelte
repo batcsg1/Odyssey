@@ -10,7 +10,7 @@
 <style>
   section {
     padding: 2em 2em 0.9em 2em;
-    border: white 0.1em solid;
+   
     border-radius: 0.3em;
     box-shadow: 0.5em 0.5em 0px white;
     background-color: rgb(30, 35, 39);

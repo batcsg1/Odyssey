@@ -79,8 +79,7 @@
 
   #cards {
     padding: 1em;
-    background-color: #001427;
-    border: 0.1em solid white;
+    background-color: #1a1c1e;
     border-radius: 0.5em;
   }
   .card {
