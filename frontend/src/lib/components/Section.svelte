@@ -10,10 +10,11 @@
 <style>
   section {
     padding: 2em 2em 0.9em 2em;
-   
+    background: #000000;
+    background: linear-gradient(180deg, rgb(10, 17, 21) 5%, rgb(13, 20, 26) 71%, rgb(31, 51, 66) 100%);
     border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 0px white;
-    background-color: rgb(30, 35, 39);
+    box-shadow: 0.5em 0.5em 6em rgb(31, 51, 66);
+    border: 0.1em solid rgb(31,51,66);
   }
   
   h2 {
@@ -23,9 +24,9 @@
   }
 
   p {
-    background-color: rgb(19, 22, 24);
+    background-color: rgb(12, 15, 16);
     line-height: 1.7em;
     padding: 1em 0.9em 1em 0.9em;
-    border-radius: 0.6em;
+    border-radius: 0.3em;
   }
 </style>
