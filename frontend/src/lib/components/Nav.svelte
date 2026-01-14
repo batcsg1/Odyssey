@@ -76,14 +76,6 @@
 
 <style>
   header {
-    background: #000;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 1) 95%,
-      rgba(227, 227, 227, 1) 100%,
-      rgba(233, 233, 233, 1) 96%,
-      rgba(255, 255, 255, 1) 100%
-    );
     padding: 1em;
     display: flex;
     justify-content: space-between;
@@ -92,11 +84,13 @@
     top: 0;
     z-index: 1000;
     transition: 0.3s ease;
+    border-bottom: 0.2em solid #66aaff;
   }
 
   header.transparent {
     background: rgba(0, 0, 0, 0.3);
     transition: 0.3s ease;
+    border: none;
   }
 
   header.transparent h1 {
