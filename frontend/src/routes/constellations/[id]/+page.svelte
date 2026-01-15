@@ -164,13 +164,16 @@
   }
 
   form {
-    background-color: white;
+    background: #000000;
+    background: linear-gradient(180deg, rgb(10, 17, 21) 5%, rgb(13, 20, 26) 71%, rgb(31, 51, 66) 100%);
     border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 0px #66aaff;
+    box-shadow: 0.5em 0.5em 10em rgb(31, 51, 66);
     padding: 2em;
     display: flex;
     flex-direction: column;
     gap: 0.3em;
+    border: 0.1em solid rgb(31,51,66);
+    color: white;
   }
 
   h3 {
@@ -201,13 +204,15 @@
   }
 
   input {
+    background-color: #09171f;
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 0.3em;
     font-size: 1em;
+    color: white;
   }
   input[readonly] {
-    background-color: #f0f0f0;
+    background-color: #09171f;
     cursor: not-allowed;
     color: grey;
   }
