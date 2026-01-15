@@ -102,12 +102,7 @@
 
         <FormError error={formError} {success} />
       </form>
-      <form
-        method="POST"
-        enctype="multipart/form-data"
-        action="?/upload"
-        
-      >
+      <form method="POST" enctype="multipart/form-data" action="?/upload">
         <div class="group">
           <label for="file">Upload your file</label>
           <input
@@ -145,13 +140,17 @@
 
 <style>
   #no-image {
-    background-color: rgb(243, 239, 239);
-    border: 0.1em dashed rgb(176, 174, 174);
+    border: 0.1em dashed #ff6666;
     border-radius: 0.3em;
     height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 6px 6px 2em #ff6666;
+    color: #ff6666;
+    width: 30em;
+    text-align: center;
+    font-weight: bolder;
   }
   #constellation {
     display: flex;
@@ -165,14 +164,19 @@
 
   form {
     background: #000000;
-    background: linear-gradient(180deg, rgb(10, 17, 21) 5%, rgb(13, 20, 26) 71%, rgb(31, 51, 66) 100%);
+    background: linear-gradient(
+      180deg,
+      rgb(10, 17, 21) 5%,
+      rgb(13, 20, 26) 71%,
+      rgb(31, 51, 66) 100%
+    );
     border-radius: 0.3em;
     box-shadow: 0.5em 0.5em 10em rgb(31, 51, 66);
     padding: 2em;
     display: flex;
     flex-direction: column;
     gap: 0.3em;
-    border: 0.1em solid rgb(31,51,66);
+    border: 0.1em solid rgb(31, 51, 66);
     color: white;
   }
 
@@ -219,6 +223,7 @@
 
   button {
     margin-top: 1em;
+    margin-bottom: 1em;
     padding: 0.5em;
     background-color: #66aaff;
     color: white;
