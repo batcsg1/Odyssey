@@ -55,6 +55,7 @@
   #id-cell {
     background-color: #66aaff;
     overflow-x: auto;
+    transition: ease 0.4s;
   }
 
   #id-cell a {
@@ -68,6 +69,7 @@
 
   #id-cell:hover {
     background-color: white;
+    transform: scale(1.1);
   }
 
   #id-cell:hover a {
@@ -76,25 +78,24 @@
   }
 
   article {
-    background-color: white;
+    background: #000000;
+    background: linear-gradient(180deg, rgb(10, 17, 21) 5%, rgb(13, 20, 26) 71%, rgb(31, 51, 66) 100%);
     border-radius: 0.3em;
     padding: 1em;
+    box-shadow: 0.5em 0.5em 10em rgb(31, 51, 66);
+    border: 0.1em solid rgb(31,51,66);
     overflow-x: auto;
   }
   h4 {
-    color: #333;
     font-weight: bolder;
   }
 
   h5 {
-    color: gray;
     font-size: medium;
+    color: #66aaff;
   }
 
   table {
-    color: #333;
-    border: 1px solid rgb(197, 189, 189);
-    border-radius: 0.3em;
     width: 100%;
     border: none;
     table-layout: fixed;
@@ -114,6 +115,6 @@
     border-bottom: 1px solid rgb(197, 189, 189);
   }
   tr:nth-child(even) {
-    background-color: rgb(242, 226, 226);
+    background-color: rgb(17, 32, 38);
   }
 </style>
