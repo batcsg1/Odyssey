@@ -109,6 +109,7 @@
     text-align: left;
     vertical-align: top;
     word-break: break-word;
+    border-right: 0.1em dashed rgb(25, 59, 72);
   }
 
   tr {
