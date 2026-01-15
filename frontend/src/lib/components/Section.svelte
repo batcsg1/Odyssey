@@ -3,7 +3,7 @@
 </script>
 
 <section>
-  <h2>{header.toUpperCase()}</h2>
+  <h2>{header}</h2>
   <p>{text}</p>
 </section>
 
@@ -18,7 +18,7 @@
   }
   
   h2 {
-    font-weight: bold;
+    font-weight: 1000;
     padding: 0em 0em 0.3em 0em;
     border-bottom: #66aaff 0.1em solid;
   }
