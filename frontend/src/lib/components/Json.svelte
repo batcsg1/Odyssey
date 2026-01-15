@@ -28,19 +28,26 @@
   }
 
   article {
-    background-color: white;
+    background: #000000;
+    background: linear-gradient(
+      180deg,
+      rgb(10, 17, 21) 5%,
+      rgb(13, 20, 26) 71%,
+      rgb(31, 51, 66) 100%
+    );
     border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 0px #66aaff;
+    border: 0.1em solid rgb(31, 51, 66);
+    box-shadow: 0.5em 0.5em 10em rgb(31, 51, 66);
     padding: 2em;
     display: flex;
     flex-direction: column;
   }
 
   article section {
-    background-color: rgb(13, 13, 30);
     padding: 1em;
     border-radius: 0.3em;
-    box-shadow: 6px 6px 0px 0px #66aaff;
+    border: 0.1em solid white;
+    box-shadow: 0.1em 0.1em 2em #66aaff;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -55,10 +62,10 @@
     font-family: "JetBrains Mono", monospace;
   }
 
-    h4 {
-    color: #333;
+  h4 {
+    color: white;
     font-weight: bolder;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
   }
 
   @media (width <= 820px) {
