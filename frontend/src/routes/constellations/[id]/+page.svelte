@@ -151,6 +151,7 @@
     width: 30em;
     text-align: center;
     font-weight: bolder;
+    background-color: rgba(255, 6, 6, 0.2);
   }
   #constellation {
     display: flex;
