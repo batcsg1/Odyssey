@@ -3,6 +3,8 @@
   import Section from "$lib/components/Section.svelte";
   import Fetch from "$lib/components/Fetch.svelte";
   import { page } from "$app/stores";
+    import FetchError from "$lib/components/FetchError.svelte";
+    import Table from "$lib/components/Table.svelte";
 
   let { data } = $props();
   const { intro, blurb, constellations, error } = data;
@@ -24,7 +26,7 @@
       {/each}
     </section>
     
-    <section id="constellations-table">
+    <Table>
       <h3>VIEW CONSTELLATIONS</h3>
       {#if constellations?.data}
       <Fetch
@@ -39,33 +41,13 @@
         ]}
       />
       {:else}
-          <p class="error">{error}</p>
+          <FetchError {error}/>
       {/if}
-    </section>
+    </Table>
   </article>
 </main>
 
 <style>
-  .error {
-    background-color: rgba(255, 6, 6, 0.2);
-    border: 0.1em dashed #ff6666;
-    padding: 1em;
-    border-radius: 0.3em;
-    box-shadow: 6px 6px 2em #ff6666;
-    color: #ff6666;
-    width: 30em;
-    text-align: center;
-    font-weight: bolder;
-  }
-  #constellations-table {
-    overflow-x: auto;
-    border-radius: 0.3em;
-    padding: 1em;
-    align-self: center;
-    max-width: 80em;
-    display: flex;
-    align-items: center;
-  }
   header {
     position: relative;
     color: white;
@@ -100,6 +82,7 @@
     display: flex;
     flex-direction: column;
     gap: 2.2em;
+    max-width: 50em;
   }
 
   #intro-blurb {

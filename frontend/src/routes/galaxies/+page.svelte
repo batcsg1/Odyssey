@@ -3,9 +3,11 @@
   import Section from "$lib/components/Section.svelte";
   import Fetch from "$lib/components/Fetch.svelte";
   import { page } from "$app/stores";
+  import FetchError from "$lib/components/FetchError.svelte";
+    import Table from "$lib/components/Table.svelte";
 
   let { data } = $props();
-  const { intro, blurb, galaxies, constellationMap } = data;
+  const { intro, blurb, galaxies, constellationMap, error } = data;
 
   let currentPath = $derived($page.url.pathname);
   let location = currentPath.replace("/", "");
@@ -17,44 +19,40 @@
   </header>
 
   <article>
-    <section id=intro-blurb>
+    <section id="intro-blurb">
       {#each [intro, blurb] as section}
         <Section header={section.header} text={section.text}></Section>
       {/each}
     </section>
 
-    <section id="galaxies-table">
+    <Table >
       <h3>VIEW GALAXIES</h3>
-      <Fetch
-        {location}
-        items={galaxies.data}
-        count={galaxies.count}
-        columns={[
-          { key: "name", label: "Name" },
-          { key: "type", label: "Type" },
-          { key: "distance", label: "Distance (million light years)" },
-          { key: "size", label: "Size (light years)" },
-          { key: "brightness", label: "Brightness (apparent magnitude)" },
-          { key: "constellationId", label: "Constellation" },
-        ]}
-        maps={{
-          constellationId: constellationMap,
-        }}
-      />
-    </section>
+      {#if galaxies?.data}
+        <Fetch
+          {location}
+          items={galaxies.data}
+          count={galaxies.count}
+          columns={[
+            { key: "name", label: "Name" },
+            { key: "type", label: "Type" },
+            { key: "distance", label: "Distance (million light years)" },
+            { key: "size", label: "Size (light years)" },
+            { key: "brightness", label: "Brightness (apparent magnitude)" },
+            { key: "constellationId", label: "Constellation" },
+          ]}
+          maps={{
+            constellationId: constellationMap,
+          }}
+        />
+      {:else}
+        <FetchError {error} />
+      {/if}
+    </Table>
+
   </article>
 </main>
 
 <style>
-  #galaxies-table {
-    overflow-x: auto;
-    border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 0px #66aaff;
-    background-color: #131212;
-    padding: 1em;
-    align-self: center;
-    max-width: 80em;
-  }
   header {
     position: relative;
     color: white;
