@@ -55,6 +55,7 @@
 
     <Table>
       <h3>VIEW CONSTELLATIONS</h3>
+      {#if constellations?.data}
       <div id="search-container">
         <input
           type="text"
@@ -62,7 +63,6 @@
           bind:value={query}
         />
       </div>
-      {#if constellations?.data}
         <Fetch
           {location}
           items={filteredConstellations.data}
