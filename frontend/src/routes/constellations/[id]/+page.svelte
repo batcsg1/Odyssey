@@ -155,12 +155,33 @@
   }
   #constellation {
     display: flex;
-    justify-content: center;
     margin-bottom: 2em;
-    max-width: 50em;
+    max-width: 90em;
+    width: 100%; /* IMPORTANT */
     align-self: center;
     padding: 1em;
     gap: 1em;
+    overflow-x: auto; /* ENABLE horizontal scrolling */
+    overflow-y: hidden; /* Prevent vertical scrollbar */
+  }
+  /* For Chrome, Edge, and Safari */
+  #constellation::-webkit-scrollbar {
+    height: 1em;
+  }
+
+  #constellation::-webkit-scrollbar-track {
+    background: #0b0f1a; /* track (background) */
+    border-radius: 10px;
+  }
+
+  #constellation::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #223a77, #3a66ff); /* thumb color */
+    border-radius: 10px;
+    border: 1px solid #0b0f1a; /* adds subtle outline */
+  }
+
+  #constellation::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgb(18, 39, 117), #66aaff);
   }
 
   form {
