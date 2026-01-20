@@ -4,8 +4,8 @@
 
   let user = $state($page.data.user);
 
-  let userName = $derived(() => (user ? user.name : ""));
-  let email = $derived(() => (user ? user.email : ""));
+  let userName = $derived(user ? user.name : "");
+  let email = $derived(user ? user.email : "");
 
   console.log(userName);
 
