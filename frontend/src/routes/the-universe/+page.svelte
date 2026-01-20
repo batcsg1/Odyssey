@@ -23,6 +23,15 @@
     {/each}
   </section>
 
+  <article id="evolution">
+    <h3>EVOLUTION OF THE UNIVERSE</h3>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/6/6f/CMB_Timeline300_no_WMAP.jpg"
+      alt="universe"
+      width="800"
+    />
+  </article>
+
   <article
     id="contents"
     class="d-flex flex-wrap justify-content-center gap-3 p-3 overflow-auto"
@@ -56,6 +65,23 @@
     justify-content: flex-end;
   }
 
+  h2 {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #evolution {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
+  }
+
+  #evolution img {
+    margin-bottom: 2em;
+  }
+  
   h3 {
     font-weight: bold;
     padding: 1em 0em 0.3em 0em;
@@ -72,7 +98,7 @@
     align-self: center;
   }
 
-  .card{
+  .card {
     box-shadow: 0.5em 0.5em 0px white;
   }
 
