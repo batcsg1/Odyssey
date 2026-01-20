@@ -16,10 +16,11 @@
 
 <style>
   .api-err {
-    background-color: #ffe6e6;
+    background-color: rgba(255, 6, 6, 0.2);
     padding: 1em;
     border-radius: 0.3em;
-    box-shadow: 6px 6px 0px 0px #ff6666;
+    box-shadow: 6px 6px 2em #ff6666;
+    border: 0.1em dashed #ff6666;
   }
   .api-err pre {
     color: red;
