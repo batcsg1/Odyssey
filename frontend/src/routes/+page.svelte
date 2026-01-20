@@ -45,7 +45,7 @@
   #intro h2 {
     background-color: white;
     color: #333;
-    padding: 0.5em 1em 0.5em 1em;
+    padding: 0.5em 0.9em 0.5em 0.9em;
   }
 
   h2 {
@@ -66,10 +66,6 @@
     background-size: cover;
   }
 
-  p {
-    max-width: 50em;
-  }
-
   #sol-sys {
     background-image: url(../lib/GIFs/jupiter.gif);
     background-repeat: no-repeat;
@@ -86,8 +82,8 @@
 
   .page-sections p {
     color: white;
-    padding: 1em 2em 1em 2em;
-    background-color: rgba(0, 0, 0, 0.3);
+    padding: 1em 1em 1em 1em;
+    max-width: 50em;
   }
 
   #interstellar {
