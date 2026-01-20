@@ -38,7 +38,7 @@
 
 <main>
   <header>
-    <Header/>
+    <Header />
   </header>
   <h3>GALAXY INFO:</h3>
   <section id="galaxy">
@@ -119,8 +119,7 @@
           <button type="button" onclick={toggleEditable}>Update</button>
         {/if}
 
-    
-        <FormError error={formError} success={success}/>
+        <FormError error={formError} {success} />
       </form>
     {/if}
 
@@ -135,22 +134,50 @@
 <style>
   #galaxy {
     display: flex;
-    justify-content: center;
     margin-bottom: 2em;
     max-width: 50em;
     align-self: center;
     padding: 1em;
     gap: 1em;
+    overflow-x: auto; /* ENABLE horizontal scrolling */
+  }
+
+  /* For Chrome, Edge, and Safari */
+  #galaxy::-webkit-scrollbar {
+    height: 1em;
+  }
+
+  #galaxy::-webkit-scrollbar-track {
+    background: #0b0f1a; /* track (background) */
+    border-radius: 10px;
+  }
+
+  #galaxy::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #223a77, #3a66ff); /* thumb color */
+    border-radius: 10px;
+    border: 1px solid #0b0f1a; /* adds subtle outline */
+  }
+
+  #galaxy::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgb(18, 39, 117), #66aaff);
   }
 
   form {
-    background-color: white;
+    background: #000000;
+    background: linear-gradient(
+      180deg,
+      rgb(10, 17, 21) 5%,
+      rgb(13, 20, 26) 71%,
+      rgb(31, 51, 66) 100%
+    );
     border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 0px #66aaff;
+    box-shadow: 0.5em 0.5em 3em rgb(31, 51, 66);
     padding: 2em;
     display: flex;
     flex-direction: column;
     gap: 0.3em;
+    border: 0.1em solid rgb(31, 51, 66);
+    color: white;
   }
 
   h3 {
@@ -161,6 +188,7 @@
     color: white;
     max-width: 30em;
     align-self: center;
+    margin-bottom: 1em;
   }
 
   label {
@@ -181,17 +209,18 @@
   }
 
   input {
+    background-color: #09171f;
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 0.3em;
     font-size: 1em;
+    color: white;
   }
   input[readonly] {
-    background-color: #f0f0f0;
+    background-color: #09171f;
     cursor: not-allowed;
     color: grey;
   }
-
   button {
     margin-top: 1em;
     padding: 0.5em;
