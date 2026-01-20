@@ -15,8 +15,7 @@
 
   let query = $state("");
 
-  let filteredConstellations = $state({ ...constellations
-  });
+  let filteredConstellations = $state({ ...constellations });
 
   // Watch query changes
   $effect(() => {
@@ -59,6 +58,43 @@
       {/each}
     </section>
 
+    <figure id="image-section">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/3/36/Orion_tjt.jpg"
+        alt="The constellation Orion with Betelgeuse and the Orion Nebula"
+        width="400"
+      />
+
+      <figcaption>
+        <section>
+          <h3>Orion</h3>
+          <p>
+            The constellation Orion, with Betelgeuse the reddish star at the top
+            left. Also visible are Barnard’s Loop and the Orion Nebula (M42).
+          </p>
+
+          <small class="credit">
+            Image credit:
+            <a
+              href="https://commons.wikimedia.org/wiki/File:Orion_tjt.jpg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Wikimedia Commons
+            </a>
+            · © T. TheStarmon &mdash; licensed under
+            <a
+              href="https://creativecommons.org/licenses/by-sa/3.0/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CC BY-SA 3.0
+            </a>
+          </small>
+        </section>
+      </figcaption>
+    </figure>
+
     <Table>
       <h3>VIEW CONSTELLATIONS</h3>
       {#if constellations?.data}
@@ -90,6 +126,87 @@
 </main>
 
 <style>
+  /* ---------- IMAGE FEATURE SECTION ---------- */
+
+  #image-section {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 2.5em;
+    padding: 2.5em;
+    background: linear-gradient(145deg, rgb(10, 17, 21), rgb(17, 32, 38));
+    border-radius: 0.6em;
+    border: 0.1em solid rgb(31, 51, 66);
+    box-shadow: 0 0 3em rgba(102, 170, 255, 0.12);
+    align-items: center;
+  }
+
+  #image-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.4em;
+    border: 0.1em solid rgb(31, 51, 66);
+    box-shadow: 0 0 1.5em rgba(0, 0, 0, 0.6);
+  }
+
+  #image-section figcaption section {
+    max-width: none;
+    gap: 1.4em;
+  }
+
+  #image-section h3 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-align: left;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  #image-section p {
+    line-height: 1.6;
+    color: #ddd;
+  }
+
+  /* ---------- IMAGE CREDIT ---------- */
+
+  .credit {
+    margin-top: 1.2em;
+    font-size: 0.75em;
+    color: #9aa7b2;
+  }
+
+  .credit a {
+    color: #66aaff;
+    text-decoration: none;
+  }
+
+  .credit a:hover {
+    text-decoration: underline;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+
+  @media (max-width: 900px) {
+    #image-section {
+      grid-template-columns: 1fr;
+      padding: 2em;
+    }
+
+    #image-section img {
+      max-width: 28em;
+      margin-inline: auto;
+    }
+
+    #image-section figcaption {
+      text-align: center;
+    }
+
+    #image-section h3 {
+      text-align: center;
+    }
+  }
+
   /* Search input styling */
   #search-container {
     padding: 2em;
