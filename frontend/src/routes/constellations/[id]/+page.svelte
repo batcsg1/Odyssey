@@ -147,7 +147,6 @@
     padding: 1em;
     gap: 1em;
     overflow-x: auto; /* ENABLE horizontal scrolling */
-    overflow-y: hidden; /* Prevent vertical scrollbar */
   }
   /* For Chrome, Edge, and Safari */
   #constellation::-webkit-scrollbar {
