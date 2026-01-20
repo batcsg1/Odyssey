@@ -3,7 +3,7 @@
 </script>
 
 <section>
-  <h2>{header}</h2>
+  <h2>{header.toUpperCase()}</h2>
   <p>{text}</p>
 </section>
 
