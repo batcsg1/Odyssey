@@ -14,16 +14,13 @@
 
   let query = $state("");
 
-  let filteredConstellations = $state(constellations ?? {});
+  let filteredConstellations = $state({});
 
   // Watch query changes
   $effect(() => {
     if (!query) {
       // Show all by default
-      filteredConstellations = {
-        data: constellations?.data || [],
-        count: constellations?.count || 0,
-      };
+      filteredConstellations = constellations
       return;
     }
 
@@ -37,7 +34,7 @@
       );
       const json = await res.json();
       if (!res.ok) return;
-      filteredConstellations = { data: json.data, count: json.count };
+      filteredConstellations = json;
     } catch (err) {
       console.error(err);
     }
