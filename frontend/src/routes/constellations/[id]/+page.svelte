@@ -178,7 +178,7 @@
       rgb(31, 51, 66) 100%
     );
     border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 10em rgb(31, 51, 66);
+    box-shadow: 0.5em 0.5em 3em rgb(31, 51, 66);
     padding: 2em;
     display: flex;
     flex-direction: column;
@@ -195,6 +195,7 @@
     color: white;
     max-width: 30em;
     align-self: center;
+    margin-bottom: 1em;
   }
 
   label {

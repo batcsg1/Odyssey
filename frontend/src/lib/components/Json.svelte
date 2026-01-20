@@ -38,7 +38,7 @@
     );
     border-radius: 0.3em;
     border: 0.1em solid rgb(31, 51, 66);
-    box-shadow: 0.5em 0.5em 10em rgb(31, 51, 66);
+    box-shadow: 0.5em 0.5em 3em rgb(31, 51, 66);
     padding: 2em;
     display: flex;
     flex-direction: column;
