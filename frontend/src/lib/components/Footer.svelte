@@ -11,7 +11,7 @@
     </section>
 
     <a href="https://batchelornz.com">
-        <img src={sb} alt="sb" height="100">
+        <img src={sb} alt="sb" height="150">
     </a>
 
     <section id="copyright">
