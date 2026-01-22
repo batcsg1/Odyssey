@@ -66,7 +66,7 @@
   }
 
   #sol-sys {
-    background-image: url(../lib/GIFs/jupiter.gif);
+    background-image: url(https://i.pinimg.com/originals/bb/6c/0e/bb6c0ebb515d9367bff85b5aeb7f2f2b.gif);
     background-repeat: no-repeat;
     background-size: cover;
   }
