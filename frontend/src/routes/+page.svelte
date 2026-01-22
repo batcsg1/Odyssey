@@ -45,13 +45,12 @@
   #intro h2 {
     background-color: white;
     color: #333;
-    padding: 0.5em 0.9em 0.5em 0.9em;
   }
 
   h2 {
     font-weight: bold;
     font-size: 2.5em;
-    padding: 0.5em 1em 0.5em 1em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
   }
   .page-sections {
     height: 35em;
