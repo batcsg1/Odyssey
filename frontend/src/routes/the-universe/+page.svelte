@@ -24,7 +24,7 @@
   </section>
 
   <article id="evolution">
-    <h3>EVOLUTION OF THE UNIVERSE</h3>
+    <h3>Evoloution of the Universe</h3>
     <img
       src="https://upload.wikimedia.org/wikipedia/commons/6/6f/CMB_Timeline300_no_WMAP.jpg"
       alt="universe"
@@ -36,7 +36,7 @@
     id="contents"
     class="d-flex flex-wrap justify-content-center gap-3 p-3 overflow-auto"
   >
-    <h3>BODIES OF THE UNIVERSE</h3>
+    <h3>Bodies of the Universe</h3>
     <section id="cards" class="d-flex flex-wrap justify-content-center gap-3">
       {#each cards as card}
         <div class="card" style="width: 18rem;">
@@ -81,12 +81,15 @@
   #evolution img {
     margin-bottom: 2em;
   }
-  
+
   h3 {
-    font-weight: bold;
-    padding: 1em 0em 0.3em 0em;
-    color: white;
-    border-bottom: #66aaff 0.1em solid;
+    font-weight: 1000;
+    text-align: center;
+    /* Apply gradient to text */
+    background: linear-gradient(180deg, #ffffff 0%, #3fbbff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5rem;
   }
   #intro {
     display: flex;
