@@ -101,10 +101,6 @@
     align-self: center;
   }
 
-  .card {
-    box-shadow: 0.5em 0.5em 0px white;
-  }
-
   #cards {
     padding: 1em;
     border-radius: 0.5em;
@@ -116,11 +112,11 @@
       rgba(0, 0, 0, 0.7),
       /* more transparent at top */ rgba(0, 0, 0, 0.8)
     );
-    border: 0.1em solid white;
-    box-shadow: 0.1em 0.1em 3em rgb(24, 90, 144);
+    border: 0.1em solid rgb(31, 51, 66);
+    box-shadow: 0.5em 0.5em 6em rgb(31, 51, 66);
+    transition: all 0.4s ease;
   }
   .card-title {
-    text-transform: uppercase;
     font-weight: bold;
   }
   .card-link {
@@ -135,6 +131,19 @@
     background-color: white;
     color: #66aaff;
     transition: ease 0.3s;
+  }
+
+  /* 2. The Hover State (Targeting the card directly) */
+  .card:hover {
+    /* Change background to your blue gradient */
+    background: linear-gradient(180deg, #1e3a8a 0%, #3b82f6 100%);
+
+    /* Make the "box" (border and shadow) white */
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0.5em 0.5em 4em rgba(255, 255, 255, 0.3);
+
+    /* Lift effect (optional but looks great with glow) */
+    transform: translateY(-5px);
   }
 
   #contents {
