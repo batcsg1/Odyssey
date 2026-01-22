@@ -53,7 +53,7 @@
     padding: 0.2em 0.5em 0.2em 0.5em;
   }
   .page-sections {
-    height: 35em;
+    height: 40em;
     color: white;
     display: flex;
     flex-direction: column;
