@@ -24,7 +24,7 @@
     <table>
       <thead>
         <tr>
-          <th>ID</th>
+          <th scope="col">ID</th>
           {#each columns as column}
             <th>{column.label}</th>
           {/each}
@@ -69,7 +69,6 @@
 
   #id-cell:hover {
     background-color: white;
-    transform: scale(1.1);
   }
 
   #id-cell:hover a {
@@ -113,8 +112,14 @@
   }
 
   tr {
-    border-bottom: 1px solid rgb(197, 189, 189);
+    border-bottom: 1px solid rgba(102, 170, 255, 0.1);
+    transition: background 0.2s ease;
   }
+
+  tr:hover {
+    background-color: rgba(12, 87, 178, 0.05); /* Highlight row on hover */
+  }
+
   tr:nth-child(even) {
     background-color: rgb(17, 32, 38);
   }

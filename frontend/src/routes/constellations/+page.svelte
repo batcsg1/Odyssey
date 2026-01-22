@@ -222,6 +222,17 @@
     color: white;
     font-size: 1em;
   }
+
+  /* Enhance the search bar focus */
+  #search-container input:focus {
+    outline: none;
+    border-color: #ffffff;
+    box-shadow: 0 0 15px rgba(102, 170, 255, 0.4);
+    transition: all 0.3s ease;
+  }
+
+
+
   #search-container input::placeholder {
     color: #ccc;
   }

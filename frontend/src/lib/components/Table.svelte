@@ -25,5 +25,6 @@
         );
         box-shadow: 0.5em 0.5em 6em rgb(31, 51, 66);
         border: 0.1em solid rgb(31, 51, 66);
+        transition: 0.3s ease;
     }
 </style>
