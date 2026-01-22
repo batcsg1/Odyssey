@@ -11,8 +11,8 @@
   const { intro, blurb, constellations, error } = data;
 
   let currentPath = $derived($page.url.pathname);
-  let location = currentPath.replace("/", "");
-
+  let location = $derived(currentPath.replace("/", ""));
+  
   let query = $state("");
 
   let filteredConstellations = $state({ ...constellations });

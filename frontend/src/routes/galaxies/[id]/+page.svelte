@@ -8,7 +8,7 @@
   import FormError from "$lib/components/FormError.svelte";
 
   let currentPath = $derived($page.url.pathname);
-  let location = currentPath.replace("/", "");
+  let location = $derived(currentPath.replace("/", ""));
 
   const galaxyId = $page.params.id;
 

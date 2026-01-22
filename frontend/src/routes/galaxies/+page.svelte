@@ -10,7 +10,7 @@
   const { intro, blurb, galaxies, constellationMap, error } = data;
 
   let currentPath = $derived($page.url.pathname);
-  let location = currentPath.replace("/", "");
+  let location = $derived(currentPath.replace("/", ""));
 </script>
 
 <main>

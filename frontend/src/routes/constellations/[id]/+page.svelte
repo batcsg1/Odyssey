@@ -11,7 +11,7 @@
     import NoImage from "$lib/components/NoImage.svelte";
 
   let currentPath = $derived($page.url.pathname);
-  let location = currentPath.replace("/", "");
+  let location = $derived(currentPath.replace("/", ""));
 
   const constellationId = $page.params.id;
 
