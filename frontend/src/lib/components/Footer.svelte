@@ -1,6 +1,5 @@
 <script>
     import logo from "$lib/Images/logo-dark.png";
-    import sb from "$lib/Images/sb-logo.png";
 </script>
 
 <footer>
@@ -11,11 +10,11 @@
     </section>
 
     <a href="https://batchelornz.com">
-        <img src={sb} alt="sb" height="150">
+        <img src="https://raw.githubusercontent.com/batcsg1/batcsg1/refs/heads/main/Logo.png" alt="sb" height="150">
     </a>
 
     <section id="copyright">
-       © 2026 Samuel Batchelor - All rights reserved.
+       Copyleft 🄯 2026 Samuel Batchelor. Freely distributable and modifiable under the <a href="https://github.com/batcsg1/Odyssey/blob/main/LICENSE">GNU Affero General Public License v3.0</a>.
     </section>
 </footer>
 
@@ -55,6 +54,7 @@
 
     #copyright{
         padding-top: 1em;
+        text-align: center;
     }
 
 </style>
