@@ -8,9 +8,10 @@
   import Json from "$lib/components/Json.svelte";
   import Message from "$lib/components/Message.svelte";
   import FormError from "$lib/components/FormError.svelte";
+    import NoImage from "$lib/components/NoImage.svelte";
 
   let currentPath = $derived($page.url.pathname);
-  let location = currentPath.replace("/", "");
+  let location = $derived(currentPath.replace("/", ""));
 
   const constellationId = $page.params.id;
 
@@ -123,9 +124,7 @@
             height="500"
           />
         {:else}
-          <section id="no-image">
-            <p>No Image found</p>
-          </section>
+          <NoImage/>
         {/if}
       </form>
     {/if}
@@ -139,38 +138,52 @@
 </main>
 
 <style>
-  #no-image {
-    background-color: rgb(243, 239, 239);
-    border: 0.1em dashed rgb(176, 174, 174);
-    border-radius: 0.3em;
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
   #constellation {
     display: flex;
     margin-bottom: 2em;
-    max-width: 70em;
+    max-width: 90em;
+    width: 100%; /* IMPORTANT */
     align-self: center;
     padding: 1em;
     gap: 1em;
-    overflow-x: scroll;
+    overflow-x: auto; /* ENABLE horizontal scrolling */
+  }
+  /* For Chrome, Edge, and Safari */
+  #constellation::-webkit-scrollbar {
+    height: 1em;
+  }
+
+  #constellation::-webkit-scrollbar-track {
+    background: #0b0f1a; /* track (background) */
+    border-radius: 10px;
+  }
+
+  #constellation::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #223a77, #3a66ff); /* thumb color */
+    border-radius: 10px;
+    border: 1px solid #0b0f1a; /* adds subtle outline */
+  }
+
+  #constellation::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgb(18, 39, 117), #66aaff);
   }
 
   form {
+    background: #000000;
     background: linear-gradient(
-      90deg,
-      rgba(10, 10, 10, 1) 0%,
-      rgb(12, 12, 12) 62%,
-      rgb(21, 24, 24) 100%
+      180deg,
+      rgb(10, 17, 21) 5%,
+      rgb(13, 20, 26) 71%,
+      rgb(31, 51, 66) 100%
     );
     border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 0px white;
+    box-shadow: 0.5em 0.5em 3em rgb(31, 51, 66);
     padding: 2em;
     display: flex;
     flex-direction: column;
     gap: 0.3em;
+    border: 0.1em solid rgb(31, 51, 66);
+    color: white;
   }
 
   h3 {
@@ -181,8 +194,7 @@
     color: white;
     max-width: 30em;
     align-self: center;
-    font-size: xx-large;
-    text-transform: uppercase;
+    margin-bottom: 1em;
   }
 
   
@@ -204,7 +216,7 @@
     color: white;
   }
   input {
-    background-color: #0a0a0a;
+    background-color: #09171f;
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 0.3em;
@@ -212,14 +224,14 @@
     color: white;
   }
   input[readonly] {
-    background-color: black;
-    border: 1px solid gray;
+    background-color: #09171f;
     cursor: not-allowed;
     color: gray;
   }
 
   button {
     margin-top: 1em;
+    margin-bottom: 1em;
     padding: 0.5em;
     background-color: #66aaff;
     color: white;

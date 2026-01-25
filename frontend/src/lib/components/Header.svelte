@@ -16,6 +16,9 @@
 
 <section>
   <p>
+    <a href="/">
+    Home >
+    </a>
     <a href="/{location}">
       {base}
     </a>

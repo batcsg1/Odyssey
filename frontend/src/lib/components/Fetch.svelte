@@ -20,13 +20,11 @@
 <article>
   <h4>{trimmedLocation}</h4>
   <h5>Number of {trimmedLocation}: {count}</h5>
-  {#if items.length === 0 || !items}
-    <p id="no-data">404 - No {trimmedLocation} available :(</p>
-  {:else}
+ 
     <table>
       <thead>
         <tr>
-          <th>ID</th>
+          <th scope="col">ID</th>
           {#each columns as column}
             <th>{column.label}</th>
           {/each}
@@ -46,7 +44,7 @@
         {/each}
       </tbody>
     </table>
-  {/if}
+
 </article>
 
 <style>
@@ -57,6 +55,7 @@
   #id-cell {
     background-color: #66aaff;
     overflow-x: auto;
+    transition: ease 0.4s;
   }
 
   #id-cell a {
@@ -78,25 +77,24 @@
   }
 
   article {
-    background-color: white;
+    background: #000000;
+    background: linear-gradient(180deg, rgb(10, 17, 21) 5%, rgb(13, 20, 26) 71%, rgb(31, 51, 66) 100%);
     border-radius: 0.3em;
     padding: 1em;
+    box-shadow: 0.5em 0.5em 10em rgb(31, 51, 66);
+    border: 0.1em solid rgb(31,51,66);
     overflow-x: auto;
   }
   h4 {
-    color: #333;
     font-weight: bolder;
   }
 
   h5 {
-    color: gray;
     font-size: medium;
+    color: #66aaff;
   }
 
   table {
-    color: #333;
-    border: 1px solid rgb(197, 189, 189);
-    border-radius: 0.3em;
     width: 100%;
     border: none;
     table-layout: fixed;
@@ -110,12 +108,19 @@
     text-align: left;
     vertical-align: top;
     word-break: break-word;
+    border-right: 0.1em dashed rgb(25, 59, 72);
   }
 
   tr {
-    border-bottom: 1px solid rgb(197, 189, 189);
+    border-bottom: 1px solid rgba(102, 170, 255, 0.1);
+    transition: background 0.2s ease;
   }
+
+  tr:hover {
+    background-color: rgba(12, 87, 178, 0.05); /* Highlight row on hover */
+  }
+
   tr:nth-child(even) {
-    background-color: rgb(242, 226, 226);
+    background-color: rgb(17, 32, 38);
   }
 </style>

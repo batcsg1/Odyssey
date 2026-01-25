@@ -23,11 +23,20 @@
     {/each}
   </section>
 
+  <article id="evolution">
+    <h3>Evoloution of the Universe</h3>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/6/6f/CMB_Timeline300_no_WMAP.jpg"
+      alt="universe"
+      width="800"
+    />
+  </article>
+
   <article
     id="contents"
     class="d-flex flex-wrap justify-content-center gap-3 p-3 overflow-auto"
   >
-    <h3>BODIES OF THE UNIVERSE</h3>
+    <h3>Bodies of the Universe</h3>
     <section id="cards" class="d-flex flex-wrap justify-content-center gap-3">
       {#each cards as card}
         <div class="card" style="width: 18rem;">
@@ -56,14 +65,33 @@
     justify-content: flex-end;
   }
 
-  h3 {
-    font-weight: bold;
-    padding: 1em 0em 0.3em 0em;
+  h2 {
     color: white;
-    border-bottom: #66aaff 0.1em solid;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #evolution {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
+  }
+
+  #evolution img {
+    margin-bottom: 2em;
+  }
+
+  h3 {
+    font-weight: 1000;
+    text-align: center;
+    /* Apply gradient to text */
+    background: linear-gradient(180deg, #ffffff 0%, #3fbbff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5rem;
   }
   #intro {
-    background-color: rgba(0, 0, 0);
     display: flex;
     flex-direction: column;
     color: white;
@@ -73,14 +101,8 @@
     align-self: center;
   }
 
-  .card{
-    box-shadow: 0.5em 0.5em 0px white;
-  }
-
   #cards {
     padding: 1em;
-    background-color: #001427;
-    border: 0.1em solid white;
     border-radius: 0.5em;
   }
   .card {
@@ -90,10 +112,11 @@
       rgba(0, 0, 0, 0.7),
       /* more transparent at top */ rgba(0, 0, 0, 0.8)
     );
-    border: 3px solid white;
+    border: 0.1em solid rgb(31, 51, 66);
+    box-shadow: 0.5em 0.5em 6em rgb(31, 51, 66);
+    transition: all 0.4s ease;
   }
   .card-title {
-    text-transform: uppercase;
     font-weight: bold;
   }
   .card-link {
@@ -110,8 +133,20 @@
     transition: ease 0.3s;
   }
 
+  /* 2. The Hover State (Targeting the card directly) */
+  .card:hover {
+    /* Change background to your blue gradient */
+    background: linear-gradient(180deg, #1e3a8a 0%, #3b82f6 100%);
+
+    /* Make the "box" (border and shadow) white */
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0.5em 0.5em 4em rgba(255, 255, 255, 0.3);
+
+    /* Lift effect (optional but looks great with glow) */
+    transform: translateY(-5px);
+  }
+
   #contents {
-    background-color: #131212;
     border-radius: 0.3em;
     display: flex;
     flex-wrap: wrap;
@@ -119,8 +154,6 @@
     padding: 3em;
     height: 35vh;
     overflow-y: auto;
-    scrollbar-width: thin; /* "auto" | "thin" | "none" */
-    scrollbar-color: #000000 #66aaff; /* thumb color | track color */
     max-width: 70em;
     align-self: center;
   }

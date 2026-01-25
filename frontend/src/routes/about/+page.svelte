@@ -7,7 +7,7 @@
   import Section from "$lib/components/Section.svelte";
 
   let currentPath = $derived($page.url.pathname);
-  let location = currentPath.replace("/", "");
+  let location = $derived(currentPath.replace("/", ""));
 
   console.log(location);  
 </script>

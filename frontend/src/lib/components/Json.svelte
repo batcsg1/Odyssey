@@ -16,10 +16,11 @@
 
 <style>
   .api-err {
-    background-color: #ffe6e6;
+    background-color: rgba(255, 6, 6, 0.2);
     padding: 1em;
     border-radius: 0.3em;
-    box-shadow: 6px 6px 0px 0px #ff6666;
+    box-shadow: 6px 6px 2em #ff6666;
+    border: 0.1em dashed #ff6666;
   }
   .api-err pre {
     color: red;
@@ -28,25 +29,26 @@
   }
 
   article {
+    background: #000000;
     background: linear-gradient(
-      90deg,
-      rgba(10, 10, 10, 1) 0%,
-      rgb(12, 12, 12) 62%,
-      rgb(21, 24, 24) 100%
+      180deg,
+      rgb(10, 17, 21) 5%,
+      rgb(13, 20, 26) 71%,
+      rgb(31, 51, 66) 100%
     );
     border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 0px white;
+    border: 0.1em solid rgb(31, 51, 66);
+    box-shadow: 0.5em 0.5em 3em rgb(31, 51, 66);
     padding: 2em;
     display: flex;
     flex-direction: column;
   }
 
   article section {
-    background-color: black;
     padding: 1em;
     border-radius: 0.3em;
-    box-shadow: 6px 6px 0px 0px white;
-    border: 0.1em solid gray;
+    border: 0.1em solid white;
+    box-shadow: 0.1em 0.1em 2em #66aaff;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -61,10 +63,10 @@
     font-family: "JetBrains Mono", monospace;
   }
 
-    h4 {
+  h4 {
     color: white;
     font-weight: bolder;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
   }
 
   @media (width <= 820px) {

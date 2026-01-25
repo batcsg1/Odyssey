@@ -11,7 +11,7 @@
     </section>
 
     <a href="https://batchelornz.com">
-        <img src={sb} alt="sb" height="100">
+        <img src={sb} alt="sb" height="150">
     </a>
 
     <section id="copyright">
@@ -26,12 +26,13 @@
         align-items: center;
         color: white;
         padding: 2em 1em 2em 1em;
-        background: linear-gradient(to top, rgba(0, 0, 0, 1) 97%, rgba(227, 227, 227, 1) 100%, rgba(233, 233, 233, 1) 96%, rgba(255, 255, 255, 1) 100%);
+        border-top: 0.2em solid #66aaff;
     }
 
     h1{
         font-weight: bolder;
         padding: 0.3em;
+        font-size: xx-large;
     }
 
     img {

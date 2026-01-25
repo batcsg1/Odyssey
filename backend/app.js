@@ -36,7 +36,10 @@ const app = express();
 
 // The port the server listens on
 const PORT = process.env.PORT || 3000;
-
+// The base URL for the REST API
+const API_BASE_URL = process.env.API_BASE_URL || "http://localhost";
+// The base route for the REST API
+const API_BASE_ROUTE = "/api/v1.0.0";
 // Use JSON validation
 app.use(isContentTypeApplicationJSON);
 
@@ -69,8 +72,7 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
-// The base URL for the REST API
-const baseURL = "/api/v1.0.0";
+
 
 // Log all incoming requests using the custom logger
 app.use((req, res, next) => {
@@ -79,20 +81,20 @@ app.use((req, res, next) => {
 });
 
 // Use routes
-app.use(baseURL, indexRoutes);
-app.use(`${baseURL}/auth`, authRoutes);
+app.use(API_BASE_ROUTE, indexRoutes);
+app.use(`${API_BASE_ROUTE}/auth`, authRoutes);
 
-app.use(`${baseURL}/constellations`, constellationRoutes);
-app.use(`${baseURL}/galaxies`, galaxyRoutes);
-app.use(`${baseURL}/stars`, starRoutes);
-app.use(`${baseURL}/planets`, planetRoutes);
-app.use(`${baseURL}/satellites`, satelliteRoutes);
-app.use(`${baseURL}/asteroids`, asteroidRoutes);
-app.use(`${baseURL}/meteorites`, meteoriteRoutes);
-app.use(`${baseURL}/comets`, cometRoutes);
-app.use(`${baseURL}/meteor_showers`, meteorShowerRoutes);
-app.use(`${baseURL}/users`, auth, userRoutes);
-app.use(`${baseURL}/upload`, uploadRoutes)
+app.use(`${API_BASE_ROUTE}/constellations`, constellationRoutes);
+app.use(`${API_BASE_ROUTE}/galaxies`, galaxyRoutes);
+app.use(`${API_BASE_ROUTE}/stars`, starRoutes);
+app.use(`${API_BASE_ROUTE}/planets`, planetRoutes);
+app.use(`${API_BASE_ROUTE}/satellites`, satelliteRoutes);
+app.use(`${API_BASE_ROUTE}/asteroids`, asteroidRoutes);
+app.use(`${API_BASE_ROUTE}/meteorites`, meteoriteRoutes);
+app.use(`${API_BASE_ROUTE}/comets`, cometRoutes);
+app.use(`${API_BASE_ROUTE}/meteor_showers`, meteorShowerRoutes);
+app.use(`${API_BASE_ROUTE}/users`, auth, userRoutes);
+app.use(`${API_BASE_ROUTE}/upload`, uploadRoutes)
 
 // Serve static files
 app.use('/uploads', cors, express.static('uploads'));
@@ -112,7 +114,7 @@ app.use("/api-docs", swaggerUi.serve, (req, res, next) => {
 // Start the server on defined port
 app.listen(PORT, () => {
   console.log(
-    `Server is listening on port ${PORT}. Visit http://localhost:${PORT}${baseURL}`,
+    `Server is listening on port ${PORT}. Visit ${API_BASE_URL}:${PORT}${API_BASE_ROUTE}`,
   );
 });
 

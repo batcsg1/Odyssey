@@ -1,10 +1,17 @@
 <script>
-  import { goto } from '$app/navigation';
+  import { goto } from "$app/navigation";
   import { page } from "$app/stores";
+
+  let user = $state($page.data.user);
+
+  let userName = $derived(user ? user.name : "");
+  let email = $derived(user ? user.email : "");
+
+  console.log(userName);
 
   let currentPath = $derived($page.url.pathname);
 
-  let isLoggedIn = $derived($page.data.user != null);
+  let isLoggedIn = $derived(user != null);
 
   let open = $state(false);
 
@@ -28,8 +35,7 @@
   //   }
   // })
 
-  const login = () => goto('/login');
-  
+  const login = () => goto("/login");
 
   let isTransparent = $derived(y > 30);
 
@@ -57,6 +63,11 @@
   {#if open}
     <nav id="hamburger">
       <ul>
+        {#if user}
+          <li id="username">{userName}</li>
+          <li id="email">{email}</li>
+        {/if}
+
         {#each menu as { name, href }, i}
           <li>
             <a class:currentPath={href === currentPath} {href}>{name}</a>
@@ -75,15 +86,23 @@
 </header>
 
 <style>
+  #username {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333; /* dark text for contrast against white background */
+    padding: 0.8em 1em 0.2em 1em; /* top, right, bottom, left */
+    border-bottom: 0.1em dashed #ccc;
+    margin-bottom: 0.3em;
+  }
+
+  #email {
+    font-size: 0.85em;
+    color: #666; /* lighter text for email */
+    padding: 0 1em 0.5em 1em;
+    margin-bottom: 0.5em;
+    border-bottom: 0.1em dashed #eee;
+  }
   header {
-    background: #000;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 1) 95%,
-      rgba(227, 227, 227, 1) 100%,
-      rgba(233, 233, 233, 1) 96%,
-      rgba(255, 255, 255, 1) 100%
-    );
     padding: 1em;
     display: flex;
     justify-content: space-between;
@@ -92,11 +111,13 @@
     top: 0;
     z-index: 1000;
     transition: 0.3s ease;
+    border-bottom: 0.2em solid #66aaff;
   }
 
   header.transparent {
     background: rgba(0, 0, 0, 0.3);
     transition: 0.3s ease;
+    border: none;
   }
 
   header.transparent h1 {
@@ -108,6 +129,7 @@
     color: white;
     padding: 0.1em 1em 0.1em 1em;
     font-size: xx-large;
+    font-weight: bolder;
   }
   h1 a {
     color: white;

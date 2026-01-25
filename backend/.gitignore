@@ -131,3 +131,4 @@ dist
 
 # Files uploaded into the backend/uploads folder
 uploads/*
+!uploads/
