@@ -7,6 +7,11 @@
   import Message from "$lib/components/Message.svelte";
   import FormError from "$lib/components/FormError.svelte";
 
+  //Import current user data
+  let user = $state($page.data.user);
+  let authorized = $derived(user != null && user.role === "SUPER_ADMIN");
+
+
   let currentPath = $derived($page.url.pathname);
   let location = $derived(currentPath.replace("/", ""));
 
@@ -111,18 +116,20 @@
           readonly="true"
         />
 
-        {#if editable}
-          <Parent location="constellations" label="New Constellation ID" />
-          <button type="submit">Save</button>
-          <button type="button" onclick={toggleEditable}>Cancel</button>
-        {:else}
-          <button type="button" onclick={toggleEditable}>Update</button>
+        {#if authorized}
+          {#if editable}
+            <Parent location="constellations" label="New Constellation ID" />
+            <button type="submit">Save</button>
+            <button type="button" onclick={toggleEditable}>Cancel</button>
+          {:else}
+            <button type="button" onclick={toggleEditable}>Update</button>
+          {/if}
         {/if}
 
         <FormError error={formError} {success} />
       </form>
 
-      
+
 
 
 
