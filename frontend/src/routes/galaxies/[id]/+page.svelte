@@ -40,7 +40,7 @@
   <header>
     <Header />
   </header>
-  <h3>GALAXY INFO:</h3>
+  <h3>{galaxy.name}</h3>
   <section id="galaxy">
     {#if galaxy}
       <form method="POST" action="?/update">
@@ -121,6 +121,11 @@
 
         <FormError error={formError} {success} />
       </form>
+
+      
+
+
+
     {/if}
 
     <Json object={galaxy} {error} />
