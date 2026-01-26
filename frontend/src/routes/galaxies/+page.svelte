@@ -5,6 +5,7 @@
   import { page } from "$app/stores";
   import FetchError from "$lib/components/FetchError.svelte";
     import Table from "$lib/components/Table.svelte";
+  import TableWrapper from "$lib/components/TableWrapper.svelte";
 
   let { data } = $props();
   const { intro, blurb, galaxies, constellationMap, error } = data;
@@ -28,6 +29,7 @@
     <Table >
       <h3>VIEW GALAXIES</h3>
       {#if galaxies?.data}
+      <TableWrapper>
         <Fetch
           {location}
           items={galaxies.data}
@@ -44,6 +46,7 @@
             constellationId: constellationMap,
           }}
         />
+      </TableWrapper>
       {:else}
         <FetchError {error} />
       {/if}

@@ -6,6 +6,7 @@
   import FetchError from "$lib/components/FetchError.svelte";
   import Table from "$lib/components/Table.svelte";
   import TableWrapper from "$lib/components/TableWrapper.svelte";
+  import Search from "$lib/components/Search.svelte";
 
   let { data } = $props();
   const { intro, blurb, constellations, error } = data;
@@ -98,13 +99,13 @@
     <Table>
       <h3>VIEW CONSTELLATIONS</h3>
       {#if constellations?.data}
-        <div id="search-container">
+        <Search>
           <input
             type="text"
             placeholder="Search constellations..."
             bind:value={query}
           />
-        </div>
+        </Search>
         <TableWrapper>
           <Fetch
             {location}
@@ -207,35 +208,7 @@
     }
   }
 
-  /* Search input styling */
-  #search-container {
-    padding: 2em;
-    text-align: center;
-  }
-  #search-container input {
-    padding: 0.5em 1em;
-    width: 100%;
-    max-width: 30em;
-    border-radius: 0.3em;
-    border: 0.1em solid #66aaff;
-    background-color: #0b1a2b;
-    color: white;
-    font-size: 1em;
-  }
-
-  /* Enhance the search bar focus */
-  #search-container input:focus {
-    outline: none;
-    border-color: #ffffff;
-    box-shadow: 0 0 15px rgba(102, 170, 255, 0.4);
-    transition: all 0.3s ease;
-  }
-
-
-
-  #search-container input::placeholder {
-    color: #ccc;
-  }
+  
   header {
     position: relative;
     color: white;
