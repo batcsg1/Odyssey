@@ -74,6 +74,56 @@ export const actions = {
       return { success: false, error: "Server is offline. Please try again later." };
     } 
 
-  }
+  },
+  upload: async ({ request, fetch, cookies, params }) => {
+      try {
+        const { id } = params;
+        const formData = await request.formData();
+        const file = formData.get("file");
+        const token = cookies.get("token") || null;
+  
+        const apiFormData = new FormData();
+        apiFormData.append("file", file);
+  
+        const uploadRes = await fetch(`${url}/upload`, {
+          method: "POST",
+          headers: {
+            ...(token && { Authorization: `Bearer ${token}` })
+          },
+          body: apiFormData
+        });
+  
+        const uploadJson = await uploadRes.json();
+  
+        if (!uploadRes.ok) {
+          return { success: false, error: uploadJson.message };
+        }
+  
+        //Adding file path to galaxies model
+  
+        const fileURL = uploadJson.path;
+  
+        const patchRes = await fetch(`${url}/galaxies/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            ...(token && { 'Authorization': `Bearer ${token}` })
+          },
+          body: JSON.stringify({ imagePath: fileURL })
+        });
+  
+        const patchJson = await patchRes.json();
+  
+        if (!patchRes.ok) {
+          return { success: false, error: patchJson.message };
+        }
+  
+        return {
+          success: true, galaxy: patchJson.data
+        };
+      } catch (err) {
+        return { success: false, error: "Server is offline. Please try again later." };
+      }
+    }
 }
 

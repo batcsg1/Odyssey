@@ -6,6 +6,7 @@
   import Json from "$lib/components/Json.svelte";
   import Message from "$lib/components/Message.svelte";
   import FormError from "$lib/components/FormError.svelte";
+  import NoImage from "$lib/components/NoImage.svelte";
 
   //Import current user data
   let user = $state($page.data.user);
@@ -129,7 +130,32 @@
         <FormError error={formError} {success} />
       </form>
 
+      <form method="POST" enctype="multipart/form-data" action="?/upload">
+        <div class="group">
+          <label for="file">Upload your file</label>
+          <input
+            type="file"
+            id="file"
+            name="file"
+            accept=".jpg, .jpeg, .png, .webp"
+            required
+          />
+        </div>
 
+        {#if authorized}
+          <button type="submit">Submit</button>
+        {/if}
+
+        {#if galaxy.imagePath}
+          <img
+            src={galaxy.imagePath}
+            alt={galaxy.imagePath}
+            height="500"
+          />
+        {:else}
+          <NoImage/>
+        {/if}
+      </form>
 
 
 
