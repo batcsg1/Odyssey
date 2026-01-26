@@ -10,6 +10,10 @@
   import FormError from "$lib/components/FormError.svelte";
     import NoImage from "$lib/components/NoImage.svelte";
 
+  //Import current user data
+  let user = $state($page.data.user);
+  let authorized = $derived(user != null && user.role === "SUPER_ADMIN");
+
   let currentPath = $derived($page.url.pathname);
   let location = $derived(currentPath.replace("/", ""));
 
@@ -94,15 +98,18 @@
           readonly={!editable}
         />
 
-        {#if editable}
-          <button type="submit">Save</button>
-          <button type="button" onclick={toggleEditable}>Cancel</button>
-        {:else}
-          <button type="button" onclick={toggleEditable}>Update</button>
+        {#if authorized}
+          {#if editable}
+            <button type="submit">Save</button>
+            <button type="button" onclick={toggleEditable}>Cancel</button>
+          {:else}
+            <button type="button" onclick={toggleEditable}>Update</button>
+          {/if}
         {/if}
 
         <FormError error={formError} {success} />
       </form>
+
       <form method="POST" enctype="multipart/form-data" action="?/upload">
         <div class="group">
           <label for="file">Upload your file</label>
@@ -115,8 +122,10 @@
           />
         </div>
 
-        <button type="submit">Submit</button>
-
+        {#if authorized}
+          <button type="submit">Submit</button>
+        {/if}
+        
         {#if constellation.imagePath}
           <img
             src={constellation.imagePath}
@@ -127,6 +136,7 @@
           <NoImage/>
         {/if}
       </form>
+
     {/if}
 
     <Json object={constellation} {error} />
