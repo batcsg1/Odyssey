@@ -44,6 +44,7 @@ model Galaxy {
   id              String         @id @default(uuid())
   name            String
   type            GalaxyType     @default(ELLIPTICAL)
+  imagePath       String?
   distance        Float
   size            Float
   brightness      Float
