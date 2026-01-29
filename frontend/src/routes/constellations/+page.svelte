@@ -67,33 +67,7 @@
       {error}
       {location}
     />
-    <!-- <Table>
-      <h3>VIEW CONSTELLATIONS</h3>
-      {#if constellations?.data}
-        <Search>
-          <input
-            type="text"
-            placeholder="Search constellations..."
-            bind:value={query}
-          />
-        </Search>
-        <TableWrapper>
-          <Fetch
-            {location}
-            items={filteredConstellations.data}
-            count={filteredConstellations.count}
-            columns={[
-              { key: "name", label: "Name" },
-              { key: "shape", label: "Shape" },
-              { key: "area", label: "Area (sq. deg.)" },
-              { key: "abbreviation", label: "Abbreviation" },
-            ]}
-          />
-        </TableWrapper>
-      {:else}
-        <FetchError {error} />
-      {/if}
-    </Table> -->
+    
   </article>
 </main>
 
