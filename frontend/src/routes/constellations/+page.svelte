@@ -1,12 +1,7 @@
 <script>
   import Header from "$lib/components/Header.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import Fetch from "$lib/components/Fetch.svelte";
   import { page } from "$app/stores";
   import FetchError from "$lib/components/FetchError.svelte";
-  import Table from "$lib/components/Table.svelte";
-  import TableWrapper from "$lib/components/TableWrapper.svelte";
-  import Search from "$lib/components/Search.svelte";
   import ConstellationTable from "$lib/components/tables/ConstellationTable.svelte";
   import IntroSection from "$lib/components/IntroSection.svelte";
 
