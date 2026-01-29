@@ -7,44 +7,14 @@
   import Table from "$lib/components/Table.svelte";
   import TableWrapper from "$lib/components/TableWrapper.svelte";
   import Search from "$lib/components/Search.svelte";
+  import ConstellationTable from "$lib/components/tables/ConstellationTable.svelte";
+  import IntroSection from "$lib/components/IntroSection.svelte";
 
   let { data } = $props();
   const { intro, blurb, constellations, error } = data;
 
   let currentPath = $derived($page.url.pathname);
   let location = $derived(currentPath.replace("/", ""));
-  
-  let query = $state("");
-
-  let filteredConstellations = $state({ ...constellations });
-
-  // Watch query changes
-  $effect(() => {
-    if (!query) {
-      // Show all by default
-      filteredConstellations = constellations;
-      return;
-    }
-
-    fetchSuggestions(query);
-  });
-
-  async function fetchSuggestions(searchTerm) {
-    try {
-      const res = await fetch(
-        `/api/constellations?name=${encodeURIComponent(searchTerm)}`,
-      );
-      const json = await res.json();
-      console.log(json);
-      if (!res.ok) return;
-      filteredConstellations = {
-        data: json.data ?? [],
-        count: json.data.length,
-      };
-    } catch (err) {
-      console.error(err);
-    }
-  }
 </script>
 
 <main>
@@ -53,11 +23,7 @@
   </header>
 
   <article>
-    <section id="intro-blurb">
-      {#each [intro, blurb] as section}
-        <Section header={section.header} text={section.text}></Section>
-      {/each}
-    </section>
+    <IntroSection {intro} {blurb} />
 
     <figure id="image-section">
       <img
@@ -96,7 +62,12 @@
       </figcaption>
     </figure>
 
-    <Table>
+    <ConstellationTable
+      {constellations}
+      {error}
+      {location}
+    />
+    <!-- <Table>
       <h3>VIEW CONSTELLATIONS</h3>
       {#if constellations?.data}
         <Search>
@@ -122,7 +93,7 @@
       {:else}
         <FetchError {error} />
       {/if}
-    </Table>
+    </Table> -->
   </article>
 </main>
 
@@ -244,10 +215,5 @@
     flex-direction: column;
     gap: 2.2em;
     max-width: 50em;
-  }
-
-  #intro-blurb {
-    align-self: center;
-    max-width: 70em;
   }
 </style>
