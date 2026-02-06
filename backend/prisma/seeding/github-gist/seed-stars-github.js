@@ -16,39 +16,42 @@ const validateStar = (star) => {
         }),
     };
 
-    validatePostStar(req, res, () => { }); // Pass an empty function since we're not using next()
+    return validatePostStar(req, res, () => { }); // Pass an empty function since we're not using next()
+};
+
+//Find a galaxy by name
+const getGalaxyIdByName = async (name) => {
+    const result = await prisma.galaxy.findFirst({
+        where: { name },
+        select: { id: true }
+    });
+    return result?.id || null;
+};
+
+//Find a constellation by name
+const getConstellationIdByName = async (name) => {
+    const result = await prisma.constellation.findFirst({
+        where: { name },
+        select: { id: true }
+    });
+    return result?.id || null;
 };
 
 const seedStarsFromGitHub = async () => {
     try {
         await prisma.star.deleteMany(); // Delete all stars
 
-        const gistUrl = "https://gist.githubusercontent.com/batcsg1/b78d016d242abc39dd39f96375929576/raw/0a0b29a7d5343713c82d5930137b1c3cf9066ad0/seed-stars.json"; // Replace <GIST_RAW_URL> with the raw URL of your GitHub Gist
+        const gistUrl = "https://gist.githubusercontent.com/batcsg1/b78d016d242abc39dd39f96375929576/raw/0a0b29a7d5343713c82d5930137b1c3cf9066ad0/seed-stars.json"; 
+
         const response = await fetch(gistUrl);
         const starData = await response.json();
 
-        //Find a galaxy by name
-        const getGalaxyIdByName = async (name) => {
-            const result = await prisma.galaxy.findFirst({
-                where: { name },
-                select: { id: true }
-            });
-            return result?.id || null;
-        };
+        
 
         // Patch logic
         for (const star of starData) {
             star.galaxyId = await getGalaxyIdByName("Milky Way");
         }
-
-        //Find a constellation by name
-        const getConstellationIdByName = async (name) => {
-            const result = await prisma.constellation.findFirst({
-                where: { name },
-                select: { id: true }
-            });
-            return result?.id || null;
-        };
 
         starData[1].constellationId = await getConstellationIdByName("Orion"); //Betelgeuse
 
@@ -60,7 +63,7 @@ const seedStarsFromGitHub = async () => {
 
         starData[15].constellationId = await getConstellationIdByName("Taurus"); //Aldebaran
 
-        starData[16].constellationId = await getConstellationIdByName("Leo"); //Wolf 359
+        starData[16].constellationId = await getConstellationIdByName("Leonardo"); //Wolf 359
  
         const data = await Promise.all(
             starData.map(async (star) => {
@@ -70,13 +73,13 @@ const seedStarsFromGitHub = async () => {
         );
 
         await prisma.star.createMany({
-            data: data,
+            data,
             skipDuplicates: true,
         });
 
-        console.log("Stars successfully seeded from GitHub Gist");
+        return console.log("Stars successfully seeded from GitHub Gist");
     } catch (err) {
-        console.log("Seeding failed:", err.message);
+        return console.error("Seeding failed:", err.message);
     }
 };
 
