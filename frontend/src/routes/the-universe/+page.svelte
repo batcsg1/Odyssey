@@ -10,6 +10,8 @@
   let location = currentPath.replace("/", "").replace("-", " ");
 
   console.log(location);
+
+  import SolSys from "$lib/Images/solsys.webp"
 </script>
 
 <main>
@@ -18,6 +20,7 @@
   </header>
 
   <section id="intro">
+     <img src={SolSys} alt="img" >
     {#each solar_system as info}
       <Section header={info.header} text={info.description}></Section>
     {/each}
@@ -28,7 +31,7 @@
     <img
       src="https://upload.wikimedia.org/wikipedia/commons/6/6f/CMB_Timeline300_no_WMAP.jpg"
       alt="universe"
-      width="800"
+      width="600"
     />
   </article>
 
@@ -55,27 +58,21 @@
   header {
     position: relative;
     color: white;
-    background-image: url(../../lib/Images/solsys.webp);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 20em;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
   }
 
-  h2 {
-    color: white;
-    font-weight: bold;
-    text-align: center;
+  img{
+    margin-bottom: 1em;
+    border: 0.1em dashed #333;
   }
 
   #evolution {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3em;
+    gap: 1em;
   }
 
   #evolution img {
@@ -83,20 +80,18 @@
   }
 
   h3 {
-    font-weight: 1000;
-    text-align: center;
-    /* Apply gradient to text */
-    background: linear-gradient(180deg, #ffffff 0%, #3fbbff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 2.5rem;
+   font-weight: 600;
+    font-size: 2.8em;
+    color: rgb(2, 227, 2);
+    padding: 0em 0.6em 0em 0.6em;
+    border-bottom: 0.05em dashed #333;
   }
   #intro {
     display: flex;
     flex-direction: column;
     color: white;
     padding: 3em;
-    gap: 2.2em;
+    gap: 1em;
     max-width: 50em;
     align-self: center;
   }
@@ -112,31 +107,31 @@
       rgba(0, 0, 0, 0.7),
       /* more transparent at top */ rgba(0, 0, 0, 0.8)
     );
-    border: 0.1em solid rgb(31, 51, 66);
-    box-shadow: 0.5em 0.5em 6em rgb(31, 51, 66);
+    border: 0.1em solid rgb(31, 66, 38);
+    box-shadow: 0.5em 0.5em 6em rgb(34, 66, 31);
     transition: all 0.4s ease;
   }
   .card-title {
     font-weight: bold;
   }
   .card-link {
-    color: #66aaff;
+    color: #0d7c06;
     font-weight: bold;
-    border: 0.1em solid #66aaff;
+    border: 0.1em solid #067110;
     border-radius: 0.3em;
     padding: 0.2em 0.5em 0.2em 0.5em;
     transition: ease 0.3s;
   }
   .card-link:hover {
     background-color: white;
-    color: #66aaff;
+    color: #3ad435;
     transition: ease 0.3s;
   }
 
   /* 2. The Hover State (Targeting the card directly) */
   .card:hover {
     /* Change background to your blue gradient */
-    background: linear-gradient(180deg, #1e3a8a 0%, #3b82f6 100%);
+    background: linear-gradient(180deg, #1e8a32 0%, #3bf63b 100%);
 
     /* Make the "box" (border and shadow) white */
     border-color: rgba(255, 255, 255, 0.8);
@@ -169,12 +164,12 @@
   }
 
   #contents::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #223a77, #3a66ff); /* thumb color */
+    background: linear-gradient(135deg, #083801, #04a90f); /* thumb color */
     border-radius: 10px;
     border: 1px solid #0b0f1a; /* adds subtle outline */
   }
 
   #contents::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, rgb(18, 39, 117), #66aaff);
+    background: linear-gradient(135deg, rgb(17, 155, 7), #66aaff);
   }
 </style>
