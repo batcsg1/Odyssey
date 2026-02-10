@@ -3,7 +3,7 @@
 </script>
 
 <footer>
-    <h1>{`{ odyssey }`}</h1>
+    <h1>odyssey</h1>
 
     <section id="footer-bar">
         Terms | Privacy | <a href="/login">Login</a>
