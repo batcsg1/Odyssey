@@ -30,15 +30,6 @@
 </section>
 
 <style>
-  section {
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 1) 75%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    padding: 4em 1em 2em 1em;
-  }
-
   p {
     padding: 1em 0.5em 0em 0.5em;
   }
@@ -50,6 +41,7 @@
   a {
     color: white;
     font-weight: bolder;
+    font-size: large;
   }
 
   @media (width <= 500) {
