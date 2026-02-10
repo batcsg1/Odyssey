@@ -25,7 +25,7 @@
         align-items: center;
         color: white;
         padding: 2em 1em 2em 1em;
-        border-top: 0.2em solid #66aaff;
+        border-top: 0.2em solid white;
     }
 
     h1{
