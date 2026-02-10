@@ -14,9 +14,9 @@
     console.log(id);
 </script>
 
-<section>
+<header>
   <p>
-    <a href="/">
+    <a href="/" id="home-link">
     Home >
     </a>
     <a href="/{location}">
@@ -25,9 +25,7 @@
     &gt;
     <strong>{id}</strong>
   </p>
-
-  
-</section>
+</header>
 
 <style>
   p {
@@ -38,6 +36,11 @@
     font-size: x-large;
   }
 
+  #home-link {
+    color: gray;
+    font-weight: 200;
+  }
+
   a {
     color: white;
     font-weight: bolder;
@@ -45,7 +48,7 @@
   }
 
   @media (width <= 500) {
-    section {
+    header {
       overflow-x: auto;
     }
   }
