@@ -50,11 +50,15 @@
 
 <style>
   h3 {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 2.8em;
-    color: rgb(2, 227, 2);
+    color: white;
     padding: 0em 0.6em 0em 0.6em;
     border-bottom: 0.05em dashed #333;
+    text-align: center;
+    background: -webkit-linear-gradient(#ffffff, #c0bcbc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   #cards {
@@ -68,38 +72,41 @@
       rgba(0, 0, 0, 0.7),
       /* more transparent at top */ rgba(0, 0, 0, 0.8)
     );
-    border: 0.1em solid rgb(31, 66, 38);
-    box-shadow: 0.5em 0.5em 6em rgb(34, 66, 31);
+    border: 0.1em solid rgb(98, 106, 99);
+    box-shadow: 0.5em 0.5em 6em rgb(89, 91, 89);
     transition: all 0.4s ease;
   }
   .card-title {
     font-weight: bold;
   }
   .card-link {
-    color: #0d7c06;
+    color: #676b66;
     font-weight: bold;
-    border: 0.1em solid #067110;
+    border: 0.1em solid gray;
     border-radius: 0.3em;
     padding: 0.2em 0.5em 0.2em 0.5em;
     transition: ease 0.3s;
   }
   .card-link:hover {
     background-color: white;
-    color: #3ad435;
     transition: ease 0.3s;
   }
 
   /* 2. The Hover State (Targeting the card directly) */
   .card:hover {
     /* Change background to your blue gradient */
-    background: linear-gradient(180deg, #1e8a32 0%, #3bf63b 100%);
-
-    /* Make the "box" (border and shadow) white */
-    border-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0.5em 0.5em 4em rgba(255, 255, 255, 0.3);
+    background: white;
 
     /* Lift effect (optional but looks great with glow) */
     transform: translateY(-5px);
+  }
+
+  .card-text{
+    color: gray;
+  }
+
+  .card:hover .card-text, .card:hover .card-title {
+    color: #333;
   }
 
   #contents {
@@ -125,12 +132,12 @@
   }
 
   #contents::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #083801, #04a90f); /* thumb color */
+    background: linear-gradient(135deg, #083801, #a8b1a9); /* thumb color */
     border-radius: 10px;
     border: 1px solid #0b0f1a; /* adds subtle outline */
   }
 
   #contents::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, rgb(17, 155, 7), #66aaff);
+    background: linear-gradient(135deg, white, #838486);
   }
 </style>
