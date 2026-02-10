@@ -19,8 +19,8 @@
     width: 100%;
     max-width: 30em;
     border-radius: 0.3em;
-    border: 0.1em solid #66aaff;
-    background-color: #0b1a2b;
+    border: 0.1em solid white;
+    background-color: #161616;
     color: white;
     font-size: 1em;
   }
@@ -28,7 +28,7 @@
   #search-container :global(input:focus) {
     outline: none;
     border-color: #ffffff;
-    box-shadow: 0 0 15px rgba(102, 170, 255, 0.4);
+    box-shadow: 0 0 15px #333;
     transition: all 0.3s ease;
   }
 

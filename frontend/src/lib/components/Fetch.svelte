@@ -53,7 +53,7 @@
     color: gray;
   }
   #id-cell {
-    background-color: #66aaff;
+    background-color: #1a1a1a;
     overflow-x: auto;
     transition: ease 0.4s;
   }
@@ -72,7 +72,7 @@
   }
 
   #id-cell:hover a {
-    color: #66aaff;
+    color: black;
     text-decoration: underline;
   }
 
@@ -91,7 +91,7 @@
 
   h5 {
     font-size: medium;
-    color: #66aaff;
+    color: gray;
   }
 
   table {
@@ -100,7 +100,8 @@
     table-layout: fixed;
   }
   thead tr {
-    color: #66aaff;
+    color: #333;
+    background-color: white;
   }
   th,
   td {
@@ -116,8 +117,8 @@
     transition: background 0.2s ease;
   }
 
-  tr:hover {
-    background-color: rgba(12, 87, 178, 0.05); /* Highlight row on hover */
+  tbody tr:hover {
+    background-color: rgba(149, 142, 171, 0.8); /* Highlight row on hover */
   }
 
   tr:nth-child(even) {

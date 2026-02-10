@@ -11,7 +11,7 @@
         max-height: 500px; /* fixed height */
         min-height: 500px; /* optional: ensures table area is always visible */
         overflow-y: auto; /* scroll if content exceeds height */
-        border: 0.1em solid #66aaff; /* optional: nice border */
+        border: 0.1em solid white; /* optional: nice border */
         border-radius: 0.3em;
         padding: 0.5em;
         background-color: #131212; /* match your table background */
@@ -28,12 +28,12 @@
     }
 
     .table-wrapper::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #223a77, #3a66ff); /* thumb color */
+        background: linear-gradient(135deg, rgb(161, 159, 163), #ffffff); /* thumb color */
         border-radius: 10px;
         border: 1px solid #0b0f1a; /* adds subtle outline */
     }
 
     .table-wrapper::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(135deg, rgb(18, 39, 117), #66aaff);
+        background: linear-gradient(135deg, rgb(158, 159, 160), #edeeee);
     }
 </style>

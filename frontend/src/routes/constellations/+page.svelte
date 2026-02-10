@@ -4,6 +4,7 @@
   import FetchError from "$lib/components/FetchError.svelte";
   import ConstellationTable from "$lib/components/tables/ConstellationTable.svelte";
   import IntroSection from "$lib/components/IntroSection.svelte";
+  import Content from "$lib/components/Content.svelte";
 
   let { data } = $props();
   const { intro, blurb, constellations, error } = data;
@@ -12,13 +13,15 @@
   let location = $derived(currentPath.replace("/", ""));
 </script>
 
-<main>
-  <header>
+
     <Header {location} />
-  </header>
 
   <article>
-    <IntroSection {intro} {blurb} />
+    <Content>
+      <img src="https://i0.wp.com/astronomicca.com/wp-content/uploads/2023/10/alexander-andrews-fsH1KjbdjE8-unsplash-edited.jpg?resize=640%2C1002&ssl=1" alt="Orion-Nebula" width="30%" />
+      <h2>What are Constellations?</h2>
+      <p>Constellations are patterns of stars that have been identified and named by various cultures throughout history. They often represent mythological figures, animals, or objects and have been used for navigation, storytelling, and as a way to organize the night sky. There are 88 officially recognized constellations, each with its own unique set of stars and stories.</p>
+    </Content>
 
     <figure id="image-section">
       <img
@@ -64,7 +67,7 @@
     />
     
   </article>
-</main>
+
 
 <style>
   /* ---------- IMAGE FEATURE SECTION ---------- */
@@ -74,9 +77,9 @@
     grid-template-columns: 420px 1fr;
     gap: 2.5em;
     padding: 2.5em;
-    background: linear-gradient(145deg, rgb(10, 17, 21), rgb(17, 32, 38));
+    background: linear-gradient(145deg, rgb(14, 15, 15), rgb(24, 24, 24));
     border-radius: 0.6em;
-    border: 0.1em solid rgb(31, 51, 66);
+    border: 0.1em solid rgb(48, 47, 47);
     box-shadow: 0 0 3em rgba(102, 170, 255, 0.12);
     align-items: center;
   }
@@ -146,20 +149,6 @@
     #image-section h3 {
       text-align: center;
     }
-  }
-
-  
-  header {
-    position: relative;
-    color: white;
-    background-image: url(../../lib/Images/constellation.webp);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 20em;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
   }
 
   h3 {

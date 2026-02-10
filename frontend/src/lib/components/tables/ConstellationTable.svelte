@@ -56,7 +56,7 @@
   h3 {
     font-weight: bold;
     padding: 1em 0 0.3em 0;
-    border-bottom: #66aaff 0.1em solid;
+    border-bottom: white 0.1em solid;
     text-align: center;
     margin-inline: 8em;
   }
