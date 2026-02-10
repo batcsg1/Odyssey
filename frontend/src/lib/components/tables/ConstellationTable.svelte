@@ -1,9 +1,9 @@
 <script>
-  import Search from "../Search.svelte";
-  import TableWrapper from "../TableWrapper.svelte";
-  import Fetch from "../Fetch.svelte";
-  import FetchError from "../FetchError.svelte";
-  import Table from "../Table.svelte";
+  import Search from "../table/Search.svelte";
+  import TableWrapper from "../table/TableWrapper.svelte";
+  import Fetch from "../table/Fetch.svelte";
+  import FetchError from "../table/FetchError.svelte";
+  import Table from "../table/Table.svelte";
 
   // Using Svelte 5 props
   let { constellations, error, location } = $props();

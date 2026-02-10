@@ -1,73 +1,76 @@
 <script>
   import Header from "$lib/components/Header.svelte";
   import { page } from "$app/stores";
-  import FetchError from "$lib/components/FetchError.svelte";
   import ConstellationTable from "$lib/components/tables/ConstellationTable.svelte";
   import IntroSection from "$lib/components/IntroSection.svelte";
   import Content from "$lib/components/Content.svelte";
 
   let { data } = $props();
-  const { intro, blurb, constellations, error } = data;
+  const { constellations, error } = data;
 
   let currentPath = $derived($page.url.pathname);
   let location = $derived(currentPath.replace("/", ""));
 </script>
 
+<Header {location} />
 
-    <Header {location} />
-
-  <article>
-    <Content>
-      <img src="https://i0.wp.com/astronomicca.com/wp-content/uploads/2023/10/alexander-andrews-fsH1KjbdjE8-unsplash-edited.jpg?resize=640%2C1002&ssl=1" alt="Orion-Nebula" width="30%" />
-      <h2>What are Constellations?</h2>
-      <p>Constellations are patterns of stars that have been identified and named by various cultures throughout history. They often represent mythological figures, animals, or objects and have been used for navigation, storytelling, and as a way to organize the night sky. There are 88 officially recognized constellations, each with its own unique set of stars and stories.</p>
-    </Content>
-
-    <figure id="image-section">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/3/36/Orion_tjt.jpg"
-        alt="The constellation Orion with Betelgeuse and the Orion Nebula"
-        width="400"
-      />
-
-      <figcaption>
-        <section>
-          <h3>Orion</h3>
-          <p>
-            The constellation Orion, with Betelgeuse the reddish star at the top
-            left. Also visible are Barnard’s Loop and the Orion Nebula (M42).
-          </p>
-
-          <small class="credit">
-            Image credit:
-            <a
-              href="https://commons.wikimedia.org/wiki/File:Orion_tjt.jpg"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Wikimedia Commons
-            </a>
-            · © T. TheStarmon &mdash; licensed under
-            <a
-              href="https://creativecommons.org/licenses/by-sa/3.0/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              CC BY-SA 3.0
-            </a>
-          </small>
-        </section>
-      </figcaption>
-    </figure>
-
-    <ConstellationTable
-      {constellations}
-      {error}
-      {location}
+<article>
+  <Content>
+    <img
+      src="https://i0.wp.com/astronomicca.com/wp-content/uploads/2023/10/alexander-andrews-fsH1KjbdjE8-unsplash-edited.jpg?resize=640%2C1002&ssl=1"
+      alt="Orion-Nebula"
+      width="30%"
     />
-    
-  </article>
+    <h2>What are Constellations?</h2>
+    <p>
+      Constellations are patterns of stars that have been identified and named
+      by various cultures throughout history. They often represent mythological
+      figures, animals, or objects and have been used for navigation,
+      storytelling, and as a way to organize the night sky. There are 88
+      officially recognized constellations, each with its own unique set of
+      stars and stories.
+    </p>
+  </Content>
 
+  <figure id="image-section">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/3/36/Orion_tjt.jpg"
+      alt="The constellation Orion with Betelgeuse and the Orion Nebula"
+      width="400"
+    />
+
+    <figcaption>
+      <section>
+        <h3>Orion</h3>
+        <p>
+          The constellation Orion, with Betelgeuse the reddish star at the top
+          left. Also visible are Barnard’s Loop and the Orion Nebula (M42).
+        </p>
+
+        <small class="credit">
+          Image credit:
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Orion_tjt.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Wikimedia Commons
+          </a>
+          · © T. TheStarmon &mdash; licensed under
+          <a
+            href="https://creativecommons.org/licenses/by-sa/3.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CC BY-SA 3.0
+          </a>
+        </small>
+      </section>
+    </figcaption>
+  </figure>
+
+  <ConstellationTable {constellations} {error} {location} />
+</article>
 
 <style>
   /* ---------- IMAGE FEATURE SECTION ---------- */
