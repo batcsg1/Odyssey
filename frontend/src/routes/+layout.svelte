@@ -5,6 +5,7 @@
   import Footer from "$lib/components/Footer.svelte";
   import { page } from "$app/stores";
 
+
   const authPages = ["/login", "/register"];
 
   let currentPath = $derived($page.url.pathname);
@@ -28,13 +29,13 @@
 
 <style>
   :global(body) {
-    font-family: "Space Mono", monospace;
+    font-family: "Geist", monospace;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
   }
   :global(button, a) {
-    font-family: "Space Mono", monospace;
+    font-family: "Geist", monospace;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;

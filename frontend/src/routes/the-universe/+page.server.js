@@ -1,11 +1,7 @@
 export async function load() {
   const solar_system = [
     {
-      "header": "Welcome to our universe!",
-      "description": "Dive into the wonders of our Universe. From blazing hot supergiant stars, to fiery and raging comets racing around our solar system, the possibiities are infinite."
-    },
-    {
-      "header": "What is the universe?",
+      "header": "What is the Universe?",
       "description": "The Universe, also known as the 'Observable Universe', is a vast area in space, stretching 93 billion light-years across, that contains everything that we know of and can see from here on Earth."
     }
   ];
