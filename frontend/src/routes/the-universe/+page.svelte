@@ -3,6 +3,7 @@
   const { solar_system, cards } = data;
 
   import { page } from "$app/stores";
+  import Content from "$lib/components/Content.svelte";
   import Header from "$lib/components/Header.svelte";
   import Section from "$lib/components/Section.svelte";
 
@@ -11,71 +12,49 @@
 
   console.log(location);
 
-  import SolSys from "$lib/Images/solsys.webp"
 </script>
 
-<main>
-  <header>
-    <Header {location} />
-  </header>
+<Header {location} />
 
-  <section id="intro">
-     <img src={SolSys} alt="img" >
-    {#each solar_system as info}
-      <Section header={info.header} text={info.description}></Section>
+<Content>
+  <img src="https://img.artpal.com/234071/10-20-5-9-13-22-24m.jpg" alt="img"width="30%" />
+  <h2>What is the Universe?</h2>
+  <p>
+    <strong>The Universe</strong>, also known as the <strong>Observable Universe</strong>, is <strong>everything</strong> that exists, from the smallest particles to the largest galaxies. It encompasses all of space, time, matter, and energy. The Universe is vast and constantly expanding, with billions of galaxies, each containing billions of stars and planets. It is a complex and mysterious place that scientists continue to explore and study to understand its origins, structure, and ultimate fate.
+  </p>
+
+  <p>
+    The Universe is believed to have originated from a singularity, a point of infinite density and temperature, around 13.8 billion years ago in an event known as the Big Bang. Since then, it has been expanding and evolving, giving rise to the formation of galaxies, stars, planets, and eventually life on Earth. The Universe is governed by fundamental forces such as gravity, electromagnetism, and nuclear forces, which shape its structure and behavior. It is a source of wonder and fascination for scientists and philosophers alike, as we continue to unravel its mysteries and explore our place within it.
+  </p>
+  
+  <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/astro/exo-explore/internal_resources/1763/image_of_nebula_W51.jpeg?w=1600&h=900&fit=clip&crop=faces%2Cfocalpoint" alt="W51 Nebula" width="80%" />
+</Content>
+
+<article
+  id="contents"
+  class="d-flex flex-wrap justify-content-center gap-3 p-3 overflow-auto"
+>
+  <h3>Bodies of the Universe</h3>
+  <section id="cards" class="d-flex flex-wrap justify-content-center gap-3">
+    {#each cards as card}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{card.title}</h5>
+          <p class="card-text">{card.text}</p>
+          <a href={card.url} class="card-link">Learn More</a>
+        </div>
+      </div>
     {/each}
   </section>
-
-  <article
-    id="contents"
-    class="d-flex flex-wrap justify-content-center gap-3 p-3 overflow-auto"
-  >
-    <h3>Bodies of the Universe</h3>
-    <section id="cards" class="d-flex flex-wrap justify-content-center gap-3">
-      {#each cards as card}
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">{card.title}</h5>
-            <p class="card-text">{card.text}</p>
-            <a href={card.url} class="card-link">Learn More</a>
-          </div>
-        </div>
-      {/each}
-    </section>
-  </article>
-</main>
+</article>
 
 <style>
-
-  header {
-    position: relative;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
-  img{
-    margin-bottom: 1em;
-    border: 0.1em dashed #333;
-  }
-
   h3 {
-   font-weight: 600;
+    font-weight: 600;
     font-size: 2.8em;
     color: rgb(2, 227, 2);
     padding: 0em 0.6em 0em 0.6em;
     border-bottom: 0.05em dashed #333;
-  }
-
-  #intro {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    padding: 3em;
-    gap: 1em;
-    max-width: 50em;
-    align-self: center;
   }
 
   #cards {

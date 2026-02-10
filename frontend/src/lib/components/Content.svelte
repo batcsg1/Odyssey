@@ -15,17 +15,19 @@
     margin: 2.5em;
   }
   :global(h2) {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 2.8em;
-    color: rgb(2, 227, 2);
+    color: white;
     padding: 0em 0.6em 0em 0.6em;
     border-bottom: 0.05em dashed #333;
     text-align: center;
+    background: -webkit-linear-gradient(#ffffff, #c0bcbc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   :global(p) {
-    color: white;
-    text-align: center;
+    color: #c0bcbc;
     max-width: 40em;
   }
 
@@ -34,17 +36,17 @@
     margin-top: 1.5em;
     font-size: medium;
     background-color: black;
-    border: 3px solid rgb(2, 227, 2);
+    border: 3px solid white;
     transition: 0.3s ease;
   }
 
   :global(a) {
-    color: rgb(2, 227, 2);
+    color: white;
   }
 
   :global(button:hover) {
     transition: 0.3s ease;
-    background-color: rgb(2, 227, 2);
+    background-color: white;
     transform: scale(1.1);
     box-shadow: 5px 5px 0px black;
   }
@@ -54,6 +56,6 @@
   }
   :global(img) {
     margin-bottom: 1em;
-    border: 0.1em dashed #333;
+    box-shadow: 2px 2px 2em rgb(30, 15, 53);
   }
 </style>

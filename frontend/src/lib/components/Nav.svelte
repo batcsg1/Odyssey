@@ -111,7 +111,7 @@
     top: 0;
     z-index: 1000;
     transition: 0.3s ease;
-    border-bottom: 0.2em solid #00f921;
+    border-bottom: 0.2em solid white;
   }
 
   header.transparent {
