@@ -14,7 +14,7 @@
 
 <Header {location} />
 
-<article>
+
   <Content>
     <img
       src="https://i0.wp.com/astronomicca.com/wp-content/uploads/2023/10/alexander-andrews-fsH1KjbdjE8-unsplash-edited.jpg?resize=640%2C1002&ssl=1"
@@ -70,7 +70,7 @@
   </figure>
 
   <ConstellationTable {constellations} {error} {location} />
-</article>
+
 
 <style>
   /* ---------- IMAGE FEATURE SECTION ---------- */
@@ -154,22 +154,9 @@
     }
   }
 
-  h3 {
-    font-weight: bold;
-    padding: 1em 0em 0.3em 0em;
-    border-bottom: #66aaff 0.1em solid;
-    text-align: center;
-    margin-inline: 8em;
-  }
+  
 
-  article {
-    background-color: rgba(0, 0, 0);
-    display: flex;
-    flex-direction: column;
-    color: white;
-    padding: 3em;
-    gap: 2.2em;
-  }
+  
 
   section {
     display: flex;
