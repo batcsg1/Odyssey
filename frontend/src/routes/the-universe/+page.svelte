@@ -67,13 +67,10 @@
   }
   .card {
     color: white;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.7),
-      /* more transparent at top */ rgba(0, 0, 0, 0.8)
-    );
-    border: 0.1em solid rgb(98, 106, 99);
-    box-shadow: 0.5em 0.5em 6em rgb(89, 91, 89);
+    background: #0c0711;
+    border: 0.1em solid rgb(31, 51, 66);
+    box-shadow: 0.5em 0.5em 6em rgb(33, 23, 72);
+    border-radius: 0.6em;
     transition: all 0.4s ease;
   }
   .card-title {
@@ -88,7 +85,8 @@
     transition: ease 0.3s;
   }
   .card-link:hover {
-    background-color: white;
+    background-color: #7a767f;
+    color: #333;
     transition: ease 0.3s;
   }
 
