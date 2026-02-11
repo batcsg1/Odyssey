@@ -48,10 +48,6 @@
 </article>
 
 <style>
-  #no-data {
-    font-style: italic;
-    color: gray;
-  }
   #id-cell {
     background-color: #1a1a1a;
     overflow-x: auto;
@@ -87,6 +83,7 @@
   }
   h4 {
     font-weight: bolder;
+    color: white;
   }
 
   h5 {
@@ -110,6 +107,7 @@
     vertical-align: top;
     word-break: break-word;
     border-right: 0.1em dashed rgb(25, 59, 72);
+    color: gray;
   }
 
   tr {
@@ -119,6 +117,10 @@
 
   tbody tr:hover {
     background-color: rgba(149, 142, 171, 0.8); /* Highlight row on hover */
+  }
+
+  tbody tr:hover td {
+    color: white; /* Change text color on hover */
   }
 
   tr:nth-child(even) {

@@ -9,7 +9,6 @@
 <style>
     section {
         overflow-x: auto;
-        border-radius: 0.3em;
         padding: 1em;
         align-self: center;
         max-width: 80em;
