@@ -74,15 +74,10 @@
   }
 
   :global(form) {
-    background: #000000;
-    background: linear-gradient(
-      180deg,
-      rgb(10, 17, 21) 5%,
-      rgb(35, 37, 39) 71%,
-      rgb(89, 89, 89) 100%
-    );
-    border-radius: 0.3em;
-    box-shadow: 0.5em 0.5em 3em rgb(31, 51, 66);
+    background: #0c0711;
+    border: 0.1em solid rgb(31, 51, 66);
+    box-shadow: 0.5em 0.5em 6em rgb(33, 23, 72);
+    border-radius: 0.6em;
     padding: 2em;
     display: flex;
     flex-direction: column;
@@ -101,8 +96,9 @@
   }
 
   :global(label) {
-    font-weight: bold;
+    font-size: 1.4em;
     color: white;
+    text-decoration: underline;
   }
   :global(input) {
     background-color: #181a1c;
@@ -113,7 +109,7 @@
     color: white;
   }
   :global(input[readonly]) {
-    background-color: #313739;
+    background-color: #242227;
     cursor: not-allowed;
     color: gray;
   }
