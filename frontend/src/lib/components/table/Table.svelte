@@ -15,8 +15,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background: #0c0711;
-        border: 0.1em solid rgb(31, 51, 66);
+        background: #f8f9fa;
         box-shadow: 0.5em 0.5em 6em rgb(33, 23, 72);
         transition: 0.3s ease;
     }
