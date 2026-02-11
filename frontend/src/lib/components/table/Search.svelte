@@ -9,8 +9,9 @@
 <style>
   /* Search input styling */
   #search-container {
-    padding: 2em;
     text-align: center;
+    background-color: yellow;
+    margin-bottom: 2em;
   }
 
   /* Target the input globally within this container */
