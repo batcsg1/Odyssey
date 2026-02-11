@@ -9,6 +9,7 @@
   import NoImage from "$lib/components/NoImage.svelte";
   import Content from "$lib/components/Content.svelte";
   import Form from "$lib/components/form/Form.svelte";
+  import DataHeader from "$lib/components/DataHeader.svelte";
 
   //Import current user data
   let user = $state($page.data.user);
@@ -46,6 +47,8 @@
 </script>
 
 <Header />
+
+<DataHeader item={constellation}></DataHeader>
 
 <Form data={constellation} {error}>
   <label for="name">Name:</label>

@@ -37,10 +37,10 @@
         <NoImage />
       {/if}
     </form>
+    <Json object={data} {error} />
   {/if}
-
-  <Json object={data} {error} />
 </div>
+<Json object={data} {error} />
 
 <style>
   #form-container {

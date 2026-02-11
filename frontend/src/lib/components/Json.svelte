@@ -21,6 +21,7 @@
     border-radius: 0.3em;
     box-shadow: 6px 6px 2em #ff6666;
     border: 0.1em dashed #ff6666;
+    
   }
   .api-err pre {
     color: red;
