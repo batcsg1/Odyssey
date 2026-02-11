@@ -29,6 +29,7 @@
   :global(p) {
     color: #c0bcbc;
     max-width: 40em;
+    padding: 0.5em;
   }
 
   :global(button) {

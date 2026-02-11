@@ -101,6 +101,7 @@
 
   .card-text{
     color: gray;
+    padding: 0;
   }
 
   .card:hover .card-text, .card:hover .card-title {
