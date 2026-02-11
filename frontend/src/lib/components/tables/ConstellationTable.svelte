@@ -4,6 +4,7 @@
   import Fetch from "../table/Fetch.svelte";
   import FetchError from "../table/FetchError.svelte";
   import Table from "../table/Table.svelte";
+  import Content from "../Content.svelte";
 
   // Using Svelte 5 props
   let { constellations, error, location } = $props();
@@ -25,7 +26,9 @@
 </script>
 
 <Table>
-  <h3>VIEW CONSTELLATIONS</h3>
+  <Content>
+    <h2>Constellations</h2>
+  </Content>
   {#if constellations?.data}
     <Search>
       <input
@@ -53,17 +56,4 @@
 </Table>
 
 <style>
-  h3 {
-    font-weight: bold;
-    padding: 1em 0 0.3em 0;
-    border-bottom: white 0.1em solid;
-    text-align: center;
-    margin-inline: 8em;
-  }
-
-  @media (max-width: 900px) {
-    h3 {
-      margin-inline: 2em;
-    }
-  }
 </style>

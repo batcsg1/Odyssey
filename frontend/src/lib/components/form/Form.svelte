@@ -64,13 +64,13 @@
   }
 
   #form-container::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #223a77, #3a66ff); /* thumb color */
+    background: linear-gradient(135deg, #f4f2f5, #777779); /* thumb color */
     border-radius: 10px;
     border: 1px solid #0b0f1a; /* adds subtle outline */
   }
 
   #form-container::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, rgb(18, 39, 117), #66aaff);
+    background: linear-gradient(135deg, #796e7f, #2c2c44); /* thumb color */
   }
 
   :global(form) {
@@ -78,8 +78,8 @@
     background: linear-gradient(
       180deg,
       rgb(10, 17, 21) 5%,
-      rgb(13, 20, 26) 71%,
-      rgb(31, 51, 66) 100%
+      rgb(35, 37, 39) 71%,
+      rgb(89, 89, 89) 100%
     );
     border-radius: 0.3em;
     box-shadow: 0.5em 0.5em 3em rgb(31, 51, 66);
@@ -87,7 +87,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.3em;
-    border: 0.1em solid rgb(31, 51, 66);
     color: white;
   }
 
@@ -106,15 +105,15 @@
     color: white;
   }
   :global(input) {
-    background-color: #09171f;
+    background-color: #181a1c;
     padding: 0.5em;
-    border: 1px solid #ccc;
+    border: 1px dashed gray;
     border-radius: 0.3em;
     font-size: 1em;
     color: white;
   }
   :global(input[readonly]) {
-    background-color: #09171f;
+    background-color: #313739;
     cursor: not-allowed;
     color: gray;
   }
