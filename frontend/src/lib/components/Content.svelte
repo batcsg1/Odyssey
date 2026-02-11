@@ -14,7 +14,7 @@
     justify-content: center;
     margin: 2.5em;
   }
-  :global(h2) {
+  .content-wrapper :global(h2) {
     font-weight: 400;
     font-size: 2.8em;
     color: white;
@@ -26,13 +26,13 @@
     -webkit-text-fill-color: transparent;
   }
 
-  :global(p) {
+  .content-wrapper :global(p) {
     color: #c0bcbc;
     max-width: 40em;
     padding: 0.5em;
   }
 
-  :global(button) {
+  .content-wrapper :global(button) {
     padding: 0.4em 1em 0.4em 1em;
     margin-top: 1.5em;
     font-size: medium;
@@ -41,21 +41,21 @@
     transition: 0.3s ease;
   }
 
-  :global(a) {
+  .content-wrapper :global(a) {
     color: white;
   }
 
-  :global(button:hover) {
+  .content-wrapper :global(button:hover) {
     transition: 0.3s ease;
     background-color: white;
     transform: scale(1.1);
     box-shadow: 5px 5px 0px black;
   }
 
-  :global(button:hover a) {
+  .content-wrapper :global(button:hover a) {
     color: #333;
   }
-  :global(img) {
+  .content-wrapper :global(img) {
     margin-bottom: 1em;
     box-shadow: 2px 2px 2em rgb(30, 15, 53);
   }
