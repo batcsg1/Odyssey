@@ -38,9 +38,11 @@
       {/if}
     </form>
     <Json object={data} {error} />
+  {:else}
+    <Json object={data} {error} />
   {/if}
 </div>
-<Json object={data} {error} />
+
 
 <style>
   #form-container {
