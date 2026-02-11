@@ -34,7 +34,12 @@
   id="contents"
   class="d-flex flex-wrap justify-content-center gap-3 p-3 overflow-auto"
 >
-  <h3>Bodies of the Universe</h3>
+  <Content>
+    <h3>Bodies of the Universe</h3>
+    <p>
+      The Universe is filled with a vast array of celestial bodies, each with its own unique characteristics and properties. These include stars, planets, moons, asteroids, comets, and galaxies. Stars are massive luminous spheres of plasma that generate energy through nuclear fusion, while planets are smaller celestial bodies that orbit stars and can be rocky or gaseous. Moons are natural satellites that orbit planets, and asteroids and comets are small rocky or icy bodies that can be found throughout the solar system. Galaxies are vast collections of stars, gas, dust, and dark matter that are held together by gravity. Each of these celestial bodies plays a crucial role in the structure and dynamics of the Universe, contributing to its beauty and complexity.
+    </p>
+  </Content>
   <section id="cards" class="d-flex flex-wrap justify-content-center gap-3">
     {#each cards as card}
       <div class="card" style="width: 18rem;">
@@ -49,20 +54,9 @@
 </article>
 
 <style>
-  h3 {
-    font-weight: 400;
-    font-size: 2.8em;
-    color: white;
-    padding: 0em 0.6em 0em 0.6em;
-    border-bottom: 0.05em dashed #333;
-    text-align: center;
-    background: -webkit-linear-gradient(#ffffff, #c0bcbc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+ 
 
   #cards {
-    padding: 1em;
     border-radius: 0.5em;
   }
   .card {
@@ -114,29 +108,30 @@
     flex-wrap: wrap;
     gap: 1em;
     padding: 3em;
-    height: 35vh;
+    height: 55vh;
     overflow-y: auto;
     max-width: 70em;
     align-self: center;
+    background-color: #08080c;
   }
 
-  /* For Chrome, Edge, and Safari */
-  #contents::-webkit-scrollbar {
-    width: 8px; /* scrollbar width */
-  }
+   /* For Chrome, Edge, and Safari */
+    #contents::-webkit-scrollbar {
+        width: 0.5em; /* scrollbar width */
+    }
 
-  #contents::-webkit-scrollbar-track {
-    background: #0b0f1a; /* track (background) */
-    border-radius: 10px;
-  }
+    #contents::-webkit-scrollbar-track {
+        background: #1e1c22; /* track (background) */
+        border-radius: 10px;
+    }
 
-  #contents::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #083801, #a8b1a9); /* thumb color */
-    border-radius: 10px;
-    border: 1px solid #0b0f1a; /* adds subtle outline */
-  }
+    #contents::-webkit-scrollbar-thumb {
+        background: white;
+        border-radius: 5px;
+        border: 1px solid #858689; /* adds subtle outline */
+    }
 
-  #contents::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, white, #838486);
-  }
+    #contents::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, rgb(158, 159, 160), #edeeee);
+    }
 </style>
