@@ -15,7 +15,7 @@
       {@render children?.()}
     </form>
 
-    <form method="POST" enctype="multipart/form-data" action="?/upload">
+    <form id="upload-form" method="POST" enctype="multipart/form-data" action="?/upload">
       <div class="group">
         <label for="file">Upload your file</label>
         <input
@@ -77,7 +77,11 @@
     display: flex;
     flex-direction: column;
     gap: 0.3em;
-    border: 0.05em solid rgb(191, 183, 183);
+   
+  }
+
+  #upload-form {
+    background-color: #e1ddea;
   }
 
   :global(label) {
