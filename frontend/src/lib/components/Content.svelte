@@ -12,11 +12,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 2.5em;
   }
   .content-wrapper :global(h2) {
     font-weight: 400;
     font-size: 2.8em;
+    color: white;
+    padding: 0em 0.6em 0em 0.6em;
+    border-bottom: 0.05em dashed #333;
+    text-align: center;
+    background: -webkit-linear-gradient(#ffffff, #c0bcbc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .content-wrapper :global(h3) {
+    font-weight: 400;
+    font-size: 2em;
     color: white;
     padding: 0em 0.6em 0em 0.6em;
     border-bottom: 0.05em dashed #333;

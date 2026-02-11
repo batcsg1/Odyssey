@@ -27,7 +27,7 @@
 
 <Table>
   <Content>
-    <h2>Constellations</h2>
+    <h3>Constellations</h3>
   </Content>
   {#if constellations?.data}
     <Search>
