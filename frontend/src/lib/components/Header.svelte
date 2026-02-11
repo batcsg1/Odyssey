@@ -31,11 +31,6 @@
   p {
     padding: 1em 0.5em 0em 0.5em;
   }
-
-  p,strong{
-    font-size: x-large;
-  }
-
   #home-link {
     color: gray;
     font-weight: 200;
