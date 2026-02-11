@@ -80,10 +80,12 @@
     grid-template-columns: 420px 1fr;
     gap: 2.5em;
     padding: 2.5em;
-    background: linear-gradient(145deg, rgb(14, 15, 15), rgb(24, 24, 24));
-    border-radius: 0.6em;
-    border: 0.1em solid rgb(48, 47, 47);
     box-shadow: 0 0 3em rgba(102, 170, 255, 0.12);
+    background: #0c0711;
+    border: 0.1em solid rgb(31, 51, 66);
+    box-shadow: 0.5em 0.5em 6em rgb(33, 23, 72);
+
+    border-radius: 0.6em;
     align-items: center;
   }
 
