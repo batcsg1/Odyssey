@@ -47,10 +47,6 @@
 
 <Header />
 
-<Content>
-  <h2>{constellation ? constellation.name : "Constellation Not Found"}</h2>
-</Content>
-
 <Form data={constellation} {error}>
   <label for="name">Name:</label>
       <input

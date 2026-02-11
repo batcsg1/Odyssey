@@ -49,8 +49,6 @@
     max-width: 90em;
     width: 100%; /* IMPORTANT */
     align-self: center;
-    padding: 1em;
-    gap: 1em;
     overflow-x: auto; /* ENABLE horizontal scrolling */
   }
   /* For Chrome, Edge, and Safari */
@@ -64,52 +62,39 @@
   }
 
   #form-container::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #f4f2f5, #777779); /* thumb color */
+    background: white;
     border-radius: 10px;
     border: 1px solid #0b0f1a; /* adds subtle outline */
   }
 
   #form-container::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #796e7f, #2c2c44); /* thumb color */
+    background: #796e7f;
   }
 
   :global(form) {
-    background: #0c0711;
-    border: 0.1em solid rgb(31, 51, 66);
-    box-shadow: 0.5em 0.5em 6em rgb(33, 23, 72);
-    border-radius: 0.6em;
+    background: #f8f9fa;
     padding: 2em;
     display: flex;
     flex-direction: column;
     gap: 0.3em;
-    color: white;
-  }
-
-  :global(h3) {
-    font-weight: bold;
-    padding: 0em 0em 0.3em 0em;
-    border-bottom: #66aaff 0.1em solid;
-    text-align: center;
-    color: white;
-    max-width: 30em;
-    margin-bottom: 1em;
+    border: 0.05em solid rgb(191, 183, 183);
   }
 
   :global(label) {
-    font-size: 1.4em;
-    color: white;
-    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1em;
+    color: #333;
   }
   :global(input) {
-    background-color: #181a1c;
+    background-color: white;
     padding: 0.5em;
-    border: 1px dashed gray;
+    border: 1px solid rgb(197, 191, 191);
     border-radius: 0.3em;
     font-size: 1em;
-    color: white;
+    color: #333;
   }
   :global(input[readonly]) {
-    background-color: #242227;
+    background-color: white;
     cursor: not-allowed;
     color: gray;
   }
@@ -147,5 +132,12 @@
     #form-container {
       width: 90%;
     }
+  }
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-top: 1em;
+    padding-block: 1em;
   }
 </style>

@@ -29,10 +29,7 @@
   }
 
   article {
-    background: #0c0711;
-    border: 0.1em solid rgb(31, 51, 66);
-    box-shadow: 0.5em 0.5em 6em rgb(33, 23, 72);
-    border-radius: 0.6em;
+    background-color: #08080c;
     padding: 2em;
     display: flex;
     flex-direction: column;
@@ -40,10 +37,9 @@
 
   article section {
     padding: 1em;
-    background: #0c0711;
+    background: #08050b;
     border: 0.1em solid rgb(31, 51, 66);
-    box-shadow: 0.5em 0.5em 6em rgb(33, 23, 72);
-    border-radius: 0.6em;
+    border-radius: 0.3em;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -53,7 +49,7 @@
   }
 
   pre {
-    color: white;
+    color: rgb(201, 188, 228);
     font-weight: bolder;
     font-family: "JetBrains Mono", monospace;
   }
