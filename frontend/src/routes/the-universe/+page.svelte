@@ -105,13 +105,10 @@
   #contents {
     border-radius: 0.3em;
     display: flex;
-    flex-wrap: wrap;
     gap: 1em;
     padding: 3em;
     height: 55vh;
-    overflow-y: auto;
-    max-width: 70em;
-    align-self: center;
+    overflow-y: auto;      
     background-color: #08080c;
   }
 
