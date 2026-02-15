@@ -1,5 +1,5 @@
 <script>
-    let { item } = $props();
+  let { item } = $props();
 </script>
 
 <header>
@@ -7,11 +7,11 @@
 </header>
 
 <style>
-    h1 {
-        color: white;
-        font-weight: bolder;
-        text-align: center;
-        padding: 0.5em;
-    }
-
+  h1 {
+    font-weight: 400;
+    font-size: 2.8em;
+    color: white;
+    padding: 1em 0em 1em 0em;
+    text-align: center;
+  }
 </style>

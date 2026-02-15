@@ -1,21 +1,35 @@
 <script>
   import { page } from "$app/stores";
-    //Import current user data
+  //Import current user data
   let user = $state($page.data.user);
   let authorized = $derived(user != null && user.role === "SUPER_ADMIN");
-  
+
   import NoImage from "$lib/components/NoImage.svelte";
   import Json from "$lib/components/Json.svelte";
+  import Content from "../Content.svelte";
   let { children, data, error } = $props();
 </script>
 
 <div id="form-container">
   {#if data}
-    <form method="POST" action="?/update">
+    <Content>
+    </Content>
+    <form id="update-form" method="POST" action="?/update">
+      <Content>
+        <h3>Attributes</h3>
+      </Content>
       {@render children?.()}
     </form>
 
-    <form id="upload-form" method="POST" enctype="multipart/form-data" action="?/upload">
+    <form
+      id="upload-form"
+      method="POST"
+      enctype="multipart/form-data"
+      action="?/upload"
+    >
+    <Content>
+        <h3>Upload an Image</h3>
+      </Content>
       <div class="group">
         <label for="file">Upload your file</label>
         <input
@@ -43,13 +57,11 @@
   {/if}
 </div>
 
-
 <style>
   #form-container {
+    box-shadow: 0.5em 0.5em 6em rgb(33, 23, 72);
     display: flex;
     margin-bottom: 2em;
-    max-width: 90em;
-    width: 100%; /* IMPORTANT */
     align-self: center;
     overflow-x: auto; /* ENABLE horizontal scrolling */
   }
@@ -73,36 +85,43 @@
     background: #796e7f;
   }
 
-  :global(form) {
-    background: #f8f9fa;
+  :global(form){
     padding: 2em;
     display: flex;
     flex-direction: column;
     gap: 0.3em;
-   
+    border: 0.1em dashed rgb(39, 38, 44);
+  }
+
+  #update-form {
+    background: #0e0819;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
   }
 
   #upload-form {
-    background-color: #e1ddea;
+    background-color: #0a0411;
   }
 
   :global(label) {
     font-weight: bold;
     font-size: 1em;
-    color: #333;
+    color: #cbc3c3;
   }
   :global(input) {
-    background-color: white;
+    background-color: rgb(21, 15, 30);
     padding: 0.5em;
     border: 1px solid rgb(197, 191, 191);
     border-radius: 0.3em;
     font-size: 1em;
-    color: #333;
+    color: #ffffff;
   }
   :global(input[readonly]) {
-    background-color: white;
+    background-color: rgb(14, 10, 21);
     cursor: not-allowed;
-    color: gray;
+    color: rgb(170, 163, 163);
   }
 
   :global(button) {

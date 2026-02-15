@@ -1,10 +1,13 @@
 <script>
+  import Content from "./Content.svelte";
+
   let { object = $bindable({}), error = "" } = $props();
 </script>
 
 <article>
-  <h4>Raw JSON</h4>
-
+  <Content>
+    <h3>API Response</h3>
+  </Content>
   <section class={error ? "api-err" : ""}>
     {#if object}
       <pre>{JSON.stringify(object, null, 2)}</pre>
@@ -34,12 +37,13 @@
     padding: 2em;
     display: flex;
     flex-direction: column;
+    border: 0.1em dashed rgb(39, 38, 44);
+    width: 100%;
   }
 
   article section {
     padding: 1em;
-    background: #08050b;
-    border: 0.1em solid rgb(31, 51, 66);
+    background: #040205;
     border-radius: 0.3em;
     height: 100%;
     display: flex;
