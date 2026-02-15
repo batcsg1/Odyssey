@@ -1,12 +1,5 @@
 <script>
   import Header from "$lib/components/Header.svelte";
-
-  import Parent from "$lib/components/Parent.svelte";
-  import Json from "$lib/components/Json.svelte";
-  import Message from "$lib/components/Message.svelte";
-  import FormError from "$lib/components/FormError.svelte";
-  import NoImage from "$lib/components/NoImage.svelte";
-  import Content from "$lib/components/Content.svelte";
   import Form from "$lib/components/form/Form.svelte";
   import DataHeader from "$lib/components/DataHeader.svelte";
 
@@ -21,78 +14,19 @@
   // The form object is a runtime-only object that only exists when the form is submitted
   const { success, error: formError } = form ?? {};
 
-  let message = $state("");
-  const hideMessage = () => (message = "");
-
-  const handleInput = (e) => {
-    message = "";
-    setTimeout(() => (message = `You typed ${e.target.value}`), 0);
-  };
-
-  const handleFocus = (field) => (message = `${field} input field focused`);
-
-  const handleBlur = (field) => (message = `${field} input field lost focus`);
-
-  let editable = $state(false);
-
-  const toggleEditable = $derived(() => !editable);
-  
+  const fields = [
+    { id: "name", label: "Name:", type: "text" },
+    { id: "shape", label: "Shape:", type: "text" },
+    { id: "area", label: "Area (sq. deg.):", type: "text" },
+    { id: "abbreviation", label: "Abbreviation:", type: "text" }
+  ];
 </script>
 
 <Header />
 
-<DataHeader item={constellation}></DataHeader>
+<DataHeader item={constellation}/>
 
-<Form data={constellation} {error}>
-  <label for="name">Name:</label>
-  <input
-    id="name"
-    name="name"
-    type="text"
-    value={constellation.name}
-    oninput={handleInput}
-    onfocus={() => handleFocus("Name")}
-    onblur={() => handleBlur("Name")}
-    readonly={!editable}
-  />
-
-  <label for="shape">Shape:</label>
-  <input
-    id="shape"
-    name="shape"
-    type="text"
-    value={constellation.shape}
-    onfocus={() => handleFocus("Shape")}
-    onblur={() => handleBlur("Shape")}
-    readonly={!editable}
-  />
-
-  <label for="area">Area (sq. deg.):</label>
-  <input
-    id="area"
-    name="area"
-    type="text"
-    value={constellation.area}
-    onfocus={() => handleFocus("Area")}
-    onblur={() => handleBlur("Area")}
-    readonly={!editable}
-  />
-
-  <label for="abbreviation">Abbreviation:</label>
-  <input
-    id="abbreviation"
-    name="abbreviation"
-    type="text"
-    value={constellation.abbreviation}
-    onfocus={() => handleFocus("Abbreviation")}
-    onblur={() => handleBlur("Abbreviation")}
-    readonly={!editable}
-  />
-</Form>
-
-{#if message}
-  <Message {message} onClose={() => (message = "")} />
-{/if}
+<Form data={constellation} {success} {error} {fields}/>
 
 <style>
 </style>

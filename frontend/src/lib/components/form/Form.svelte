@@ -7,18 +7,57 @@
   import NoImage from "$lib/components/NoImage.svelte";
   import Json from "$lib/components/Json.svelte";
   import Content from "../Content.svelte";
-  let { children, data, error } = $props();
+  import Message from "../Message.svelte";
+
+  let message = $state("");
+  const hideMessage = () => (message = "");
+
+  const handleInput = (e) => {
+    message = "";
+    setTimeout(() => (message = `You typed ${e.target.value}`), 0);
+  };
+
+  const handleFocus = (field) => (message = `${field} input field focused`);
+
+  const handleBlur = (field) => (message = `${field} input field lost focus`);
+
+  let editable = $state(false);
+
+  const toggleEditable = () => (editable = !editable);
+
+  let { data, success, error, fields } = $props();
 </script>
 
 <div id="form-container">
   {#if data}
-    <Content>
-    </Content>
+    <Content></Content>
     <form id="update-form" method="POST" action="?/update">
       <Content>
         <h3>Attributes</h3>
       </Content>
-      {@render children?.()}
+
+      {#each fields as field}
+        <label for={field.id}>{field.label}</label>
+        <input
+          id={field.id}
+          name={field.id}
+          type={field.type}
+          value={data[field.id]}
+          oninput={field.id === "name" ? handleInput : null}
+          onfocus={() => handleFocus(field.label.replace(":", ""))}
+          onblur={() => handleBlur(field.label.replace(":", ""))}
+          readonly={!editable}
+        />
+      {/each}
+
+      {#if authorized}
+        {#if editable}
+          <button type="submit">Save</button>
+          <button type="button" onclick={toggleEditable}>Cancel</button>
+        {:else}
+          <button type="button" onclick={toggleEditable}>Update</button>
+        {/if}
+      {/if}
     </form>
 
     <form
@@ -27,7 +66,7 @@
       enctype="multipart/form-data"
       action="?/upload"
     >
-    <Content>
+      <Content>
         <h3>Upload an Image</h3>
       </Content>
       <div class="group">
@@ -54,6 +93,18 @@
     <Json object={data} {error} />
   {:else}
     <Json object={data} {error} />
+  {/if}
+
+  {#if message}
+    <Message {message} onClose={() => (message = "")} />
+  {/if}
+
+  {#if success}
+    <Message message={"Update successful!"} onClose={() => (success = "")} />
+  {/if}
+  
+  {#if error}
+    <Message message={error} onClose={() => (error = "")} />
   {/if}
 </div>
 
@@ -85,7 +136,7 @@
     background: #796e7f;
   }
 
-  :global(form){
+  :global(form) {
     padding: 2em;
     display: flex;
     flex-direction: column;
