@@ -1,6 +1,5 @@
 <script>
   import Header from "$lib/components/Header.svelte";
-  import { page } from "$app/stores";
 
   import Parent from "$lib/components/Parent.svelte";
   import Json from "$lib/components/Json.svelte";
@@ -11,14 +10,7 @@
   import Form from "$lib/components/form/Form.svelte";
   import DataHeader from "$lib/components/DataHeader.svelte";
 
-  //Import current user data
-  let user = $state($page.data.user);
-  let authorized = $derived(user != null && user.role === "SUPER_ADMIN");
-
-  let currentPath = $derived($page.url.pathname);
-  let location = $derived(currentPath.replace("/", ""));
-
-  const constellationId = $page.params.id;
+  //const constellationId = $page.params.id;
 
   // Retrieve data passed to the constellation page
   let { data, form } = $props();
@@ -43,7 +35,8 @@
 
   let editable = $state(false);
 
-  const toggleEditable = () => (editable = !editable);
+  const toggleEditable = $derived(() => !editable);
+  
 </script>
 
 <Header />
@@ -52,49 +45,49 @@
 
 <Form data={constellation} {error}>
   <label for="name">Name:</label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        value={constellation.name}
-        oninput={handleInput}
-        onfocus={() => handleFocus("Name")}
-        onblur={() => handleBlur("Name")}
-        readonly={!editable}
-      />
+  <input
+    id="name"
+    name="name"
+    type="text"
+    value={constellation.name}
+    oninput={handleInput}
+    onfocus={() => handleFocus("Name")}
+    onblur={() => handleBlur("Name")}
+    readonly={!editable}
+  />
 
-      <label for="shape">Shape:</label>
-      <input
-        id="shape"
-        name="shape"
-        type="text"
-        value={constellation.shape}
-        onfocus={() => handleFocus("Shape")}
-        onblur={() => handleBlur("Shape")}
-        readonly={!editable}
-      />
+  <label for="shape">Shape:</label>
+  <input
+    id="shape"
+    name="shape"
+    type="text"
+    value={constellation.shape}
+    onfocus={() => handleFocus("Shape")}
+    onblur={() => handleBlur("Shape")}
+    readonly={!editable}
+  />
 
-      <label for="area">Area (sq. deg.):</label>
-      <input
-        id="area"
-        name="area"
-        type="text"
-        value={constellation.area}
-        onfocus={() => handleFocus("Area")}
-        onblur={() => handleBlur("Area")}
-        readonly={!editable}
-      />
+  <label for="area">Area (sq. deg.):</label>
+  <input
+    id="area"
+    name="area"
+    type="text"
+    value={constellation.area}
+    onfocus={() => handleFocus("Area")}
+    onblur={() => handleBlur("Area")}
+    readonly={!editable}
+  />
 
-      <label for="abbreviation">Abbreviation:</label>
-      <input
-        id="abbreviation"
-        name="abbreviation"
-        type="text"
-        value={constellation.abbreviation}
-        onfocus={() => handleFocus("Abbreviation")}
-        onblur={() => handleBlur("Abbreviation")}
-        readonly={!editable}
-      />
+  <label for="abbreviation">Abbreviation:</label>
+  <input
+    id="abbreviation"
+    name="abbreviation"
+    type="text"
+    value={constellation.abbreviation}
+    onfocus={() => handleFocus("Abbreviation")}
+    onblur={() => handleBlur("Abbreviation")}
+    readonly={!editable}
+  />
 </Form>
 
 {#if message}
@@ -102,5 +95,4 @@
 {/if}
 
 <style>
-
 </style>
