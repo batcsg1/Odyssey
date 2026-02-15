@@ -1,11 +1,4 @@
 export async function load() {
-  const solar_system = [
-    {
-      "header": "What is the Universe?",
-      "description": "The Universe, also known as the 'Observable Universe', is a vast area in space, stretching 93 billion light-years across, that contains everything that we know of and can see from here on Earth."
-    }
-  ];
-
   const cards = [
     {
       "title": "Constellations",
@@ -55,6 +48,6 @@ export async function load() {
   ];
 
   return {
-    solar_system, cards
+    cards
   };
 }

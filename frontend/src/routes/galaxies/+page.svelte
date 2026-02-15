@@ -11,13 +11,10 @@
   let location = $derived(currentPath.replace("/", ""));
 
   let query = $state("");
-
 </script>
 
 <main>
-  <header>
-    <Header {location} />
-  </header>
+  <Header/>
 
   <article>
     <IntroSection {intro} {blurb} />
@@ -39,7 +36,6 @@
     flex-direction: column;
     justify-content: flex-end;
   }
-
 
   article {
     background-color: rgba(0, 0, 0);

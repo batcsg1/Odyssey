@@ -1,20 +1,13 @@
 <script>
   let { data } = $props();
-  const { solar_system, cards } = data;
+  const { cards } = data;
 
-  import { page } from "$app/stores";
   import Content from "$lib/components/Content.svelte";
   import Header from "$lib/components/Header.svelte";
   import Section from "$lib/components/Section.svelte";
-
-  let currentPath = $derived($page.url.pathname);
-  let location = currentPath.replace("/", "").replace("-", " ");
-
-  console.log(location);
-
 </script>
 
-<Header {location} />
+<Header/>
 
 <Content>
   <img src="https://img.artpal.com/234071/10-20-5-9-13-22-24m.jpg" alt="img"width="30%" />

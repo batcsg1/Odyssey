@@ -4,9 +4,12 @@
   import Fetch from "../table/Fetch.svelte";
   import FetchError from "../table/FetchError.svelte";
   import Table from "../table/Table.svelte";
+  import { page } from "$app/stores";
+  
+  let location = $derived($page.url.pathname.replace("/", ""));
 
   // Using Svelte 5 props
-  let { constellations, error, location } = $props();
+  let { constellations, error } = $props();
 
   // Local state for the search query
   let query = $state("");

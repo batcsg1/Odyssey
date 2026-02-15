@@ -1,19 +1,14 @@
 <script>
   import Header from "$lib/components/Header.svelte";
-  import { page } from "$app/stores";
   import ConstellationTable from "$lib/components/tables/ConstellationTable.svelte";
   import IntroSection from "$lib/components/IntroSection.svelte";
   import Content from "$lib/components/Content.svelte";
-
   let { data } = $props();
   const { constellations, error } = data;
-
-  let currentPath = $derived($page.url.pathname);
-  let location = $derived(currentPath.replace("/", ""));
 </script>
 
 <main>
-  <Header {location} />
+  <Header/>
 
   <Content>
     <img
@@ -31,7 +26,7 @@
       stars and stories.
     </p>
   </Content>
-  <ConstellationTable {constellations} {error} {location} />
+  <ConstellationTable {constellations} {error}/>
 </main>
 
 <style>

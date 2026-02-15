@@ -1,17 +1,22 @@
 <script>
   import { page } from "$app/stores";
 
-  const segments = $derived($page.url.pathname.split("/").filter(Boolean));
-  console.log(segments);
-  const location = segments[0];
+  let currentPath = $derived($page.url.pathname);
 
-  const base = location // the base parameter
-  .split("-")
-  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-  .join(" ");
+  let location = $derived(currentPath.replace("/", ""));
 
-  const id = segments[1]; // the id parameter
-    console.log(id);
+  let segments = $derived(currentPath.split("/").filter(Boolean));
+
+  console.log(segments)
+
+  // Page name: eg. "Constellations" or "Galaxies"
+  let pageName = $derived(segments[0]);
+
+  console.log(pageName)
+
+  let id = $derived(segments[1] ? segments[1].charAt(0).toUpperCase() + segments[1].slice(1) : null);
+
+  console.log(id)
 </script>
 
 <header>
@@ -19,8 +24,8 @@
     <a href="/" id="home-link">
     Home >
     </a>
-    <a href="/{location}">
-      {base}
+    <a href="/{pageName}" id="page-link">
+      {pageName.charAt(0).toUpperCase() + pageName.slice(1)}
     </a>
     &gt;
     <strong>{id}</strong>
