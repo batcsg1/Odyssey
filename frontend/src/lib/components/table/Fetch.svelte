@@ -48,7 +48,8 @@
 
 <style>
   #id-cell {
-    background-color: gainsboro;
+    background-color: rgb(55, 49, 62);
+    color: white;
     overflow-x: auto;
     transition: ease 0.4s;
   }
@@ -57,13 +58,13 @@
     display: block;
     width: 100%;
     height: 100%;
-    color: gray;
+    color: white;
     text-decoration: none;
     font-weight: bolder;
   }
 
   #id-cell:hover {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
   }
 
   #id-cell:hover a {
@@ -72,22 +73,22 @@
   }
 
   article {
-    background-color: white;
-    border: 0.02em solid rgb(210, 206, 206);
+    background-color: rgb(15, 14, 20);
+    border: 0.02em solid rgb(51, 50, 60);
 
     border-radius: 0.3em;
     padding: 1em;
-    box-shadow: 0.5em 0.5em 10em rgb(31, 51, 66);
+    box-shadow: 0.5em 0.5em 10em rgb(78, 75, 90);
     overflow-x: auto;
   }
   h4 {
     font-weight: bolder;
-    color: #333;
+    color: #ffffff;
   }
 
   h5 {
     font-size: medium;
-    color: gray;
+    color: rgb(170, 163, 163);
   }
 
   table {
@@ -96,8 +97,8 @@
     table-layout: fixed;
   }
   thead tr {
-    color: #333;
-    background-color: white;
+    color: #ffffff;
+    background-color: rgb(50, 44, 68);
   }
   th,
   td {
@@ -123,6 +124,6 @@
   }
 
   tr:nth-child(even) {
-    background-color: rgb(210, 217, 221);
+    background-color: rgb(33, 31, 43);
   }
 </style>

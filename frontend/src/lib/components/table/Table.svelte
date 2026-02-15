@@ -8,14 +8,8 @@
 
 <style>
     section {
-        overflow-x: auto;
         padding: 1em;
-        align-self: center;
-        max-width: 80em;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: #f8f9fa;
+        background: #0e0819;
         box-shadow: 0.5em 0.5em 6em rgb(33, 23, 72);
         transition: 0.3s ease;
     }
