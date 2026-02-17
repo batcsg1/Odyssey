@@ -1,5 +1,5 @@
 <script>
-  import logo from "$lib/Images/logo-dark.png";
+  import logo from "$lib/Images/logo-dark-nobg.png";
 
   function toRoman(num) {
     const romanValues = [
