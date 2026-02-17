@@ -7,6 +7,7 @@
   import Section from "$lib/components/Section.svelte";
   import MilkyWay from "$lib/Images/the-universe-what.jpg";
   import StarryNight from "$lib/Images/the-universe-bodies.jpg";
+  import Galaxy from "$lib/Images/the-universe-bodies-bg.jpg";
 </script>
 
 <Header />
@@ -60,17 +61,20 @@
     </p>
   </main>
 </Content>
-<section id="cards" class="d-flex flex-wrap justify-content-center gap-3">
-  {#each cards as card}
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">{card.title}</h5>
-        <p class="card-text">{card.text}</p>
-        <a href={card.url} class="card-link">Learn More</a>
+
+<Content bgUrl={Galaxy}>
+  <section id="cards" class="d-flex flex-wrap justify-content-center gap-3">
+    {#each cards as card}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{card.title}</h5>
+          <p class="card-text">{card.text}</p>
+          <a href={card.url} class="card-link">Learn More</a>
+        </div>
       </div>
-    </div>
-  {/each}
-</section>
+    {/each}
+  </section>
+</Content>
 
 <style>
   #cards {
