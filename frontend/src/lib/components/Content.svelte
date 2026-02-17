@@ -24,6 +24,7 @@
   .content-wrapper :global(h2),
   .content-wrapper :global(h3) {
     align-self: flex-start; /* Ensure the box itself stays left */
+    text-shadow: 1px 1px 0.1em white;
   }
   .content-wrapper :global(h1) {
     font-weight: 600;
@@ -62,6 +63,7 @@
   .content-wrapper :global(p) {
     color: #c0bcbc;
     max-width: 70em;
+    text-shadow: 0.1em 0.1em 0.4em rgb(82, 74, 74);
   }
 
   .content-wrapper :global(button) {
