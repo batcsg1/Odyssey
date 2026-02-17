@@ -2,12 +2,12 @@
   let { form } = $props();
   const { error } = form ?? {};
   import bgImage from "$lib/Images/login-background.jpg";
-  import logo from "$lib/Images/logo-light.png"
+  import logo from "$lib/Images/logo-light.png";
 </script>
 
 <main style="--bg-url: url({bgImage})">
   <form method="POST" action="?/login">
-    <img src={logo} alt="odyssey" height=80>
+    <img src={logo} alt="odyssey" height="80" />
     <h2>Login</h2>
     <label for="email">Email</label>
     <input
@@ -30,15 +30,19 @@
       <button type="submit" id="register">Register</button>
     </div>
 
+    {#if error}
+    <p class="message">{error}</p>
+    {/if}
+
     <p>🄯 2026 Samuel Batchelor</p>
 
-    {#if error}
-      <p class="error">{error}</p>
-    {/if}
   </form>
 </main>
 
 <style>
+  .message{
+    color: red;
+  }
   main {
     background-image: var(--bg-url);
     height: 100vh;
@@ -78,24 +82,24 @@
     transition: 0.3s ease;
   }
 
-  #button-container{
+  #button-container {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
     padding-block: 1em;
     border-bottom: 0.1em solid rgb(173, 170, 170);
   }
-  #login{
+  #login {
     background-color: black;
     border: 0.05em solid #333;
-
   }
-  #register{
+  #register {
     background-color: gray;
     border: 0.05em solid gray;
   }
 
-  #login:hover, #register:hover{
+  #login:hover,
+  #register:hover {
     background-color: white;
     color: #333;
     border: 0.05em solid #333;
@@ -105,9 +109,8 @@
     margin-bottom: 1em;
   }
 
-  p{
+  p {
     text-align: center;
     color: gray;
   }
-
 </style>

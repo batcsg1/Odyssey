@@ -23,12 +23,13 @@ export const actions = {
                 },
                 body: JSON.stringify(data)
             });
-
+            
+            json = await res.json();
+            
             if (!res.ok) {
                 return { error: json.message };
             }
 
-            json = await res.json();
             token = json.token;
 
             console.log(json.message)
