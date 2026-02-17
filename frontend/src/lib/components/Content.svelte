@@ -72,7 +72,6 @@
     border: 3px solid white;
     transition: 0.3s ease;
     max-width: 10em;
-    align-self: center;
   }
 
   .content-wrapper :global(a) {
