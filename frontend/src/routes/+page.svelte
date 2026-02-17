@@ -9,10 +9,10 @@
 <div id="image-container">
 <img src={Voyager_Saturn} alt="img" height=190 />
 <img src={Logo} alt="odyssey" height=100>
+</div>
 
 <Quotes/>
 
-</div>
 
 <Content bgUrl={Horizon}>
   <main>
@@ -37,6 +37,6 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    height: 150vh;
+    height: 90vh;
   }
 </style>
