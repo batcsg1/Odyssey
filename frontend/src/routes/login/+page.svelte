@@ -1,22 +1,36 @@
 <script>
   let { form } = $props();
   const { error } = form ?? {};
+  import bgImage from "$lib/Images/login-background.jpg";
+  import logo from "$lib/Images/logo-light.png"
 </script>
 
-<main>
-  <section>
-    <h1>{`{ odyssey }`}</h1>
-  </section>
+<main style="--bg-url: url({bgImage})">
   <form method="POST" action="?/login">
+    <img src={logo} alt="odyssey" height=80>
     <h2>Login</h2>
-    <input type="email" id="email" name="email" placeholder="Email Address" />
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Type your email address"
+    />
+
+    <label for="password">Password</label>
     <input
       type="password"
       id="password"
       name="password"
       placeholder="Password"
     />
-    <button type="submit">Sign in now</button>
+
+    <div id="button-container">
+      <button type="submit" id="login">Sign in now</button>
+      <button type="submit" id="register">Register</button>
+    </div>
+
+    <p>🄯 2026 Samuel Batchelor</p>
 
     {#if error}
       <p class="error">{error}</p>
@@ -25,61 +39,75 @@
 </main>
 
 <style>
-  .error {
-    color: #ffb3b3;
-    margin-bottom: 1em;
-    text-align: center;
-  }
   main {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    background-image: var(--bg-url);
     height: 100vh;
-    gap: 8em;
+    background-size: cover;
+    display: flex;
     justify-content: center;
-    color: white;
-    background: #2a7b9b;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(16, 89, 163, 0.3) 70%,
-      rgba(60, 146, 208, 0.7) 100%
-    );
-  }
-  h1 {
-    font-size: 4em;
-    font-weight: bolder;
+    align-items: center;
   }
   form {
+    background-color: white;
+    padding: 1em;
     display: flex;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 0.1em solid white;
-    padding: 2em;
-    border-radius: 0.3em;
-    box-shadow: 0.6em 0.6em 0em white;
+    box-shadow: 0.8em 0.8em 0em black;
   }
-  form input {
-    margin-bottom: 1em;
-    padding: 0.5em 2em 0.5em 0.9em;
-    border-radius: 0.3em;
-    border: none;
-    outline: none;
-    background-color: rgba(145, 144, 144, 0.1);
-  }
-  form button {
-    padding: 0.7em;
-    border: none;
-    border-radius: 0.3em;
-    background-color: #66aaff;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  h2 {
+  form h2 {
     text-align: center;
-    margin-bottom: 1em;
-    border-bottom: 0.1em solid white;
-    padding: 0.7em;
+    font-weight: 600;
+    font-size: 1.5em;
   }
+  label {
+    font-size: small;
+  }
+  input {
+    border: none;
+    border-bottom: 0.1em solid rgb(173, 170, 170);
+    padding: 0em 0em 0.3em 0em;
+    margin-bottom: 0.5em;
+  }
+  button {
+    color: white;
+    border: none;
+    padding: 0.5em;
+    transition: 0.3s ease;
+  }
+  button:hover {
+    transition: 0.3s ease;
+  }
+
+  #button-container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding-block: 1em;
+    border-bottom: 0.1em solid rgb(173, 170, 170);
+  }
+  #login{
+    background-color: black;
+    border: 0.05em solid #333;
+
+  }
+  #register{
+    background-color: gray;
+    border: 0.05em solid gray;
+  }
+
+  #login:hover, #register:hover{
+    background-color: white;
+    color: #333;
+    border: 0.05em solid #333;
+  }
+
+  img {
+    margin-bottom: 1em;
+  }
+
+  p{
+    text-align: center;
+    color: gray;
+  }
+
 </style>
