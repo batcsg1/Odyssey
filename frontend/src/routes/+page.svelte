@@ -3,12 +3,12 @@
   import Quotes from "$lib/components/Quotes.svelte";
   import Voyager_Saturn from "$lib/GIFs/Voyager_Saturn_encounter_animation.gif";
   import Horizon from "$lib/Images/horizon.jpg";
-  import Logo from "$lib/Images/logo-dark.png"
+  import Logo from "$lib/Images/logo-dark-slogan.png"
 </script>
 
 <div id="image-container">
 <img src={Voyager_Saturn} alt="img" height=190 />
-<img src={Logo} alt="odyssey" height=100>
+<img src={Logo} alt="odyssey" height=190>
 </div>
 
 <Quotes/>
