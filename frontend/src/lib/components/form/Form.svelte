@@ -8,6 +8,7 @@
   import Json from "$lib/components/Json.svelte";
   import Content from "../Content.svelte";
   import Message from "../Message.svelte";
+  import Parent from "../Parent.svelte";
 
   let message = $state("");
   const hideMessage = () => (message = "");
@@ -25,7 +26,7 @@
 
   const toggleEditable = () => (editable = !editable);
 
-  let { data, success, error, fields } = $props();
+  let { data, success, error, fields, relation = false } = $props();
 </script>
 
 <div id="form-container">
@@ -49,6 +50,15 @@
           readonly={!editable}
         />
       {/each}
+
+      {#if relation}
+        <Parent
+          location="constellations"
+          label="Constellation"
+          initialName={data.constellation?.name || ""}
+          readonly={!editable}
+        />
+      {/if}
 
       {#if authorized}
         {#if editable}
@@ -102,7 +112,7 @@
   {#if success}
     <Message message={"Update successful!"} onClose={() => (success = "")} />
   {/if}
-  
+
   {#if error}
     <Message message={error} onClose={() => (error = "")} />
   {/if}

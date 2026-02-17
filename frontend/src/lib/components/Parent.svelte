@@ -1,5 +1,5 @@
 <script>
-  let { location = $bindable(""), label="" } = $props();
+  let { location = $bindable(""), label="", initialName="", readonly } = $props();
 
   let query = $state("");
 
@@ -38,6 +38,10 @@
     };
 
     query = item.name; // Set the input field to the selected item's name
+
+    // Collpase dropdown
+    suggestions = [];
+    message = ""
   };
 </script>
 
@@ -47,8 +51,9 @@
     type="text"
     bind:value={query}
     oninput={fetchSuggestions}
-    placeholder="Enter"
+    placeholder={initialName}
     autocomplete="off"
+    readonly={readonly}
   />
 
   <!-- Hidden fields -->
