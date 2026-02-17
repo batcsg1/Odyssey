@@ -27,7 +27,7 @@
     return result;
   }
 
-  const currentYear = 2026;
+  const currentYear = new Date().getFullYear();
 
   let romanYear = toRoman(currentYear);
 </script>
