@@ -46,7 +46,7 @@
     { name: "THE INTERSTELLAR", href: "/interstellar" },
   ]);
 
-  import logo from "$lib/Images/logo-dark.png";
+  import logo from "$lib/Images/logo-dark-nobg.png";
 </script>
 
 <svelte:window bind:scrollY={y} />
