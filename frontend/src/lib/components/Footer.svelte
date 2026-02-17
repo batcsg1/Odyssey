@@ -14,7 +14,7 @@
     </a>
 
     <section id="copyright">
-       Copyleft 🄯 2026 Samuel Batchelor. Freely distributable and modifiable under the <a href="https://github.com/batcsg1/Odyssey/blob/main/LICENSE">GNU Affero General Public License v3.0</a>.
+       <strong>Copyleft 🄯 MMXXVI Samuel Batchelor.</strong> Freely distributable and modifiable under the <a href="https://github.com/batcsg1/Odyssey/blob/main/LICENSE">GNU Affero General Public License v3.0</a>.
     </section>
 </footer>
 
@@ -55,6 +55,7 @@
     #copyright{
         padding-top: 1em;
         text-align: center;
+        max-width: 25em;
     }
 
 </style>
