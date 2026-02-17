@@ -52,7 +52,7 @@
 <svelte:window bind:scrollY={y} />
 
 <header class:transparent={isTransparent}>
-  <h1><a href="/">odyssey</a></h1>
+  <h1><a href="/"><img src={logo} alt="odyssey" height=50></a></h1>
   <nav id="hamburger-parent">
     {#if !open}
       <button class:transparent={isTransparent} onclick={openMenu}>☰</button>
