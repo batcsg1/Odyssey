@@ -6,13 +6,13 @@
 
 <style>
     .error {
-        background-color: rgba(255, 6, 6, 0.2);
-        border: 0.1em dashed #ff6666;
+        background-color: rgba(255, 6, 6, 0.1);
+        border: 1px dashed #ff6666;
         padding: 2em;
         border-radius: 0.3em;
-        box-shadow: 6px 6px 2em #ff6666;
+        box-shadow: 6px 6px 2em rgb(181, 72, 72);
         color: #ff6666;
-        width: 25em;
+        text-shadow: 0.1em 0.1em 0.6em red;
         text-align: center;
         font-weight: bolder;
     }
