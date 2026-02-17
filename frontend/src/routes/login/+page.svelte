@@ -7,7 +7,7 @@
 
 <main style="--bg-url: url({bgImage})">
   <form method="POST" action="?/login">
-    <img src={logo} alt="odyssey" height="80" />
+    <a href="/"><img src={logo} alt="odyssey" height="80" /></a>
     <h2>Login</h2>
     <label for="email">Email</label>
     <input
