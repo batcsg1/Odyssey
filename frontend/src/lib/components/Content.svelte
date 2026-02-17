@@ -10,25 +10,35 @@
   .content-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     background-image: var(--bg-url);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
   .content-wrapper :global(main) {
-    background-color: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+
     padding: 2em;
   }
+  .content-wrapper :global(h1),
+  .content-wrapper :global(h2),
+  .content-wrapper :global(h3) {
+    align-self: flex-start; /* Ensure the box itself stays left */
+  }
+  .content-wrapper :global(h1) {
+    font-weight: 600;
+    font-size: 3em;
+    color: white;
+    background: -webkit-linear-gradient(#ffffff, #c0bcbc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .content-wrapper :global(h2) {
     font-weight: 400;
     font-size: 2.8em;
     color: white;
-    padding: 0em 0.6em 0em 0.6em;
     border-bottom: 0.05em dashed white;
-    text-align: center;
     background: -webkit-linear-gradient(#ffffff, #c0bcbc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -38,18 +48,22 @@
     font-weight: 400;
     font-size: 2em;
     color: white;
-    padding: 0em 0.6em 0em 0.6em;
     border-bottom: 0.05em dashed white;
     text-align: center;
     background: -webkit-linear-gradient(#ffffff, #c0bcbc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  .content-wrapper :global(header) {
+    background-color: black;
+    color: white;
+    display: flex;
+    margin-left: 2em;
+  }
 
   .content-wrapper :global(p) {
     color: #c0bcbc;
     max-width: 40em;
-    padding: 0.5em;
   }
 
   .content-wrapper :global(button) {
