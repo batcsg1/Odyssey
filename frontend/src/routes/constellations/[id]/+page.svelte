@@ -22,10 +22,17 @@
   ];
 </script>
 
+<!--Website location, e.g. Home > Constellations-->
 <Header />
 
+<!--Name of current constellation as a header-->
 <DataHeader item={constellation}/>
 
+<!--
+Items: 
+1st and 2nd Items are forms: Attributes of the current constellation, image upload  
+3rd item is the current constellation retrieved in it's raw JSON form from the backend API.
+-->
 <Form data={constellation} {success} {error} {fields}/>
 
 <style>

@@ -20,6 +20,7 @@
     { id: "brightness", label: "Brightness (V):", type: "text" }
   ];
 
+  // Location, label and name of parent object
   const parent = {
     location: "constellations",
     label: "Constellation",
@@ -27,10 +28,17 @@
   }
 </script>
 
+<!--Website location, e.g. Home > Galaxies-->
 <Header />
 
+<!--Name of current galaxy as a header-->
 <DataHeader item={galaxy}/>
 
+<!--
+Items: 
+1st and 2nd Items are forms: Attributes of the current galaxy, image upload  
+3rd item is the current galaxy retrieved in it's raw JSON form from the backend API.
+-->
 <Form data={galaxy} {success} {error} {fields} lookup={parent}/>
 
 <style>
