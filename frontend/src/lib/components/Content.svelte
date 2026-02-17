@@ -36,7 +36,7 @@
 
   .content-wrapper :global(h2) {
     font-weight: 400;
-    font-size: 2.8em;
+    font-size: 2.2em;
     color: white;
     border-bottom: 0.05em dashed white;
     background: -webkit-linear-gradient(#ffffff, #c0bcbc);
@@ -46,7 +46,7 @@
 
   .content-wrapper :global(h3) {
     font-weight: 400;
-    font-size: 2em;
+    font-size: 1.8em;
     color: white;
     border-bottom: 0.05em dashed white;
     text-align: center;
@@ -56,14 +56,12 @@
   }
   .content-wrapper :global(header) {
     background-color: black;
-    color: white;
-    display: flex;
-    margin-left: 2em;
+    padding-inline: 2em;
   }
 
   .content-wrapper :global(p) {
     color: #c0bcbc;
-    max-width: 40em;
+    max-width: 70em;
   }
 
   .content-wrapper :global(button) {

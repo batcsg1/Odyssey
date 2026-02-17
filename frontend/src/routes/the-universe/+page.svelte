@@ -17,7 +17,7 @@
   </header>
 
   <main>
-    <h3>What is the Universe?</h3>
+    <h2>What is the Universe?</h2>
     <p>
       <strong>The Universe</strong>, also known as the
       <strong>Observable Universe</strong>, is <strong>everything</strong> that exists,
@@ -44,7 +44,7 @@
 
 <Content bgUrl={StarryNight}>
   <main>
-    <h3>Bodies of the Universe</h3>
+    <h2>Bodies of the Universe</h2>
     <p>
       The Universe is filled with a vast array of celestial bodies, each with
       its own unique characteristics and properties. These include stars,

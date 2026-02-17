@@ -5,17 +5,17 @@
   import Content from "$lib/components/Content.svelte";
   let { data } = $props();
   const { constellations, error } = data;
+  import Orion from "$lib/Images/orion.jpg"
 </script>
 
 <main>
   <Header/>
 
-  <Content>
-    <img
-      src="https://i0.wp.com/astronomicca.com/wp-content/uploads/2023/10/alexander-andrews-fsH1KjbdjE8-unsplash-edited.jpg?resize=640%2C1002&ssl=1"
-      alt="Orion-Nebula"
-      width="30%"
-    />
+  <Content bgUrl={Orion}>
+    <header>
+      <h1>Constellations</h1>
+    </header>
+    <main>
     <h2>What are Constellations?</h2>
     <p>
       Constellations are patterns of stars that have been identified and named
@@ -25,6 +25,7 @@
       officially recognized constellations, each with its own unique set of
       stars and stories.
     </p>
+    </main>
   </Content>
   <ConstellationTable {constellations} {error}/>
 </main>
