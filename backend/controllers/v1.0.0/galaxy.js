@@ -19,10 +19,11 @@ const selectObject = {
   createdAt: true,
   updatedAt: true,
   constellationId: true,
+  imagePath: true,
   constellation: {
-    select: {          // You MUST use the 'select' keyword here
+    select: {
       id: true,
-      name: true       // Add this to get the name for your Parent component!
+      name: true 
     }
   }
 };
