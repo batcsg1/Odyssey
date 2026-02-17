@@ -315,13 +315,19 @@
     { id: "size", label: "Size (k.m.)", type: "text" },
     { id: "brightness", label: "Brightness (V):", type: "text" }
   ];
+
+  const parent = {
+    location: "constellations",
+    label: "Constellation",
+    initialName: galaxy.constellation?.name || ""
+  }
 </script>
 
 <Header />
 
 <DataHeader item={galaxy}/>
 
-<Form data={galaxy} {success} {error} {fields} relation={true}/>
+<Form data={galaxy} {success} {error} {fields} relation={parent}/>
 
 <style>
 </style>

@@ -26,7 +26,11 @@
 
   const toggleEditable = () => (editable = !editable);
 
-  let { data, success, error, fields, relation = false } = $props();
+  let { data, success, error, fields, relation = {} } = $props();
+
+  let location = $derived(relation?.location || "");
+  let label = $derived(relation?.label || "");
+  let initialName = $derived(relation?.initialName || "");
 </script>
 
 <div id="form-container">
@@ -52,12 +56,7 @@
       {/each}
 
       {#if relation}
-        <Parent
-          location="constellations"
-          label="Constellation"
-          initialName={data.constellation?.name || ""}
-          readonly={!editable}
-        />
+        <Parent {location} {label} {initialName} readonly={!editable} />
       {/if}
 
       {#if authorized}
