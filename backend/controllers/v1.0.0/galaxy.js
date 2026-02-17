@@ -18,7 +18,13 @@ const selectObject = {
   brightness: true,
   createdAt: true,
   updatedAt: true,
-  constellationId: true
+  constellationId: true,
+  constellation: {
+    select: {          // You MUST use the 'select' keyword here
+      id: true,
+      name: true       // Add this to get the name for your Parent component!
+    }
+  }
 };
 
 /**
