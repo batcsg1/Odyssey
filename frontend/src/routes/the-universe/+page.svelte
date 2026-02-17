@@ -5,12 +5,13 @@
   import Content from "$lib/components/Content.svelte";
   import Header from "$lib/components/Header.svelte";
   import Section from "$lib/components/Section.svelte";
+  import MilkyWay from "$lib/Images/the-universe-what.jpg"
 </script>
 
 <Header/>
 
-<Content>
-  <img src="https://img.artpal.com/234071/10-20-5-9-13-22-24m.jpg" alt="img"width="30%" />
+<Content bgUrl={MilkyWay}>
+  <main>
   <h2>What is the Universe?</h2>
   <p>
     <strong>The Universe</strong>, also known as the <strong>Observable Universe</strong>, is <strong>everything</strong> that exists, from the smallest particles to the largest galaxies. It encompasses all of space, time, matter, and energy. The Universe is vast and constantly expanding, with billions of galaxies, each containing billions of stars and planets. It is a complex and mysterious place that scientists continue to explore and study to understand its origins, structure, and ultimate fate.
@@ -19,8 +20,7 @@
   <p>
     The Universe is believed to have originated from a singularity, a point of infinite density and temperature, around 13.8 billion years ago in an event known as the Big Bang. Since then, it has been expanding and evolving, giving rise to the formation of galaxies, stars, planets, and eventually life on Earth. The Universe is governed by fundamental forces such as gravity, electromagnetism, and nuclear forces, which shape its structure and behavior. It is a source of wonder and fascination for scientists and philosophers alike, as we continue to unravel its mysteries and explore our place within it.
   </p>
-  
-  <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/astro/exo-explore/internal_resources/1763/image_of_nebula_W51.jpeg?w=1600&h=900&fit=clip&crop=faces%2Cfocalpoint" alt="W51 Nebula" width="80%" />
+  </main>
 </Content>
 
 <article
