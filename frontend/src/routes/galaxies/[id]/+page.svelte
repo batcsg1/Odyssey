@@ -327,7 +327,7 @@
 
 <DataHeader item={galaxy}/>
 
-<Form data={galaxy} {success} {error} {fields} relation={parent}/>
+<Form data={galaxy} {success} {error} {fields} lookup={parent}/>
 
 <style>
 </style>

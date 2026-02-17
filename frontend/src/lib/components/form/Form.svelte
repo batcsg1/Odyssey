@@ -26,11 +26,11 @@
 
   const toggleEditable = () => (editable = !editable);
 
-  let { data, success, error, fields, relation = {} } = $props();
+  let { data, success, error, fields, lookup = {} } = $props();
 
-  let location = $derived(relation?.location || "");
-  let label = $derived(relation?.label || "");
-  let initialName = $derived(relation?.initialName || "");
+  let location = $derived(lookup?.location || "");
+  let label = $derived(lookup?.label || "");
+  let initialName = $derived(lookup?.initialName || "");
 </script>
 
 <div id="form-container">
@@ -55,7 +55,7 @@
         />
       {/each}
 
-      {#if relation}
+      {#if lookup}
         <Parent {location} {label} {initialName} readonly={!editable} />
       {/if}
 
