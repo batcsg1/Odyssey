@@ -1,48 +1,29 @@
 <script>
   import Header from "$lib/components/Header.svelte";
-  import { page } from "$app/stores";
   import GalaxyTable from "$lib/components/tables/GalaxyTable.svelte";
   import IntroSection from "$lib/components/IntroSection.svelte";
-
+  import Content from "$lib/components/Content.svelte";
   let { data } = $props();
-  const { intro, blurb, galaxies, constellationMap, error } = data;
-
-  let currentPath = $derived($page.url.pathname);
-  let location = $derived(currentPath.replace("/", ""));
-
-  let query = $state("");
+  const { galaxies, error } = data;
+  import Orion from "$lib/Images/orion.jpg"
 </script>
 
 <main>
   <Header/>
 
-  <article>
-    <IntroSection {intro} {blurb} />
-
-    <GalaxyTable {galaxies} {constellationMap} {error} {location} />
-  </article>
+  <Content>
+    <header>
+      <h1>Galaxies</h1>
+    </header>
+    <main>
+    <h2>What are Galaxies?</h2>
+    <p>
+      Galaxies are vast collections of stars, gas, dust, and dark matter bound together by gravity. They come in various shapes and sizes, from spiral galaxies like our own Milky Way to elliptical and irregular galaxies. Studying galaxies helps us understand the formation and evolution of the universe, as well as the processes that govern star formation and cosmic phenomena. Dive in to explore the wonders of galaxies!
+    </p>
+    </main>
+  </Content>
+  <GalaxyTable {galaxies} {error}/>
 </main>
 
 <style>
-  header {
-    position: relative;
-    color: white;
-    background-image: url(../../lib/Images/constellation.webp);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 20em;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
-  article {
-    background-color: rgba(0, 0, 0);
-    display: flex;
-    flex-direction: column;
-    color: white;
-    padding: 3em;
-    gap: 2.2em;
-  }
 </style>

@@ -1,12 +1,15 @@
 <script>
-  import Search from "../Search.svelte";
-  import TableWrapper from "../TableWrapper.svelte";
-  import Fetch from "../Fetch.svelte";
-  import FetchError from "../FetchError.svelte";
-  import Table from "../Table.svelte";
+  import Search from "../table/Search.svelte";
+  import TableWrapper from "../table/TableWrapper.svelte";
+  import Fetch from "../table/Fetch.svelte";
+  import FetchError from "../table/FetchError.svelte";
+  import Table from "../table/Table.svelte";
+  import { page } from "$app/stores";
+  
+  let location = $derived($page.url.pathname.replace("/", ""));
 
   // Using Svelte 5 props
-  let { galaxies, map, error, location } = $props();
+  let { galaxies, map, error } = $props();
 
   // Local state for the search query
   let query = $state("");
@@ -25,10 +28,13 @@
 </script>
 
 <Table>
-  <h3>VIEW GALAXIES</h3>
   {#if galaxies?.data}
     <Search>
-      <input type="text" placeholder="Search galaxies..." bind:value={query} />
+      <input
+        type="text"
+        placeholder="Search galaxies..."
+        bind:value={query}
+      />
     </Search>
     <TableWrapper>
       <Fetch
@@ -54,17 +60,4 @@
 </Table>
 
 <style>
-  h3 {
-    font-weight: bold;
-    padding: 1em 0 0.3em 0;
-    border-bottom: #66aaff 0.1em solid;
-    text-align: center;
-    margin-inline: 8em;
-  }
-
-  @media (max-width: 900px) {
-    h3 {
-      margin-inline: 2em;
-    }
-  }
 </style>
