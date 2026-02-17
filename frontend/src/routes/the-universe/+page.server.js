@@ -2,47 +2,47 @@ export async function load() {
   const cards = [
     {
       "title": "Constellations",
-      "text": "Descriptions and details about constellations.",
+      "text": "Groups of stars that form a shape/pattern",
       "url": "/constellations"
     },
     {
       "title": "Galaxies",
-      "text": "Descriptions and details about galaxies.",
+      "text": "Massive systems of stars, gas and dust",
       "url": "/galaxies"
     },
     {
       "title": "Stars",
-      "text": "Descriptions and details about stars.",
+      "text": "Glowing balls of hot gas",
       "url": "/stars"
     },
     {
       "title": "Planets",
-      "text": "Descriptions and details about planets.",
+      "text": "Round celestial bodies that orbit stars",
       "url": "/planets"
     },
     {
       "title": "Satellites",
-      "text": "Descriptions and details about satellites.",
+      "text": "Celestial bodies that orbit planets",
       "url": "/satellites"
     },
     {
       "title": "Comets",
-      "text": "Descriptions and details about comets.",
+      "text": "Small icy bodies that orbit the Sun",
       "url": "/comets"
     },
     {
       "title": "Asteroids",
-      "text": "Descriptions and details about asteroids.",
+      "text": "Small rocky bodies that orbit the Sun",
       "url": "/asteroids"
     },
     {
       "title": "Meteorites",
-      "text": "Descriptions and details about meteorites.",
+      "text": "Pieces of rock from space on the Earth's surface.",
       "url": "/meteorites"
     },
     {
       "title": "Meteor Showers",
-      "text": "Descriptions and details about meteor showers.",
+      "text": "Bright streaks in the sky coming from a single point",
       "url": "/meteor-showers"
     }
   ];
