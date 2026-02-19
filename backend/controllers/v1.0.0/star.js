@@ -23,6 +23,12 @@ const selectObject = {
   brightness: true,
   constellationId: true,
   galaxyId: true,
+  galaxy: {
+    select: {
+      id: true,
+      name: true 
+    }
+  },
   createdAt: true,
   updatedAt: true
 };
